@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C696EF5-1754-4CB0-A47A-801DA4AA6441}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CostControl</RootNamespace>
+    <AssemblyName>CostControl</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Access, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\Frm_ANAChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analysis\Frm_ANAChart.Designer.cs">
+      <DependentUpon>Frm_ANAChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\Frm_ANATable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analysis\Frm_ANATable.Designer.cs">
+      <DependentUpon>Frm_ANATable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Analysis\GetANAData.cs" />
+    <Compile Include="App_Data\RMCostControl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMCostControl.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BaseManage\EmployeeManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseManage\EmployeeManage.Designer.cs">
+      <DependentUpon>EmployeeManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseManage\Frm_adduser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseManage\Frm_adduser.Designer.cs">
+      <DependentUpon>Frm_adduser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electric\Frm_ETable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_ETable.Designer.cs">
+      <DependentUpon>Frm_ETable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electric\Frm_EActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_EActual.Designer.cs">
+      <DependentUpon>Frm_EActual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electric\GetElectricData.cs" />
+    <Compile Include="Electric\Frm_EActual1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_EActual1.Designer.cs">
+      <DependentUpon>Frm_EActual1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electric\Frm_EData1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_EData1.Designer.cs">
+      <DependentUpon>Frm_EData1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcelControl.cs" />
+    <Compile Include="Frm_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_main.Designer.cs">
+      <DependentUpon>Frm_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintain\Frm_MChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\Frm_MChart.Designer.cs">
+      <DependentUpon>Frm_MChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintain\Frm_MTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\Frm_MTable.Designer.cs">
+      <DependentUpon>Frm_MTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintain\GetMaintainData.cs" />
+    <Compile Include="Maintain\Frm_MData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\Frm_MData.Designer.cs">
+      <DependentUpon>Frm_MData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintain\Frm_MBarChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\Frm_MBarChart.Designer.cs">
+      <DependentUpon>Frm_MBarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Frm_MGActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\Frm_MGActual.Designer.cs">
+      <DependentUpon>Frm_MGActual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Frm_MGBarChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\Frm_MGBarChart.Designer.cs">
+      <DependentUpon>Frm_MGBarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Frm_MGChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\Frm_MGChart.Designer.cs">
+      <DependentUpon>Frm_MGChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Frm_MGTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\Frm_MGTable.Designer.cs">
+      <DependentUpon>Frm_MGTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Frm_MGData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\Frm_MGData.Designer.cs">
+      <DependentUpon>Frm_MGData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\GetMGData.cs" />
+    <Compile Include="ODbcmd.cs" />
+    <Compile Include="Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electric\Frm_EData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_EData.Designer.cs">
+      <DependentUpon>Frm_EData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawMaterial\Frm_RMActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMActual.Designer.cs">
+      <DependentUpon>Frm_RMActual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMChart.Designer.cs">
+      <DependentUpon>Frm_RMChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maintain\Frm_MActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maintain\Frm_MActual.Designer.cs">
+      <DependentUpon>Frm_MActual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMTable.Designer.cs">
+      <DependentUpon>Frm_RMTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterial\GetRMData.cs" />
+    <Compile Include="RawMaterial\Frm_RMData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterial\Frm_RMData.Designer.cs">
+      <DependentUpon>Frm_RMData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RMCostControlDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMCostControlDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Analysis\Frm_ANAChart.resx">
+      <DependentUpon>Frm_ANAChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Analysis\Frm_ANATable.resx">
+      <DependentUpon>Frm_ANATable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseManage\EmployeeManage.resx">
+      <DependentUpon>EmployeeManage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseManage\Frm_adduser.resx">
+      <DependentUpon>Frm_adduser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_EActual.resx">
+      <DependentUpon>Frm_EActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_ETable.resx">
+      <DependentUpon>Frm_ETable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_EActual1.resx">
+      <DependentUpon>Frm_EActual1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_EData1.resx">
+      <DependentUpon>Frm_EData1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_main.resx">
+      <DependentUpon>Frm_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\Frm_MChart.resx">
+      <DependentUpon>Frm_MChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\Frm_MTable.resx">
+      <DependentUpon>Frm_MTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\Frm_MData.resx">
+      <DependentUpon>Frm_MData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\Frm_MBarChart.resx">
+      <DependentUpon>Frm_MBarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\Frm_MGActual.resx">
+      <DependentUpon>Frm_MGActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\Frm_MGBarChart.resx">
+      <DependentUpon>Frm_MGBarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\Frm_MGChart.resx">
+      <DependentUpon>Frm_MGChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\Frm_MGData.resx">
+      <DependentUpon>Frm_MGData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\Frm_MGTable.resx">
+      <DependentUpon>Frm_MGTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_EData.resx">
+      <DependentUpon>Frm_EData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RawMaterial\Frm_RMActual.resx">
+      <DependentUpon>Frm_RMActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterial\Frm_RMChart.resx">
+      <DependentUpon>Frm_RMChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maintain\Frm_MActual.resx">
+      <DependentUpon>Frm_MActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterial\Frm_RMTable.resx">
+      <DependentUpon>Frm_RMTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterial\Frm_RMData.resx">
+      <DependentUpon>Frm_RMData.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="App_Data\RMCostControl.xsc">
+      <DependentUpon>RMCostControl.xsd</DependentUpon>
+    </None>
+    <None Include="App_Data\RMCostControl.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RMCostControl.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Data\RMCostControl.xss">
+      <DependentUpon>RMCostControl.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="RMCostControlDataSet.xsc">
+      <DependentUpon>RMCostControlDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RMCostControlDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RMCostControlDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RMCostControlDataSet.xss">
+      <DependentUpon>RMCostControlDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RMCostControl.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
