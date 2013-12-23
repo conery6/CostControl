@@ -11,17 +11,17 @@ namespace CostControl.Analysis
     {
         public static  DataSet T1(String CostCenterNo, String period, String Year)
         {
-            string sql1 = "select distinct PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
+            string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
             + "and  year=" + Year + "and  RMPeriod.Type='" + 1 + "'and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d1 = ODbcmd.SelectToDataTable(sql1);
 
-            string sql2 = "select distinct IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,CostCenter where CostCenter.CCNo = MGPeriod.CCNo"
+            string sql2 = "select  IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,CostCenter where CostCenter.CCNo = MGPeriod.CCNo"
 + " and  year=" + Year + " and MGPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d2 = ODbcmd.SelectToDataTable(sql2);
 
-//            string sql3 = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
-//+ "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-//            DataTable d3 = ODbcmd.SelectToDataTable(sql3);
+            string sql3 = "select  Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,CostCenter where CostCenter.CCNo = EPeriod.CCNo"
+            + " and  year=" + Year + " and EPeriod.Period='" + period + "' and EPeriod.Item in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d3 = ODbcmd.SelectToDataTable(sql3);
 
 //            string sql4 = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
 //+ "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
@@ -30,6 +30,8 @@ namespace CostControl.Analysis
             DataSet ds = new DataSet();
             ds.Tables.Add(d1);
             ds.Tables.Add(d2);
+            ds.Tables.Add(d3);
+           // ds.Tables.Add(d4);
             return ds;
         }
 

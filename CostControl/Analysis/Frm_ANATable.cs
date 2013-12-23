@@ -102,32 +102,135 @@ namespace CostControl.Analysis
                         r = GetANAData.Actual(CCNo, PNo, Year1);
                         break;
                 }
-
+                
                 if (r.Tables.Count > 0)
                 {
                     for (int y = 0; y < r.Tables.Count; y++)
                     {
-                        if (r.Tables[y].Rows.Count > 0)
+                        if (y == 0)
                         {
-
-                            dgv_rmdata2.Rows.Add(r.Tables[y].Rows.Count);
-                            for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                            if (r.Tables[y].Rows.Count > 0)
                             {
-                                float sum = 0f;
-                                for (int k = 0; k < 14; k++)
+                                dgv_rmdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
                                 {
-                                    dgv_rmdata2[k, i].Value = r.Tables[y].Rows[i][k];
-                                    if (k > 1)
+                                    float sum = 0f;
+                                    for (int k = 0; k < 14; k++)
                                     {
-                                        data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
-                                        sum += float.Parse(data);
+                                        dgv_rmdata1[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
                                     }
+                                    dgv_rmdata1[14, i].Value = sum;
                                 }
-                                dgv_rmdata2[14, i].Value = sum;
+                                //汇总
+                                dgv_rmdata1[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_rmdata1[14, m].Value.ToString());
+                                }
+                                dgv_rmdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
+                            else
+                            { MessageBox.Show("数据为空！"); }
                         }
-                        else
-                        { MessageBox.Show("数据为空！"); }
+                        else if (y == 1)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_mgdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_mgdata1[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_mgdata1[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_mgdata1[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_mgdata1[13, m].Value.ToString());
+                                }
+                                dgv_mgdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
+                        else if (y == 2)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_edata1.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_edata1[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_edata1[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_edata1[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_edata1[13, m].Value.ToString());
+                                }
+                                dgv_edata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
+                        else if (y == 3)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_mtdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_mtdata1[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_mtdata1[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_mtdata1[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_mtdata1[13, m].Value.ToString());
+                                }
+                                dgv_mtdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
                     }
                 }
 
