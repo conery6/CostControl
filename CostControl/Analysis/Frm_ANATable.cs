@@ -404,32 +404,79 @@ namespace CostControl.Analysis
         {
             if (chkB_T1.Checked == true)
             {
-                //float[,] f = GetANAData.FReportTable1(FDT1, FDT2);
-                //f1 = f;
-                //dgv_rmdata3.Rows[0].Visible = true;
-                //for (int j = 1; j < 6; j++)
-                //{
-                //    dgv_rmdata3.Rows[j].Visible = true;
-                //    for (int i = 1; i < 13; i++)
-                //    {
-                //        dgv_rmdata3[i, j].Value = f[j - 1, i];
-                //    }
-
-                //}
                 DataTable dt = new DataTable();
-                dt.Columns.Add("product");
-                dt.Columns.Add("catagory");
+                dt.Columns.Add("name");
                 dt.Columns.Add("sub");
                 dt.Columns.Add("percent");
-                for(int i=0; i<dgv_rmdata1.Rows.Count; i++)
+
+                //原料管理
+                if (dgv_edata2.Rows.Count > 0)
                 {
                     DataRow dr = dt.NewRow();
-                    dr[0] = dgv_rmdata1[0, i].Value;
-                    dr[1] = dgv_rmdata1[1, i].Value;
-                    dr[2] = float.Parse(dgv_rmdata2[14, i].Value.ToString()) - float.Parse(dgv_rmdata1[14, i].Value.ToString());
-                    dr[3] = (float.Parse(dgv_rmdata2[14, i].Value.ToString()) - float.Parse(dgv_rmdata1[14, i].Value.ToString())) / float.Parse(dgv_rmdata2[14, i].Value.ToString());
+                    dr[0] = "原料管理";
+                    dr[1] = float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr[1].ToString()) == 0f)
+                    {
+                        dr[2] = 0;
+                    }
+                    else
+                    {
+                        dr[2] = (float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString());
+                    }
                     dt.Rows.Add(dr);
                 }
+
+                //管理控制
+                if (dgv_edata2.Rows.Count > 0)
+                {
+                    DataRow dr1 = dt.NewRow();
+                    dr1[0] = "管理控制";
+                    dr1[1] = float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr1[1].ToString()) == 0f)
+                    {
+                        dr1[2] = 0;
+                    }
+                    else
+                    {
+                        dr1[2] = (float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString());
+                    }
+                    dt.Rows.Add(dr1);
+                }
+
+                //电费控制
+                if (dgv_edata2.Rows.Count > 0)
+                {
+                    DataRow dr2 = dt.NewRow();
+                    dr2[0] = "电费控制";
+                    dr2[1] = float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr2[1].ToString()) == 0f)
+                    {
+                        dr2[2] = 0;
+                    }
+                    else
+                    {
+                        dr2[2] = (float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString());
+                    }
+                    dt.Rows.Add(dr2);
+                }
+
+                //维修管理
+                if (dgv_mtdata2.Rows.Count > 0)
+                {
+                    DataRow dr3 = dt.NewRow();
+                    dr3[0] = "维修管理";
+                    dr3[1] = float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr3[1].ToString()) == 0f)
+                    {
+                        dr3[2] = 0;
+                    }
+                    else
+                    {
+                        dr3[2] = (float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString());
+                    }
+                    dt.Rows.Add(dr3);
+                }
+
                 //bind datasource
                 dgv_rmdata3.DataSource = dt;
             }
