@@ -40,7 +40,6 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.pdb
 D:\GitHub\CostControl\CostControl\bin\Debug\App_Data\RMCostControl.mdb
 D:\GitHub\CostControl\CostControl\bin\Debug\CostControl.exe
 D:\GitHub\CostControl\CostControl\bin\Debug\CostControl.pdb
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Analysis.Frm_ANAChart.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Analysis.Frm_ANATable.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.BaseManage.EmployeeManage.resources
@@ -67,7 +66,6 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMCh
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Maintain.Frm_MActual.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMTable.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMData.resources
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
 C:\Users\Conery\Desktop\CostControl\CostControl\bin\Debug\CostControl.exe.config
 C:\Users\Conery\Desktop\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.ResolveComReference.cache
 C:\Users\Conery\Desktop\CostControl\CostControl\obj\x86\Debug\CostControl.exe
@@ -138,3 +136,6 @@ C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.
 C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMTable.resources
 C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMData.resources
 C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\GenerateResource.write.1.tlog

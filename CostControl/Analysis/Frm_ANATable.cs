@@ -87,7 +87,7 @@ namespace CostControl.Analysis
                 switch (Reporttype1)
                 {
                     case "T1":
-                        r = GetANAData.Budget(CCNo, PNo, Year1);
+                        r = GetANAData.T1(CCNo, Reporttype1, Year1);
                         break;
                     case "RF1":
                         r = GetANAData.MiddleBudget(CCNo, PNo, Year1, 3);
@@ -102,27 +102,28 @@ namespace CostControl.Analysis
                         r = GetANAData.Actual(CCNo, PNo, Year1);
                         break;
                 }
-                
+
                 if (r.Tables.Count > 0)
                 {
                     for (int y = 0; y < r.Tables.Count; y++)
                     {
                         if (r.Tables[y].Rows.Count > 0)
                         {
-                            dgv_rmdata1.Rows.Add(r.Tables[y].Rows.Count);
+
+                            dgv_rmdata2.Rows.Add(r.Tables[y].Rows.Count);
                             for (int i = 0; i < r.Tables[y].Rows.Count; i++)
                             {
                                 float sum = 0f;
                                 for (int k = 0; k < 14; k++)
                                 {
-                                    dgv_rmdata1[k, i].Value = r.Tables[y].Rows[i][k];
-                                    if(k > 1)
+                                    dgv_rmdata2[k, i].Value = r.Tables[y].Rows[i][k];
+                                    if (k > 1)
                                     {
                                         data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
                                         sum += float.Parse(data);
                                     }
                                 }
-                                dgv_rmdata1[14, i].Value = sum;
+                                dgv_rmdata2[14, i].Value = sum;
                             }
                         }
                         else
@@ -145,7 +146,7 @@ namespace CostControl.Analysis
                 switch (Reporttype2)
                 {
                     case "T1":
-                        r = GetANAData.Budget(CCNo, PNo, Year2);
+                        r = GetANAData.T1(CCNo, Reporttype2, Year2);
                         break;
                     case "RF1":
                         r = GetANAData.MiddleBudget(CCNo, PNo, Year2, 3);
@@ -233,44 +234,6 @@ namespace CostControl.Analysis
                 }
             }
         }
-
-        private void chkB_T2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkB_T2.Checked == true)
-            {
-                //DataTable r = GetANAData.ReportTable2(DT1,DT2);
-                float[,] f = GetANAData.FReportTable2(FDT1, FDT2);
-                f2 = f;
-                dgv_rmdata3.Rows[6].Visible = true;
-
-                //for (int j = 7; j < 12; j++)
-                //{
-                //    dgv_rmdata2.Rows[j].Visible = true;
-                //    for (int i = 1; i < 13; i++)
-                //    {
-                //        dgv_rmdata2[i, j].Value = r.Rows[j-7][i];
-                //    }
-                //}
-
-                for (int j = 7; j < 12; j++)
-                {
-                    dgv_rmdata3.Rows[j].Visible = true;
-                    for (int i = 1; i < 13; i++)
-                    {
-                        dgv_rmdata3[i, j].Value = f[j - 7, i];
-                    }
-                }
-            }
-            else
-            {
-                for (int j = 6; j < 12; j++)
-                {
-                    dgv_rmdata3.Rows[j].Visible = false;
-                }
-            }
-        }
-
-
 
         private void btn_TP1_Click(object sender, EventArgs e)
         {

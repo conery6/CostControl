@@ -9,15 +9,15 @@ namespace CostControl.Analysis
 {
     class GetANAData
     {
-        public static  DataSet Budget(String CostCenterNo, String ProductNo, String Year)
+        public static  DataSet T1(String CostCenterNo, String period, String Year)
         {
-            string sql1 = "select distinct PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget,Product,CostCenter where CostCenter.CCNo =RMBudget.CCNo and Product.PNo =RMBudget.PNo  "
-            + "and  year=" + Year + " and CostCenter.CCNo='" + CostCenterNo + "'";
+            string sql1 = "select distinct PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
+            + "and  year=" + Year + "and  RMPeriod.Type='" + 1 + "'and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d1 = ODbcmd.SelectToDataTable(sql1);
 
-//            string sql2 = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGBudget  "
-//+ "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-//            DataTable d2 = ODbcmd.SelectToDataTable(sql2);
+            string sql2 = "select distinct IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,CostCenter where CostCenter.CCNo = MGPeriod.CCNo"
++ " and  year=" + Year + " and MGPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d2 = ODbcmd.SelectToDataTable(sql2);
 
 //            string sql3 = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
 //+ "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
@@ -29,6 +29,7 @@ namespace CostControl.Analysis
 
             DataSet ds = new DataSet();
             ds.Tables.Add(d1);
+            ds.Tables.Add(d2);
             return ds;
         }
 
