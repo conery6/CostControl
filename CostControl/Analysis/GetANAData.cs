@@ -9,7 +9,7 @@ namespace CostControl.Analysis
 {
     class GetANAData
     {
-        public static  DataSet T1(String CostCenterNo, String period, String Year)
+        public static  DataSet PeriodData(String CostCenterNo, String period, String Year)
         {
             string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
             + "and  year=" + Year + "and  RMPeriod.Type='" + 1 + "'and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
@@ -44,38 +44,6 @@ namespace CostControl.Analysis
             ds.Tables.Add(a);
             return ds;
         }
-
-
-        public static DataSet MiddleBudget(String CostCenterNo, String ProductNo, String Year, int month)
-        {
-            string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget "
-            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-            DataTable b = ODbcmd.SelectToDataTable(sql);
-
-            sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual "
-            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-            DataTable a = ODbcmd.SelectToDataTable(sql);
-
-            DataTable r = a.Clone();
-            for (int i = 0; i < a.Rows.Count; i++)
-            {
-                DataRow dr = r.NewRow();
-                for (int j = 0; j <= month; j++)
-                {
-                    dr[j] = a.Rows[i][j];
-                }
-                for (int j = month + 1; j < r.Columns.Count; j++)
-                {
-                    dr[j] = b.Rows[i][j];
-                }
-                r.Rows.Add(dr);
-            }
-
-            DataSet ds = new DataSet();
-            ds.Tables.Add(a);
-            return ds;
-        }
-
 
         public static string FNo(string Facility)
         {

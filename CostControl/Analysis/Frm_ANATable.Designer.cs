@@ -183,7 +183,7 @@
             this.dataGridViewTextBoxColumn89 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn90 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dgv_mtdata2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn91 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn92 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn93 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -255,7 +255,7 @@
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata2)).BeginInit();
             this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_mtdata2)).BeginInit();
             this.tabControl3.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata3)).BeginInit();
@@ -1404,7 +1404,7 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.dataGridView6);
+            this.tabPage6.Controls.Add(this.dgv_mtdata2);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
@@ -1413,12 +1413,12 @@
             this.tabPage6.Text = "维修管理";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // dataGridView6
+            // dgv_mtdata2
             // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_mtdata2.AllowUserToAddRows = false;
+            this.dgv_mtdata2.AllowUserToDeleteRows = false;
+            this.dgv_mtdata2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_mtdata2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn91,
             this.dataGridViewTextBoxColumn92,
             this.dataGridViewTextBoxColumn93,
@@ -1434,13 +1434,13 @@
             this.dataGridViewTextBoxColumn103,
             this.dataGridViewTextBoxColumn104,
             this.dataGridViewTextBoxColumn105});
-            this.dataGridView6.Location = new System.Drawing.Point(-2, 4);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.ReadOnly = true;
-            this.dataGridView6.RowHeadersVisible = false;
-            this.dataGridView6.RowTemplate.Height = 23;
-            this.dataGridView6.Size = new System.Drawing.Size(642, 235);
-            this.dataGridView6.TabIndex = 34;
+            this.dgv_mtdata2.Location = new System.Drawing.Point(-2, 4);
+            this.dgv_mtdata2.Name = "dgv_mtdata2";
+            this.dgv_mtdata2.ReadOnly = true;
+            this.dgv_mtdata2.RowHeadersVisible = false;
+            this.dgv_mtdata2.RowTemplate.Height = 23;
+            this.dgv_mtdata2.Size = new System.Drawing.Size(642, 235);
+            this.dgv_mtdata2.TabIndex = 34;
             // 
             // dataGridViewTextBoxColumn91
             // 
@@ -1952,7 +1952,7 @@
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata2)).EndInit();
             this.tabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_mtdata2)).EndInit();
             this.tabControl3.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata3)).EndInit();
@@ -2114,7 +2114,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn88;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn89;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn90;
-        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridView dgv_mtdata2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn91;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn92;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn93;

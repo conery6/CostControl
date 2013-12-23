@@ -87,16 +87,16 @@ namespace CostControl.Analysis
                 switch (Reporttype1)
                 {
                     case "T1":
-                        r = GetANAData.T1(CCNo, Reporttype1, Year1);
+                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "RF1":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year1, 3);
+                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "RF2":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year1, 6);
+                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "E3":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year1, 9);
+                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "R":
                         r = GetANAData.Actual(CCNo, PNo, Year1);
@@ -249,16 +249,16 @@ namespace CostControl.Analysis
                 switch (Reporttype2)
                 {
                     case "T1":
-                        r = GetANAData.T1(CCNo, Reporttype2, Year2);
+                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "RF1":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year2, 3);
+                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
                         break;
                     case "RF2":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year2, 6);
+                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
                         break;
                     case "E3":
-                        r = GetANAData.MiddleBudget(CCNo, PNo, Year2, 9);
+                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
                         break;
                     case "R":
                         r = GetANAData.Actual(CCNo, PNo, Year2);
@@ -269,26 +269,130 @@ namespace CostControl.Analysis
                 {
                     for (int y = 0; y < r.Tables.Count; y++)
                     {
-                        if (r.Tables[y].Rows.Count > 0)
+                        if (y == 0)
                         {
-                            dgv_rmdata2.Rows.Add(r.Tables[y].Rows.Count);
-                            for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                            if (r.Tables[y].Rows.Count > 0)
                             {
-                                float sum = 0f;
-                                for (int k = 0; k < 14; k++)
+                                dgv_rmdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
                                 {
-                                    dgv_rmdata2[k, i].Value = r.Tables[y].Rows[i][k];
-                                    if (k > 1)
+                                    float sum = 0f;
+                                    for (int k = 0; k < 14; k++)
                                     {
-                                        data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
-                                        sum += float.Parse(data);
+                                        dgv_rmdata2[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
                                     }
+                                    dgv_rmdata2[14, i].Value = sum;
                                 }
-                                dgv_rmdata2[14, i].Value = sum;
+                                //汇总
+                                dgv_rmdata2[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_rmdata2[14, m].Value.ToString());
+                                }
+                                dgv_rmdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
+                            else
+                            { MessageBox.Show("数据为空！"); }
                         }
-                        else
-                        { MessageBox.Show("数据为空！"); }
+                        else if (y == 1)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_mgdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_mgdata2[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_mgdata2[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_mgdata2[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_mgdata2[13, m].Value.ToString());
+                                }
+                                dgv_mgdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
+                        else if (y == 2)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_edata2.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_edata2[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_edata2[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_edata2[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_edata2[13, m].Value.ToString());
+                                }
+                                dgv_edata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
+                        else if (y == 3)
+                        {
+                            if (r.Tables[y].Rows.Count > 0)
+                            {
+                                dgv_mtdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
+                                for (int i = 0; i < r.Tables[y].Rows.Count; i++)
+                                {
+                                    float sum = 0f;
+                                    for (int k = 0; k < 13; k++)
+                                    {
+                                        dgv_mtdata2[k, i].Value = r.Tables[y].Rows[i][k];
+                                        if (k > 1)
+                                        {
+                                            data = r.Tables[y].Rows[i][k].ToString() != "" ? r.Tables[y].Rows[i][k].ToString() : "0";
+                                            sum += float.Parse(data);
+                                        }
+                                    }
+                                    dgv_mtdata2[13, i].Value = sum;
+                                }
+                                //汇总
+                                dgv_mtdata2[0, r.Tables[y].Rows.Count].Value = "总计：";
+                                float sumtotal = 0f;
+                                for (int m = 0; m < r.Tables[y].Rows.Count; m++)
+                                {
+                                    sumtotal += float.Parse(dgv_mtdata2[13, m].Value.ToString());
+                                }
+                                dgv_mtdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
+                            }
+                            else
+                            { MessageBox.Show("数据为空！"); }
+                        }
                     }
                 }
                 //DT2 = r;
