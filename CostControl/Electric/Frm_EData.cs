@@ -42,7 +42,7 @@ namespace CostControl.Electric
         {
             CCNo = GetElectricData.CCNo(comB_CC.Text);
             comB_Year.Items.Clear();
-            string sql = "select distinct Year from EBudget where CCNo ='" + CCNo + "'";
+            string sql = "select distinct Year from EPeriod where CCNo ='" + CCNo + "'";
             DataTable temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
@@ -146,22 +146,72 @@ namespace CostControl.Electric
 
             try
             {
-                dgv_Edata[colm, 8].Value = Convert.ToSingle(dgv_Edata[colm, 1].Value) * Convert.ToSingle(dgv_Edata[colm, 4].Value);
-                dgv_Edata[colm, 9].Value = Convert.ToSingle(dgv_Edata[colm, 2].Value) * Convert.ToSingle(dgv_Edata[colm, 5].Value);
-                dgv_Edata[colm, 10].Value = Convert.ToSingle(dgv_Edata[colm, 3].Value) * Convert.ToSingle(dgv_Edata[colm, 6].Value);
+                if (FNo == "WX_F001")
+                {
 
-                dgv_Edata[colm, 14].Value = Convert.ToSingle(dgv_Edata[colm, 8].Value) + Convert.ToSingle(dgv_Edata[colm, 9].Value) + Convert.ToSingle(dgv_Edata[colm, 10].Value);
-                dgv_Edata[colm, 18].Value = Convert.ToSingle(dgv_Edata[colm, 8].Value) * Convert.ToSingle(dgv_Edata[colm, 15].Value);
-                dgv_Edata[colm, 20].Value = Convert.ToSingle(dgv_Edata[colm, 9].Value) * Convert.ToSingle(dgv_Edata[colm, 16].Value);
-                dgv_Edata[colm, 22].Value = Convert.ToSingle(dgv_Edata[colm, 10].Value) * Convert.ToSingle(dgv_Edata[colm, 15].Value);
+                    dgv_Edata[colm, 8].Value = Convert.ToSingle(dgv_Edata[colm, 1].Value) * Convert.ToSingle(dgv_Edata[colm, 4].Value);
+                    dgv_Edata[colm, 9].Value = Convert.ToSingle(dgv_Edata[colm, 2].Value) * Convert.ToSingle(dgv_Edata[colm, 5].Value);
+                    dgv_Edata[colm, 10].Value = Convert.ToSingle(dgv_Edata[colm, 3].Value) * Convert.ToSingle(dgv_Edata[colm, 6].Value);
 
-                dgv_Edata[colm, 23].Value = Convert.ToSingle(dgv_Edata[colm, 17].Value) + Convert.ToSingle(dgv_Edata[colm, 18].Value) + Convert.ToSingle(dgv_Edata[colm, 19].Value) +
-                     Convert.ToSingle(dgv_Edata[colm, 20].Value) + Convert.ToSingle(dgv_Edata[colm, 21].Value) + Convert.ToSingle(dgv_Edata[colm, 22].Value);
+                    dgv_Edata[colm, 14].Value = Convert.ToSingle(dgv_Edata[colm, 8].Value) + Convert.ToSingle(dgv_Edata[colm, 9].Value) + Convert.ToSingle(dgv_Edata[colm, 10].Value);
+                    dgv_Edata[colm, 18].Value = Convert.ToSingle(dgv_Edata[colm, 8].Value) * Convert.ToSingle(dgv_Edata[colm, 15].Value);
+                    dgv_Edata[colm, 20].Value = Convert.ToSingle(dgv_Edata[colm, 9].Value) * Convert.ToSingle(dgv_Edata[colm, 16].Value);
+                    dgv_Edata[colm, 22].Value = Convert.ToSingle(dgv_Edata[colm, 10].Value) * Convert.ToSingle(dgv_Edata[colm, 15].Value);
 
+                    dgv_Edata[colm, 23].Value = Convert.ToSingle(dgv_Edata[colm, 17].Value) + Convert.ToSingle(dgv_Edata[colm, 18].Value) + Convert.ToSingle(dgv_Edata[colm, 19].Value) +
+                         Convert.ToSingle(dgv_Edata[colm, 20].Value) + Convert.ToSingle(dgv_Edata[colm, 21].Value) + Convert.ToSingle(dgv_Edata[colm, 22].Value);
+                }
+                else
+                {
+                    dgv_Edata[colm, 1].Value = Convert.ToSingle(dgv_Edata[colm, 5].Value) + Convert.ToSingle(dgv_Edata[colm, 75].Value);
+                    dgv_Edata[colm, 2].Value = Convert.ToSingle(dgv_Edata[colm, 6].Value) + Convert.ToSingle(dgv_Edata[colm, 76].Value);
+                    dgv_Edata[colm, 3].Value = Convert.ToSingle(dgv_Edata[colm, 7].Value) + Convert.ToSingle(dgv_Edata[colm, 77].Value);
+                    dgv_Edata[colm, 12].Value = Convert.ToSingle(dgv_Edata[colm, 16].Value) * Convert.ToSingle(dgv_Edata[colm, 20].Value) / 100
+                        + Convert.ToSingle(dgv_Edata[colm, 17].Value) * Convert.ToSingle(dgv_Edata[colm, 21].Value) / 100
+                        + Convert.ToSingle(dgv_Edata[colm, 18].Value) * Convert.ToSingle(dgv_Edata[colm, 22].Value) / 100
+                        + Convert.ToSingle(dgv_Edata[colm, 19].Value) * Convert.ToSingle(dgv_Edata[colm, 23].Value) / 100;
+                    dgv_Edata[colm, 27].Value = Convert.ToSingle(dgv_Edata[colm, 20].Value) * Convert.ToSingle(dgv_Edata[colm, 60].Value)/500;
+                    dgv_Edata[colm, 30].Value = Convert.ToSingle(dgv_Edata[colm, 21].Value) * Convert.ToSingle(dgv_Edata[colm, 60].Value) / 500;
+                    dgv_Edata[colm, 33].Value = Convert.ToSingle(dgv_Edata[colm, 22].Value) * Convert.ToSingle(dgv_Edata[colm, 60].Value) / 500;
+                    dgv_Edata[colm, 36].Value = Convert.ToSingle(dgv_Edata[colm, 23].Value) * Convert.ToSingle(dgv_Edata[colm, 60].Value) / 500;
+                    dgv_Edata[colm, 41].Value = Convert.ToSingle(dgv_Edata[colm, 29].Value) + Convert.ToSingle(dgv_Edata[colm, 32].Value) + Convert.ToSingle(dgv_Edata[colm, 35].Value) + Convert.ToSingle(dgv_Edata[colm, 38].Value);
+                    dgv_Edata[colm, 44].Value = Convert.ToSingle(dgv_Edata[colm, 54].Value) + Convert.ToSingle(dgv_Edata[colm, 55].Value) + Convert.ToSingle(dgv_Edata[colm, 58].Value);
+                    try { dgv_Edata[colm, 49].Value = Convert.ToSingle(dgv_Edata[colm, 50].Value) / Convert.ToSingle(dgv_Edata[colm, 65].Value); } catch { }
+                    dgv_Edata[colm, 57].Value = Convert.ToSingle(dgv_Edata[colm, 55].Value) - Convert.ToSingle(dgv_Edata[colm, 56].Value);
+
+                    dgv_Edata[colm, 4].Value = -(Convert.ToSingle(dgv_Edata[colm, 6].Value) * Convert.ToSingle(dgv_Edata[colm, 12].Value) + Convert.ToSingle(dgv_Edata[colm, 9].Value)) * Convert.ToSingle(dgv_Edata[colm, 11].Value);
+                    dgv_Edata[colm, 8].Value = Convert.ToSingle(dgv_Edata[colm, 12].Value) * Convert.ToSingle(dgv_Edata[colm, 13].Value);
+                    try { dgv_Edata[colm, 28].Value = Convert.ToSingle(dgv_Edata[colm, 29].Value)*100 / Convert.ToSingle(dgv_Edata[colm, 27].Value);} catch { }
+                    try { dgv_Edata[colm, 31].Value = Convert.ToSingle(dgv_Edata[colm, 32].Value) * 100 / Convert.ToSingle(dgv_Edata[colm, 30].Value);} catch { }
+                    try { dgv_Edata[colm, 34].Value = Convert.ToSingle(dgv_Edata[colm, 35].Value) * 100 / Convert.ToSingle(dgv_Edata[colm, 33].Value);} catch { }
+                    try { dgv_Edata[colm, 37].Value = Convert.ToSingle(dgv_Edata[colm, 38].Value) * 100 / Convert.ToSingle(dgv_Edata[colm, 36].Value);} catch { }
+                    try { dgv_Edata[colm, 39].Value = Convert.ToSingle(dgv_Edata[colm, 6].Value) / (Convert.ToSingle(dgv_Edata[colm, 41].Value) * Convert.ToSingle(dgv_Edata[colm, 40].Value) + Convert.ToSingle(dgv_Edata[colm, 62].Value));} catch { }
+                    dgv_Edata[colm, 51].Value = Convert.ToSingle(dgv_Edata[colm, 43].Value) + Convert.ToSingle(dgv_Edata[colm, 41].Value) - Convert.ToSingle(dgv_Edata[colm, 44].Value);
+                    dgv_Edata[colm, 63].Value = Convert.ToSingle(dgv_Edata[colm, 65].Value) - Convert.ToSingle(dgv_Edata[colm, 44].Value);
+
+                    dgv_Edata[colm, 0].Value = Convert.ToSingle(dgv_Edata[colm, 4].Value) + Convert.ToSingle(dgv_Edata[colm, 74].Value);
+                    dgv_Edata[colm, 42].Value = Convert.ToSingle(dgv_Edata[colm, 44].Value) + Convert.ToSingle(dgv_Edata[colm, 51].Value);
+                    dgv_Edata[colm, 48].Value = Convert.ToSingle(dgv_Edata[colm, 39].Value) * Convert.ToSingle(dgv_Edata[colm, 12].Value);
+                    dgv_Edata[colm, 64].Value = Convert.ToSingle(dgv_Edata[colm, 62].Value) - Convert.ToSingle(dgv_Edata[colm, 63].Value);
+                    try { dgv_Edata[colm, 66].Value = Convert.ToSingle(dgv_Edata[colm, 44].Value) * 100 / (Convert.ToSingle(dgv_Edata[colm, 44].Value) + Convert.ToSingle(dgv_Edata[colm, 51].Value));} catch { }
+                    try { dgv_Edata[colm, 67].Value = Convert.ToSingle(dgv_Edata[colm, 63].Value) * 100 / Convert.ToSingle(dgv_Edata[colm, 62].Value);} catch { }
+                    try { dgv_Edata[colm, 68].Value = (-Convert.ToSingle(dgv_Edata[colm, 4].Value) + Convert.ToSingle(dgv_Edata[colm, 43].Value) * Convert.ToSingle(dgv_Edata[colm, 46].Value)) / Convert.ToSingle(dgv_Edata[colm, 65].Value);} catch { }
+                    try { dgv_Edata[colm, 69].Value = -Convert.ToSingle(dgv_Edata[colm, 4].Value) / (Convert.ToSingle(dgv_Edata[colm, 41].Value)*Convert.ToSingle(dgv_Edata[colm, 40].Value)+Convert.ToSingle(dgv_Edata[colm, 62].Value));} catch { }
+                    try { dgv_Edata[colm, 73].Value = (Convert.ToSingle(dgv_Edata[colm, 62].Value) + (Convert.ToSingle(dgv_Edata[colm, 41].Value)+Convert.ToSingle(dgv_Edata[colm, 43].Value))*Convert.ToSingle(dgv_Edata[colm, 40].Value))*Convert.ToSingle(dgv_Edata[colm, 39].Value)/Convert.ToSingle(dgv_Edata[colm, 65].Value);} catch { }
+
+                    dgv_Edata[colm, 47].Value = Convert.ToSingle(dgv_Edata[colm, 48].Value) + Convert.ToSingle(dgv_Edata[colm, 49].Value);
+                    dgv_Edata[colm, 70].Value = Convert.ToSingle(dgv_Edata[colm, 64].Value) * Convert.ToSingle(dgv_Edata[colm, 39].Value) * Convert.ToSingle(dgv_Edata[colm, 12].Value);
+                    try { dgv_Edata[colm, 52].Value = (Convert.ToSingle(dgv_Edata[colm, 44].Value) - Convert.ToSingle(dgv_Edata[colm, 45].Value)) * (Convert.ToSingle(dgv_Edata[colm, 46].Value) - Convert.ToSingle(dgv_Edata[colm, 47].Value)) / Convert.ToSingle(dgv_Edata[colm, 46].Value); }
+                    catch { }
+                    dgv_Edata[colm, 53].Value = Convert.ToSingle(dgv_Edata[colm, 51].Value) + Convert.ToSingle(dgv_Edata[colm, 52].Value);
+                    dgv_Edata[colm, 71].Value = Convert.ToSingle(dgv_Edata[colm, 53].Value) * Convert.ToSingle(dgv_Edata[colm, 40].Value) * Convert.ToSingle(dgv_Edata[colm, 39].Value) * Convert.ToSingle(dgv_Edata[colm,12].Value);
+                    dgv_Edata[colm, 72].Value = Convert.ToSingle(dgv_Edata[colm, 70].Value) + Convert.ToSingle(dgv_Edata[colm, 71].Value);
+
+                }
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
         }
 
@@ -220,8 +270,15 @@ namespace CostControl.Electric
             }
             //for (int i)
 
-            int[] autoItemnum = { 0, 8, 9, 10, 11, 12, 13, 14, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29 };
-
+            int[] autoItemnum;
+            if (FNo == "WX_F001")
+            {
+                autoItemnum = new int[] { 0, 8, 9, 10, 11, 12, 13, 14, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29 };
+            }
+            else
+            {
+                autoItemnum = new int[] { 0, 1, 2, 3, 4, 8, 12, 27, 28, 30, 31, 33, 34, 36, 37, 39, 41, 42, 44, 47, 48, 49, 51, 52, 53, 57, 63, 64, 66, 67, 68, 69, 70, 71, 72, 73 };
+            }
             for (int i = 0; i < autoItemnum.Length; i++)
             {
                 dgv_Edata.Rows[autoItemnum[i]].DefaultCellStyle.BackColor = Color.LightGray;
@@ -333,8 +390,15 @@ namespace CostControl.Electric
                 dgv_Edata.ReadOnly = false;
                 dgv_Edata.Columns[0].ReadOnly = true;
                 comB_Year.DropDownStyle = ComboBoxStyle.DropDown;
-
-                int[] autoItemnum = { 0, 8, 9, 10, 11, 12, 13, 14, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29 };
+                int[] autoItemnum;
+                if (FNo == "WX_F001")
+                {
+                     autoItemnum = new int [] { 0, 8, 9, 10, 11, 12, 13, 14, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29 };
+                }
+                else
+                {
+                    autoItemnum =  new int [] {0,1,2,3,4,8,12,27,28,30,31,33,34,36,37,39,41,42,44,47,48,49,51,52,53,57,63,64,66,67,68,69,70,71,72,73 };
+                }
 
                 for (int i = 0; i < autoItemnum.Length; i++)
                 {
@@ -418,6 +482,11 @@ namespace CostControl.Electric
 
 
             }
+        }
+
+        private void dgv_Edata_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
 
 

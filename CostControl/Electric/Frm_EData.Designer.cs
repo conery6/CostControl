@@ -89,7 +89,8 @@
             this.comB_Facility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Facility.FormattingEnabled = true;
             this.comB_Facility.Items.AddRange(new object[] {
-            "CG_Hynix WX"});
+            "CG_Hynix WX",
+            "CG_CHJ"});
             this.comB_Facility.Location = new System.Drawing.Point(79, 40);
             this.comB_Facility.Name = "comB_Facility";
             this.comB_Facility.Size = new System.Drawing.Size(91, 20);
@@ -152,7 +153,7 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(763, 43);
+            this.btn_delete.Location = new System.Drawing.Point(761, 43);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 19;
@@ -172,7 +173,7 @@
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(844, 43);
+            this.btn_add.Location = new System.Drawing.Point(843, 43);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 35;
@@ -207,6 +208,7 @@
             this.dgv_Edata.Size = new System.Drawing.Size(851, 387);
             this.dgv_Edata.TabIndex = 38;
             this.dgv_Edata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Edata_CellEndEdit);
+            this.dgv_Edata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_Edata_DataError);
             // 
             // Column1
             // 
