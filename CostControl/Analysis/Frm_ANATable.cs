@@ -99,7 +99,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "R":
-                        r = GetANAData.Actual(CCNo, PNo, Year1);
+                        r = GetANAData.Actual(CCNo, Reporttype1, Year1);
                         break;
                 }
                 
@@ -135,8 +135,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_rmdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 1)
                         {
@@ -166,8 +164,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_mgdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 2)
                         {
@@ -197,8 +193,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_edata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 3)
                         {
@@ -228,8 +222,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_mtdata1[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                     }
                 }
@@ -258,7 +250,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "R":
-                        r = GetANAData.Actual(CCNo, PNo, Year2);
+                        r = GetANAData.Actual(CCNo, Reporttype2, Year2);
                         break;
                 }
 
@@ -294,8 +286,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_rmdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 1)
                         {
@@ -325,8 +315,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_mgdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 2)
                         {
@@ -356,8 +344,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_edata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                         else if (y == 3)
                         {
@@ -387,8 +373,6 @@ namespace CostControl.Analysis
                                 }
                                 dgv_mtdata2[1, r.Tables[y].Rows.Count].Value = sumtotal;
                             }
-                            else
-                            { MessageBox.Show("数据为空！"); }
                         }
                     }
                 }
@@ -416,7 +400,7 @@ namespace CostControl.Analysis
                     }
                     else
                     {
-                        dr[2] = (float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString());
+                        dr[2] = ((float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr);
                 }
@@ -433,7 +417,7 @@ namespace CostControl.Analysis
                     }
                     else
                     {
-                        dr1[2] = (float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString());
+                        dr1[2] = ((float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr1);
                 }
@@ -450,7 +434,7 @@ namespace CostControl.Analysis
                     }
                     else
                     {
-                        dr2[2] = (float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString());
+                        dr2[2] = ((float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr2);
                 }
@@ -467,7 +451,7 @@ namespace CostControl.Analysis
                     }
                     else
                     {
-                        dr3[2] = (float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString());
+                        dr3[2] = ((float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr3);
                 }
@@ -477,10 +461,6 @@ namespace CostControl.Analysis
             }
             else
             {
-                for (int j = 0; j < 6; j++)
-                {
-                    dgv_rmdata3.Rows[j].Visible = false;
-                }
             }
         }
 

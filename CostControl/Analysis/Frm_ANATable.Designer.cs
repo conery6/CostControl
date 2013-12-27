@@ -31,13 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comB_Facility = new System.Windows.Forms.ComboBox();
@@ -129,9 +129,6 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dgv_mtdata2 = new System.Windows.Forms.DataGridView();
             this.dgv_rmdata3 = new System.Windows.Forms.DataGridView();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -202,6 +199,9 @@
             this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn104 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.原料管理.SuspendLayout();
@@ -1125,36 +1125,6 @@
             this.dgv_rmdata3.Size = new System.Drawing.Size(245, 528);
             this.dgv_rmdata3.TabIndex = 33;
             // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "name";
-            this.Column14.HeaderText = " ";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 80;
-            // 
-            // sub
-            // 
-            this.sub.DataPropertyName = "sub";
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.sub.DefaultCellStyle = dataGridViewCellStyle9;
-            this.sub.HeaderText = "差值";
-            this.sub.Name = "sub";
-            this.sub.ReadOnly = true;
-            this.sub.Width = 80;
-            // 
-            // percent
-            // 
-            this.percent.DataPropertyName = "percent";
-            dataGridViewCellStyle10.Format = "0.00%";
-            dataGridViewCellStyle10.NullValue = null;
-            this.percent.DefaultCellStyle = dataGridViewCellStyle10;
-            this.percent.HeaderText = "百分比";
-            this.percent.Name = "percent";
-            this.percent.ReadOnly = true;
-            this.percent.Width = 80;
-            // 
             // dataGridViewTextBoxColumn46
             // 
             this.dataGridViewTextBoxColumn46.HeaderText = "系统";
@@ -1590,6 +1560,36 @@
             this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
             this.dataGridViewTextBoxColumn105.ReadOnly = true;
             // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "name";
+            this.Column14.HeaderText = " ";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 80;
+            // 
+            // sub
+            // 
+            this.sub.DataPropertyName = "sub";
+            dataGridViewCellStyle9.Format = "N1";
+            dataGridViewCellStyle9.NullValue = null;
+            this.sub.DefaultCellStyle = dataGridViewCellStyle9;
+            this.sub.HeaderText = "差值";
+            this.sub.Name = "sub";
+            this.sub.ReadOnly = true;
+            this.sub.Width = 80;
+            // 
+            // percent
+            // 
+            this.percent.DataPropertyName = "percent";
+            dataGridViewCellStyle10.Format = "0.00%";
+            dataGridViewCellStyle10.NullValue = null;
+            this.percent.DefaultCellStyle = dataGridViewCellStyle10;
+            this.percent.HeaderText = "百分比";
+            this.percent.Name = "percent";
+            this.percent.ReadOnly = true;
+            this.percent.Width = 80;
+            // 
             // Frm_ANATable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1746,9 +1746,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridView dgv_rmdata3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sub;
-        private System.Windows.Forms.DataGridViewTextBoxColumn percent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
@@ -1819,5 +1816,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn103;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn104;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sub;
+        private System.Windows.Forms.DataGridViewTextBoxColumn percent;
     }
 }

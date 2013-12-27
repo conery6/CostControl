@@ -35,13 +35,29 @@ namespace CostControl.Analysis
             return ds;
         }
 
-        public static DataSet Actual(String CostCenterNo, String ProductNo, String Year)
+        public static DataSet Actual(String CostCenterNo, String period, String Year)
         {
-            string sql = "select distinct PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual,Product,CostCenter where CostCenter.CCNo =RMActual.CCNo and Product.PNo =RMActual.PNo  "
-            + "and year=" + Year + " and CostCenter.CCNo='" + CostCenterNo + "'";
-            DataTable a = ODbcmd.SelectToDataTable(sql);
+            string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual,Product,CostCenter where CostCenter.CCNo =RMActual.CCNo and Product.PNo =RMActual.PNo  "
+            + "and  year=" + Year + "and  RMActual.Type='" + 1  + "' and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d1 = ODbcmd.SelectToDataTable(sql1);
+
+            string sql2 = "select  IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGActual,CostCenter where CostCenter.CCNo = MGActual.CCNo"
++ " and  year=" + Year +  " and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d2 = ODbcmd.SelectToDataTable(sql2);
+
+            string sql3 = "select  Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual,CostCenter where CostCenter.CCNo = EActual.CCNo"
+            + " and  year=" + Year +  " and EActual.Item in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d3 = ODbcmd.SelectToDataTable(sql3);
+
+            string sql4 = "select  FSName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianActual,FacilitySystem, Equipment,CostCenter where CostCenter.CCNo = Equipment.CCNo and FacilitySystem.FSNo = Equipment.FSNo and MaintianActual.EqNo = Equipment.EqNo"
+            + " and  year=" + Year +  " and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d4 = ODbcmd.SelectToDataTable(sql4);
+
             DataSet ds = new DataSet();
-            ds.Tables.Add(a);
+            ds.Tables.Add(d1);
+            ds.Tables.Add(d2);
+            ds.Tables.Add(d3);
+            ds.Tables.Add(d4);
             return ds;
         }
 
