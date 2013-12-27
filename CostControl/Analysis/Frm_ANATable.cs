@@ -109,6 +109,7 @@ namespace CostControl.Analysis
                     {
                         if (y == 0)
                         {
+                            dgv_rmdata1.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_rmdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -138,6 +139,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 1)
                         {
+                            dgv_mgdata1.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_mgdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -167,6 +169,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 2)
                         {
+                            dgv_edata1.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_edata1.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -196,6 +199,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 3)
                         {
+                            dgv_mtdata1.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_mtdata1.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -260,6 +264,7 @@ namespace CostControl.Analysis
                     {
                         if (y == 0)
                         {
+                            dgv_rmdata2.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_rmdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -289,6 +294,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 1)
                         {
+                            dgv_mgdata2.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_mgdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -318,6 +324,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 2)
                         {
+                            dgv_edata2.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_edata2.Rows.Add(r.Tables[y].Rows.Count + 1);
@@ -347,6 +354,7 @@ namespace CostControl.Analysis
                         }
                         else if (y == 3)
                         {
+                            dgv_mtdata2.Rows.Clear();
                             if (r.Tables[y].Rows.Count > 0)
                             {
                                 dgv_mtdata2.Rows.Add(r.Tables[y].Rows.Count + 1);
