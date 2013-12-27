@@ -138,3 +138,8 @@ C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.
 C:\Users\Conery\Desktop\CostControl最新\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
+D:\GitHub\CostControl\CostControl\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.dll
+D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OOXML.dll
+D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OpenXml4Net.dll
+D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OpenXmlFormats.dll
