@@ -233,9 +233,6 @@ namespace CostControl.Analysis
                         }
                     }
                 }
-
-                //DT1 = r;
-                //FDT1 = GetANAData.DTto2DFloat(DT1);
             }
         }
 
@@ -252,13 +249,13 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "RF1":
-                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
+                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "RF2":
-                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
+                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "E3":
-                        r = GetANAData.PeriodData(CCNo, PNo, Year2);
+                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "R":
                         r = GetANAData.Actual(CCNo, PNo, Year2);
@@ -395,8 +392,6 @@ namespace CostControl.Analysis
                         }
                     }
                 }
-                //DT2 = r;
-                // FDT2 = GetANAData.DTto2DFloat(DT2);
             }
         }
 
@@ -410,7 +405,7 @@ namespace CostControl.Analysis
                 dt.Columns.Add("percent");
 
                 //原料管理
-                if (dgv_edata2.Rows.Count > 0)
+                if (dgv_rmdata2.Rows.Count > 0 && dgv_rmdata1.Rows.Count > 0)
                 {
                     DataRow dr = dt.NewRow();
                     dr[0] = "原料管理";
@@ -427,7 +422,7 @@ namespace CostControl.Analysis
                 }
 
                 //管理控制
-                if (dgv_edata2.Rows.Count > 0)
+                if (dgv_mgdata2.Rows.Count > 0 && dgv_mgdata1.Rows.Count > 0)
                 {
                     DataRow dr1 = dt.NewRow();
                     dr1[0] = "管理控制";
@@ -444,7 +439,7 @@ namespace CostControl.Analysis
                 }
 
                 //电费控制
-                if (dgv_edata2.Rows.Count > 0)
+                if (dgv_edata2.Rows.Count > 0 && dgv_edata1.Rows.Count > 0)
                 {
                     DataRow dr2 = dt.NewRow();
                     dr2[0] = "电费控制";
@@ -461,7 +456,7 @@ namespace CostControl.Analysis
                 }
 
                 //维修管理
-                if (dgv_mtdata2.Rows.Count > 0)
+                if (dgv_mtdata2.Rows.Count > 0 && dgv_mtdata1.Rows.Count > 0)
                 {
                     DataRow dr3 = dt.NewRow();
                     dr3[0] = "维修管理";
@@ -562,7 +557,7 @@ namespace CostControl.Analysis
             CCNo = GetRMData.CCNo(comB_CC.Text);
             clb_Product.Items.Clear();
             PNo = "";
-            string sqlrma = " select distinct PName from RMBudget, Product,CostCenter where CostCenter.CCNo =RMBudget.CCNo and Product.PNo =RMBudget.PNo and CCName='" + comB_CC.Text + "' ";
+            string sqlrma = " select distinct PName from RMPeriod, Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo and CCName='" + comB_CC.Text + "' ";
             DataTable temprma = ODbcmd.SelectToDataTable(sqlrma);
             for (int i = 0; i < temprma.Rows.Count; i++)
             {
@@ -572,7 +567,7 @@ namespace CostControl.Analysis
             //管理控制
             CCNo = GetMGData.CCNo(comB_CC.Text);
             clb_Manage.Items.Clear();
-            string sqlm = " select distinct IName from MGBudget where CCNo='" + CCNo + "'";
+            string sqlm = " select distinct IName from MGPeriod where CCNo='" + CCNo + "'";
             DataTable tempm = ODbcmd.SelectToDataTable(sqlm);
             for (int i = 0; i < tempm.Rows.Count; i++)
             {
@@ -582,7 +577,7 @@ namespace CostControl.Analysis
             //电费控制
             CCNo = GetElectricData.CCNo(comB_CC.Text);
             clb_Electric.Items.Clear();
-            string sqle = "select distinct Item,year from EBudget where CCNo ='" + CCNo + "'";
+            string sqle = "select distinct Item,year from EPeriod where CCNo ='" + CCNo + "'";
             DataTable tempe = ODbcmd.SelectToDataTable(sqle);
             for (int i = 0; i < tempe.Rows.Count; i++)
             {

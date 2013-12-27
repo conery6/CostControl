@@ -23,15 +23,15 @@ namespace CostControl.Analysis
             + " and  year=" + Year + " and EPeriod.Period='" + period + "' and EPeriod.Item in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d3 = ODbcmd.SelectToDataTable(sql3);
 
-//            string sql4 = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
-//+ "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-//            DataTable d4 = ODbcmd.SelectToDataTable(sql4);
+            string sql4 = "select  FSName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,FacilitySystem, Equipment,CostCenter where CostCenter.CCNo = Equipment.CCNo and FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo"
+            + " and  year=" + Year + " and MaintianPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
+            DataTable d4 = ODbcmd.SelectToDataTable(sql4);
 
             DataSet ds = new DataSet();
             ds.Tables.Add(d1);
             ds.Tables.Add(d2);
             ds.Tables.Add(d3);
-           // ds.Tables.Add(d4);
+            ds.Tables.Add(d4);
             return ds;
         }
 
