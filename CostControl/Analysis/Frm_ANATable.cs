@@ -600,18 +600,37 @@ namespace CostControl.Analysis
 
         private void btn_ExcelOut_Click(object sender, EventArgs e)
         {
-            if (dgv_rmdata1[1, 1].Value == null)
-            {
-                MessageBox.Show("数据为空!");
-                return;
-            }
-            string info = "工厂:" + comB_Facility.Text + "|" +
-                "成本中心:" + comB_CC.Text + "|" +
-                "年度:" + comB_Year1.Text + "|" +
-                "报表类型:" + comB_report1.Text;
-            ExcelControl a = new ExcelControl();
-            a.SaveAsExcel(dgv_rmdata1, info);
+            //原料管理
+            string sql1 = "select FName,CCName,PName,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo";
+            DataTable dt1 = ODbcmd.SelectToDataTable(sql1);
 
+            //管理控制
+            string sql2 = "select FName,CCName,IName,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo";
+            DataTable dt2 = ODbcmd.SelectToDataTable(sql2);
+
+            //电费控制
+            string sql3 = "select FName,CCName,Item,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo";
+            DataTable dt3 = ODbcmd.SelectToDataTable(sql3);
+
+            //维修管理
+            string sql4 = "select FName,CCName,FSName,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo";
+            DataTable dt4 = ODbcmd.SelectToDataTable(sql4);
+
+
+            ExcelHelper exhlp = new ExcelHelper();
+            exhlp.ShowSaveFileDialog();
+            exhlp.SetTitle("原料管理统计", dt1.Columns.Count - 1);
+            exhlp.DataTableToExcel(dt1, 2, 0, true);
+            exhlp.NewSheet();
+            exhlp.SetTitle("管理控制统计", dt2.Columns.Count - 1);
+            exhlp.DataTableToExcel(dt2, 2, 0, true);
+            exhlp.NewSheet();
+            exhlp.SetTitle("电费控制统计", dt3.Columns.Count - 1);
+            exhlp.DataTableToExcel(dt3, 2, 0, true);
+            exhlp.NewSheet();
+            exhlp.SetTitle("维修管理统计", dt4.Columns.Count - 1);
+            exhlp.DataTableToExcel(dt4, 2, 0, true);
+            exhlp.SaveToExcel();
         }
     }
 }

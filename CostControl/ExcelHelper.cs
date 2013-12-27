@@ -15,6 +15,9 @@ namespace CostControl
 		private IWorkbook workBook;
 		private string fileName;
 		private ISheet currentSheet;
+
+        ICellStyle style;
+
 		public ExcelHelper(string fileName)
 		{
 			this.fileName = fileName;
@@ -367,32 +370,38 @@ namespace CostControl
 
 		private ICellStyle GetStyle(CellStyle styleName)
 		{
-			ICellStyle style = workBook.CreateCellStyle();
+			IFont font = workBook.CreateFont();
+            style.FillForegroundColor = HSSFColor.White.Index;
+            style.FillPattern = FillPattern.NoFill;
 			switch (styleName)
 			{
 				case CellStyle.Title:
 					style.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
-					IFont font = workBook.CreateFont();
 					font.Boldweight = 6;
 					font.FontHeight = 18 * 18;
-					style.SetFont(font);
+					style.SetFont(font); 
 					break;
 				case CellStyle.Header:
+                    font = null;
 					style.FillForegroundColor = HSSFColor.Grey40Percent.Index;
 					style.FillPattern = FillPattern.SolidForeground;
 					break;
 				case CellStyle.DateTime:
+                    font = null;
 					IDataFormat formatMD = workBook.CreateDataFormat();
 					style.DataFormat = formatMD.GetFormat("yyyy-mm-dd");
 					break;
 				case CellStyle.DateYear:
+                    font = null;
 					IDataFormat format = workBook.CreateDataFormat();
 					style.DataFormat = format.GetFormat("yyyy");
 					break;
 				case CellStyle.DoubleNumber:
+                    font = null;
 					style.DataFormat = HSSFDataFormat.GetBuiltinFormat("0.00");
 					break;
 				case CellStyle.IntNumber:
+                    font = null;
 					style.DataFormat = HSSFDataFormat.GetBuiltinFormat("0");
 					break;
 				default:
@@ -420,10 +429,18 @@ namespace CostControl
 			if (fileName.EndsWith(".xlsx"))
 			{
 				workBook = new XSSFWorkbook();
+                if (style == null)
+                {
+                   style = workBook.CreateCellStyle();
+                }
 			}
 			else
 			{
 				workBook = new HSSFWorkbook();
+                if (style == null)
+                {
+                    style = workBook.CreateCellStyle();
+                }
 			}
 			currentSheet = workBook.CreateSheet();
 		}
