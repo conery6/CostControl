@@ -106,11 +106,11 @@ namespace CostControl.RawMaterial
                 comB_Facility.Items.Add(temp.Rows[i]["FName"].ToString());
             }
 
-            dgv_rmdata.Rows[0].DefaultCellStyle.Format = "N2";
-            dgv_rmdata.Rows[1].DefaultCellStyle.Format = "N2";
-            dgv_rmdata.Rows[2].DefaultCellStyle.Format = "N0";
-            dgv_rmdata.Rows[3].DefaultCellStyle.Format = "N0";
-            dgv_rmdata.Rows[4].DefaultCellStyle.Format = "N2";
+            //dgv_rmdata.Rows[0].DefaultCellStyle.Format = "N2";
+            //dgv_rmdata.Rows[1].DefaultCellStyle.Format = "N2";
+            //dgv_rmdata.Rows[2].DefaultCellStyle.Format = "N0";
+            //dgv_rmdata.Rows[3].DefaultCellStyle.Format = "N0";
+            //dgv_rmdata.Rows[4].DefaultCellStyle.Format = "N2";
             dgv_rmdata.ReadOnly = true;
         }
 
