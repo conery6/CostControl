@@ -9,42 +9,87 @@ namespace CostControl.RawMaterial
 {
     class GetRMData
     {
-        public static  DataTable Budget(String CostCenterNo, String ProductNo, String Year)
+
+        public static DataTable Actual(String FNo, String CCNo, String PNo ,String Year)
         {
-            string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
-            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo  + "'";
+            string sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual  where year=" + Year
+            + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and PNo ='" + PNo + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
 
-        public static DataTable Actual(String CostCenterNo, String ProductNo, String Year)
+        public static DataTable Period(String FNo, String CCNo, String Year, string PNo ,String Period)
         {
-            string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual "
-            + "where year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-            DataTable a = ODbcmd.SelectToDataTable(sql);
-            return a;
+            if (Period != "Actual")
+            {
+
+                string sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and PNo='" + PNo + "' and   Period = '" + Period + "' order by Type asc";
+                DataTable a = ODbcmd.SelectToDataTable(sql);
+                return a;
+            }
+            else
+            {
+                DataTable a = Actual(FNo, CCNo, PNo, Year);
+                return a;  
+            }
         }
 
 
-        public static DataTable MiddleBudget(String CostCenterNo, String ProductNo, String Year, int month)
-        {
-            string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget "
-            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-            DataTable b = ODbcmd.SelectToDataTable(sql);
 
-            sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual "
-            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
-            DataTable a = ODbcmd.SelectToDataTable(sql);
+        public static DataTable MiddleBudget(String FNo, String CCNo, String PNo, String Year, int month)
+        {
+            DataTable b = new DataTable();
+            string sql = "";
+
+            switch (month)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and  PNo = '" + PNo + "' and Period='T1' order by Type asc";
+                    b = ODbcmd.SelectToDataTable(sql);
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='RF1' order by Type asc";
+                    b = ODbcmd.SelectToDataTable(sql);
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='RF2' order by Type asc";
+                    b = ODbcmd.SelectToDataTable(sql);
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='E3' order by Type asc";
+                    b = ODbcmd.SelectToDataTable(sql);
+                    break;
+            }
+            if (b.Rows.Count == 0)
+            {
+                MessageBox.Show("数据库内缺少数据");
+                return b;
+            }
+
+            DataTable a = Actual(FNo, CCNo, PNo, Year);
 
             DataTable r = a.Clone();
             for (int i = 0; i < a.Rows.Count; i++)
             {
                 DataRow dr = r.NewRow();
-                for (int j = 0; j <= month; j++)
+                for (int j = 0; j <= month + 1; j++)
                 {
                     dr[j] = a.Rows[i][j];
                 }
-                for (int j = month + 1; j < r.Columns.Count; j++)
+                for (int j = month + 2; j < r.Columns.Count; j++)
                 {
                     dr[j] = b.Rows[i][j];
                 }
@@ -53,6 +98,44 @@ namespace CostControl.RawMaterial
 
             return r;
         }
+
+
+        public static  DataTable Budget(String CostCenterNo, String ProductNo, String Year)
+        {
+            string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget  "
+            + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo  + "'";
+            DataTable a = ODbcmd.SelectToDataTable(sql);
+            return a;
+        }
+
+
+        //public static DataTable MiddleBudget(String CostCenterNo, String ProductNo, String Year, int month)
+        //{
+        //    string sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMBudget "
+        //    + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
+        //    DataTable b = ODbcmd.SelectToDataTable(sql);
+
+        //    sql = "select Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual "
+        //    + "where  year=" + Year + " and PNo='" + ProductNo + "' and CCNo='" + CostCenterNo + "'";
+        //    DataTable a = ODbcmd.SelectToDataTable(sql);
+
+        //    DataTable r = a.Clone();
+        //    for (int i = 0; i < a.Rows.Count; i++)
+        //    {
+        //        DataRow dr = r.NewRow();
+        //        for (int j = 0; j <= month; j++)
+        //        {
+        //            dr[j] = a.Rows[i][j];
+        //        }
+        //        for (int j = month + 1; j < r.Columns.Count; j++)
+        //        {
+        //            dr[j] = b.Rows[i][j];
+        //        }
+        //        r.Rows.Add(dr);
+        //    }
+
+        //    return r;
+        //}
 
 
         public static string FNo(string Facility)
@@ -64,7 +147,7 @@ namespace CostControl.RawMaterial
 
         public static string PNo(string Product)
         {
-            string sql = "select PNo from Product where PName='" + Product  + "'";
+            string sql = "select PNo from Product where PName='" + Product + "'";
             DataTable dt = ODbcmd.SelectToDataTable(sql);
             return dt.Rows[0][0].ToString();
         }

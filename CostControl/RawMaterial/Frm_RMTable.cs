@@ -18,6 +18,8 @@ namespace CostControl.RawMaterial
         public string Year2;
         public string Reporttype1;
         public string Reporttype2;
+        public int ReportMonth1;
+        public int ReportMonth2;
         public string CCNo;
         DataTable DT1;
         DataTable DT2;
@@ -41,34 +43,6 @@ namespace CostControl.RawMaterial
             {
                 comB_Facility.Items.Add(temp.Rows[i]["FName"].ToString());
             }
-
-            comB_report1.Text = "T1";
-            comB_report2.Text = "T1";
-
-            dgv_rmdata1.Rows.Add("BASIC TABLE", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Cost", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Price", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Quantity", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Sales Quantity", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Availbility", null, null, null, null, null, null, null, null, null, null, null, null);
-
-            dgv_rmdata1.Rows.Add("COMPARE TABLE", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Cost", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Price", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Purchase Quantity", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Sales Quantity", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_rmdata1.Rows.Add("Availbility", null, null, null, null, null, null, null, null, null, null, null, null);
-
-            dgv_rmdata1.RowHeadersVisible = false;
-            dgv_rmdata1.Columns[0].Width = 120;
-            for (int i = 1; i < 13; i++)
-            { dgv_rmdata1.Columns[i].Width = 60; }
-            for (int j = 0; j < 12; j++)
-            { dgv_rmdata1.Rows[j].Height = 20;
-            dgv_rmdata1.Rows[j].ReadOnly = true;
-            }
-            dgv_rmdata1.Rows[0].DefaultCellStyle.BackColor = Color.Gray;
-            dgv_rmdata1.Rows[6].DefaultCellStyle.BackColor = Color.Gray;
 
             dgv_rmdata2.Rows.Add("T1", null, null, null, null, null, null, null, null, null, null, null, null);
             dgv_rmdata2.Rows.Add("PurchaseCost", null, null, null, null, null, null, null, null, null, null, null, null);
@@ -159,16 +133,16 @@ namespace CostControl.RawMaterial
                         r = GetRMData.Budget(CCNo, PNo, Year1);
                         break;
                     case "RF1":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year1, 3);
+                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, 3);
                         break;
                     case "RF2":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year1, 6);
+                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1,6);
                         break;
                     case "E3":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year1, 9);
+                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, 9);
                         break;
                     case "R":
-                        r = GetRMData.Actual(CCNo, PNo, Year1);
+                        r = GetRMData.Actual(FNo, CCNo, PNo, Year1);
                         break;
                 }
 
@@ -204,21 +178,21 @@ namespace CostControl.RawMaterial
 
                 switch (Reporttype2)
                 {
-                    case "T1":
-                        r = GetRMData.Budget(CCNo, PNo, Year2);
-                        break;
-                    case "RF1":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 3);
-                        break;
-                    case "RF2":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 6);
-                        break;
-                    case "E3":
-                        r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 9);
-                        break;
-                    case "R":
-                        r = GetRMData.Actual(CCNo, PNo, Year2);
-                        break;
+                    //case "T1":
+                    //    r = GetRMData.Budget(CCNo, PNo, Year2);
+                    //    break;
+                    //case "RF1":
+                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 3);
+                    //    break;
+                    //case "RF2":
+                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 6);
+                    //    break;
+                    //case "E3":
+                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 9);
+                    //    break;
+                    //case "R":
+                    //    r = GetRMData.Actual(FNo, CCNo, PNo, Year2);
+                    //    break;
                 }
 
                 if (r.Rows.Count > 0)
@@ -368,16 +342,6 @@ namespace CostControl.RawMaterial
                 }
         }
 
-        private void comB_report1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Reporttype1 = comB_report1.Text;
-        }
-
-        private void comB_report2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Reporttype2 = comB_report2.Text;
-        }
-
         private void comB_Year1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Year1 = comB_Year1.Text;
@@ -423,6 +387,173 @@ namespace CostControl.RawMaterial
         {
             Frm_RMChart M_Chart = new Frm_RMChart(f3,1,-1);
             M_Chart.Show();
+        }
+
+        private void comB_RpType1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Reporttype1 = comB_RpType1.Text;
+        }
+
+        private void comB_RpType2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Reporttype2 = comB_RpType2.Text;
+        }
+
+        private void btn_Search1_Click(object sender, EventArgs e)
+        {
+            if (Year1 == "" || FNo == "" || CCNo == "" || ReportMonth1 == 0)
+            {
+                MessageBox.Show("参数不全！");
+            }
+            else
+            {
+                for (int i = 0; i < dgv_rmdata1.Columns.Count; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
+                DataTable r = new DataTable();
+                r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, ReportMonth1);
+
+                if (r.Rows.Count != 0)
+                {
+                    dgv_rmdata1.DataSource = r;
+                }
+                 int acMonth = ReportMonth1;
+
+                dgv_rmdata1.Columns[0].ReadOnly = true;
+                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata1.Columns[1].ReadOnly = true;
+                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 2; i <= acMonth + 1; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+                DT1 = r;
+                FDT1 = GetRMData.DTto2DFloat(DT1);
+            }
+
+        }
+
+        private void btn_Search2_Click(object sender, EventArgs e)
+        {
+            if (Year2 == "" || FNo == "" || CCNo == "" || ReportMonth2 == 0)
+            {
+                MessageBox.Show("参数不全！");
+            }
+            else
+            {
+                for (int i = 0; i < dgv_rmdata1.Columns.Count; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
+                DataTable r = new DataTable();
+                r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year2, ReportMonth2);
+
+                if (r.Rows.Count != 0)
+                {
+                    dgv_rmdata1.DataSource = r;
+                }
+                int acMonth = ReportMonth1;
+
+                dgv_rmdata1.Columns[0].ReadOnly = true;
+                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata1.Columns[1].ReadOnly = true;
+                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 2; i <= acMonth + 1; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+
+                DT2 = r;
+                FDT2 = GetRMData.DTto2DFloat(DT2);
+            }
+
+        }
+
+        private void btn_SearchPeriod1_Click(object sender, EventArgs e)
+        {
+            if (getPK1())
+            {
+                DataTable dt = new DataTable();
+                dt = GetRMData.Period(FNo, CCNo, Year1, PNo, Reporttype1);
+                dgv_rmdata1.DataSource = dt;
+
+                int acMonth = 0;
+
+                switch (Reporttype1)
+                {
+                    case "T1": acMonth = 0; break;
+                    case "RF1": acMonth = 3; break;
+                    case "RF2": acMonth = 6; break;
+                    case "E3": acMonth = 9; break;
+                    case "Actual": acMonth = 12; break;
+                }
+
+                dgv_rmdata1.Columns[0].ReadOnly = true;
+                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata1.Columns[1].ReadOnly = true;
+                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 2; i <= acMonth + 1; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+                DT1 = dt;
+                FDT1 = GetRMData.DTto2DFloat(DT1);
+            }
+        }
+
+        private void btn_SearchPeriod2_Click(object sender, EventArgs e)
+        {
+            if (getPK2())
+            {
+                DataTable dt = new DataTable();
+                dt = GetRMData.Period(FNo, CCNo, Year2, PNo, Reporttype2);
+                dgv_rmdata1.DataSource = dt;
+
+                int acMonth = 0;
+
+                switch (Reporttype2)
+                {
+                    case "T1": acMonth = 0; break;
+                    case "RF1": acMonth = 3; break;
+                    case "RF2": acMonth = 6; break;
+                    case "E3": acMonth = 9; break;
+                    case "Actual": acMonth = 12; break;
+                }
+
+                dgv_rmdata1.Columns[0].ReadOnly = true;
+                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata1.Columns[1].ReadOnly = true;
+                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 2; i <= acMonth + 1; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+                DT2 = dt;
+                FDT2 = GetRMData.DTto2DFloat(DT2);
+            }
+        }
+
+        private void comB_Month1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReportMonth1 = Convert.ToInt32(comB_Month1.Text);
+        }
+
+        private void comB_Month2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReportMonth2 = Convert.ToInt32(comB_Month2.Text);
         }
 
     }

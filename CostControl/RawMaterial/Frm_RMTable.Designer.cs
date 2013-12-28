@@ -36,31 +36,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comB_Year1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comB_report1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comB_report2 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.comB_Year2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btn_dataok1 = new System.Windows.Forms.Button();
-            this.btn_dataok2 = new System.Windows.Forms.Button();
             this.chkB_T1 = new System.Windows.Forms.CheckBox();
             this.chkB_T2 = new System.Windows.Forms.CheckBox();
             this.chkB_T3 = new System.Windows.Forms.CheckBox();
-            this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_rmdata2 = new System.Windows.Forms.DataGridView();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,8 +62,33 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btn_data1 = new System.Windows.Forms.Button();
             this.btn_data2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
+            this.comB_Month1 = new System.Windows.Forms.ComboBox();
+            this.btn_SearchPeriod1 = new System.Windows.Forms.Button();
+            this.btn_Search1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comB_RpType1 = new System.Windows.Forms.ComboBox();
+            this.comB_Month2 = new System.Windows.Forms.ComboBox();
+            this.btn_SearchPeriod2 = new System.Windows.Forms.Button();
+            this.btn_Search2 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comB_RpType2 = new System.Windows.Forms.ComboBox();
+            this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -162,56 +167,6 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "年度";
             // 
-            // comB_report1
-            // 
-            this.comB_report1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_report1.FormattingEnabled = true;
-            this.comB_report1.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "R"});
-            this.comB_report1.Location = new System.Drawing.Point(289, 84);
-            this.comB_report1.Name = "comB_report1";
-            this.comB_report1.Size = new System.Drawing.Size(77, 20);
-            this.comB_report1.TabIndex = 23;
-            this.comB_report1.SelectedIndexChanged += new System.EventHandler(this.comB_report1_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(245, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "报表";
-            // 
-            // comB_report2
-            // 
-            this.comB_report2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_report2.FormattingEnabled = true;
-            this.comB_report2.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "R"});
-            this.comB_report2.Location = new System.Drawing.Point(289, 125);
-            this.comB_report2.Name = "comB_report2";
-            this.comB_report2.Size = new System.Drawing.Size(77, 20);
-            this.comB_report2.TabIndex = 27;
-            this.comB_report2.SelectedIndexChanged += new System.EventHandler(this.comB_report2_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(245, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "报表";
-            // 
             // comB_Year2
             // 
             this.comB_Year2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -230,26 +185,6 @@
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 24;
             this.label8.Text = "年度";
-            // 
-            // btn_dataok1
-            // 
-            this.btn_dataok1.Location = new System.Drawing.Point(387, 82);
-            this.btn_dataok1.Name = "btn_dataok1";
-            this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok1.TabIndex = 28;
-            this.btn_dataok1.Text = "确定";
-            this.btn_dataok1.UseVisualStyleBackColor = true;
-            this.btn_dataok1.Click += new System.EventHandler(this.btn_dataok1_Click);
-            // 
-            // btn_dataok2
-            // 
-            this.btn_dataok2.Location = new System.Drawing.Point(387, 123);
-            this.btn_dataok2.Name = "btn_dataok2";
-            this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok2.TabIndex = 29;
-            this.btn_dataok2.Text = "确定";
-            this.btn_dataok2.UseVisualStyleBackColor = true;
-            this.btn_dataok2.Click += new System.EventHandler(this.btn_dataok2_Click);
             // 
             // chkB_T1
             // 
@@ -283,96 +218,6 @@
             this.chkB_T3.Text = "累计值差值比较表";
             this.chkB_T3.UseVisualStyleBackColor = true;
             this.chkB_T3.CheckedChanged += new System.EventHandler(this.chkB_T3_CheckedChanged);
-            // 
-            // dgv_rmdata1
-            // 
-            this.dgv_rmdata1.AllowUserToAddRows = false;
-            this.dgv_rmdata1.AllowUserToDeleteRows = false;
-            this.dgv_rmdata1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_rmdata1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13});
-            this.dgv_rmdata1.Location = new System.Drawing.Point(12, 170);
-            this.dgv_rmdata1.Name = "dgv_rmdata1";
-            this.dgv_rmdata1.RowTemplate.Height = 23;
-            this.dgv_rmdata1.Size = new System.Drawing.Size(860, 259);
-            this.dgv_rmdata1.TabIndex = 33;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "科目";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "1";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "2";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "3";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "4";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "5";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "6";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "7";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "8";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "9";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "10";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "11";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "12";
-            this.Column13.Name = "Column13";
             // 
             // dgv_rmdata2
             // 
@@ -529,7 +374,7 @@
             // 
             // btn_data1
             // 
-            this.btn_data1.Location = new System.Drawing.Point(477, 82);
+            this.btn_data1.Location = new System.Drawing.Point(540, 81);
             this.btn_data1.Name = "btn_data1";
             this.btn_data1.Size = new System.Drawing.Size(75, 23);
             this.btn_data1.TabIndex = 40;
@@ -539,7 +384,7 @@
             // 
             // btn_data2
             // 
-            this.btn_data2.Location = new System.Drawing.Point(477, 123);
+            this.btn_data2.Location = new System.Drawing.Point(540, 121);
             this.btn_data2.Name = "btn_data2";
             this.btn_data2.Size = new System.Drawing.Size(75, 23);
             this.btn_data2.TabIndex = 41;
@@ -547,11 +392,297 @@
             this.btn_data2.UseVisualStyleBackColor = true;
             this.btn_data2.Click += new System.EventHandler(this.btn_data2_Click);
             // 
+            // comB_Month1
+            // 
+            this.comB_Month1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Month1.FormattingEnabled = true;
+            this.comB_Month1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comB_Month1.Location = new System.Drawing.Point(411, 84);
+            this.comB_Month1.Name = "comB_Month1";
+            this.comB_Month1.Size = new System.Drawing.Size(59, 20);
+            this.comB_Month1.TabIndex = 48;
+            this.comB_Month1.SelectedIndexChanged += new System.EventHandler(this.comB_Month1_SelectedIndexChanged);
+            // 
+            // btn_SearchPeriod1
+            // 
+            this.btn_SearchPeriod1.Location = new System.Drawing.Point(346, 83);
+            this.btn_SearchPeriod1.Name = "btn_SearchPeriod1";
+            this.btn_SearchPeriod1.Size = new System.Drawing.Size(59, 23);
+            this.btn_SearchPeriod1.TabIndex = 47;
+            this.btn_SearchPeriod1.Text = "查询";
+            this.btn_SearchPeriod1.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod1.Click += new System.EventHandler(this.btn_SearchPeriod1_Click);
+            // 
+            // btn_Search1
+            // 
+            this.btn_Search1.Location = new System.Drawing.Point(476, 81);
+            this.btn_Search1.Name = "btn_Search1";
+            this.btn_Search1.Size = new System.Drawing.Size(58, 23);
+            this.btn_Search1.TabIndex = 46;
+            this.btn_Search1.Text = "查询";
+            this.btn_Search1.UseVisualStyleBackColor = true;
+            this.btn_Search1.Click += new System.EventHandler(this.btn_Search1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(217, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "报表类型";
+            // 
+            // comB_RpType1
+            // 
+            this.comB_RpType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_RpType1.FormattingEnabled = true;
+            this.comB_RpType1.Items.AddRange(new object[] {
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
+            this.comB_RpType1.Location = new System.Drawing.Point(276, 84);
+            this.comB_RpType1.Name = "comB_RpType1";
+            this.comB_RpType1.Size = new System.Drawing.Size(64, 20);
+            this.comB_RpType1.TabIndex = 44;
+            this.comB_RpType1.SelectedIndexChanged += new System.EventHandler(this.comB_RpType1_SelectedIndexChanged);
+            // 
+            // comB_Month2
+            // 
+            this.comB_Month2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Month2.FormattingEnabled = true;
+            this.comB_Month2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comB_Month2.Location = new System.Drawing.Point(411, 124);
+            this.comB_Month2.Name = "comB_Month2";
+            this.comB_Month2.Size = new System.Drawing.Size(59, 20);
+            this.comB_Month2.TabIndex = 53;
+            this.comB_Month2.SelectedIndexChanged += new System.EventHandler(this.comB_Month2_SelectedIndexChanged);
+            // 
+            // btn_SearchPeriod2
+            // 
+            this.btn_SearchPeriod2.Location = new System.Drawing.Point(346, 123);
+            this.btn_SearchPeriod2.Name = "btn_SearchPeriod2";
+            this.btn_SearchPeriod2.Size = new System.Drawing.Size(59, 23);
+            this.btn_SearchPeriod2.TabIndex = 52;
+            this.btn_SearchPeriod2.Text = "查询";
+            this.btn_SearchPeriod2.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod2.Click += new System.EventHandler(this.btn_SearchPeriod2_Click);
+            // 
+            // btn_Search2
+            // 
+            this.btn_Search2.Location = new System.Drawing.Point(476, 121);
+            this.btn_Search2.Name = "btn_Search2";
+            this.btn_Search2.Size = new System.Drawing.Size(58, 23);
+            this.btn_Search2.TabIndex = 51;
+            this.btn_Search2.Text = "查询";
+            this.btn_Search2.UseVisualStyleBackColor = true;
+            this.btn_Search2.Click += new System.EventHandler(this.btn_Search2_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(217, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "报表类型";
+            // 
+            // comB_RpType2
+            // 
+            this.comB_RpType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_RpType2.FormattingEnabled = true;
+            this.comB_RpType2.Items.AddRange(new object[] {
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
+            this.comB_RpType2.Location = new System.Drawing.Point(276, 124);
+            this.comB_RpType2.Name = "comB_RpType2";
+            this.comB_RpType2.Size = new System.Drawing.Size(64, 20);
+            this.comB_RpType2.TabIndex = 49;
+            this.comB_RpType2.SelectedIndexChanged += new System.EventHandler(this.comB_RpType2_SelectedIndexChanged);
+            // 
+            // dgv_rmdata1
+            // 
+            this.dgv_rmdata1.AllowUserToAddRows = false;
+            this.dgv_rmdata1.AllowUserToDeleteRows = false;
+            this.dgv_rmdata1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_rmdata1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Itemnum,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13});
+            this.dgv_rmdata1.Location = new System.Drawing.Point(12, 172);
+            this.dgv_rmdata1.Name = "dgv_rmdata1";
+            this.dgv_rmdata1.ReadOnly = true;
+            this.dgv_rmdata1.RowTemplate.Height = 23;
+            this.dgv_rmdata1.Size = new System.Drawing.Size(851, 242);
+            this.dgv_rmdata1.TabIndex = 54;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Item";
+            this.Column1.HeaderText = "科目";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Itemnum
+            // 
+            this.Itemnum.DataPropertyName = "Itemnum";
+            this.Itemnum.HeaderText = "Itemnum";
+            this.Itemnum.Name = "Itemnum";
+            this.Itemnum.ReadOnly = true;
+            this.Itemnum.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "M1";
+            this.Column2.HeaderText = "1";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "M2";
+            this.Column3.HeaderText = "2";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "M3";
+            this.Column4.HeaderText = "3";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "M4";
+            this.Column5.HeaderText = "4";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "M5";
+            this.Column6.HeaderText = "5";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "M6";
+            this.Column7.HeaderText = "6";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "M7";
+            this.Column8.HeaderText = "7";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "M8";
+            this.Column9.HeaderText = "8";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "M9";
+            this.Column10.HeaderText = "9";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "M10";
+            this.Column11.HeaderText = "10";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "M11";
+            this.Column12.HeaderText = "11";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "M12";
+            this.Column13.HeaderText = "12";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // Frm_RMTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 650);
+            this.Controls.Add(this.dgv_rmdata1);
+            this.Controls.Add(this.comB_Month2);
+            this.Controls.Add(this.btn_SearchPeriod2);
+            this.Controls.Add(this.btn_Search2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comB_RpType2);
+            this.Controls.Add(this.comB_Month1);
+            this.Controls.Add(this.btn_SearchPeriod1);
+            this.Controls.Add(this.btn_Search1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comB_RpType1);
             this.Controls.Add(this.btn_data2);
             this.Controls.Add(this.btn_data1);
             this.Controls.Add(this.comB_CC);
@@ -560,18 +691,11 @@
             this.Controls.Add(this.btn_showT2);
             this.Controls.Add(this.btn_showT1);
             this.Controls.Add(this.dgv_rmdata2);
-            this.Controls.Add(this.dgv_rmdata1);
             this.Controls.Add(this.chkB_T3);
             this.Controls.Add(this.chkB_T2);
             this.Controls.Add(this.chkB_T1);
-            this.Controls.Add(this.btn_dataok2);
-            this.Controls.Add(this.btn_dataok1);
-            this.Controls.Add(this.comB_report2);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.comB_Year2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comB_report1);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.comB_Year1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comB_Product);
@@ -583,8 +707,8 @@
             this.Name = "Frm_RMTable";
             this.Text = "Frm_Table";
             this.Load += new System.EventHandler(this.RMTable_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -600,18 +724,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comB_Year1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comB_report1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comB_report2;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comB_Year2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btn_dataok1;
-        private System.Windows.Forms.Button btn_dataok2;
         private System.Windows.Forms.CheckBox chkB_T1;
         private System.Windows.Forms.CheckBox chkB_T2;
         private System.Windows.Forms.CheckBox chkB_T3;
-        private System.Windows.Forms.DataGridView dgv_rmdata1;
         private System.Windows.Forms.DataGridView dgv_rmdata2;
         private System.Windows.Forms.Button btn_showT1;
         private System.Windows.Forms.Button btn_showT2;
@@ -629,7 +746,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.ComboBox comB_CC;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btn_data1;
+        private System.Windows.Forms.Button btn_data2;
+        private System.Windows.Forms.ComboBox comB_Month1;
+        private System.Windows.Forms.Button btn_SearchPeriod1;
+        private System.Windows.Forms.Button btn_Search1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comB_RpType1;
+        private System.Windows.Forms.ComboBox comB_Month2;
+        private System.Windows.Forms.Button btn_SearchPeriod2;
+        private System.Windows.Forms.Button btn_Search2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comB_RpType2;
+        private System.Windows.Forms.DataGridView dgv_rmdata1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -642,9 +775,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.ComboBox comB_CC;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_data1;
-        private System.Windows.Forms.Button btn_data2;
     }
 }
