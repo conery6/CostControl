@@ -15,11 +15,12 @@ namespace CostControl.RawMaterial
         string CCNo = "";
         string Year = "";
         string PNo = "";
+        string Eno = "";
 
-
-        public Frm_RMActual()
+        public Frm_RMActual(string Eno)
         {
             InitializeComponent();
+            this.Eno = Eno;
         }
 
         private void comB_Facility_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,12 +66,6 @@ namespace CostControl.RawMaterial
             {
                 comB_Facility.Items.Add(temp.Rows[i]["FName"].ToString());
             }
-
-            dgv_rmdata.Rows[0].DefaultCellStyle.Format = "N2";
-            dgv_rmdata.Rows[1].DefaultCellStyle.Format = "N2";
-            dgv_rmdata.Rows[2].DefaultCellStyle.Format = "N0";
-            dgv_rmdata.Rows[3].DefaultCellStyle.Format = "N0";
-            dgv_rmdata.Rows[4].DefaultCellStyle.Format = "N2";
             dgv_rmdata.ReadOnly = true;
         }
 
@@ -111,7 +106,7 @@ namespace CostControl.RawMaterial
 
         private bool getPK()//获取四个主键
         {
-            if (FNo == "" || CCNo == "" || Year == "" )
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || comB_Year.Text == "" )
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -150,7 +145,7 @@ namespace CostControl.RawMaterial
             {
                 dgv_rmdata.Rows.RemoveAt(i);
             }
-            string str = "select Itemnum ,Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Tamplate where TableName = 'RMbudget' ";
+            string str = "select Type ,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Tamplate where TableName = 'RMbudget' ";
             DataTable dt = ODbcmd.SelectToDataTable(str);
             dgv_rmdata.DataSource = dt;
             for (int i = 2; i < dgv_rmdata.Columns.Count; i++)
@@ -187,21 +182,56 @@ namespace CostControl.RawMaterial
 
         private void Exceladd_Click(object sender, EventArgs e)
         {
-            OpenFileDialog xlsDileDialog = new OpenFileDialog();
-            xlsDileDialog.Filter = "xls文件|*.xlsx|所有文件|*.*";
-            xlsDileDialog.FilterIndex = 1;
+            //导入
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = "xls";
+            //文件后缀列表   
+            dlg.Filter = "Excel 97-2003 工作簿(*.xls)|*.xls|Excel 工作簿(*.xlsx)|*.xlsx";
+            //默然路径是Document目录   
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //打开保存对话框   
+            if (dlg.ShowDialog() == DialogResult.Cancel) return;
+            //返回文件路径   
+            string strFileName = dlg.FileName;
+            //验证strFileName是否为空或值无效   
+            if (strFileName.Trim() == "") return;
+            DataTable dtControl = ExcelHelper.ExcelToDataTable(strFileName, 0, 1, 0, 0, 0);
 
-            if (xlsDileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string sExcelFile = xlsDileDialog.FileName;
+            DataRow dr = dtControl.Rows[0];
 
-            }
+            comB_Facility.Text = dr["工厂"].ToString();
+            comB_CC.Text = dr["成本中心"].ToString();
+            comB_Product.Text = dr["产品"].ToString();
+            comB_Year.Text = dr["年份"].ToString();
+            FNo = GetRMData.FNo(comB_Facility.Text);
+            CCNo = GetRMData.CCNo(comB_CC.Text);
+            PNo = GetRMData.PNo(comB_Product.Text);
+            Year = comB_Year.Text;
+            DataTable r = ExcelHelper.ExcelToDataTable(strFileName, 3, 0, 0, 0, 0);
+            dgv_rmdata.DataSource = r;
+
         }
 
         private void Excelout_Click(object sender, EventArgs e)
         {
-            ExcelControl a = new ExcelControl();
-            a.SaveAsExcel(dgv_rmdata);
+            //导出
+            if (dgv_rmdata.DataSource == null)
+            {
+                MessageBox.Show("数据为空!");
+                return;
+            }
+            if (getPK())
+            {
+                string[] header = { "工厂", "成本中心", "产品", "年份" };
+                object[] cells = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year.Text) };
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt = (DataTable)dgv_rmdata.DataSource;
+                excelHelp.AppendToExcel(dt, true);
+                excelHelp.SaveToExcel();
+            }
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
@@ -305,7 +335,7 @@ namespace CostControl.RawMaterial
 
         private void btn_SearchPeriod_Click(object sender, EventArgs e)
         {
-            if (Year == "" || FNo == "" || CCNo == "")
+            if (comB_Year.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "")
             {
                 MessageBox.Show("参数不全！");
             }

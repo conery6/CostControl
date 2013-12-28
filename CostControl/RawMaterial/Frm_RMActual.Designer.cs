@@ -37,8 +37,8 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgv_rmdata = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,8 +53,6 @@
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Exceladd = new System.Windows.Forms.Button();
             this.Excelout = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btn_SearchPeriod = new System.Windows.Forms.Button();
             this.btn_Change = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
@@ -150,8 +148,8 @@
             this.dgv_rmdata.AllowUserToDeleteRows = false;
             this.dgv_rmdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_rmdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Itemnum,
+            this.Type,
+            this.TypeName,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -173,21 +171,21 @@
             this.dgv_rmdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_rmdata_CellEndEdit);
             this.dgv_rmdata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_rmdata_DataError);
             // 
-            // Column1
+            // Type
             // 
-            this.Column1.DataPropertyName = "Item";
-            this.Column1.HeaderText = "科目";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "科目编号";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Visible = false;
             // 
-            // Itemnum
+            // TypeName
             // 
-            this.Itemnum.DataPropertyName = "Itemnum";
-            this.Itemnum.HeaderText = "Itemnum";
-            this.Itemnum.Name = "Itemnum";
-            this.Itemnum.ReadOnly = true;
-            this.Itemnum.Visible = false;
+            this.TypeName.DataPropertyName = "TypeName";
+            this.TypeName.HeaderText = "科目";
+            this.TypeName.Name = "TypeName";
+            this.TypeName.ReadOnly = true;
+            this.TypeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column2
             // 
@@ -305,10 +303,6 @@
             this.Excelout.UseVisualStyleBackColor = true;
             this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // btn_SearchPeriod
             // 
             this.btn_SearchPeriod.Location = new System.Drawing.Point(525, 88);
@@ -398,8 +392,15 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dgv_rmdata;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
+        private System.Windows.Forms.Button Exceladd;
+        private System.Windows.Forms.Button Excelout;
+        private System.Windows.Forms.Button btn_SearchPeriod;
+        private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.ComboBox comB_Product;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -412,14 +413,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.Button Exceladd;
-        private System.Windows.Forms.Button Excelout;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button btn_SearchPeriod;
-        private System.Windows.Forms.Button btn_Change;
-        private System.Windows.Forms.Button btn_Save;
-        private System.Windows.Forms.ComboBox comB_Product;
-        private System.Windows.Forms.Label label3;
     }
 }

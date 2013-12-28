@@ -67,7 +67,7 @@ namespace CostControl.Analysis
 
         private bool getPK2()//获取四个主键，做了个封装
         {
-            if (FNo == "" || CCNo == ""|| Year2 == "" || Reporttype2 == "")
+            if (FNo == "" || CCNo == "" || Year2 == "" || Reporttype2 == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -102,7 +102,7 @@ namespace CostControl.Analysis
                         r = GetANAData.Actual(CCNo, Reporttype1, Year1);
                         break;
                 }
-                
+
                 if (r.Tables.Count > 0)
                 {
                     for (int y = 0; y < r.Tables.Count; y++)
@@ -565,11 +565,11 @@ namespace CostControl.Analysis
             //电费控制
             CCNo = GetElectricData.CCNo(comB_CC.Text);
             clb_Electric.Items.Clear();
-            string sqle = "select distinct Item,year from EPeriod where CCNo ='" + CCNo + "'";
+            string sqle = "select distinct TypeName,year from EPeriod where CCNo ='" + CCNo + "'";
             DataTable tempe = ODbcmd.SelectToDataTable(sqle);
             for (int i = 0; i < tempe.Rows.Count; i++)
             {
-                clb_Electric.Items.Add(tempe.Rows[i]["Item"].ToString());
+                clb_Electric.Items.Add(tempe.Rows[i]["TypeName"].ToString());
             }
 
             //维修管理
@@ -609,7 +609,7 @@ namespace CostControl.Analysis
             DataTable dt2 = ODbcmd.SelectToDataTable(sql2);
 
             //电费控制
-            string sql3 = "select FName,CCName,Item,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo";
+            string sql3 = "select FName,CCName,TypeName,Year,Period,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo";
             DataTable dt3 = ODbcmd.SelectToDataTable(sql3);
 
             //维修管理

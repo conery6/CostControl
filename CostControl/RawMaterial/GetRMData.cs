@@ -12,7 +12,7 @@ namespace CostControl.RawMaterial
 
         public static DataTable Actual(String FNo, String CCNo, String PNo ,String Year)
         {
-            string sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual  where year=" + Year
+            string sql = "select Type,TypeName, M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual  where year=" + Year
             + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and PNo ='" + PNo + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
@@ -23,7 +23,7 @@ namespace CostControl.RawMaterial
             if (Period != "Actual")
             {
 
-                string sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                string sql = "select Type,TypeName, M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
                 + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and PNo='" + PNo + "' and   Period = '" + Period + "' order by Type asc";
                 DataTable a = ODbcmd.SelectToDataTable(sql);
                 return a;
@@ -47,28 +47,28 @@ namespace CostControl.RawMaterial
                 case 1:
                 case 2:
                 case 3:
-                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                    sql = "select  Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
                         + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and  PNo = '" + PNo + "' and Period='T1' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 4:
                 case 5:
                 case 6:
-                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                    sql = "select Type,TypeName, M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
                         + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='RF1' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 7:
                 case 8:
                 case 9:
-                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                    sql = "select Type,TypeName, M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
                         + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='RF2' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 10:
                 case 11:
                 case 12:
-                    sql = "select TypeName, Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
+                    sql = "select  Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod  where year=" + Year
                         + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "'  and  PNo = '" + PNo + "' and  Period='E3' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;

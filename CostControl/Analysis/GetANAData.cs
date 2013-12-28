@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System .Data ;
+using System.Data;
 using System.Windows.Forms;
 
 namespace CostControl.Analysis
 {
     class GetANAData
     {
-        public static  DataSet PeriodData(String CostCenterNo, String period, String Year)
+        public static DataSet PeriodData(String CostCenterNo, String period, String Year)
         {
             string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
             + "and  year=" + Year + "and  RMPeriod.Type='" + 1 + "'and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
@@ -19,8 +19,8 @@ namespace CostControl.Analysis
 + " and  year=" + Year + " and MGPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d2 = ODbcmd.SelectToDataTable(sql2);
 
-            string sql3 = "select  Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,CostCenter where CostCenter.CCNo = EPeriod.CCNo"
-            + " and  year=" + Year + " and EPeriod.Period='" + period + "' and EPeriod.Item in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
+            string sql3 = "select  TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,CostCenter where CostCenter.CCNo = EPeriod.CCNo"
+            + " and  year=" + Year + " and EPeriod.Period='" + period + "' and EPeriod.TypeName in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d3 = ODbcmd.SelectToDataTable(sql3);
 
             string sql4 = "select  FSName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,FacilitySystem, Equipment,CostCenter where CostCenter.CCNo = Equipment.CCNo and FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo"
@@ -38,19 +38,19 @@ namespace CostControl.Analysis
         public static DataSet Actual(String CostCenterNo, String period, String Year)
         {
             string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMActual,Product,CostCenter where CostCenter.CCNo =RMActual.CCNo and Product.PNo =RMActual.PNo  "
-            + "and  year=" + Year + "and  RMActual.Type='" + 1  + "' and CostCenter.CCNo='" + CostCenterNo + "'";
+            + "and  year=" + Year + "and  RMActual.Type='" + 1 + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d1 = ODbcmd.SelectToDataTable(sql1);
 
             string sql2 = "select  IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGActual,CostCenter where CostCenter.CCNo = MGActual.CCNo"
-+ " and  year=" + Year +  " and CostCenter.CCNo='" + CostCenterNo + "'";
++ " and  year=" + Year + " and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d2 = ODbcmd.SelectToDataTable(sql2);
 
-            string sql3 = "select  Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual,CostCenter where CostCenter.CCNo = EActual.CCNo"
-            + " and  year=" + Year +  " and EActual.Item in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
+            string sql3 = "select  TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual,CostCenter where CostCenter.CCNo = EActual.CCNo"
+            + " and  year=" + Year + " and EActual.TypeName in ('Total Power cost 总电费','总电费')" + " and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d3 = ODbcmd.SelectToDataTable(sql3);
 
             string sql4 = "select  FSName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianActual,FacilitySystem, Equipment,CostCenter where CostCenter.CCNo = Equipment.CCNo and FacilitySystem.FSNo = Equipment.FSNo and MaintianActual.EqNo = Equipment.EqNo"
-            + " and  year=" + Year +  " and CostCenter.CCNo='" + CostCenterNo + "'";
+            + " and  year=" + Year + " and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d4 = ODbcmd.SelectToDataTable(sql4);
 
             DataSet ds = new DataSet();
@@ -70,7 +70,7 @@ namespace CostControl.Analysis
 
         public static string PNo(string Product)
         {
-            string sql = "select PNo from Product where PName='" + Product  + "'";
+            string sql = "select PNo from Product where PName='" + Product + "'";
             DataTable dt = ODbcmd.SelectToDataTable(sql);
             return dt.Rows[0][0].ToString();
         }
@@ -142,7 +142,7 @@ namespace CostControl.Analysis
             return a;
         }
 
-        
+
         public static float[,] DTto2DFloat(DataTable DT)
         {
             float[,] a = new float[6, 13];
@@ -163,7 +163,7 @@ namespace CostControl.Analysis
         }
 
         //Sum difference comparison
-        public static float[,] FReportTable3(float [,] FDT1, float[,] FDT2)
+        public static float[,] FReportTable3(float[,] FDT1, float[,] FDT2)
         {
             float[,] a = new float[5, 13];
             float[,] FDT1SUM = new float[5, 13];
@@ -197,14 +197,14 @@ namespace CostControl.Analysis
                 try
                 {
                     sumdt1 += FDT1[1, j];
-                    FDT1SUM[1, j] = sumdt1/k1;
+                    FDT1SUM[1, j] = sumdt1 / k1;
                     k1++;
                 }
                 catch { }
                 try
                 {
                     sumdt2 += FDT2[1, j];
-                    FDT2SUM[1, j] = sumdt2/k2;
+                    FDT2SUM[1, j] = sumdt2 / k2;
                     k2++;
                 }
                 catch { };
@@ -219,14 +219,14 @@ namespace CostControl.Analysis
                 {
                     try
                     {
-                        sumdt1 += FDT1[i,j];
-                        FDT1SUM  [i,j] = sumdt1;
+                        sumdt1 += FDT1[i, j];
+                        FDT1SUM[i, j] = sumdt1;
                     }
                     catch { }
                     try
                     {
                         sumdt2 += FDT2[i, j];
-                        FDT2SUM[i,j] = sumdt2;
+                        FDT2SUM[i, j] = sumdt2;
                     }
                     catch { };
                 }
@@ -236,7 +236,7 @@ namespace CostControl.Analysis
             {
                 try
                 {
-                    FDT1SUM[4, j] = FDT1SUM[2, j]/FDT1SUM[3, j];
+                    FDT1SUM[4, j] = FDT1SUM[2, j] / FDT1SUM[3, j];
                 }
                 catch { }
                 try
