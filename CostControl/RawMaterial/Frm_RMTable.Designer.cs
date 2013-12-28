@@ -73,8 +73,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comB_RpType2 = new System.Windows.Forms.ComboBox();
             this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -534,8 +534,8 @@
             this.dgv_rmdata1.AllowUserToDeleteRows = false;
             this.dgv_rmdata1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_rmdata1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Itemnum,
+            this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -555,21 +555,21 @@
             this.dgv_rmdata1.Size = new System.Drawing.Size(851, 242);
             this.dgv_rmdata1.TabIndex = 54;
             // 
+            // Itemnum
+            // 
+            this.Itemnum.DataPropertyName = "Type";
+            this.Itemnum.HeaderText = "科目编号";
+            this.Itemnum.Name = "Itemnum";
+            this.Itemnum.ReadOnly = true;
+            this.Itemnum.Visible = false;
+            // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "Item";
+            this.Column1.DataPropertyName = "TypeName";
             this.Column1.HeaderText = "科目";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Itemnum
-            // 
-            this.Itemnum.DataPropertyName = "Itemnum";
-            this.Itemnum.HeaderText = "Itemnum";
-            this.Itemnum.Name = "Itemnum";
-            this.Itemnum.ReadOnly = true;
-            this.Itemnum.Visible = false;
             // 
             // Column2
             // 
@@ -761,8 +761,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comB_RpType2;
         private System.Windows.Forms.DataGridView dgv_rmdata1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

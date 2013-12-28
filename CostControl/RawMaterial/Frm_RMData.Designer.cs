@@ -53,6 +53,14 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgv_rmdata = new System.Windows.Forms.DataGridView();
+            this.Exceladd = new System.Windows.Forms.Button();
+            this.Excelout = new System.Windows.Forms.Button();
+            this.btn_SearchPeriod = new System.Windows.Forms.Button();
+            this.comB_Month = new System.Windows.Forms.ComboBox();
+            this.btn_Change = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.comB_Product = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +75,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Exceladd = new System.Windows.Forms.Button();
-            this.Excelout = new System.Windows.Forms.Button();
-            this.btn_SearchPeriod = new System.Windows.Forms.Button();
-            this.comB_Month = new System.Windows.Forms.ComboBox();
-            this.btn_Change = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
-            this.comB_Product = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,6 +225,98 @@
             this.dgv_rmdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_rmdata_CellEndEdit);
             this.dgv_rmdata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_rmdata_DataError);
             // 
+            // Exceladd
+            // 
+            this.Exceladd.Location = new System.Drawing.Point(721, 81);
+            this.Exceladd.Name = "Exceladd";
+            this.Exceladd.Size = new System.Drawing.Size(83, 29);
+            this.Exceladd.TabIndex = 40;
+            this.Exceladd.Text = "Excel导入";
+            this.Exceladd.UseVisualStyleBackColor = true;
+            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
+            // 
+            // Excelout
+            // 
+            this.Excelout.Location = new System.Drawing.Point(803, 81);
+            this.Excelout.Name = "Excelout";
+            this.Excelout.Size = new System.Drawing.Size(83, 29);
+            this.Excelout.TabIndex = 41;
+            this.Excelout.Text = "Excel导出";
+            this.Excelout.UseVisualStyleBackColor = true;
+            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
+            // 
+            // btn_SearchPeriod
+            // 
+            this.btn_SearchPeriod.Location = new System.Drawing.Point(412, 85);
+            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
+            this.btn_SearchPeriod.Size = new System.Drawing.Size(59, 23);
+            this.btn_SearchPeriod.TabIndex = 42;
+            this.btn_SearchPeriod.Text = "查询";
+            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
+            // 
+            // comB_Month
+            // 
+            this.comB_Month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Month.FormattingEnabled = true;
+            this.comB_Month.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comB_Month.Location = new System.Drawing.Point(477, 86);
+            this.comB_Month.Name = "comB_Month";
+            this.comB_Month.Size = new System.Drawing.Size(59, 20);
+            this.comB_Month.TabIndex = 43;
+            this.comB_Month.SelectedIndexChanged += new System.EventHandler(this.comB_Month_SelectedIndexChanged);
+            // 
+            // btn_Change
+            // 
+            this.btn_Change.Location = new System.Drawing.Point(613, 38);
+            this.btn_Change.Name = "btn_Change";
+            this.btn_Change.Size = new System.Drawing.Size(75, 23);
+            this.btn_Change.TabIndex = 45;
+            this.btn_Change.Text = "编辑";
+            this.btn_Change.UseVisualStyleBackColor = true;
+            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(694, 38);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_Save.TabIndex = 46;
+            this.btn_Save.Text = "保存";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // comB_Product
+            // 
+            this.comB_Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Product.FormattingEnabled = true;
+            this.comB_Product.Location = new System.Drawing.Point(79, 86);
+            this.comB_Product.Name = "comB_Product";
+            this.comB_Product.Size = new System.Drawing.Size(77, 20);
+            this.comB_Product.TabIndex = 48;
+            this.comB_Product.SelectedIndexChanged += new System.EventHandler(this.comB_Product_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(44, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "产品";
+            // 
             // Type
             // 
             this.Type.DataPropertyName = "Type";
@@ -374,98 +466,6 @@
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Exceladd
-            // 
-            this.Exceladd.Location = new System.Drawing.Point(721, 81);
-            this.Exceladd.Name = "Exceladd";
-            this.Exceladd.Size = new System.Drawing.Size(83, 29);
-            this.Exceladd.TabIndex = 40;
-            this.Exceladd.Text = "Excel导入";
-            this.Exceladd.UseVisualStyleBackColor = true;
-            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
-            // 
-            // Excelout
-            // 
-            this.Excelout.Location = new System.Drawing.Point(803, 81);
-            this.Excelout.Name = "Excelout";
-            this.Excelout.Size = new System.Drawing.Size(83, 29);
-            this.Excelout.TabIndex = 41;
-            this.Excelout.Text = "Excel导出";
-            this.Excelout.UseVisualStyleBackColor = true;
-            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
-            // 
-            // btn_SearchPeriod
-            // 
-            this.btn_SearchPeriod.Location = new System.Drawing.Point(412, 85);
-            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
-            this.btn_SearchPeriod.Size = new System.Drawing.Size(59, 23);
-            this.btn_SearchPeriod.TabIndex = 42;
-            this.btn_SearchPeriod.Text = "查询";
-            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
-            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
-            // 
-            // comB_Month
-            // 
-            this.comB_Month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Month.FormattingEnabled = true;
-            this.comB_Month.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.comB_Month.Location = new System.Drawing.Point(477, 86);
-            this.comB_Month.Name = "comB_Month";
-            this.comB_Month.Size = new System.Drawing.Size(59, 20);
-            this.comB_Month.TabIndex = 43;
-            this.comB_Month.SelectedIndexChanged += new System.EventHandler(this.comB_Month_SelectedIndexChanged);
-            // 
-            // btn_Change
-            // 
-            this.btn_Change.Location = new System.Drawing.Point(613, 38);
-            this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(75, 23);
-            this.btn_Change.TabIndex = 45;
-            this.btn_Change.Text = "编辑";
-            this.btn_Change.UseVisualStyleBackColor = true;
-            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(694, 38);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 23);
-            this.btn_Save.TabIndex = 46;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
-            // comB_Product
-            // 
-            this.comB_Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Product.FormattingEnabled = true;
-            this.comB_Product.Location = new System.Drawing.Point(79, 86);
-            this.comB_Product.Name = "comB_Product";
-            this.comB_Product.Size = new System.Drawing.Size(77, 20);
-            this.comB_Product.TabIndex = 48;
-            this.comB_Product.SelectedIndexChanged += new System.EventHandler(this.comB_Product_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "产品";
             // 
             // Frm_RMData
             // 

@@ -7,7 +7,6 @@ D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.dll
 D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OOXML.dll
 D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OpenXml4Net.dll
 D:\GitHub\CostControl\CostControl\bin\Debug\NPOI.OpenXmlFormats.dll
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.ResolveComReference.cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Analysis.Frm_ANAChart.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Analysis.Frm_ANATable.resources

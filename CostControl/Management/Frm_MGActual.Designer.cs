@@ -67,6 +67,7 @@
             this.btn_Cancel.TabIndex = 52;
             this.btn_Cancel.Text = "取消";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Visible = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // btn_Save
@@ -77,6 +78,7 @@
             this.btn_Save.TabIndex = 51;
             this.btn_Save.Text = "保存";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Visible = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // button1
@@ -221,6 +223,7 @@
             this.dgv_MGData.RowTemplate.Height = 23;
             this.dgv_MGData.Size = new System.Drawing.Size(858, 382);
             this.dgv_MGData.TabIndex = 36;
+            this.dgv_MGData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_MGData_CellEndEdit);
             // 
             // clm_IName
             // 
@@ -228,6 +231,7 @@
             this.clm_IName.HeaderText = "项目名称";
             this.clm_IName.Name = "clm_IName";
             this.clm_IName.ReadOnly = true;
+            this.clm_IName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // clm_M1
             // 

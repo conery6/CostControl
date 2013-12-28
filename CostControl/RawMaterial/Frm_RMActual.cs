@@ -106,7 +106,7 @@ namespace CostControl.RawMaterial
 
         private bool getPK()//获取四个主键
         {
-            if (comB_Facility.Text == "" || comB_CC.Text == "" || comB_Year.Text == "" )
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || comB_Year.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -125,10 +125,11 @@ namespace CostControl.RawMaterial
                 {
                     if (MessageBox.Show("是否确认删除本表？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        string str = "delete from RMActual where CCNo ='" + CCNo + "' and PNo ='" + PNo + "' Year =" + Year;
+                        string str = "delete from RMActual where CCNo ='" + CCNo + "' and PNo ='" + PNo + "' and Year =" + Year;
                         ODbcmd.ExecuteSQLNonquery(str);
                         MessageBox.Show("删除成功");
                         comB_Year.Text = "";
+                        dgv_rmdata.DataSource = null;
                     }
                 }
                 catch (Exception ex)
@@ -268,12 +269,12 @@ namespace CostControl.RawMaterial
 
                         for (int i = 0; i < dgv_rmdata.Rows.Count; i++)
                         {
-                            string str1 = string.Format("insert into RMActual  values ('{0}','{1}','{2}',{3},{4},'{5}',{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17})",
+                            string str1 = string.Format("insert into RMActual  values ('{0}','{1}','{2}',{3},{4},'{5}',{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},'{18}','{19}')",
                                 FNo, PNo, CCNo, Year, dgv_rmdata[0, i].Value.ToString(), dgv_rmdata[1, i].Value.ToString(),
                                 dgv_rmdata[2, i].Value.ToString(), dgv_rmdata[3, i].Value.ToString(), dgv_rmdata[4, i].Value.ToString(),
                                 dgv_rmdata[5, i].Value.ToString(), dgv_rmdata[6, i].Value.ToString(), dgv_rmdata[7, i].Value.ToString(),
                                 dgv_rmdata[8, i].Value.ToString(), dgv_rmdata[9, i].Value.ToString(), dgv_rmdata[10, i].Value.ToString(),
-                                dgv_rmdata[11, i].Value.ToString(), dgv_rmdata[12, i].Value.ToString(), dgv_rmdata[13, i].Value.ToString());
+                                dgv_rmdata[11, i].Value.ToString(), dgv_rmdata[12, i].Value.ToString(), dgv_rmdata[13, i].Value.ToString(), DateTime.Now, Eno);
                             ODbcmd.ExecuteSQLNonquery(str1);
                         }
                         MessageBox.Show("数据修改成");
@@ -290,12 +291,12 @@ namespace CostControl.RawMaterial
                     {
                         for (int i = 0; i < dgv_rmdata.Rows.Count; i++)
                         {
-                            string str1 = string.Format("insert into RMActual  values ('{0}','{1}','{2}',{3},{4},'{5}',{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17})",
-                                FNo, PNo, CCNo, Year, dgv_rmdata[0, i].Value.ToString(), dgv_rmdata[1, i].Value.ToString(),
-                                dgv_rmdata[2, i].Value.ToString(), dgv_rmdata[3, i].Value.ToString(), dgv_rmdata[4, i].Value.ToString(),
-                                dgv_rmdata[5, i].Value.ToString(), dgv_rmdata[6, i].Value.ToString(), dgv_rmdata[7, i].Value.ToString(),
-                                dgv_rmdata[8, i].Value.ToString(), dgv_rmdata[9, i].Value.ToString(), dgv_rmdata[10, i].Value.ToString(),
-                                dgv_rmdata[11, i].Value.ToString(), dgv_rmdata[12, i].Value.ToString(), dgv_rmdata[13, i].Value.ToString());
+                            string str1 = string.Format("insert into RMActual  values ('{0}','{1}','{2}',{3},{4},'{5}',{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},'{18}','{19}')",
+                                 FNo, PNo, CCNo, Year, dgv_rmdata[0, i].Value.ToString(), dgv_rmdata[1, i].Value.ToString(),
+                                 dgv_rmdata[2, i].Value.ToString(), dgv_rmdata[3, i].Value.ToString(), dgv_rmdata[4, i].Value.ToString(),
+                                 dgv_rmdata[5, i].Value.ToString(), dgv_rmdata[6, i].Value.ToString(), dgv_rmdata[7, i].Value.ToString(),
+                                 dgv_rmdata[8, i].Value.ToString(), dgv_rmdata[9, i].Value.ToString(), dgv_rmdata[10, i].Value.ToString(),
+                                 dgv_rmdata[11, i].Value.ToString(), dgv_rmdata[12, i].Value.ToString(), dgv_rmdata[13, i].Value.ToString(), DateTime.Now, Eno);
                             ODbcmd.ExecuteSQLNonquery(str1);
                         }
                         MessageBox.Show("数据保存成功");
@@ -349,11 +350,8 @@ namespace CostControl.RawMaterial
                 comB_Year.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
                 r = GetRMData.Actual(FNo, CCNo, PNo, Year);
-
-                if (r.Rows.Count != 0)
-                {
                     dgv_rmdata.DataSource = r;
-                }
+                
             }
         }
     }

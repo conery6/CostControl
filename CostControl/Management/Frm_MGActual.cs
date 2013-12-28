@@ -118,36 +118,62 @@ namespace CostControl.Management
 
         private void btn_exceladd_Click(object sender, EventArgs e)
         {
-            clm_IName.DataPropertyName = "F1";
-            clm_M1.DataPropertyName = "F2";
-            clm_M2.DataPropertyName = "F3";
-            clm_M3.DataPropertyName = "F4";
-            clm_M4.DataPropertyName = "F5";
-            clm_M5.DataPropertyName = "F6";
-            clm_M6.DataPropertyName = "F7";
-            clm_M7.DataPropertyName = "F8";
-            clm_M8.DataPropertyName = "F9";
-            clm_M9.DataPropertyName = "F10";
-            clm_M10.DataPropertyName = "F11";
-            clm_M11.DataPropertyName = "F12";
-            clm_M12.DataPropertyName = "F13";
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = "xls";
+            //文件后缀列表   
+            dlg.Filter = "Excel 97-2003 工作簿(*.xls)|*.xls|Excel 工作簿(*.xlsx)|*.xlsx";
+            //默然路径是Document目录   
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //打开保存对话框   
+            if (dlg.ShowDialog() == DialogResult.Cancel) return;
+            //返回文件路径   
+            string strFileName = dlg.FileName;
+            //验证strFileName是否为空或值无效   
+            if (strFileName.Trim() == "") return;
+            DataTable dtControl = ExcelHelper.ExcelToDataTable(strFileName, 0, 1, 0, 0, 0);
 
-            ExcelControl a = new ExcelControl();
-            a.ExcelIntodgv(dgv_MGData);
+            DataRow dr = dtControl.Rows[0];
+
+            comB_Facility.Text = dr["工厂"].ToString();
+            comB_CC.Text = dr["成本中心"].ToString();
+
+            comB_Year.Text = dr["年份"].ToString();
+            FNo = GetMGData.FNo(comB_Facility.Text);
+            CCNo = GetMGData.CCNo(comB_CC.Text);
+            Year = comB_Year.Text;
+            DataTable r = ExcelHelper.ExcelToDataTable(strFileName, 3, 0, 0, 0, 0);
+            dgv_MGData.DataSource = r;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ExcelControl a = new ExcelControl();
-            a.SaveAsExcel(dgv_MGData);
+            if (dgv_MGData.DataSource == null)
+            {
+                MessageBox.Show("数据为空!");
+                return;
+            }
+            if (getPK())
+            {
+                string[] header = { "工厂", "成本中心","年份"};
+                object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year.Text)};
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt = (DataTable)dgv_MGData.DataSource;
+                excelHelp.AppendToExcel(dt, true);
+                excelHelp.SaveToExcel();
+            }
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
             mode = "update";
             dgv_MGData.ReadOnly = false;
-
+            btn_Save.Visible = true;
             btn_Cancel.Visible = true;
+            dgv_MGData.Columns[0].ReadOnly = true;
+            dgv_MGData.Columns[0].DefaultCellStyle.BackColor = Color.Gray;
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -167,7 +193,7 @@ namespace CostControl.Management
                                 MessageBox.Show("删除成功");
                                 comB_CC.Text = "";
                                 comB_Year.Text = "";
-   
+                                dgv_MGData.DataSource = null;
                     }
 
                 }
@@ -178,47 +204,56 @@ namespace CostControl.Management
             }
         }
 
-        private void dgvinitial()
-        {
-            for (int i = dgv_MGData.Rows.Count; i > 0; i--)
-            {
-                dgv_MGData.Rows.RemoveAt(0);
-            }
-            dgv_MGData.Rows.Add("Entertainment", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("IT/IS", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Office", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Other Operation Cost", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Professional service", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Rental", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Safety", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Telecom-Data/Voice", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Transportation", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.Rows.Add("Travel", null, null, null, null, null, null, null, null, null, null, null, null);
-            dgv_MGData.RowHeadersVisible = false;
-            for (int i = 1; i < 13; i++)
-            {
-                dgv_MGData.Columns[i].Width = 60;
-                dgv_MGData.Columns[i].DefaultCellStyle.BackColor = Color.White;
-            }
-            for (int j = 0; j < 10; j++)
-            {
-                dgv_MGData.Rows[j].Height = 60;
-                dgv_MGData.Rows[j].ReadOnly = true;
-            }
-        }
+        //private void dgvinitial()
+        //{
+        //    for (int i = dgv_MGData.Rows.Count; i > 0; i--)
+        //    {
+        //        dgv_MGData.Rows.RemoveAt(0);
+        //    }
+        //    dgv_MGData.Rows.Add("Entertainment", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("IT/IS", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Office", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Other Operation Cost", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Professional service", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Rental", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Safety", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Telecom-Data/Voice", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Transportation", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.Rows.Add("Travel", null, null, null, null, null, null, null, null, null, null, null, null);
+        //    dgv_MGData.RowHeadersVisible = false;
+        //    for (int i = 1; i < 13; i++)
+        //    {
+        //        dgv_MGData.Columns[i].Width = 60;
+        //        dgv_MGData.Columns[i].DefaultCellStyle.BackColor = Color.White;
+        //    }
+        //    for (int j = 0; j < 10; j++)
+        //    {
+        //        dgv_MGData.Rows[j].Height = 60;
+        //        dgv_MGData.Rows[j].ReadOnly = true;
+        //    }
+        //}
 
         private void btn_newactual_Click(object sender, EventArgs e)
         {
             mode = "add";
             comB_Year.DropDownStyle = ComboBoxStyle.DropDown;
-
-
-            dgvinitial();
-            for (int j = 1; j < 13; j++)
+            for (int i = dgv_MGData.Rows.Count; i < 0; i--)
             {
-                dgv_MGData.Columns[j].ReadOnly = false;
-                dgv_MGData.Columns[j].DefaultCellStyle.BackColor = Color.White;
+                dgv_MGData.Rows.RemoveAt(i);
             }
+            string str = "select TypeName as IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Tamplate where TableName = 'MGActual' ";
+            DataTable dt = ODbcmd.SelectToDataTable(str);
+            dgv_MGData.DataSource = dt;
+            for (int i = 1; i < dgv_MGData.Columns.Count; i++)
+            {
+                for (int j = 0; j < dgv_MGData.Rows.Count; j++)
+                {
+                    dgv_MGData[i, j].Value = 0;
+                }
+            }
+           
+            dgv_MGData.ReadOnly = false;
+            dgv_MGData.Columns[0].ReadOnly = true;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -235,8 +270,8 @@ namespace CostControl.Management
                             {
                                 for (int i = 0; i < 5; i++)
                                 {
-                                    string sql1 = string.Format(" update RMActual set M{0}={1}"
-                                            + " where FNo='{2}'  and CCNo='{3}' and Year={4} and Type='{5}' ",
+                                    string sql1 = string.Format(" update MGActual set M{0}={1}"
+                                            + " where FNo='{2}'  and CCNo='{3}' and Year={4} and Type={5} ",
                                             a[0], Convert.ToSingle(dgv_MGData[a[0], i].Value),
                                             FNo, CCNo, Year, i + 1);
                                     ODbcmd.ExecuteSQLNonquery(sql1);
@@ -253,6 +288,7 @@ namespace CostControl.Management
 
                 }
                 btn_update.Enabled = true;
+           
             }
 
             if (mode == "add")
@@ -295,11 +331,14 @@ namespace CostControl.Management
             }
             comB_Year.DropDownStyle = ComboBoxStyle.DropDown;
             btn_Save.Visible = false;
+            btn_Cancel.Visible = false;
             btn_newactual.Visible = true;
             btn_delete.Visible = true;
             btn_update.Visible = true;
+            
             btn_exceladd.Visible = true;
             dgv_MGData.ReadOnly = true;
+            dgv_MGData.DefaultCellStyle.BackColor = Color.White;
             comB_Year.DropDownStyle = ComboBoxStyle.DropDownList;
             btn_search.Visible = true;
         }
@@ -317,8 +356,23 @@ namespace CostControl.Management
             }
         }
 
+        private void dgv_MGData_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (getPK())
+            {
+                int colm = dgv_MGData.CurrentCell.ColumnIndex;
+                int rowm = dgv_MGData.CurrentCell.RowIndex;
+                    if (mode == "update")
+                    {
+                        int[] flag = new int[] { colm, rowm };
 
-
-
+                        if (Convert.ToSingle(dgv_MGData[colm, rowm].Value) != BasicData[rowm, colm])
+                        {
+                            flaglist.Add(flag);
+                            dgv_MGData.CurrentCell.Style.BackColor = Color.LightPink;
+                        }
+                    }
+            }
+        }
     }
 }
