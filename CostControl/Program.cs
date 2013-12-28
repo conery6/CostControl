@@ -16,12 +16,6 @@ namespace CostControl
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Frm_Login());
-            //Application.Run(new RawMaterial.RMData("a"));
-            //Application.Run(new RawMaterial.RMTable("a"));
-            //Application.Run(new BaseManage .EmployeeManage() );
-            //Application.Run(new Maintain.MData());
-            //Application.Run(new Frm_main("a"));
-            Application.Run(new Electric.Frm_EData());
         }
     }
 }

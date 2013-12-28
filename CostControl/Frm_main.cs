@@ -123,5 +123,10 @@ namespace CostControl
             Frm_RMT.MdiParent = this;
             Frm_RMT.Show();
         }
+
+        private void Frm_main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
 	}
 }

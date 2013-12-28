@@ -113,6 +113,7 @@
             this.Controls.Add(this.Lbl_key);
             this.Controls.Add(this.Lbl_id);
             this.Name = "Frm_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.Frm_Login_Load);
             this.ResumeLayout(false);
