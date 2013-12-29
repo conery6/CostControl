@@ -446,10 +446,10 @@ namespace CostControl.RawMaterial
             }
             else
             {
-                for (int i = 0; i < dgv_rmdata1.Columns.Count; i++)
+                for (int i = 0; i < dgv_rmdata3.Columns.Count; i++)
                 {
-                    dgv_rmdata1.Columns[i].ReadOnly = true;
-                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                    dgv_rmdata3.Columns[i].ReadOnly = true;
+                    dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.White;
                 }
                 comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
@@ -457,19 +457,19 @@ namespace CostControl.RawMaterial
 
                 if (r.Rows.Count != 0)
                 {
-                    dgv_rmdata1.DataSource = r;
+                    dgv_rmdata3.DataSource = r;
                 }
                 int acMonth = ReportMonth1;
 
-                dgv_rmdata1.Columns[0].ReadOnly = true;
-                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata1.Columns[1].ReadOnly = true;
-                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata3.Columns[0].ReadOnly = true;
+                dgv_rmdata3.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata3.Columns[1].ReadOnly = true;
+                dgv_rmdata3.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
                 for (int i = 2; i <= acMonth + 1; i++)
                 {
-                    dgv_rmdata1.Columns[i].ReadOnly = true;
-                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                    dgv_rmdata3.Columns[i].ReadOnly = true;
+                    dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
 
                 DT2 = r;
@@ -518,7 +518,7 @@ namespace CostControl.RawMaterial
             {
                 DataTable dt = new DataTable();
                 dt = GetRMData.Period(FNo, CCNo, Year2, PNo, Reporttype2);
-                dgv_rmdata1.DataSource = dt;
+                dgv_rmdata3.DataSource = dt;
 
                 int acMonth = 0;
 
@@ -531,15 +531,15 @@ namespace CostControl.RawMaterial
                     case "Actual": acMonth = 12; break;
                 }
 
-                dgv_rmdata1.Columns[0].ReadOnly = true;
-                dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata1.Columns[1].ReadOnly = true;
-                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata3.Columns[0].ReadOnly = true;
+                dgv_rmdata3.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                dgv_rmdata3.Columns[1].ReadOnly = true;
+                dgv_rmdata3.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
                 for (int i = 2; i <= acMonth + 1; i++)
                 {
-                    dgv_rmdata1.Columns[i].ReadOnly = true;
-                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                    dgv_rmdata3.Columns[i].ReadOnly = true;
+                    dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
                 DT2 = dt;
                 FDT2 = GetRMData.DTto2DFloat(DT2);

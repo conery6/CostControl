@@ -17,7 +17,9 @@ namespace CostControl.Electric
         string Year2;
         string Reporttype1;
         string Reporttype2;
-
+        float[,] f1;
+        float[,] f2;
+        List<string> Title = new List<string>();
 
         public Frm_ETable()
         {
@@ -45,11 +47,11 @@ namespace CostControl.Electric
         {
             CCNo = GetElectricData.CCNo(comB_CC.Text);
             clb_CCItem.Items.Clear();
-            string sql = "select distinct Item,year from EBudget where CCNo ='" + CCNo + "'";
+            string sql = "select distinct TypeName,year from EBudget where CCNo ='" + CCNo + "'";
             DataTable temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
-                clb_CCItem.Items.Add(temp.Rows[i]["Item"].ToString());
+                clb_CCItem.Items.Add(temp.Rows[i]["TypeName"].ToString());
             }
 
             comB_Year1.Items.Clear();
@@ -83,7 +85,7 @@ namespace CostControl.Electric
 
         private void comB_Year1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Year2 = comB_Year1.Text;
+            Year1 = comB_Year1.Text;
         }
 
         private void comB_Year2_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,6 +101,134 @@ namespace CostControl.Electric
         private void comB_RpType2_SelectedIndexChanged(object sender, EventArgs e)
         {
             Reporttype2 = comB_RpType2.Text;
+        }
+
+        private void btn_dataok1_Click(object sender, EventArgs e)
+        {
+            if (FNo == "" || CCNo == "" || Year1 == "" || Reporttype1 == "")
+            {
+                MessageBox.Show("数据选择不完整！");
+            }
+            else
+            {
+
+                dgv_edata1.Rows.Clear();
+                for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
+                {
+                    string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year1
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Reporttype1 + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
+                    DataTable dt = ODbcmd.SelectToDataTable(str);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgv_edata1.Rows.Add();
+                        for (int j = 0; j < dt.Columns.Count; j++)
+                        {
+                            dgv_edata1[j, dgv_edata1.Rows.Count - 1].Value = dt.Rows[0][j].ToString();
+                        }
+                    }
+                }
+
+                Title.Clear();
+
+                for (int i = 0; i < dgv_edata1.Rows.Count; i++)
+                {
+                    Title.Add(dgv_edata1[1, i].Value.ToString());
+                    f1 = new float[dgv_edata1.Rows.Count, 12];
+                    for (int j = 2; j < dgv_edata1.Columns.Count; j++)
+                    {
+                        f1[i, j - 2] = Convert.ToSingle(dgv_edata1[j, i].Value);
+                    }
+                }
+            }
+        }
+
+        private void btn_dataok2_Click(object sender, EventArgs e)
+        {
+            if (FNo == "" || CCNo == "" || Year2 == "" || Reporttype2 == "")
+            {
+                MessageBox.Show("数据选择不完整！");
+            }
+            else
+            {
+
+                dgv_edata2.Rows.Clear();
+                for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
+                {
+                    string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year2
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Reporttype2 + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
+                    DataTable dt = ODbcmd.SelectToDataTable(str);
+                    if (dt.Rows.Count != 0)
+                    {
+                        dgv_edata2.Rows.Add();
+                        for (int j = 0; j < dt.Columns.Count; j++)
+                        {
+                            dgv_edata2[j, dgv_edata2.Rows.Count - 1].Value = dt.Rows[0][j].ToString();
+                        }
+                    }
+                }
+
+                Title.Clear();
+                for (int i = 0; i < dgv_edata2.Rows.Count; i++)
+                {
+                    Title.Add(dgv_edata2[1, i].Value.ToString());
+                    f2 = new float[dgv_edata2.Rows.Count, 12];
+                    for (int j = 2; j < dgv_edata2.Columns.Count; j++)
+                    {
+                        f2[i, j - 2] = Convert.ToSingle(dgv_edata2[j, i].Value);
+                    }
+                }
+            }
+        }
+
+        private void btn_Chart1_Click(object sender, EventArgs e)
+        {
+            if (f1 != null)
+            {
+
+                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f1);
+                m_Frm_EChart.Show();
+            }
+        }
+
+        private void btn_Chart2_Click(object sender, EventArgs e)
+        {
+            if (f2 != null)
+            {
+
+                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f2);
+                m_Frm_EChart.Show();
+            }
+        }
+
+        private void btn_compare_Click(object sender, EventArgs e)
+        {
+            if (f1 != null && f2 != null && Title.Count != 0)
+            {
+                float[,] f3 = new float[dgv_edata2.Rows.Count, 12];
+                for (int i = 0; i < Title.Count; i++)
+                {
+                    for (int j = 0; j < 12; j++)
+                    {
+                        f3[i, j] = (f2[i, j] - f1[i, j]) / f2[i, j];
+                    }
+                }
+
+
+                for (int i = 0; i < Title.Count; i++)
+                {
+                    dgv_edata3.Rows.Add();
+                    dgv_edata3[1, i].Value = Title[i];
+                    for (int j = 2; j < dgv_edata2.Columns.Count; j++)
+                    {
+                        dgv_edata3[j, i].Value = f3[i, j - 2];
+                    }
+                }
+
+                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f3);
+                m_Frm_EChart.Show();
+            }
+
+
         }
 
 

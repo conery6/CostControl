@@ -25,16 +25,16 @@ namespace CostControl.Electric
 
         public static DataTable Budget(String FNo, String Year, String CCNo)
         {
-            string sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EBudget  where year=" + Year
-            + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Itemnum asc";
+            string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EBudget  where year=" + Year
+            + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
 
         public static DataTable Actual(String FNo, String Year, String CCNo)
         {
-            string sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
-            + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Itemnum asc";
+            string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
+            + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
@@ -44,15 +44,15 @@ namespace CostControl.Electric
             if (Period != "Actual")
             {
 
-                string sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
-                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' order by Itemnum asc";
+                string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' order by Type asc";
                 DataTable a = ODbcmd.SelectToDataTable(sql);
                 return a;
             }
             else
             {
-                string sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
-                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Itemnum asc";
+                string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
+                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Type asc";
                 DataTable a = ODbcmd.SelectToDataTable(sql);
                 return a;
             }
@@ -65,23 +65,23 @@ namespace CostControl.Electric
             switch (month)
             {
                 case 1 :case 2:case 3:
-                    sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
-                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='T1' order by Itemnum asc";
+                    sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='T1' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 4:case 5:case 6:
-                    sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
-                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='RF1' order by Itemnum asc";
+                    sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='RF1' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 7:case 8:case 9:
-                    sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
-                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='RF2' order by Itemnum asc";
+                    sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='RF2' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
                 case 10:case 11:case 12:
-                    sql = "select Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
-                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='E3' order by Itemnum asc";
+                    sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                        + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' and Period='E3' order by Type asc";
                     b = ODbcmd.SelectToDataTable(sql);
                     break;
             }
@@ -91,8 +91,8 @@ namespace CostControl.Electric
                 return b;
             }
 
-            sql = "select  Itemnum, Item,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
-            + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' order by Itemnum asc";
+            sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
+            + " and FNo='" + FNo + "'  and CCNo='" + CCNo + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
 
             DataTable r = a.Clone();

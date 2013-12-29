@@ -203,6 +203,7 @@ namespace CostControl.RawMaterial
 
             dgv_rmdata.ReadOnly = false;
             int[] autoItemnum;
+            dgv_rmdata.DefaultCellStyle.BackColor = Color.White;
 
             autoItemnum = new int[] { 0, 3 };
             for (int i = 0; i < autoItemnum.Length; i++)
@@ -328,25 +329,25 @@ namespace CostControl.RawMaterial
 
                 dgv_rmdata.ReadOnly = false;
                 comB_Year.DropDownStyle = ComboBoxStyle.DropDown;
-                int[] autoItemnum;
+                //int[] autoItemnum;
 
-                autoItemnum = new int[] { 0, 3 };
-                for (int i = 0; i < autoItemnum.Length; i++)
-                {
-                    dgv_rmdata.Rows[autoItemnum[i]].DefaultCellStyle.BackColor = Color.LightGray;
-                    dgv_rmdata.Rows[autoItemnum[i]].ReadOnly = true;
-                }
+                //autoItemnum = new int[] { 0, 3 };
+                //for (int i = 0; i < autoItemnum.Length; i++)
+                //{
+                //    dgv_rmdata.Rows[autoItemnum[i]].DefaultCellStyle.BackColor = Color.LightGray;
+                //    dgv_rmdata.Rows[autoItemnum[i]].ReadOnly = true;
+                //}
 
-                dgv_rmdata.Columns[0].ReadOnly = true;
-                dgv_rmdata.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata.Columns[1].ReadOnly = true;
-                dgv_rmdata.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
+                //dgv_rmdata.Columns[0].ReadOnly = true;
+                //dgv_rmdata.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+                //dgv_rmdata.Columns[1].ReadOnly = true;
+                //dgv_rmdata.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
-                for (int i = 2; i <= acMonth + 1; i++)
-                {
-                    dgv_rmdata.Columns[i].ReadOnly = true;
-                    dgv_rmdata.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
-                }
+                //for (int i =2; i <= acMonth+1; i++)
+                //{
+                //    dgv_rmdata.Columns[i].ReadOnly = true;
+                //    dgv_rmdata.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                //}
             }
         }
 

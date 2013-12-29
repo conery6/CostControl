@@ -35,11 +35,7 @@
             this.comB_Year = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.btn_Search = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_UpdateOk = new System.Windows.Forms.Button();
             this.dgv_Edata = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +51,13 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_addOK = new System.Windows.Forms.Button();
-            this.Excelout = new System.Windows.Forms.Button();
             this.Exceladd = new System.Windows.Forms.Button();
+            this.Excelout = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btn_SearchPeriod = new System.Windows.Forms.Button();
+            this.btn_Change = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Edata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,9 +65,9 @@
             // 
             this.comB_CC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_CC.FormattingEnabled = true;
-            this.comB_CC.Location = new System.Drawing.Point(235, 39);
+            this.comB_CC.Location = new System.Drawing.Point(235, 40);
             this.comB_CC.Name = "comB_CC";
-            this.comB_CC.Size = new System.Drawing.Size(171, 20);
+            this.comB_CC.Size = new System.Drawing.Size(327, 20);
             this.comB_CC.TabIndex = 8;
             this.comB_CC.SelectedIndexChanged += new System.EventHandler(this.comB_CC_SelectedIndexChanged);
             // 
@@ -87,10 +85,11 @@
             this.comB_Facility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Facility.FormattingEnabled = true;
             this.comB_Facility.Items.AddRange(new object[] {
-            "CG_Hynix WX"});
+            "CG_Hynix WX",
+            "CG_CHJ"});
             this.comB_Facility.Location = new System.Drawing.Point(79, 40);
             this.comB_Facility.Name = "comB_Facility";
-            this.comB_Facility.Size = new System.Drawing.Size(76, 20);
+            this.comB_Facility.Size = new System.Drawing.Size(91, 20);
             this.comB_Facility.TabIndex = 6;
             this.comB_Facility.SelectedIndexChanged += new System.EventHandler(this.comB_Facility_SelectedIndexChanged);
             // 
@@ -107,7 +106,7 @@
             // 
             this.comB_Year.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Year.FormattingEnabled = true;
-            this.comB_Year.Location = new System.Drawing.Point(448, 39);
+            this.comB_Year.Location = new System.Drawing.Point(619, 40);
             this.comB_Year.Name = "comB_Year";
             this.comB_Year.Size = new System.Drawing.Size(82, 20);
             this.comB_Year.TabIndex = 14;
@@ -117,7 +116,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 42);
+            this.label4.Location = new System.Drawing.Point(584, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 13;
@@ -125,7 +124,7 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(729, 40);
+            this.btn_delete.Location = new System.Drawing.Point(558, 84);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 19;
@@ -133,55 +132,15 @@
             this.btn_delete.UseVisualStyleBackColor = true;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(648, 40);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 18;
-            this.btn_update.Text = "修改数据";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Location = new System.Drawing.Point(536, 37);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 23);
-            this.btn_Search.TabIndex = 17;
-            this.btn_Search.Text = "查询";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(810, 40);
+            this.btn_add.Location = new System.Drawing.Point(640, 84);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 35;
-            this.btn_add.Text = "增加新预算";
+            this.btn_add.Text = "建空表";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(822, 573);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancel.TabIndex = 37;
-            this.btn_Cancel.Text = "取消";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Visible = false;
-            // 
-            // btn_UpdateOk
-            // 
-            this.btn_UpdateOk.Location = new System.Drawing.Point(719, 573);
-            this.btn_UpdateOk.Name = "btn_UpdateOk";
-            this.btn_UpdateOk.Size = new System.Drawing.Size(75, 23);
-            this.btn_UpdateOk.TabIndex = 36;
-            this.btn_UpdateOk.Text = "保存";
-            this.btn_UpdateOk.UseVisualStyleBackColor = true;
-            this.btn_UpdateOk.Visible = false;
             // 
             // dgv_Edata
             // 
@@ -210,10 +169,11 @@
             this.dgv_Edata.Size = new System.Drawing.Size(851, 387);
             this.dgv_Edata.TabIndex = 38;
             this.dgv_Edata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Edata_CellEndEdit);
+            this.dgv_Edata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_Edata_DataError);
             // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "Item";
+            this.Column1.DataPropertyName = "TypeName";
             this.Column1.HeaderText = "科目";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -221,11 +181,10 @@
             // 
             // Itemnum
             // 
-            this.Itemnum.DataPropertyName = "Itemnum";
+            this.Itemnum.DataPropertyName = "Type";
             this.Itemnum.HeaderText = "Itemnum";
             this.Itemnum.Name = "Itemnum";
             this.Itemnum.ReadOnly = true;
-            this.Itemnum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Itemnum.Visible = false;
             // 
             // Column2
@@ -324,56 +283,73 @@
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btn_addOK
-            // 
-            this.btn_addOK.Location = new System.Drawing.Point(617, 573);
-            this.btn_addOK.Name = "btn_addOK";
-            this.btn_addOK.Size = new System.Drawing.Size(75, 23);
-            this.btn_addOK.TabIndex = 39;
-            this.btn_addOK.Text = "保存";
-            this.btn_addOK.UseVisualStyleBackColor = true;
-            this.btn_addOK.Visible = false;
-            this.btn_addOK.Click += new System.EventHandler(this.btn_addOK_Click);
-            // 
-            // Excelout
-            // 
-            this.Excelout.Location = new System.Drawing.Point(810, 90);
-            this.Excelout.Name = "Excelout";
-            this.Excelout.Size = new System.Drawing.Size(75, 23);
-            this.Excelout.TabIndex = 43;
-            this.Excelout.Text = "Excel导出";
-            this.Excelout.UseVisualStyleBackColor = true;
-            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
-            // 
             // Exceladd
             // 
-            this.Exceladd.Location = new System.Drawing.Point(729, 90);
+            this.Exceladd.Location = new System.Drawing.Point(721, 81);
             this.Exceladd.Name = "Exceladd";
-            this.Exceladd.Size = new System.Drawing.Size(75, 23);
-            this.Exceladd.TabIndex = 42;
+            this.Exceladd.Size = new System.Drawing.Size(83, 29);
+            this.Exceladd.TabIndex = 40;
             this.Exceladd.Text = "Excel导入";
             this.Exceladd.UseVisualStyleBackColor = true;
             this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
             // 
+            // Excelout
+            // 
+            this.Excelout.Location = new System.Drawing.Point(803, 81);
+            this.Excelout.Name = "Excelout";
+            this.Excelout.Size = new System.Drawing.Size(83, 29);
+            this.Excelout.TabIndex = 41;
+            this.Excelout.Text = "Excel导出";
+            this.Excelout.UseVisualStyleBackColor = true;
+            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btn_SearchPeriod
+            // 
+            this.btn_SearchPeriod.Location = new System.Drawing.Point(315, 84);
+            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
+            this.btn_SearchPeriod.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchPeriod.TabIndex = 42;
+            this.btn_SearchPeriod.Text = "查询";
+            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
+            // 
+            // btn_Change
+            // 
+            this.btn_Change.Location = new System.Drawing.Point(396, 84);
+            this.btn_Change.Name = "btn_Change";
+            this.btn_Change.Size = new System.Drawing.Size(75, 23);
+            this.btn_Change.TabIndex = 45;
+            this.btn_Change.Text = "编辑";
+            this.btn_Change.UseVisualStyleBackColor = true;
+            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(477, 84);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_Save.TabIndex = 46;
+            this.btn_Save.Text = "保存";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // Frm_EActual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 608);
+            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.btn_Change);
+            this.Controls.Add(this.btn_SearchPeriod);
             this.Controls.Add(this.Excelout);
             this.Controls.Add(this.Exceladd);
-            this.Controls.Add(this.btn_addOK);
             this.Controls.Add(this.dgv_Edata);
-            this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_UpdateOk);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.comB_Year);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comB_CC);
@@ -381,7 +357,8 @@
             this.Controls.Add(this.comB_Facility);
             this.Controls.Add(this.label2);
             this.Name = "Frm_EActual";
-            this.Text = "Frm_EActual";
+            this.Text = "Frm_EData";
+            this.Load += new System.EventHandler(this.Frm_EData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Edata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -397,12 +374,15 @@
         private System.Windows.Forms.ComboBox comB_Year;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_UpdateOk;
         private System.Windows.Forms.DataGridView dgv_Edata;
+        private System.Windows.Forms.Button Exceladd;
+        private System.Windows.Forms.Button Excelout;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btn_SearchPeriod;
+        private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -417,10 +397,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.Button btn_addOK;
-        private System.Windows.Forms.Button Excelout;
-        private System.Windows.Forms.Button Exceladd;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

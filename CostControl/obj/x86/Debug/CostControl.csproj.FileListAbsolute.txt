@@ -14,8 +14,6 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.BaseManage.EmployeeM
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.BaseManage.frm_adduser.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EActual.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_ETable.resources
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EActual1.resources
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EData1.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Frm_Login.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Frm_main.resources
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Maintain.Frm_MChart.resources
@@ -37,3 +35,5 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.RawMaterial.Frm_RMDa
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.exe
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.pdb
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EChart.resources

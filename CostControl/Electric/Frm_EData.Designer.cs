@@ -40,6 +40,14 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgv_Edata = new System.Windows.Forms.DataGridView();
+            this.Exceladd = new System.Windows.Forms.Button();
+            this.Excelout = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btn_SearchPeriod = new System.Windows.Forms.Button();
+            this.comB_Month = new System.Windows.Forms.ComboBox();
+            this.btn_Change = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,14 +62,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Exceladd = new System.Windows.Forms.Button();
-            this.Excelout = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btn_SearchPeriod = new System.Windows.Forms.Button();
-            this.comB_Month = new System.Windows.Forms.ComboBox();
-            this.btn_Change = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Edata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,9 +210,86 @@
             this.dgv_Edata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Edata_CellEndEdit);
             this.dgv_Edata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_Edata_DataError);
             // 
+            // Exceladd
+            // 
+            this.Exceladd.Location = new System.Drawing.Point(721, 81);
+            this.Exceladd.Name = "Exceladd";
+            this.Exceladd.Size = new System.Drawing.Size(83, 29);
+            this.Exceladd.TabIndex = 40;
+            this.Exceladd.Text = "Excel导入";
+            this.Exceladd.UseVisualStyleBackColor = true;
+            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
+            // 
+            // Excelout
+            // 
+            this.Excelout.Location = new System.Drawing.Point(803, 81);
+            this.Excelout.Name = "Excelout";
+            this.Excelout.Size = new System.Drawing.Size(83, 29);
+            this.Excelout.TabIndex = 41;
+            this.Excelout.Text = "Excel导出";
+            this.Excelout.UseVisualStyleBackColor = true;
+            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btn_SearchPeriod
+            // 
+            this.btn_SearchPeriod.Location = new System.Drawing.Point(328, 78);
+            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
+            this.btn_SearchPeriod.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchPeriod.TabIndex = 42;
+            this.btn_SearchPeriod.Text = "查询";
+            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
+            // 
+            // comB_Month
+            // 
+            this.comB_Month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Month.FormattingEnabled = true;
+            this.comB_Month.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comB_Month.Location = new System.Drawing.Point(431, 80);
+            this.comB_Month.Name = "comB_Month";
+            this.comB_Month.Size = new System.Drawing.Size(91, 20);
+            this.comB_Month.TabIndex = 43;
+            this.comB_Month.SelectedIndexChanged += new System.EventHandler(this.comB_Month_SelectedIndexChanged);
+            // 
+            // btn_Change
+            // 
+            this.btn_Change.Location = new System.Drawing.Point(599, 43);
+            this.btn_Change.Name = "btn_Change";
+            this.btn_Change.Size = new System.Drawing.Size(75, 23);
+            this.btn_Change.TabIndex = 45;
+            this.btn_Change.Text = "编辑";
+            this.btn_Change.UseVisualStyleBackColor = true;
+            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(680, 43);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_Save.TabIndex = 46;
+            this.btn_Save.Text = "保存";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
             // Column1
             // 
-            this.Column1.DataPropertyName = "Item";
+            this.Column1.DataPropertyName = "TypeName";
             this.Column1.HeaderText = "科目";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -220,7 +297,7 @@
             // 
             // Itemnum
             // 
-            this.Itemnum.DataPropertyName = "Itemnum";
+            this.Itemnum.DataPropertyName = "Type";
             this.Itemnum.HeaderText = "Itemnum";
             this.Itemnum.Name = "Itemnum";
             this.Itemnum.ReadOnly = true;
@@ -322,83 +399,6 @@
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Exceladd
-            // 
-            this.Exceladd.Location = new System.Drawing.Point(721, 81);
-            this.Exceladd.Name = "Exceladd";
-            this.Exceladd.Size = new System.Drawing.Size(83, 29);
-            this.Exceladd.TabIndex = 40;
-            this.Exceladd.Text = "Excel导入";
-            this.Exceladd.UseVisualStyleBackColor = true;
-            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
-            // 
-            // Excelout
-            // 
-            this.Excelout.Location = new System.Drawing.Point(803, 81);
-            this.Excelout.Name = "Excelout";
-            this.Excelout.Size = new System.Drawing.Size(83, 29);
-            this.Excelout.TabIndex = 41;
-            this.Excelout.Text = "Excel导出";
-            this.Excelout.UseVisualStyleBackColor = true;
-            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btn_SearchPeriod
-            // 
-            this.btn_SearchPeriod.Location = new System.Drawing.Point(328, 78);
-            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
-            this.btn_SearchPeriod.Size = new System.Drawing.Size(75, 23);
-            this.btn_SearchPeriod.TabIndex = 42;
-            this.btn_SearchPeriod.Text = "查询";
-            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
-            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
-            // 
-            // comB_Month
-            // 
-            this.comB_Month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Month.FormattingEnabled = true;
-            this.comB_Month.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.comB_Month.Location = new System.Drawing.Point(431, 80);
-            this.comB_Month.Name = "comB_Month";
-            this.comB_Month.Size = new System.Drawing.Size(91, 20);
-            this.comB_Month.TabIndex = 43;
-            this.comB_Month.SelectedIndexChanged += new System.EventHandler(this.comB_Month_SelectedIndexChanged);
-            // 
-            // btn_Change
-            // 
-            this.btn_Change.Location = new System.Drawing.Point(599, 43);
-            this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(75, 23);
-            this.btn_Change.TabIndex = 45;
-            this.btn_Change.Text = "编辑";
-            this.btn_Change.UseVisualStyleBackColor = true;
-            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(680, 43);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 23);
-            this.btn_Save.TabIndex = 46;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
             // Frm_EData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -445,6 +445,14 @@
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dgv_Edata;
+        private System.Windows.Forms.Button Exceladd;
+        private System.Windows.Forms.Button Excelout;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btn_SearchPeriod;
+        private System.Windows.Forms.ComboBox comB_Month;
+        private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -459,13 +467,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.Button Exceladd;
-        private System.Windows.Forms.Button Excelout;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button btn_SearchPeriod;
-        private System.Windows.Forms.ComboBox comB_Month;
-        private System.Windows.Forms.Button btn_Change;
-        private System.Windows.Forms.Button btn_Save;
     }
 }

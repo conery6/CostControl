@@ -223,13 +223,13 @@ namespace CostControl.RawMaterial
         {
             float[,] a = new float[6, 13];
 
-            for (int i = 0; i <= DT.Columns.Count; i++)
+            for (int i = 1; i <= DT.Columns.Count; i++)
             {
                 for (int j = 0; j <= DT.Rows.Count; j++)
                 {
                     try
                     {
-                        a[j, i] = Convert.ToSingle(DT.Rows[j][i]);
+                        a[j, i-1] = Convert.ToSingle(DT.Rows[j][i]);
                     }
                     catch { };
                 }

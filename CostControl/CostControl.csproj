@@ -115,6 +115,12 @@
     <Compile Include="BaseManage\Frm_adduser.Designer.cs">
       <DependentUpon>Frm_adduser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Electric\Frm_EChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Electric\Frm_EChart.Designer.cs">
+      <DependentUpon>Frm_EChart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Electric\Frm_ETable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,18 +134,6 @@
       <DependentUpon>Frm_EActual.cs</DependentUpon>
     </Compile>
     <Compile Include="Electric\GetElectricData.cs" />
-    <Compile Include="Electric\Frm_EActual1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Electric\Frm_EActual1.Designer.cs">
-      <DependentUpon>Frm_EActual1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Electric\Frm_EData1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Electric\Frm_EData1.Designer.cs">
-      <DependentUpon>Frm_EData1.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExcelControl.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Frm_main.cs">
@@ -272,14 +266,11 @@
     <EmbeddedResource Include="Electric\Frm_EActual.resx">
       <DependentUpon>Frm_EActual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Electric\Frm_EChart.resx">
+      <DependentUpon>Frm_EChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Electric\Frm_ETable.resx">
       <DependentUpon>Frm_ETable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Electric\Frm_EActual1.resx">
-      <DependentUpon>Frm_EActual1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Electric\Frm_EData1.resx">
-      <DependentUpon>Frm_EData1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
