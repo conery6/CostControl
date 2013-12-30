@@ -12,7 +12,7 @@ namespace CostControl.Analysis
         public static DataSet PeriodData(String CostCenterNo, String period, String Year)
         {
             string sql1 = "select  PName,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo  "
-            + "and  year=" + Year + "and  RMPeriod.Type='" + 1 + "'and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
+            + "and  year=" + Year + "and  RMPeriod.Type=" + 1 + "and  RMPeriod.Period='" + period + "' and CostCenter.CCNo='" + CostCenterNo + "'";
             DataTable d1 = ODbcmd.SelectToDataTable(sql1);
 
             string sql2 = "select  IName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,CostCenter where CostCenter.CCNo = MGPeriod.CCNo"

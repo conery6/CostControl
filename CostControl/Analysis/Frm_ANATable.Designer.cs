@@ -131,7 +131,6 @@
             this.dataGridViewTextBoxColumn58 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn59 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn60 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_ExcelOut = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_rmdata2 = new System.Windows.Forms.DataGridView();
@@ -202,7 +201,6 @@
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1012,16 +1010,6 @@
             this.dataGridViewTextBoxColumn60.Name = "dataGridViewTextBoxColumn60";
             this.dataGridViewTextBoxColumn60.ReadOnly = true;
             // 
-            // btn_ExcelOut
-            // 
-            this.btn_ExcelOut.Location = new System.Drawing.Point(780, 61);
-            this.btn_ExcelOut.Name = "btn_ExcelOut";
-            this.btn_ExcelOut.Size = new System.Drawing.Size(92, 26);
-            this.btn_ExcelOut.TabIndex = 109;
-            this.btn_ExcelOut.Text = "导出Excel数据";
-            this.btn_ExcelOut.UseVisualStyleBackColor = true;
-            this.btn_ExcelOut.Click += new System.EventHandler(this.btn_ExcelOut_Click);
-            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage1);
@@ -1592,23 +1580,13 @@
             this.percent.ReadOnly = true;
             this.percent.Width = 80;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(910, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 26);
-            this.button1.TabIndex = 111;
-            this.button1.Text = "导出选择Excel数据";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(897, 61);
+            this.button2.Location = new System.Drawing.Point(786, 61);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 26);
             this.button2.TabIndex = 112;
-            this.button2.Text = "最终Excel数据";
+            this.button2.Text = "导出Excel数据";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -1618,10 +1596,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 650);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_rmdata3);
             this.Controls.Add(this.tabControl2);
-            this.Controls.Add(this.btn_ExcelOut);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -1727,7 +1703,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
-        private System.Windows.Forms.Button btn_ExcelOut;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgv_rmdata2;
@@ -1843,7 +1818,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn sub;
         private System.Windows.Forms.DataGridViewTextBoxColumn percent;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
 }
