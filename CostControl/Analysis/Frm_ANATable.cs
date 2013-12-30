@@ -393,6 +393,8 @@ namespace CostControl.Analysis
             {
                 DataTable dt = new DataTable();
                 dt.Columns.Add("name");
+                dt.Columns.Add("Year1");
+                dt.Columns.Add("Year2");
                 dt.Columns.Add("sub");
                 dt.Columns.Add("percent");
 
@@ -401,14 +403,16 @@ namespace CostControl.Analysis
                 {
                     DataRow dr = dt.NewRow();
                     dr[0] = "原料管理";
-                    dr[1] = float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString());
-                    if (float.Parse(dr[1].ToString()) == 0f)
+                    dr[1] = comB_Year1.Text + "-" + comB_report1.Text;
+                    dr[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr[3] = float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr[3].ToString()) == 0f)
                     {
-                        dr[2] = 0;
+                        dr[4] = 0;
                     }
                     else
                     {
-                        dr[2] = ((float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
+                        dr[4] = ((float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr);
                 }
@@ -418,14 +422,16 @@ namespace CostControl.Analysis
                 {
                     DataRow dr1 = dt.NewRow();
                     dr1[0] = "管理控制";
-                    dr1[1] = float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString());
-                    if (float.Parse(dr1[1].ToString()) == 0f)
+                    dr1[1] = comB_Year1.Text + "-" + comB_report1.Text;
+                    dr1[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr1[3] = float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr1[3].ToString()) == 0f)
                     {
-                        dr1[2] = 0;
+                        dr1[4] = 0;
                     }
                     else
                     {
-                        dr1[2] = ((float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
+                        dr1[4] = ((float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr1);
                 }
@@ -435,14 +441,16 @@ namespace CostControl.Analysis
                 {
                     DataRow dr2 = dt.NewRow();
                     dr2[0] = "电费控制";
-                    dr2[1] = float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString());
-                    if (float.Parse(dr2[1].ToString()) == 0f)
+                    dr2[1] = comB_Year1.Text + "-" + comB_report1.Text;
+                    dr2[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr2[3] = float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr2[3].ToString()) == 0f)
                     {
-                        dr2[2] = 0;
+                        dr2[4] = 0;
                     }
                     else
                     {
-                        dr2[2] = ((float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
+                        dr2[4] = ((float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr2);
                 }
@@ -452,14 +460,16 @@ namespace CostControl.Analysis
                 {
                     DataRow dr3 = dt.NewRow();
                     dr3[0] = "维修管理";
-                    dr3[1] = float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString());
-                    if (float.Parse(dr3[1].ToString()) == 0f)
+                    dr3[1] = comB_Year1.Text + "-" + comB_report1.Text;
+                    dr3[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr3[3] = float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString());
+                    if (float.Parse(dr3[3].ToString()) == 0f)
                     {
-                        dr3[2] = 0;
+                        dr3[4] = 0;
                     }
                     else
                     {
-                        dr3[2] = ((float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
+                        dr3[4] = ((float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
                     dt.Rows.Add(dr3);
                 }
@@ -698,6 +708,63 @@ namespace CostControl.Analysis
                 excelHelp.NewSheet();
                 string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
                 object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                excelHelp.AppendHeader(header4);
+                excelHelp.AppendContent(cells4);
+                excelHelp.DataTableToExcel(dt4, 3, 0, true);
+
+                excelHelp.SaveToExcel();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (getPK2())
+            {
+                //原料管理
+                string sql1 = "select PName,TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo" + " and  year=" + comB_Year2.Text + " and  RMPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by PName,Type";
+                DataTable dt1 = ODbcmd.SelectToDataTable(sql1);
+
+                //管理控制
+                string sql2 = "select IName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  MGPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by IName,Type"; ;
+                DataTable dt2 = ODbcmd.SelectToDataTable(sql2);
+
+                //电费控制
+                string sql3 = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  EPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by TypeName,Type"; ;
+                DataTable dt3 = ODbcmd.SelectToDataTable(sql3);
+
+                //维修管理
+                string sql4 = "select FSName,EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo" + " and  year=" + comB_Year2.Text + " and  MaintianPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by FSName,EqName,Type"; ;
+                DataTable dt4 = ODbcmd.SelectToDataTable(sql4);
+
+                //1
+                string[] header = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                excelHelp.DataTableToExcel(dt1, 3, 0, true);
+
+                //2
+                excelHelp.NewSheet();
+                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                excelHelp.AppendHeader(header2);
+                excelHelp.AppendContent(cells2);
+                excelHelp.DataTableToExcel(dt2, 3, 0, true);
+
+                //3
+                excelHelp.NewSheet();
+                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                excelHelp.AppendHeader(header3);
+                excelHelp.AppendContent(cells3);
+                excelHelp.DataTableToExcel(dt3, 3, 0, true);
+
+                //4
+                excelHelp.NewSheet();
+                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                 excelHelp.AppendHeader(header4);
                 excelHelp.AppendContent(cells4);
                 excelHelp.DataTableToExcel(dt4, 3, 0, true);
