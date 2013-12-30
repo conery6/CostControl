@@ -72,14 +72,13 @@ namespace CostControl
             DataTable dt = new DataTable();
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                dt.Columns.Add(dgv.Columns[i].HeaderText.Trim());
+                dt.Columns.Add(dgv.Columns[i].DataPropertyName.Trim());
             }
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
                 DataRow dr = dt.NewRow();
                 for (int j = 0; j < dgv.Columns.Count; j++)
                 {
-
                     dr[j] = dgv[j, i].Value;
                 }
                 dt.Rows.Add(dr);
@@ -212,31 +211,10 @@ namespace CostControl
             foreach (DataRow dtRow in dt.Rows)
             {
                 IRow iRow = currentSheet.CreateRow(rowStart + rowIndex + 1);
-                bool isPSRow = false;
                 foreach (DataColumn dtColumn in dt.Columns)
                 {
                     ICell newCell = iRow.CreateCell(dtColumn.Ordinal);
-
-                    if (dtRow[dtColumn].ToString().Trim() == "PurchaseQuantity" || dtRow[dtColumn].ToString().Trim() == "SalesQuantity")
-                    {
-                        isPSRow = true;
-                    }
                     object obj = dtRow[dtColumn];
-                    if (obj.GetType() == typeof(string))
-                    {
-                        double doub;
-                        if (double.TryParse(obj.ToString(), out doub))
-                        {
-                            if (isPSRow)
-                            {
-                                obj = (int)doub;
-                            }
-                            else
-                            {
-                                obj = doub;
-                            }
-                        }
-                    }
                     SetCellValue(ref newCell, obj);
                 }
                 rowIndex++;
@@ -440,7 +418,7 @@ namespace CostControl
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = "xls";
-            dlg.Filter = "EXCEL文件(*.xls)|*.xls";
+            dlg.Filter = "Excel 97-2003 工作簿(*.xls)|*.xls|Excel 工作簿(*.xlsx)|*.xlsx";
             dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dlg.FileName = "Sheet1.xls";
             if (dlg.ShowDialog() == DialogResult.Cancel) return;

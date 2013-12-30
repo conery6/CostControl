@@ -160,12 +160,6 @@ namespace CostControl.Management
 
                 if (r2.Rows.Count > 0)
                 {
-
-                    for (int i = 0; i < r2.Rows.Count; i++)
-                    {
-                        dgv_mgdata2.Rows.Add();
-
-                    }
                     dgv_mgdata2.DataSource = r2;
                 }
                 else
@@ -238,7 +232,8 @@ namespace CostControl.Management
 
         private void btn_createchart_Click(object sender, EventArgs e)
         {
-            Frm_MGChart m_Frm_MGChart = new Frm_MGChart(sum1, sum2, Year1 + Reporttype1, Year2 + Reporttype2);
+            string[] chartInfo = {comB_Facility.Text,comB_CC.Text,Year1 + Reporttype1, Year2 + Reporttype2 };
+            Frm_MGChart m_Frm_MGChart = new Frm_MGChart(sum1, sum2, chartInfo);
             m_Frm_MGChart.Show();
         }
 
