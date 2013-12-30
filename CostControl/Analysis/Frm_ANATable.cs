@@ -391,6 +391,8 @@ namespace CostControl.Analysis
         {
             if (chkB_T1.Checked == true)
             {
+                //总表统计分析
+                
                 DataTable dt = new DataTable();
                 dt.Columns.Add("name");
                 dt.Columns.Add("Year1");
@@ -399,83 +401,182 @@ namespace CostControl.Analysis
                 dt.Columns.Add("percent");
 
                 //原料管理
+                DataRow dr = dt.NewRow();
+                dr[0] = "原料管理";
                 if (dgv_rmdata2.Rows.Count > 0 && dgv_rmdata1.Rows.Count > 0)
                 {
-                    DataRow dr = dt.NewRow();
-                    dr[0] = "原料管理";
-                    dr[1] = comB_Year1.Text + "-" + comB_report1.Text;
-                    dr[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr[1] = float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString());
+                    dr[2] = float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString());
                     dr[3] = float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString());
                     if (float.Parse(dr[3].ToString()) == 0f)
                     {
-                        dr[4] = 0;
+                        dr[4] = "∞";
                     }
                     else
                     {
                         dr[4] = ((float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_rmdata1[1, dgv_rmdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_rmdata2[1, dgv_rmdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
-                    dt.Rows.Add(dr);
                 }
+                dt.Rows.Add(dr);
 
                 //管理控制
+                DataRow dr1 = dt.NewRow();
+                dr1[0] = "管理控制";
                 if (dgv_mgdata2.Rows.Count > 0 && dgv_mgdata1.Rows.Count > 0)
                 {
-                    DataRow dr1 = dt.NewRow();
-                    dr1[0] = "管理控制";
-                    dr1[1] = comB_Year1.Text + "-" + comB_report1.Text;
-                    dr1[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr1[1] = float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString());
+                    dr1[2] = float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString());
                     dr1[3] = float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString());
                     if (float.Parse(dr1[3].ToString()) == 0f)
                     {
-                        dr1[4] = 0;
+                        dr1[4] = "∞";
                     }
                     else
                     {
                         dr1[4] = ((float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mgdata1[1, dgv_mgdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mgdata2[1, dgv_mgdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
-                    dt.Rows.Add(dr1);
                 }
+                dt.Rows.Add(dr1);
 
                 //电费控制
+                DataRow dr2 = dt.NewRow();
+                dr2[0] = "电费控制";
                 if (dgv_edata2.Rows.Count > 0 && dgv_edata1.Rows.Count > 0)
                 {
-                    DataRow dr2 = dt.NewRow();
-                    dr2[0] = "电费控制";
-                    dr2[1] = comB_Year1.Text + "-" + comB_report1.Text;
-                    dr2[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr2[1] = float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString());
+                    dr2[2] = float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString());
                     dr2[3] = float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString());
                     if (float.Parse(dr2[3].ToString()) == 0f)
                     {
-                        dr2[4] = 0;
+                        dr2[4] = "∞";
                     }
                     else
                     {
                         dr2[4] = ((float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_edata1[1, dgv_edata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_edata2[1, dgv_edata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
-                    dt.Rows.Add(dr2);
                 }
+                dt.Rows.Add(dr2);
 
                 //维修管理
+                DataRow dr3 = dt.NewRow();
+                dr3[0] = "维修管理";
                 if (dgv_mtdata2.Rows.Count > 0 && dgv_mtdata1.Rows.Count > 0)
                 {
-                    DataRow dr3 = dt.NewRow();
-                    dr3[0] = "维修管理";
-                    dr3[1] = comB_Year1.Text + "-" + comB_report1.Text;
-                    dr3[2] = comB_Year2.Text + "-" + comB_report2.Text;
+                    dr3[1] = float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString());
+                    dr3[2] = float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString());
                     dr3[3] = float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString());
                     if (float.Parse(dr3[3].ToString()) == 0f)
                     {
-                        dr3[4] = 0;
+                        dr3[4] = "∞";
                     }
                     else
                     {
                         dr3[4] = ((float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString()) - float.Parse(dgv_mtdata1[1, dgv_mtdata1.Rows.Count - 1].Value.ToString())) / float.Parse(dgv_mtdata2[1, dgv_mtdata2.Rows.Count - 1].Value.ToString())).ToString("0.00%");
                     }
-                    dt.Rows.Add(dr3);
                 }
+                dt.Rows.Add(dr3);
 
                 //bind datasource
-                dgv_rmdata3.DataSource = dt;
+                dgv_totaldata3.DataSource = dt;
+
+                //dgv_rmdata4
+                DataTable dt4 = new DataTable();
+                dt4.Columns.Add("Year1");
+                dt4.Columns.Add("Year2");
+                dt4.Columns.Add("sub");
+                dt4.Columns.Add("percent");
+                for (int i = 0; i < dgv_rmdata1.Rows.Count && i < dgv_rmdata2.Rows.Count; i++)
+                {
+                    DataRow dr4 = dt4.NewRow();
+                    string data1 = dgv_rmdata1[14, i].Value == null ? "0" : dgv_rmdata1[14, i].Value.ToString();
+                    string data2 = dgv_rmdata2[14, i].Value == null ? "0" : dgv_rmdata2[14, i].Value.ToString();
+                    dr4[0] = float.Parse(data1);
+                    dr4[1] = float.Parse(data2);
+                    dr4[2] = float.Parse(data2) - float.Parse(data1);
+                    if (data2 == "0")
+                    {
+                        dr4[3] = "∞";
+                    }
+                    else
+                    {
+                        dr4[3] = (float.Parse(data2) - float.Parse(data1)) / float.Parse(data2);
+                    }
+                    dt4.Rows.Add(dr4);
+                }
+                //2
+                DataTable dt22 = new DataTable();
+                dt22.Columns.Add("Year1");
+                dt22.Columns.Add("Year2");
+                dt22.Columns.Add("sub");
+                dt22.Columns.Add("percent");
+                for (int i = 0; i < dgv_mgdata1.Rows.Count && i < dgv_mgdata2.Rows.Count; i++)
+                {
+                    DataRow dr4 = dt22.NewRow();
+                    string data1 = dgv_mgdata1[13, i].Value == null ? "0" : dgv_mgdata1[13, i].Value.ToString();
+                    string data2 = dgv_mgdata2[13, i].Value == null ? "0" : dgv_mgdata2[13, i].Value.ToString();
+                    dr4[0] = float.Parse(data1);
+                    dr4[1] = float.Parse(data2);
+                    dr4[2] = float.Parse(data2) - float.Parse(data1);
+                    if (data2 == "0")
+                    {
+                        dr4[3] = "∞";
+                    }
+                    else
+                    {
+                        dr4[3] = (float.Parse(data2) - float.Parse(data1)) / float.Parse(data2);
+                    }
+                    dt22.Rows.Add(dr4);
+                }
+                //3
+                DataTable dt33 = new DataTable();
+                dt33.Columns.Add("Year1");
+                dt33.Columns.Add("Year2");
+                dt33.Columns.Add("sub");
+                dt33.Columns.Add("percent");
+                for (int i = 0; i < dgv_edata1.Rows.Count && i<dgv_edata2.Rows.Count; i++)
+                {
+                    DataRow dr4 = dt33.NewRow();
+                    string data1 = dgv_edata1[13, i].Value == null ? "0" : dgv_edata1[13, i].Value.ToString();
+                    string data2 = dgv_edata2[13, i].Value == null ? "0" : dgv_edata2[13, i].Value.ToString();
+                    dr4[0] = float.Parse(data1);
+                    dr4[1] = float.Parse(data2);
+                    dr4[2] = float.Parse(data2) - float.Parse(data1);
+                    if (data2 == "0")
+                    {
+                        dr4[3] = "∞";
+                    }
+                    else
+                    {
+                        dr4[3] = (float.Parse(data2) - float.Parse(data1)) / float.Parse(data2);
+                    }
+                    dt33.Rows.Add(dr4);
+                }
+                //4
+                DataTable dt44 = new DataTable();
+                dt44.Columns.Add("Year1");
+                dt44.Columns.Add("Year2");
+                dt44.Columns.Add("sub");
+                dt44.Columns.Add("percent");
+                for (int i = 0; i < dgv_mtdata1.Rows.Count && i < dgv_mtdata2.Rows.Count; i++)
+                {
+                    DataRow dr4 = dt44.NewRow();
+                    string data1 = dgv_mtdata1[13, i].Value == null ? "0" : dgv_mtdata1[13, i].Value.ToString();
+                    string data2 = dgv_mtdata2[13, i].Value == null ? "0" : dgv_mtdata2[13, i].Value.ToString();
+                    dr4[0] = float.Parse(data1);
+                    dr4[1] = float.Parse(data2);
+                    dr4[2] = float.Parse(data2) - float.Parse(data1);
+                    if (data2 == "0")
+                    {
+                        dr4[3] = "∞";
+                    }
+                    else
+                    {
+                        dr4[3] = (float.Parse(data2) - float.Parse(data1)) / float.Parse(data2);
+                    }
+                    dt44.Rows.Add(dr4);
+                }
+                //bind datasource
+                dgv_rmdata3.DataSource = dt4;
             }
             else
             {
