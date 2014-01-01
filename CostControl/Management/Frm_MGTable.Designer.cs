@@ -74,6 +74,7 @@
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mgdata1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mgdata2)).BeginInit();
             this.SuspendLayout();
@@ -482,11 +483,22 @@
             this.Column26.Name = "Column26";
             this.Column26.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(606, 94);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 75;
+            this.button1.Text = "Excel导出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Frm_MGTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 615);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_mgdata2);
             this.Controls.Add(this.btn_createchart);
             this.Controls.Add(this.dgv_mgdata1);
@@ -565,5 +577,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.Button button1;
     }
 }

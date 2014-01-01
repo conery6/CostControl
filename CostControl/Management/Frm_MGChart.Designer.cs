@@ -45,7 +45,7 @@
             chartArea1.Area3DStyle.PointGapDepth = 150;
             chartArea1.Area3DStyle.WallWidth = 10;
             chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.Title = "年份";
+            chartArea1.AxisX.Title = "月份";
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             chartArea1.AxisY.Title = "总计";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);

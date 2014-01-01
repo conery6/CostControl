@@ -37,3 +37,4 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.exe
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.pdb
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EChart.resources
+D:\GitHub\CostControl\CostControl\bin\Debug\EPPlus.dll

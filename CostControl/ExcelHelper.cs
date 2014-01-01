@@ -8,6 +8,10 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 using NPOI.SS.Util;
+using OfficeOpenXml;
+using System.Drawing;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Drawing.Chart;
 namespace CostControl
 {
     class ExcelHelper
@@ -439,6 +443,143 @@ namespace CostControl
             InitStyle();
         }
 
+        public struct ChartInfo
+        {
+            public string chartTitle;
+            public string baseSeries;
+            public string compareSeries;
+            public string[] infoHeader;
+            public object[] baseInfo;
+            public object[] compareInfo;
+
+        }
+
+        public void ExportExcelWithChart(DataTable baseTable, DataTable compareTable, ChartInfo chartInfo)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xlsx";
+            dlg.Filter = "Excel 工作簿(*.xlsx)|*.xlsx";
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            dlg.FileName = "Sheet1.xlsx";
+            if (dlg.ShowDialog() == DialogResult.Cancel) return;
+            //返回文件路径   
+            string fileNameString = dlg.FileName;
+            //验证strFileName是否为空或值无效   
+            if (fileNameString.Trim() == "") return;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                int maxColNum = baseTable.Columns.Count;
+                int baseSumNum;
+                int compareSumNum;
+                string charTitle = chartInfo.chartTitle;
+                string baseSeries = chartInfo.baseSeries;
+                string compareSeries = chartInfo.compareSeries;
+                string[] infoHeader = chartInfo.infoHeader;
+                object[] baseInfo = chartInfo.baseInfo;
+                object[] compareInfo = chartInfo.compareInfo;
+                ExcelWorkbook workBook = package.Workbook;
+                ExcelWorksheet workSheet = workBook.Worksheets.Add("Sheet1");
+                for (int i = 0; i < infoHeader.Length; i++)
+                {
+                    workSheet.Cells[1, i + 1].Value = infoHeader[i];
+                    workSheet.Cells[1, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    workSheet.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                    workSheet.Cells[2, i + 1].Value = baseInfo[i];
+                }
+                for (int i = 0; i < baseTable.Columns.Count; i++)
+                {
+                    workSheet.Cells[4, i + 1].Value = baseTable.Columns[i].ColumnName;
+                    workSheet.Cells[4, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    workSheet.Cells[4, i + 1].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                }
+                int currentRow = 5;
+                foreach (DataRow dtRow in baseTable.Rows)
+                {
+
+                    foreach (DataColumn dtColumn in baseTable.Columns)
+                    {
+                        workSheet.Cells[currentRow, dtColumn.Ordinal + 1].Value = dtRow[dtColumn];
+                        workSheet.Cells[currentRow, dtColumn.Ordinal + 1].Style.Numberformat.Format = "0.00";
+                    }
+                    currentRow++;
+                }
+                workSheet.Cells[currentRow, 1].Value = "总计";
+                baseSumNum = currentRow;
+                for (int i = 2; i <= baseTable.Columns.Count; i++)
+                {
+                    workSheet.Cells[currentRow, i].Formula = string.Format("Sum({0})", ExcelCellBase.GetAddress(5, i, currentRow - 1, i));
+                    workSheet.Cells[currentRow, i].Style.Numberformat.Format = "0.00";
+                }
+
+                currentRow = currentRow + 2;
+                for (int i = 0; i < infoHeader.Length; i++)
+                {
+                    workSheet.Cells[currentRow, i + 1].Value = infoHeader[i];
+                    workSheet.Cells[currentRow, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    workSheet.Cells[currentRow, i + 1].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                    workSheet.Cells[currentRow + 1, i + 1].Value = compareInfo[i];
+                }
+                currentRow = currentRow + 3;
+                for (int i = 0; i < compareTable.Columns.Count; i++)
+                {
+                    workSheet.Cells[currentRow, i + 1].Value = compareTable.Columns[i].ColumnName;
+                    workSheet.Cells[currentRow, i + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    workSheet.Cells[currentRow, i + 1].Style.Fill.BackgroundColor.SetColor(Color.Gray);
+                }
+                currentRow = currentRow + 1;
+                foreach (DataRow dtRow in compareTable.Rows)
+                {
+
+                    foreach (DataColumn dtColumn in compareTable.Columns)
+                    {
+                        workSheet.Cells[currentRow, dtColumn.Ordinal + 1].Value = dtRow[dtColumn];
+                        workSheet.Cells[currentRow, dtColumn.Ordinal + 1].Style.Numberformat.Format = "0.00";
+                    }
+                    currentRow++;
+                }
+                workSheet.Cells[currentRow, 1].Value = "总计";
+                compareSumNum = currentRow;
+                for (int i = 2; i <= compareTable.Columns.Count; i++)
+                {
+                    workSheet.Cells[currentRow, i].Formula = string.Format("Sum({0})", ExcelCellBase.GetAddress(currentRow - compareTable.Rows.Count, i, currentRow - 1, i));
+                    workSheet.Cells[currentRow, i].Style.Numberformat.Format = "0.00";
+                }
+
+                var chart = workSheet.Drawings.AddChart("MGTable", eChartType.ColumnClustered3D);
+                ExcelChartSerie serie;
+                chart.XAxis.MinorUnit = 1;
+                chart.SetPosition(1, 0, maxColNum, 20);
+                chart.SetSize(640, 400);
+                chart.Legend.Position = eLegendPosition.TopRight;
+                chart.Legend.Add();
+                chart.XAxis.Title.Text = "月份";
+                chart.XAxis.Title.Font.Italic = true;
+                chart.XAxis.Title.Font.Size = 10;
+                chart.YAxis.Title.Text = "总计";
+                chart.YAxis.Title.Font.Italic = true;
+                chart.YAxis.Title.Font.Size = 10;
+                chart.Title.Text = charTitle;
+                chart.Title.Font.Size = 12;
+                chart.Title.Font.Bold = true;
+                serie = chart.Series.Add(workSheet.Cells[baseSumNum, 2, baseSumNum, maxColNum], workSheet.Cells[4, 2, 4, maxColNum]);
+                serie.Header = baseSeries;
+                serie = chart.Series.Add(workSheet.Cells[compareSumNum, 2, compareSumNum, maxColNum], workSheet.Cells[4, 2, 4, maxColNum]);
+                serie.Header = compareSeries;
+
+                try
+                {
+                    FileInfo file = new FileInfo(fileNameString);
+                    package.SaveAs(file);
+                    MessageBox.Show(fileName + "\n导出成功", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
         /// <summary>
         /// 保存Excel文件
         /// </summary>

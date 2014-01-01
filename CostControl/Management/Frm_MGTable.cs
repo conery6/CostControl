@@ -242,5 +242,23 @@ namespace CostControl.Management
             Frm_MGBarChart m_Frm_MGBarChar = new Frm_MGBarChart(sumbar, sumbarname);
             m_Frm_MGBarChar.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExcelHelper excel = new ExcelHelper();
+            ExcelHelper.ChartInfo chartInfo = new ExcelHelper.ChartInfo();
+            string[] infoHeader = { "工厂", "成本中心", "年份", "报表" };
+            object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+            object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+            chartInfo.infoHeader = infoHeader;
+            chartInfo.baseInfo = content1;
+            chartInfo.compareInfo = content2;
+            chartInfo.chartTitle = comB_Facility.Text + "  " + comB_CC.Text + "总计比较";
+            chartInfo.baseSeries = comB_Year1.Text + " " + comB_report1.Text;
+            chartInfo.compareSeries = comB_Year2.Text + " " + comB_report2.Text;
+            DataTable dt1 = (DataTable)dgv_mgdata1.DataSource;
+            DataTable dt2 = (DataTable)dgv_mgdata2.DataSource;
+            excel.ExportExcelWithChart(dt1, dt2, chartInfo);
+        }
     }
 }
