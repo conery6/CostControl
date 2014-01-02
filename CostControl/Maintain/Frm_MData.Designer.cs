@@ -54,17 +54,6 @@
             this.comB_RpType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.btn_exceladd = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_newbudget = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_UpdateOk = new System.Windows.Forms.Button();
-            this.btn_withhold = new System.Windows.Forms.Button();
-            this.btn_withholdOK = new System.Windows.Forms.Button();
-            this.btn_AddOk = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.btn_whithholdlook = new System.Windows.Forms.Button();
             this.Excelout = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -285,125 +274,9 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // btn_exceladd
-            // 
-            this.btn_exceladd.Location = new System.Drawing.Point(573, 91);
-            this.btn_exceladd.Name = "btn_exceladd";
-            this.btn_exceladd.Size = new System.Drawing.Size(75, 23);
-            this.btn_exceladd.TabIndex = 13;
-            this.btn_exceladd.Text = "Excel导入";
-            this.btn_exceladd.UseVisualStyleBackColor = true;
-            this.btn_exceladd.Click += new System.EventHandler(this.btn_exceladd_Click);
-            // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(573, 37);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 14;
-            this.btn_update.Text = "修改数据";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(664, 37);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 15;
-            this.btn_delete.Text = "删除数据";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_newbudget
-            // 
-            this.btn_newbudget.Location = new System.Drawing.Point(834, 91);
-            this.btn_newbudget.Name = "btn_newbudget";
-            this.btn_newbudget.Size = new System.Drawing.Size(75, 23);
-            this.btn_newbudget.TabIndex = 16;
-            this.btn_newbudget.Text = "初始化新表";
-            this.btn_newbudget.UseVisualStyleBackColor = true;
-            this.btn_newbudget.Visible = false;
-            this.btn_newbudget.Click += new System.EventHandler(this.btn_Add_Click);
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(779, 539);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancel.TabIndex = 30;
-            this.btn_Cancel.Text = "取消";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Visible = false;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // btn_UpdateOk
-            // 
-            this.btn_UpdateOk.Location = new System.Drawing.Point(676, 539);
-            this.btn_UpdateOk.Name = "btn_UpdateOk";
-            this.btn_UpdateOk.Size = new System.Drawing.Size(75, 23);
-            this.btn_UpdateOk.TabIndex = 29;
-            this.btn_UpdateOk.Text = "保存";
-            this.btn_UpdateOk.UseVisualStyleBackColor = true;
-            this.btn_UpdateOk.Visible = false;
-            this.btn_UpdateOk.Click += new System.EventHandler(this.btn_UpdateOk_Click);
-            // 
-            // btn_withhold
-            // 
-            this.btn_withhold.Location = new System.Drawing.Point(753, 37);
-            this.btn_withhold.Name = "btn_withhold";
-            this.btn_withhold.Size = new System.Drawing.Size(75, 23);
-            this.btn_withhold.TabIndex = 31;
-            this.btn_withhold.Text = "设计预提表";
-            this.btn_withhold.UseVisualStyleBackColor = true;
-            this.btn_withhold.Click += new System.EventHandler(this.btn_withhold_Click);
-            // 
-            // btn_withholdOK
-            // 
-            this.btn_withholdOK.Location = new System.Drawing.Point(505, 539);
-            this.btn_withholdOK.Name = "btn_withholdOK";
-            this.btn_withholdOK.Size = new System.Drawing.Size(75, 23);
-            this.btn_withholdOK.TabIndex = 32;
-            this.btn_withholdOK.Text = "保存";
-            this.btn_withholdOK.UseVisualStyleBackColor = true;
-            this.btn_withholdOK.Visible = false;
-            this.btn_withholdOK.Click += new System.EventHandler(this.btn_withholdOK_Click);
-            // 
-            // btn_AddOk
-            // 
-            this.btn_AddOk.Location = new System.Drawing.Point(592, 539);
-            this.btn_AddOk.Name = "btn_AddOk";
-            this.btn_AddOk.Size = new System.Drawing.Size(75, 23);
-            this.btn_AddOk.TabIndex = 33;
-            this.btn_AddOk.Text = "保存";
-            this.btn_AddOk.UseVisualStyleBackColor = true;
-            this.btn_AddOk.Visible = false;
-            this.btn_AddOk.Click += new System.EventHandler(this.btn_AddOk_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(842, 37);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_add.TabIndex = 34;
-            this.btn_add.Text = "增加新预算";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click_1);
-            // 
-            // btn_whithholdlook
-            // 
-            this.btn_whithholdlook.Location = new System.Drawing.Point(753, 91);
-            this.btn_whithholdlook.Name = "btn_whithholdlook";
-            this.btn_whithholdlook.Size = new System.Drawing.Size(75, 23);
-            this.btn_whithholdlook.TabIndex = 35;
-            this.btn_whithholdlook.Text = "查看预提表";
-            this.btn_whithholdlook.UseVisualStyleBackColor = true;
-            this.btn_whithholdlook.Visible = false;
-            this.btn_whithholdlook.Click += new System.EventHandler(this.btn_whithholdlook_Click);
-            // 
             // Excelout
             // 
-            this.Excelout.Location = new System.Drawing.Point(664, 91);
+            this.Excelout.Location = new System.Drawing.Point(592, 91);
             this.Excelout.Name = "Excelout";
             this.Excelout.Size = new System.Drawing.Size(75, 23);
             this.Excelout.TabIndex = 36;
@@ -421,17 +294,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 571);
             this.Controls.Add(this.Excelout);
-            this.Controls.Add(this.btn_whithholdlook);
-            this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.btn_AddOk);
-            this.Controls.Add(this.btn_withholdOK);
-            this.Controls.Add(this.btn_withhold);
-            this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_UpdateOk);
-            this.Controls.Add(this.btn_newbudget);
-            this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.btn_exceladd);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comB_RpType);
@@ -467,14 +329,6 @@
         private System.Windows.Forms.ComboBox comB_RpType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.Button btn_exceladd;
-        private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_newbudget;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_UpdateOk;
-        private System.Windows.Forms.Button btn_withhold;
-        private System.Windows.Forms.Button btn_withholdOK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -489,9 +343,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.Button btn_AddOk;
-        private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.Button btn_whithholdlook;
         private System.Windows.Forms.Button Excelout;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

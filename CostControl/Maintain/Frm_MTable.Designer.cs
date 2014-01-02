@@ -57,7 +57,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.clb_FSystem = new System.Windows.Forms.CheckedListBox();
-            this.btn_barchart = new System.Windows.Forms.Button();
             this.btn_addalll = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -315,16 +314,6 @@
             this.clb_FSystem.TabIndex = 66;
             this.clb_FSystem.SelectedIndexChanged += new System.EventHandler(this.clb_FSystem_SelectedIndexChanged);
             // 
-            // btn_barchart
-            // 
-            this.btn_barchart.Location = new System.Drawing.Point(950, 30);
-            this.btn_barchart.Name = "btn_barchart";
-            this.btn_barchart.Size = new System.Drawing.Size(80, 23);
-            this.btn_barchart.TabIndex = 67;
-            this.btn_barchart.Text = "饼状分布图";
-            this.btn_barchart.UseVisualStyleBackColor = true;
-            this.btn_barchart.Click += new System.EventHandler(this.btn_barchart_Click);
-            // 
             // btn_addalll
             // 
             this.btn_addalll.Location = new System.Drawing.Point(308, 53);
@@ -500,7 +489,7 @@
             // 
             // btn_Chart
             // 
-            this.btn_Chart.Location = new System.Drawing.Point(950, 71);
+            this.btn_Chart.Location = new System.Drawing.Point(967, 29);
             this.btn_Chart.Name = "btn_Chart";
             this.btn_Chart.Size = new System.Drawing.Size(80, 23);
             this.btn_Chart.TabIndex = 86;
@@ -510,7 +499,7 @@
             // 
             // btn_spaChart
             // 
-            this.btn_spaChart.Location = new System.Drawing.Point(1036, 71);
+            this.btn_spaChart.Location = new System.Drawing.Point(967, 70);
             this.btn_spaChart.Name = "btn_spaChart";
             this.btn_spaChart.Size = new System.Drawing.Size(80, 23);
             this.btn_spaChart.TabIndex = 87;
@@ -520,7 +509,7 @@
             // 
             // btn_subChart
             // 
-            this.btn_subChart.Location = new System.Drawing.Point(1122, 71);
+            this.btn_subChart.Location = new System.Drawing.Point(1062, 70);
             this.btn_subChart.Name = "btn_subChart";
             this.btn_subChart.Size = new System.Drawing.Size(80, 23);
             this.btn_subChart.TabIndex = 88;
@@ -543,7 +532,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_addalll);
-            this.Controls.Add(this.btn_barchart);
             this.Controls.Add(this.clb_FSystem);
             this.Controls.Add(this.dgv_rmdata1);
             this.Controls.Add(this.btn_dataok2);
@@ -586,7 +574,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox clb_FSystem;
-        private System.Windows.Forms.Button btn_barchart;
         private System.Windows.Forms.Button btn_addalll;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Label label11;

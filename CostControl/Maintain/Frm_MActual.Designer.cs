@@ -47,20 +47,12 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_newbudget = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
             this.Btn_search = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.comB_FSystem = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_AddOk = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_UpdateOk = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btn_exceladd = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Mdata)).BeginInit();
             this.SuspendLayout();
@@ -133,10 +125,10 @@
             this.Column11,
             this.Column12,
             this.Column13});
-            this.dgv_Mdata.Location = new System.Drawing.Point(33, 163);
+            this.dgv_Mdata.Location = new System.Drawing.Point(33, 111);
             this.dgv_Mdata.Name = "dgv_Mdata";
             this.dgv_Mdata.RowTemplate.Height = 23;
-            this.dgv_Mdata.Size = new System.Drawing.Size(823, 322);
+            this.dgv_Mdata.Size = new System.Drawing.Size(823, 374);
             this.dgv_Mdata.TabIndex = 35;
             this.dgv_Mdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Mdata_CellContentClick);
             this.dgv_Mdata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Mdata_CellEndEdit);
@@ -206,36 +198,6 @@
             this.Column13.HeaderText = "12";
             this.Column13.Name = "Column13";
             // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(638, 106);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 39;
-            this.btn_delete.Text = "删除本表";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_newbudget
-            // 
-            this.btn_newbudget.Location = new System.Drawing.Point(719, 106);
-            this.btn_newbudget.Name = "btn_newbudget";
-            this.btn_newbudget.Size = new System.Drawing.Size(75, 23);
-            this.btn_newbudget.TabIndex = 38;
-            this.btn_newbudget.Text = "增加新表";
-            this.btn_newbudget.UseVisualStyleBackColor = true;
-            this.btn_newbudget.Click += new System.EventHandler(this.btn_newbudget_Click);
-            // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(546, 106);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 37;
-            this.btn_update.Text = "修改数据";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
             // Btn_search
             // 
             this.Btn_search.Location = new System.Drawing.Point(588, 53);
@@ -274,67 +236,13 @@
             this.label6.TabIndex = 40;
             this.label6.Text = "系统";
             // 
-            // btn_AddOk
-            // 
-            this.btn_AddOk.Location = new System.Drawing.Point(678, 506);
-            this.btn_AddOk.Name = "btn_AddOk";
-            this.btn_AddOk.Size = new System.Drawing.Size(75, 23);
-            this.btn_AddOk.TabIndex = 46;
-            this.btn_AddOk.Text = "保存";
-            this.btn_AddOk.UseVisualStyleBackColor = true;
-            this.btn_AddOk.Visible = false;
-            this.btn_AddOk.Click += new System.EventHandler(this.btn_AddOk_Click);
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(781, 506);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancel.TabIndex = 44;
-            this.btn_Cancel.Text = "取消";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Visible = false;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // btn_UpdateOk
-            // 
-            this.btn_UpdateOk.Location = new System.Drawing.Point(678, 506);
-            this.btn_UpdateOk.Name = "btn_UpdateOk";
-            this.btn_UpdateOk.Size = new System.Drawing.Size(75, 23);
-            this.btn_UpdateOk.TabIndex = 43;
-            this.btn_UpdateOk.Text = "保存";
-            this.btn_UpdateOk.UseVisualStyleBackColor = true;
-            this.btn_UpdateOk.Visible = false;
-            this.btn_UpdateOk.Click += new System.EventHandler(this.btn_UpdateOk_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(800, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "初始化新表";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btn_exceladd
-            // 
-            this.btn_exceladd.Location = new System.Drawing.Point(719, 54);
-            this.btn_exceladd.Name = "btn_exceladd";
-            this.btn_exceladd.Size = new System.Drawing.Size(75, 23);
-            this.btn_exceladd.TabIndex = 48;
-            this.btn_exceladd.Text = "Excel导入";
-            this.btn_exceladd.UseVisualStyleBackColor = true;
-            this.btn_exceladd.Click += new System.EventHandler(this.btn_exceladd_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(800, 54);
+            this.button2.Location = new System.Drawing.Point(689, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 49;
@@ -348,17 +256,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 541);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btn_exceladd);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_AddOk);
-            this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_UpdateOk);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comB_FSystem);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_newbudget);
-            this.Controls.Add(this.btn_update);
             this.Controls.Add(this.Btn_search);
             this.Controls.Add(this.dgv_Mdata);
             this.Controls.Add(this.comB_Year);
@@ -396,21 +296,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_newbudget;
-        private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button Btn_search;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comB_FSystem;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_AddOk;
-       // private System.Windows.Forms.Button btn_withholdOK;
-        private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_UpdateOk;
-        private System.Windows.Forms.Button button1;
+        // private System.Windows.Forms.Button btn_withholdOK;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btn_exceladd;
         private System.Windows.Forms.Button button2;
     }
 }

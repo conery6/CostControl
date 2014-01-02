@@ -11,7 +11,7 @@ namespace CostControl.Maintain
     {
         public static DataTable Budget(String FNo, String FSNo, String Year , String CCNo)
         {
-            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianBudget,Equipment where MaintianBudget.EqNo=Equipment.EqNo and year=" + Year
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
             + " and FNo='" + FNo  + "' and FSNo='" + FSNo  + "' and CCNo='"+ CCNo +"'";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
@@ -50,7 +50,7 @@ namespace CostControl.Maintain
 
         public static DataTable MiddleBudget(String FNo, String FSNo, String CCNo, String Year, int month)
         {
-            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianBudget,Equipment where MaintianBudget.EqNo=Equipment.EqNo and year=" + Year
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
             + " and FNo='" + FNo + "' and FSNo='" + FSNo + "' and CCNo='" + CCNo + "'";
             DataTable b = ODbcmd.SelectToDataTable(sql);
 

@@ -232,7 +232,7 @@ namespace CostControl.Management
 
         private void btn_createchart_Click(object sender, EventArgs e)
         {
-            string[] chartInfo = {comB_Facility.Text,comB_CC.Text,Year1 + Reporttype1, Year2 + Reporttype2 };
+            string[] chartInfo = {comB_Facility.Text,Year1 + Reporttype1, Year2 + Reporttype2 };
             Frm_MGChart m_Frm_MGChart = new Frm_MGChart(sum1, sum2, chartInfo);
             m_Frm_MGChart.Show();
         }

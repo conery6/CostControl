@@ -27,22 +27,24 @@ namespace CostControl.Maintain
 
         private void Btn_search_Click(object sender, EventArgs e)
         {
-            DataTable a = new DataTable();
-            if (FINorACE == "FIN")
+            if (getPK())
             {
-             a = GetMaintainData.Actual_FIN(FNo, FSNo, Year, CCNo);
-            }
-            else
-            {
-                 a = GetMaintainData.Actual_ACE(FNo, FSNo, Year, CCNo);
-            }
+                DataTable a = new DataTable();
+                if (FINorACE == "FIN")
+                {
+                    a = GetMaintainData.Actual_FIN(FNo, FSNo, Year, CCNo);
+                }
+                else
+                {
+                    a = GetMaintainData.Actual_ACE(FNo, FSNo, Year, CCNo);
+                }
 
                 for (int j = 0; j < a.Rows.Count; j++)
                 {
                     dgv_Mdata.Rows.Add();
                     dgv_Mdata[0, j].Value = a.Rows[j]["EqName"].ToString();
                     dgv_Mdata[1, j].Value = a.Rows[j]["Type"].ToString();
-                    for (int i = 2; i < dgv_Mdata .Columns .Count ; i++)
+                    for (int i = 2; i < dgv_Mdata.Columns.Count; i++)
                     {
                         dgv_Mdata[i, j].Value = a.Rows[j]["M" + (i - 1).ToString()].ToString();
                     }
@@ -51,6 +53,7 @@ namespace CostControl.Maintain
                 {
                     MessageBox.Show("没有数据！", "提示");
                 }
+            }
         }
 
         private void Frm_RMFIN_Load(object sender, EventArgs e)
@@ -119,7 +122,7 @@ namespace CostControl.Maintain
 
 
                 comB_Year.Items.Clear();
-                string sql = " select distinct Year from MaintianBudget,Equipment where Equipment.EqNo = MaintianBudget.EqNo and CCNo='" + CCNo + "' and FSNo ='" + FSNo + "'";
+                string sql = " select distinct Year from MaintianPeriod,Equipment where Equipment.EqNo = MaintianPeriod.EqNo and CCNo='" + CCNo + "' and FSNo ='" + FSNo + "'";
                 DataTable temp = ODbcmd.SelectToDataTable(sql);
                 for (int i = 0; i < temp.Rows.Count; i++)
                 {
@@ -142,8 +145,8 @@ namespace CostControl.Maintain
         private void btn_update_Click(object sender, EventArgs e)
         {
             dgv_Mdata.ReadOnly = false;
-            btn_UpdateOk.Visible = true;
-            btn_Cancel.Visible = true;
+            //btn_UpdateOk.Visible = true;
+            //btn_Cancel.Visible = true;
             mode = "update";
         }
 
@@ -171,9 +174,9 @@ namespace CostControl.Maintain
         private void btn_newbudget_Click(object sender, EventArgs e)
         {
             mode = "add";
-            button1.Visible = true;
-            btn_AddOk.Visible = true;
-            btn_Cancel.Visible = true;
+            //button1.Visible = true;
+            //btn_AddOk.Visible = true;
+            //btn_Cancel.Visible = true;
             comB_Year.DropDownStyle = ComboBoxStyle.DropDown;
             dgv_Mdata.Rows.Clear();
             comB_FSystem.Items.Clear();
@@ -210,7 +213,7 @@ namespace CostControl.Maintain
 
 
             }
-            btn_AddOk.Visible = true;
+            //btn_AddOk.Visible = true;
         }
 
 
@@ -256,7 +259,7 @@ namespace CostControl.Maintain
                             Convert.ToSingle(dgv_Mdata[13, i].Value));
                         ODbcmd.ExecuteSQLNonquery(sql1);
                     }
-                    btn_AddOk.Visible = false;
+                    //btn_AddOk.Visible = false;
                     comB_Year.DropDownStyle = ComboBoxStyle.DropDownList;
                     flaglist.Clear();
                     mode = "search";
@@ -299,7 +302,7 @@ namespace CostControl.Maintain
             }
             MessageBox.Show("修改成功");
             flaglist.Clear();
-            btn_UpdateOk.Visible = false;
+            //btn_UpdateOk.Visible = false;
             mode = "search";
 
         }
@@ -320,12 +323,12 @@ namespace CostControl.Maintain
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            btn_AddOk.Visible = false;
-            btn_UpdateOk.Visible = false;
-            button1.Visible = false;
+            //btn_AddOk.Visible = false;
+            //btn_UpdateOk.Visible = false;
+            //button1.Visible = false;
             flaglist.Clear();
             mode = "search";
-            btn_Cancel.Visible = false;
+            //btn_Cancel.Visible = false;
             comB_Year.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
@@ -344,10 +347,18 @@ namespace CostControl.Maintain
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ExcelControl a = new ExcelControl();
-            a.SaveAsExcel(dgv_Mdata);
+            if (getPK())
+            {
+                string[] header = { "工厂", "成本中心", "系统", "年份" };
+                object[] cells = { comB_Facility.Text, comB_CC.Text, comB_FSystem.Text, int.Parse(comB_Year.Text) };
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_Mdata);
+                excelHelp.AppendToExcel(dt, true);
+                excelHelp.SaveToExcel();
+            }
         }
-
-
     }
 }

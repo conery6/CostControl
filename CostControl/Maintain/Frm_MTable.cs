@@ -34,6 +34,11 @@ namespace CostControl.Maintain
         public float[] F1all;
         public float[] F2all;
 
+        float[,] FDT1 = new float[10, 13];
+        float[,] FDT2 = new float[10, 13];
+        float[] sum1 = new float[12];
+        float[] sum2 = new float[12];
+
         private void MTable_Load(object sender, EventArgs e)
         {
             string sql = "select distinct Fname from Facility";
@@ -43,7 +48,7 @@ namespace CostControl.Maintain
                 comB_Facility.Items.Add(temp.Rows[i]["FName"].ToString());
             }
 
-            sql = "select distinct Year from MaintianBudget";
+            sql = "select distinct Year from MaintianPeriod";
             temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
@@ -342,22 +347,23 @@ namespace CostControl.Maintain
                 F2sub =sub ;
                 F2all =all ;
 
-
+                //for (int i = 0; i < 12; i++)
+                //{
+                //    float sum = 0;
+                //    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                //    {
+                //        sum += FDT2[j, i];
+                //    }
+                //    sum2[i] = sum;
+                //}
             }
         }
 
         private void btn_Chart_Click(object sender, EventArgs e)
         {
-            if (dgv_rmdata1.Rows.Count != 0 && dgv_rmdata2.Rows.Count != 0)
-            {
-                Frm_MChart F_all = new Frm_MChart(F1all, F2all, Year1 + Reporttype1, Year2 + Reporttype2);
-                F_all.Show();
-                //F_all = new Frm_MChart();
-            }
-            else
-            {
-                MessageBox.Show("缺少数据！");
-            }
+            string[] chartInfo = { comB_Facility.Text,"", Year1 + Reporttype1, Year2 + Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(F1all, F2all, chartInfo);
+            m_Frm_MGChart.Show();
 
         }
 
@@ -379,30 +385,16 @@ namespace CostControl.Maintain
 
         private void btn_spaChart_Click(object sender, EventArgs e)
         {
-            if (dgv_rmdata1.Rows.Count != 0 && dgv_rmdata2.Rows.Count != 0)
-            {
-
-                Frm_MChart F_spa = new Frm_MChart(F1spa, F2spa, Year1 + Reporttype1, Year2 + Reporttype2);
-                F_spa.Show();
-                //F_spa = new Frm_MChart();
-            }
-            else
-            {
-                MessageBox.Show("缺少数据！");
-            }
+            string[] chartInfo = { comB_Facility.Text, "", Year1 + Reporttype1, Year2 + Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(sum1, sum2, chartInfo);
+            m_Frm_MGChart.Show();
         }
 
         private void btn_subChart_Click(object sender, EventArgs e)
         {
-            if (dgv_rmdata1.Rows.Count != 0 && dgv_rmdata2.Rows.Count != 0)
-            {
-                Frm_MChart F_sub = new Frm_MChart(F1sub, F2sub, Year1 + Reporttype1, Year2 + Reporttype2);
-                F_sub.Show();
-            }
-            else
-            {
-                MessageBox.Show("缺少数据！");
-            }
+            string[] chartInfo = { comB_Facility.Text, "", Year1 + Reporttype1, Year2 + Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(sum1, sum2, chartInfo);
+            m_Frm_MGChart.Show();
         }
 
         private void clb_CC_Click(object sender, EventArgs e)
