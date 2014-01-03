@@ -418,18 +418,18 @@ namespace CostControl
         /// <summary>
         /// 显示文件保存对话框，并根据文件后缀名确定要生成的Excel版本
         /// </summary>
-        public void ShowSaveFileDialog()
+        public bool ShowSaveFileDialog()
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = "xls";
             dlg.Filter = "Excel 97-2003 工作簿(*.xls)|*.xls|Excel 工作簿(*.xlsx)|*.xlsx";
             dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dlg.FileName = "Sheet1.xls";
-            if (dlg.ShowDialog() == DialogResult.Cancel) return;
+            if (dlg.ShowDialog() == DialogResult.Cancel) return false;
             //返回文件路径   
             string fileNameString = dlg.FileName;
             //验证strFileName是否为空或值无效   
-            if (fileNameString.Trim() == "") return;
+            if (fileNameString.Trim() == "") return false;
             this.fileName = fileNameString;
             if (fileName.EndsWith(".xlsx"))
             {
@@ -441,6 +441,7 @@ namespace CostControl
             }
             currentSheet = workBook.CreateSheet();
             InitStyle();
+            return true;
         }
 
         public struct ChartInfo

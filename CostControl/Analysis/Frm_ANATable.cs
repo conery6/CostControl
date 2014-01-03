@@ -99,7 +99,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "R":
-                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
+                        r = GetANAData.PeriodData(CCNo, "A12", Year1);
                         break;
                 }
 
@@ -254,7 +254,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "R":
-                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
+                        r = GetANAData.PeriodData(CCNo, "A12", Year2);
                         break;
                 }
 
@@ -694,13 +694,13 @@ namespace CostControl.Analysis
             {
                 clb_Maintain.Items.Add(temp.Rows[j]["FSName"].ToString());
             }
-
+          
             //load year
             comB_Year1.Items.Clear();
             comB_Year2.Items.Clear();
             Year1 = "";
             Year2 = "";
-            string sqly = " select distinct Year from RMBudget";
+            string sqly = " select distinct Year from RMPeriod";
             DataTable tempy = ODbcmd.SelectToDataTable(sqly);
             for (int i = 0; i < tempy.Rows.Count; i++)
             {
@@ -764,56 +764,63 @@ namespace CostControl.Analysis
         {
             if (getPK1())
             {
+                string Period = comB_report1.Text;
+                if (Period == "R")
+                {
+                    Period = "A12";
+                }
                 //原料管理
-                string sql1 = "select PName,TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo" + " and  year=" + comB_Year1.Text + " and  RMPeriod.Period='" + comB_report1.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by PName,Type";
+                string sql1 = "select PName,TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo" + " and  year=" + comB_Year1.Text + " and  RMPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by PName,Type";
                 DataTable dt1 = ODbcmd.SelectToDataTable(sql1);
 
                 //管理控制
-                string sql2 = "select IName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year1.Text + " and  MGPeriod.Period='" + comB_report1.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by IName,Type"; ;
+                string sql2 = "select IName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year1.Text + " and  MGPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by IName,Type"; ;
                 DataTable dt2 = ODbcmd.SelectToDataTable(sql2);
 
                 //电费控制
-                string sql3 = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year1.Text + " and  EPeriod.Period='" + comB_report1.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by TypeName,Type"; ;
+                string sql3 = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year1.Text + " and  EPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by TypeName,Type"; ;
                 DataTable dt3 = ODbcmd.SelectToDataTable(sql3);
 
                 //维修管理
-                string sql4 = "select FSName,EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo" + " and  year=" + comB_Year1.Text + " and  MaintianPeriod.Period='" + comB_report1.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by FSName,EqName,Type"; ;
+                string sql4 = "select FSName,EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo" + " and  year=" + comB_Year1.Text + " and  MaintianPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by FSName,EqName,Type"; ;
                 DataTable dt4 = ODbcmd.SelectToDataTable(sql4);
 
                 //1
                 string[] header = { "工厂", "成本中心", "年份", "报表类型" };
                 object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
-                excelHelp.ShowSaveFileDialog();
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                excelHelp.DataTableToExcel(dt1, 3, 0, true);
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    excelHelp.DataTableToExcel(dt1, 3, 0, true);
 
-                //2
-                excelHelp.NewSheet();
-                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header2);
-                excelHelp.AppendContent(cells2);
-                excelHelp.DataTableToExcel(dt2, 3, 0, true);
+                    //2
+                    excelHelp.NewSheet();
+                    string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header2);
+                    excelHelp.AppendContent(cells2);
+                    excelHelp.DataTableToExcel(dt2, 3, 0, true);
 
-                //3
-                excelHelp.NewSheet();
-                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header3);
-                excelHelp.AppendContent(cells3);
-                excelHelp.DataTableToExcel(dt3, 3, 0, true);
+                    //3
+                    excelHelp.NewSheet();
+                    string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header3);
+                    excelHelp.AppendContent(cells3);
+                    excelHelp.DataTableToExcel(dt3, 3, 0, true);
 
-                //4
-                excelHelp.NewSheet();
-                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header4);
-                excelHelp.AppendContent(cells4);
-                excelHelp.DataTableToExcel(dt4, 3, 0, true);
+                    //4
+                    excelHelp.NewSheet();
+                    string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header4);
+                    excelHelp.AppendContent(cells4);
+                    excelHelp.DataTableToExcel(dt4, 3, 0, true);
 
-                excelHelp.SaveToExcel();
+                    excelHelp.SaveToExcel();
+                }
             }
         }
 
@@ -821,56 +828,64 @@ namespace CostControl.Analysis
         {
             if (getPK2())
             {
+                string Period = comB_report2.Text;
+                if (Period == "R")
+                {
+                    Period = "A12";
+                }
+
                 //原料管理
-                string sql1 = "select PName,TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo" + " and  year=" + comB_Year2.Text + " and  RMPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by PName,Type";
+                string sql1 = "select PName,TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from RMPeriod,Facility,CostCenter,Product where RMPeriod.FNo = Facility.Fno and RMPeriod.CCNo = CostCenter.CCNo and RMPeriod.PNo = Product.PNo" + " and  year=" + comB_Year2.Text + " and  RMPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by PName,Type";
                 DataTable dt1 = ODbcmd.SelectToDataTable(sql1);
 
                 //管理控制
-                string sql2 = "select IName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  MGPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by IName,Type"; ;
+                string sql2 = "select IName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod,Facility,CostCenter where MGPeriod.FNo = Facility.Fno and MGPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  MGPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by IName,Type"; ;
                 DataTable dt2 = ODbcmd.SelectToDataTable(sql2);
 
                 //电费控制
-                string sql3 = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  EPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by TypeName,Type"; ;
+                string sql3 = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod,Facility,CostCenter where EPeriod.FNo = Facility.Fno and EPeriod.CCNo = CostCenter.CCNo" + " and  year=" + comB_Year2.Text + " and  EPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by TypeName,Type"; ;
                 DataTable dt3 = ODbcmd.SelectToDataTable(sql3);
 
                 //维修管理
-                string sql4 = "select FSName,EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo" + " and  year=" + comB_Year2.Text + " and  MaintianPeriod.Period='" + comB_report2.Text + "' and CostCenter.CCName='" + comB_CC.Text + "' order by FSName,EqName,Type"; ;
+                string sql4 = "select FSName,EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from Facility,CostCenter,MaintianPeriod,FacilitySystem,Equipment where Equipment.FNo = Facility.Fno and Equipment.CCNo = CostCenter.CCNo and  FacilitySystem.FSNo = Equipment.FSNo and MaintianPeriod.EqNo = Equipment.EqNo" + " and  year=" + comB_Year2.Text + " and  MaintianPeriod.Period='" + Period + "' and CostCenter.CCName='" + comB_CC.Text + "' order by FSName,EqName,Type"; ;
                 DataTable dt4 = ODbcmd.SelectToDataTable(sql4);
 
                 //1
                 string[] header = { "工厂", "成本中心", "年份", "报表类型" };
                 object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
-                excelHelp.ShowSaveFileDialog();
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                excelHelp.DataTableToExcel(dt1, 3, 0, true);
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    excelHelp.DataTableToExcel(dt1, 3, 0, true);
 
-                //2
-                excelHelp.NewSheet();
-                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header2);
-                excelHelp.AppendContent(cells2);
-                excelHelp.DataTableToExcel(dt2, 3, 0, true);
+                    //2
+                    excelHelp.NewSheet();
+                    string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header2);
+                    excelHelp.AppendContent(cells2);
+                    excelHelp.DataTableToExcel(dt2, 3, 0, true);
 
-                //3
-                excelHelp.NewSheet();
-                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header3);
-                excelHelp.AppendContent(cells3);
-                excelHelp.DataTableToExcel(dt3, 3, 0, true);
+                    //3
+                    excelHelp.NewSheet();
+                    string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header3);
+                    excelHelp.AppendContent(cells3);
+                    excelHelp.DataTableToExcel(dt3, 3, 0, true);
 
-                //4
-                excelHelp.NewSheet();
-                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header4);
-                excelHelp.AppendContent(cells4);
-                excelHelp.DataTableToExcel(dt4, 3, 0, true);
+                    //4
+                    excelHelp.NewSheet();
+                    string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header4);
+                    excelHelp.AppendContent(cells4);
+                    excelHelp.DataTableToExcel(dt4, 3, 0, true);
 
-                excelHelp.SaveToExcel();
+                    excelHelp.SaveToExcel();
+                }
             }
         }
 
@@ -882,40 +897,42 @@ namespace CostControl.Analysis
                 string[] header = { "工厂", "成本中心", "年份", "报表类型" };
                 object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
-                excelHelp.ShowSaveFileDialog();
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata1);
-                excelHelp.AppendToExcel(dt, true);
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata1);
+                    excelHelp.AppendToExcel(dt, true);
 
-                //2
-                excelHelp.NewSheet();
-                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata1);
-                excelHelp.AppendToExcel(dt2, true);
+                    //2
+                    excelHelp.NewSheet();
+                    string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata1);
+                    excelHelp.AppendToExcel(dt2, true);
 
-                //3
-                excelHelp.NewSheet();
-                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata1);
-                excelHelp.AppendToExcel(dt3, true);
+                    //3
+                    excelHelp.NewSheet();
+                    string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata1);
+                    excelHelp.AppendToExcel(dt3, true);
 
-                //4
-                excelHelp.NewSheet();
-                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata1);
-                excelHelp.AppendToExcel(dt4, true);
+                    //4
+                    excelHelp.NewSheet();
+                    string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata1);
+                    excelHelp.AppendToExcel(dt4, true);
 
-                excelHelp.SaveToExcel();
+                    excelHelp.SaveToExcel();
+                }
             }
         }
 
@@ -927,40 +944,42 @@ namespace CostControl.Analysis
                 string[] header = { "工厂", "成本中心", "年份", "报表类型" };
                 object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
-                excelHelp.ShowSaveFileDialog();
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata2);
-                excelHelp.AppendToExcel(dt, true);
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata2);
+                    excelHelp.AppendToExcel(dt, true);
 
-                //2
-                excelHelp.NewSheet();
-                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata2);
-                excelHelp.AppendToExcel(dt2, true);
+                    //2
+                    excelHelp.NewSheet();
+                    string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata2);
+                    excelHelp.AppendToExcel(dt2, true);
 
-                //3
-                excelHelp.NewSheet();
-                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata2);
-                excelHelp.AppendToExcel(dt3, true);
+                    //3
+                    excelHelp.NewSheet();
+                    string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata2);
+                    excelHelp.AppendToExcel(dt3, true);
 
-                //4
-                excelHelp.NewSheet();
-                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
-                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata2);
-                excelHelp.AppendToExcel(dt4, true);
+                    //4
+                    excelHelp.NewSheet();
+                    string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                    object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata2);
+                    excelHelp.AppendToExcel(dt4, true);
 
-                excelHelp.SaveToExcel();
+                    excelHelp.SaveToExcel();
+                }
             }
         }
     }

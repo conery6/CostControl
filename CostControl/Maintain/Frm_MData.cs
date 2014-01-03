@@ -506,12 +506,14 @@ namespace CostControl.Maintain
                 string[] header = { "工厂", "成本中心", "系统", "年份", "报表类型" };
                 object[] cells = { comB_Facility.Text, comB_CC.Text, comB_FSystem.Text, int.Parse(comB_Year.Text), comB_RpType.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
-                excelHelp.ShowSaveFileDialog();
-                excelHelp.AppendHeader(header);
-                excelHelp.AppendContent(cells);
-                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_Mdata);
-                excelHelp.AppendToExcel(dt, true);
-                excelHelp.SaveToExcel();
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells);
+                    DataTable dt = ExcelHelper.GridViewToDataTable(dgv_Mdata);
+                    excelHelp.AppendToExcel(dt, true);
+                    excelHelp.SaveToExcel();
+                }
             }
         }
 
