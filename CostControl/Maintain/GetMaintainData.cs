@@ -20,7 +20,7 @@ namespace CostControl.Maintain
         public static DataTable GetData2(String FNo, String FSNo, String Year, String CCNo, String Period)
         {
             string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
-            + " and FNo='" + FNo + "' and FSNo in (" + FSNo + ") and Period='" + Period + "' and CCNo='" + CCNo + "'";
+            + " and FNo='" + FNo + "' and FSNo in (" + FSNo + ") and Period='" + Period + "' and CCNo in (" + CCNo + ")";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
@@ -35,8 +35,8 @@ namespace CostControl.Maintain
 
         public static DataTable Actual_ACE(String FNo, String FSNo, String Year, String CCNo)
         {
-            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianActual,Equipment where MaintianActual.EqNo=Equipment.EqNo and year=" + Year
-            + " and FNo='" + FNo + "' and FSNo='" + FSNo + "' and CCNo='" + CCNo + "'";
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
+            + " and FNo='" + FNo + "' and FSNo='" + FSNo + "' and Period='A12' and CCNo='" + CCNo + "'";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
@@ -122,7 +122,7 @@ namespace CostControl.Maintain
                 {
                     try
                     {
-                        a[j, i] = Convert.ToSingle(DT.Rows[j][i]);
+                        a[j, i-2] = Convert.ToSingle(DT.Rows[j][i]);
                     }
                     catch { };
                 }

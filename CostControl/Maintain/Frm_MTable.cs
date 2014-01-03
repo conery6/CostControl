@@ -18,7 +18,7 @@ namespace CostControl.Maintain
 
         public string FNo = "";
         public string FSNo = "";
-        public string CCNo = "*";
+        public string CCNo = "";
         public string Year = "";
         public string Year1 = "";
         public string Year2 = "";
@@ -38,6 +38,9 @@ namespace CostControl.Maintain
         float[,] FDT2 = new float[10, 13];
         float[] sum1 = new float[12];
         float[] sum2 = new float[12];
+
+        DataTable DT1;
+        DataTable DT2;
 
         private void MTable_Load(object sender, EventArgs e)
         {
@@ -92,8 +95,8 @@ namespace CostControl.Maintain
             if (getPK1())
             {
 
-                dgv_rmdata1.Rows.Clear();
                 barsum.Clear();
+                FSNo = "";
                 DataTable sumdt = new DataTable();
                 DataTable sumall = new DataTable();
 
@@ -121,11 +124,20 @@ namespace CostControl.Maintain
                 }
                 else
                 {
-                    for (int j = 0; j < sumdt.Rows.Count; j++)
-                    {
-                        dgv_rmdata1.Rows.Add();
-                    }
                     dgv_rmdata1.DataSource = sumdt;
+                }
+
+                DT1 = sumdt;
+                FDT1 = GetMaintainData.DTto2DFloat(DT1);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
+                    {
+                        sum += FDT1[j, i];
+                    }
+                    sum1[i] = sum;
                 }
             }
         }
@@ -202,8 +214,8 @@ namespace CostControl.Maintain
         {
             if (getPK2())
             {
+                FSNo = "";
 
-                dgv_rmdata2.Rows.Clear();
                 DataTable sumdt = new DataTable();
                 DataTable sumall = new DataTable();
 
@@ -231,11 +243,20 @@ namespace CostControl.Maintain
                 }
                 else
                 {
-                    for (int j = 0; j < sumdt.Rows.Count; j++)
-                    {
-                        dgv_rmdata2.Rows.Add();
-                    }
                     dgv_rmdata2.DataSource = sumdt;
+                }
+
+                DT2 = sumdt;
+                FDT2 = GetMaintainData.DTto2DFloat(DT2);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                    {
+                        sum += FDT2[j, i];
+                    }
+                    sum2[i] = sum;
                 }
             }
         }
@@ -243,7 +264,7 @@ namespace CostControl.Maintain
         private void btn_Chart_Click(object sender, EventArgs e)
         {
             string[] chartInfo = { comB_Facility.Text,"", Year1 + Reporttype1, Year2 + Reporttype2 };
-            Frm_MChart m_Frm_MGChart = new Frm_MChart(F1all, F2all, chartInfo);
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(sum1, sum2, chartInfo);
             m_Frm_MGChart.Show();
 
         }
@@ -290,12 +311,21 @@ namespace CostControl.Maintain
 
         private void clb_CC_SelectedValueChanged(object sender, EventArgs e)
         {
-            clb_FSystem.Items.Clear();
-            for (int i = 0; i < clb_CC.CheckedItems.Count; i++)
-            {
-                CCNo = GetMaintainData.CCNo(clb_CC.CheckedItems[i].ToString());
+            
+        }
 
-                string sql = " select distinct FSName from FacilitySystem, Equipment where FacilitySystem.FSNo =Equipment.FSNo and CCNo='" + CCNo + "'";
+        private void button1_Click(object sender, EventArgs e)
+        {
+            clb_FSystem.Items.Clear();
+            CCNo = "";
+            if (clb_CC.CheckedItems.Count > 0)
+            {
+                for (int i = 0; i < clb_CC.CheckedItems.Count; i++)
+                {
+                    CCNo += "'" + GetMaintainData.CCNo(clb_CC.CheckedItems[i].ToString()) + "',";
+                }
+                CCNo = CCNo.Remove(CCNo.Length - 1);
+                string sql = " select distinct FSName from FacilitySystem, Equipment where FacilitySystem.FSNo =Equipment.FSNo and CCNo in(" + CCNo + ")";
                 DataTable temp = ODbcmd.SelectToDataTable(sql);
                 for (int j = 0; j < temp.Rows.Count; j++)
                 {

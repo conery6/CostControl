@@ -122,7 +122,7 @@ namespace CostControl.Maintain
 
 
                 comB_Year.Items.Clear();
-                string sql = " select distinct Year from MaintianPeriod,Equipment where Equipment.EqNo = MaintianPeriod.EqNo and CCNo='" + CCNo + "' and FSNo ='" + FSNo + "'";
+                string sql = " select distinct Year from MaintianPeriod,Equipment where Equipment.EqNo = MaintianPeriod.EqNo and CCNo='" + CCNo + "' and Period ='A12' and FSNo ='" + FSNo + "'";
                 DataTable temp = ODbcmd.SelectToDataTable(sql);
                 for (int i = 0; i < temp.Rows.Count; i++)
                 {

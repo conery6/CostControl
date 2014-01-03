@@ -29,6 +29,20 @@
         private void InitializeComponent()
         {
             this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_dataok2 = new System.Windows.Forms.Button();
             this.btn_dataok1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,21 +64,6 @@
             this.comB_RpType2 = new System.Windows.Forms.ComboBox();
             this.clb_CC = new System.Windows.Forms.CheckedListBox();
             this.dgv_rmdata2 = new System.Windows.Forms.DataGridView();
-            this.btn_Chart = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +78,8 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Chart = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata2)).BeginInit();
             this.SuspendLayout();
@@ -109,247 +110,6 @@
             this.dgv_rmdata1.Size = new System.Drawing.Size(1158, 271);
             this.dgv_rmdata1.TabIndex = 61;
             this.dgv_rmdata1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_rmdata1_CellContentClick);
-            // 
-            // btn_dataok2
-            // 
-            this.btn_dataok2.Location = new System.Drawing.Point(869, 70);
-            this.btn_dataok2.Name = "btn_dataok2";
-            this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok2.TabIndex = 57;
-            this.btn_dataok2.Text = "确定";
-            this.btn_dataok2.UseVisualStyleBackColor = true;
-            this.btn_dataok2.Click += new System.EventHandler(this.btn_dataok2_Click);
-            // 
-            // btn_dataok1
-            // 
-            this.btn_dataok1.Location = new System.Drawing.Point(869, 30);
-            this.btn_dataok1.Name = "btn_dataok1";
-            this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok1.TabIndex = 56;
-            this.btn_dataok1.Text = "确定";
-            this.btn_dataok1.UseVisualStyleBackColor = true;
-            this.btn_dataok1.Click += new System.EventHandler(this.btn_dataok1_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(731, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 54;
-            this.label7.Text = "报表";
-            // 
-            // comB_Year2
-            // 
-            this.comB_Year2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Year2.FormattingEnabled = true;
-            this.comB_Year2.Location = new System.Drawing.Point(647, 73);
-            this.comB_Year2.Name = "comB_Year2";
-            this.comB_Year2.Size = new System.Drawing.Size(77, 20);
-            this.comB_Year2.TabIndex = 53;
-            this.comB_Year2.SelectedIndexChanged += new System.EventHandler(this.comB_Year2_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(611, 77);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
-            this.label8.TabIndex = 52;
-            this.label8.Text = "年度";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(731, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 50;
-            this.label6.Text = "报表";
-            // 
-            // comB_Year1
-            // 
-            this.comB_Year1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Year1.FormattingEnabled = true;
-            this.comB_Year1.Location = new System.Drawing.Point(647, 32);
-            this.comB_Year1.Name = "comB_Year1";
-            this.comB_Year1.Size = new System.Drawing.Size(77, 20);
-            this.comB_Year1.TabIndex = 49;
-            this.comB_Year1.SelectedIndexChanged += new System.EventHandler(this.comB_Year1_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(611, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "年度";
-            // 
-            // comB_Facility
-            // 
-            this.comB_Facility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_Facility.FormattingEnabled = true;
-            this.comB_Facility.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comB_Facility.Location = new System.Drawing.Point(117, 25);
-            this.comB_Facility.Name = "comB_Facility";
-            this.comB_Facility.Size = new System.Drawing.Size(128, 20);
-            this.comB_Facility.TabIndex = 46;
-            this.comB_Facility.SelectedIndexChanged += new System.EventHandler(this.comB_Facility_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(316, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "系统";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "工厂";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(548, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "比较数据";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(548, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "基准数据";
-            // 
-            // clb_FSystem
-            // 
-            this.clb_FSystem.FormattingEnabled = true;
-            this.clb_FSystem.Location = new System.Drawing.Point(372, 23);
-            this.clb_FSystem.Name = "clb_FSystem";
-            this.clb_FSystem.Size = new System.Drawing.Size(120, 84);
-            this.clb_FSystem.TabIndex = 66;
-            this.clb_FSystem.SelectedIndexChanged += new System.EventHandler(this.clb_FSystem_SelectedIndexChanged);
-            // 
-            // btn_addalll
-            // 
-            this.btn_addalll.Location = new System.Drawing.Point(308, 53);
-            this.btn_addalll.Name = "btn_addalll";
-            this.btn_addalll.Size = new System.Drawing.Size(49, 23);
-            this.btn_addalll.TabIndex = 70;
-            this.btn_addalll.Text = "全选";
-            this.btn_addalll.UseVisualStyleBackColor = true;
-            this.btn_addalll.Click += new System.EventHandler(this.btn_addalll_Click);
-            // 
-            // btn_clear
-            // 
-            this.btn_clear.Location = new System.Drawing.Point(308, 82);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(49, 23);
-            this.btn_clear.TabIndex = 71;
-            this.btn_clear.Text = "清空";
-            this.btn_clear.UseVisualStyleBackColor = true;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(48, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 12);
-            this.label11.TabIndex = 76;
-            this.label11.Text = "成本中心";
-            // 
-            // comB_RpType1
-            // 
-            this.comB_RpType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_RpType1.FormattingEnabled = true;
-            this.comB_RpType1.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_RpType1.Location = new System.Drawing.Point(766, 32);
-            this.comB_RpType1.Name = "comB_RpType1";
-            this.comB_RpType1.Size = new System.Drawing.Size(86, 20);
-            this.comB_RpType1.TabIndex = 80;
-            this.comB_RpType1.SelectedIndexChanged += new System.EventHandler(this.comB_RpType1_SelectedIndexChanged);
-            // 
-            // comB_RpType2
-            // 
-            this.comB_RpType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_RpType2.FormattingEnabled = true;
-            this.comB_RpType2.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_RpType2.Location = new System.Drawing.Point(766, 73);
-            this.comB_RpType2.Name = "comB_RpType2";
-            this.comB_RpType2.Size = new System.Drawing.Size(86, 20);
-            this.comB_RpType2.TabIndex = 81;
-            this.comB_RpType2.SelectedIndexChanged += new System.EventHandler(this.comB_RpType2_SelectedIndexChanged);
-            // 
-            // clb_CC
-            // 
-            this.clb_CC.FormattingEnabled = true;
-            this.clb_CC.Location = new System.Drawing.Point(117, 55);
-            this.clb_CC.Name = "clb_CC";
-            this.clb_CC.Size = new System.Drawing.Size(128, 52);
-            this.clb_CC.TabIndex = 82;
-            this.clb_CC.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clb_CC_ItemCheck);
-            this.clb_CC.Click += new System.EventHandler(this.clb_CC_Click);
-            this.clb_CC.SelectedIndexChanged += new System.EventHandler(this.clb_CC_SelectedIndexChanged);
-            this.clb_CC.SelectedValueChanged += new System.EventHandler(this.clb_CC_SelectedValueChanged);
-            // 
-            // dgv_rmdata2
-            // 
-            this.dgv_rmdata2.AllowUserToAddRows = false;
-            this.dgv_rmdata2.AllowUserToDeleteRows = false;
-            this.dgv_rmdata2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_rmdata2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Column15,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13});
-            this.dgv_rmdata2.Location = new System.Drawing.Point(50, 392);
-            this.dgv_rmdata2.Name = "dgv_rmdata2";
-            this.dgv_rmdata2.RowTemplate.Height = 23;
-            this.dgv_rmdata2.Size = new System.Drawing.Size(1158, 253);
-            this.dgv_rmdata2.TabIndex = 83;
-            // 
-            // btn_Chart
-            // 
-            this.btn_Chart.Location = new System.Drawing.Point(974, 70);
-            this.btn_Chart.Name = "btn_Chart";
-            this.btn_Chart.Size = new System.Drawing.Size(80, 23);
-            this.btn_Chart.TabIndex = 86;
-            this.btn_Chart.Text = "总价对比图";
-            this.btn_Chart.UseVisualStyleBackColor = true;
-            this.btn_Chart.Click += new System.EventHandler(this.btn_Chart_Click);
             // 
             // Column1
             // 
@@ -435,6 +195,237 @@
             this.Column13.HeaderText = "12";
             this.Column13.Name = "Column13";
             // 
+            // btn_dataok2
+            // 
+            this.btn_dataok2.Location = new System.Drawing.Point(958, 70);
+            this.btn_dataok2.Name = "btn_dataok2";
+            this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
+            this.btn_dataok2.TabIndex = 57;
+            this.btn_dataok2.Text = "确定";
+            this.btn_dataok2.UseVisualStyleBackColor = true;
+            this.btn_dataok2.Click += new System.EventHandler(this.btn_dataok2_Click);
+            // 
+            // btn_dataok1
+            // 
+            this.btn_dataok1.Location = new System.Drawing.Point(958, 30);
+            this.btn_dataok1.Name = "btn_dataok1";
+            this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
+            this.btn_dataok1.TabIndex = 56;
+            this.btn_dataok1.Text = "确定";
+            this.btn_dataok1.UseVisualStyleBackColor = true;
+            this.btn_dataok1.Click += new System.EventHandler(this.btn_dataok1_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(820, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "报表";
+            // 
+            // comB_Year2
+            // 
+            this.comB_Year2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Year2.FormattingEnabled = true;
+            this.comB_Year2.Location = new System.Drawing.Point(736, 73);
+            this.comB_Year2.Name = "comB_Year2";
+            this.comB_Year2.Size = new System.Drawing.Size(77, 20);
+            this.comB_Year2.TabIndex = 53;
+            this.comB_Year2.SelectedIndexChanged += new System.EventHandler(this.comB_Year2_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(700, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 52;
+            this.label8.Text = "年度";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(820, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 50;
+            this.label6.Text = "报表";
+            // 
+            // comB_Year1
+            // 
+            this.comB_Year1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Year1.FormattingEnabled = true;
+            this.comB_Year1.Location = new System.Drawing.Point(736, 32);
+            this.comB_Year1.Name = "comB_Year1";
+            this.comB_Year1.Size = new System.Drawing.Size(77, 20);
+            this.comB_Year1.TabIndex = 49;
+            this.comB_Year1.SelectedIndexChanged += new System.EventHandler(this.comB_Year1_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(700, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "年度";
+            // 
+            // comB_Facility
+            // 
+            this.comB_Facility.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Facility.FormattingEnabled = true;
+            this.comB_Facility.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.comB_Facility.Location = new System.Drawing.Point(117, 25);
+            this.comB_Facility.Name = "comB_Facility";
+            this.comB_Facility.Size = new System.Drawing.Size(128, 20);
+            this.comB_Facility.TabIndex = 46;
+            this.comB_Facility.SelectedIndexChanged += new System.EventHandler(this.comB_Facility_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(405, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "系统";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "工厂";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(637, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "比较数据";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(637, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "基准数据";
+            // 
+            // clb_FSystem
+            // 
+            this.clb_FSystem.FormattingEnabled = true;
+            this.clb_FSystem.Location = new System.Drawing.Point(461, 23);
+            this.clb_FSystem.Name = "clb_FSystem";
+            this.clb_FSystem.Size = new System.Drawing.Size(120, 84);
+            this.clb_FSystem.TabIndex = 66;
+            this.clb_FSystem.SelectedIndexChanged += new System.EventHandler(this.clb_FSystem_SelectedIndexChanged);
+            // 
+            // btn_addalll
+            // 
+            this.btn_addalll.Location = new System.Drawing.Point(397, 53);
+            this.btn_addalll.Name = "btn_addalll";
+            this.btn_addalll.Size = new System.Drawing.Size(49, 23);
+            this.btn_addalll.TabIndex = 70;
+            this.btn_addalll.Text = "全选";
+            this.btn_addalll.UseVisualStyleBackColor = true;
+            this.btn_addalll.Click += new System.EventHandler(this.btn_addalll_Click);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(397, 82);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(49, 23);
+            this.btn_clear.TabIndex = 71;
+            this.btn_clear.Text = "清空";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(48, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "成本中心";
+            // 
+            // comB_RpType1
+            // 
+            this.comB_RpType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_RpType1.FormattingEnabled = true;
+            this.comB_RpType1.Items.AddRange(new object[] {
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
+            this.comB_RpType1.Location = new System.Drawing.Point(855, 32);
+            this.comB_RpType1.Name = "comB_RpType1";
+            this.comB_RpType1.Size = new System.Drawing.Size(86, 20);
+            this.comB_RpType1.TabIndex = 80;
+            this.comB_RpType1.SelectedIndexChanged += new System.EventHandler(this.comB_RpType1_SelectedIndexChanged);
+            // 
+            // comB_RpType2
+            // 
+            this.comB_RpType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_RpType2.FormattingEnabled = true;
+            this.comB_RpType2.Items.AddRange(new object[] {
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
+            this.comB_RpType2.Location = new System.Drawing.Point(855, 73);
+            this.comB_RpType2.Name = "comB_RpType2";
+            this.comB_RpType2.Size = new System.Drawing.Size(86, 20);
+            this.comB_RpType2.TabIndex = 81;
+            this.comB_RpType2.SelectedIndexChanged += new System.EventHandler(this.comB_RpType2_SelectedIndexChanged);
+            // 
+            // clb_CC
+            // 
+            this.clb_CC.FormattingEnabled = true;
+            this.clb_CC.Location = new System.Drawing.Point(117, 55);
+            this.clb_CC.Name = "clb_CC";
+            this.clb_CC.Size = new System.Drawing.Size(128, 52);
+            this.clb_CC.TabIndex = 82;
+            this.clb_CC.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clb_CC_ItemCheck);
+            this.clb_CC.Click += new System.EventHandler(this.clb_CC_Click);
+            this.clb_CC.SelectedIndexChanged += new System.EventHandler(this.clb_CC_SelectedIndexChanged);
+            this.clb_CC.SelectedValueChanged += new System.EventHandler(this.clb_CC_SelectedValueChanged);
+            // 
+            // dgv_rmdata2
+            // 
+            this.dgv_rmdata2.AllowUserToAddRows = false;
+            this.dgv_rmdata2.AllowUserToDeleteRows = false;
+            this.dgv_rmdata2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_rmdata2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.Column15,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
+            this.dgv_rmdata2.Location = new System.Drawing.Point(50, 392);
+            this.dgv_rmdata2.Name = "dgv_rmdata2";
+            this.dgv_rmdata2.RowTemplate.Height = 23;
+            this.dgv_rmdata2.Size = new System.Drawing.Size(1158, 253);
+            this.dgv_rmdata2.TabIndex = 83;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "EqName";
@@ -519,11 +510,32 @@
             this.dataGridViewTextBoxColumn13.HeaderText = "12";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
+            // btn_Chart
+            // 
+            this.btn_Chart.Location = new System.Drawing.Point(1063, 70);
+            this.btn_Chart.Name = "btn_Chart";
+            this.btn_Chart.Size = new System.Drawing.Size(80, 23);
+            this.btn_Chart.TabIndex = 86;
+            this.btn_Chart.Text = "总价对比图";
+            this.btn_Chart.UseVisualStyleBackColor = true;
+            this.btn_Chart.Click += new System.EventHandler(this.btn_Chart_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(261, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 87;
+            this.button1.Text = "确定";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Frm_MTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 647);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Chart);
             this.Controls.Add(this.dgv_rmdata2);
             this.Controls.Add(this.clb_CC);
@@ -610,5 +622,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.Button button1;
     }
 }
