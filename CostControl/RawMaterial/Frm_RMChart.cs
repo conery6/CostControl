@@ -14,112 +14,49 @@ namespace CostControl.RawMaterial
     public partial class Frm_RMChart : Form
     {
         public float[,] chartdata;
-        int max;
-        int min;
+		private string[] chartInfo;
 
-        public Frm_RMChart(float [,] f,int maxi,int mini)
+        public Frm_RMChart(float [,] f,string [] chartInfo)
         {
             InitializeComponent();
             chartdata = f;
-            max = maxi;
-            min = mini;
+			this.chartInfo = chartInfo;
         }
 
         private void Frm_Chart_Load(object sender, EventArgs e)
         {
 
+			string title = chartInfo[0];
+			this.Text = title;
+			RMChart.Titles.Add(title);
+			Series series1 = RMChart.Series[0];
+			Series series2 = RMChart.Series[1];
+			Series series3 = RMChart.Series[2];
+			Series series4 = RMChart.Series[3];
+			Series series5 = RMChart.Series[4];
+			series1.Name = chartInfo[1];
+			series2.Name = chartInfo[2];
+			series3.Name = chartInfo[3];
+			series4.Name = chartInfo[4];
+			series5.Name = chartInfo[5];
+			
 
-            // Create a Chart
-            chart1 = new Chart();
+			// Add data points to the first series
+			for (int i = 0; i < 12; i++)
+			{
+				series1.Points.Add(chartdata[0, i+1]);
+				series2.Points.Add(chartdata[1, i + 1]);
+				series3.Points.Add(chartdata[2, i + 1]);
+				series4.Points.Add(chartdata[3, i + 1]);
+				series5.Points.Add(chartdata[4, i + 1]);
+				series1.Points[i].AxisLabel = "M" + (i + 1);
+				series1.Points[i].ToolTip = chartdata[0, i + 1].ToString();
+				series2.Points[i].ToolTip = chartdata[1, i + 1].ToString();
+				series3.Points[i].ToolTip = chartdata[2, i + 1].ToString();
+				series4.Points[i].ToolTip = chartdata[3, i + 1].ToString();
+				series5.Points[i].ToolTip = chartdata[4, i + 1].ToString();
 
-            // Create Chart Area
-            ChartArea chartArea1 = new ChartArea();
-
-            // Add Chart Area to the Chart
-            chart1.ChartAreas.Add(chartArea1);
-
-            // Create a data series
-            Series series1 = new Series();
-            Series series2 = new Series();
-            Series series3 = new Series();
-            Series series4 = new Series();
-            Series series5 = new Series();
-
-
-            series1.Name = "Purchase Cost";
-            series2.Name = "Purchase Price";
-            series3.Name = "Purchase Quantity";
-            series4.Name = "Sales Quantity";
-            series5.Name = "availability";
-
-            // Add data points to the first series
-            for (int i = 1; i < 13; i++)
-            {
-                series1.Points.Add(chartdata[0, i]);
-                series2.Points.Add(chartdata[1, i]);
-                series3.Points.Add(chartdata[2, i]);
-                series4.Points.Add(chartdata[3, i]);
-                series5.Points.Add(chartdata[4, i]);
-                //series1.Points[i].AxisLabel =i.ToString ()+  "月";
-            }
-
-            series1.ChartType = SeriesChartType.Line;
-            series2.ChartType = SeriesChartType.Line;
-            series3.ChartType = SeriesChartType.Column;
-            series4.ChartType = SeriesChartType.Column;
-            series5.ChartType = SeriesChartType.Column;
-
-
-            series1.MarkerStyle = MarkerStyle.Circle;
-            series1.MarkerSize = 5;
-            series1.MarkerColor = Color.Magenta;
-            //series1.MarkerBorderColor = Color.Red;
-            series1.MarkerBorderWidth = 1;
-
-            series2.MarkerStyle = MarkerStyle.Circle;
-            series2.MarkerSize = 5;
-            series2.MarkerColor = Color.Magenta;
-            //series2.MarkerBorderColor = Color.Red;
-            series2.MarkerBorderWidth = 1;
-
-            Legend legend1 = new Legend();
-            legend1.Name = "aaa";
-            chart1.Legends.Add(legend1);
-
-            series1.Legend = "aaa";
-            series2.Legend = "aaa";
-            series3.Legend = "aaa";
-            series4.Legend = "aaa";
-            series5.Legend = "aaa";
-
-            
-
-            // Add series to the chart
-            chart1.Series.Add(series1);
-            chart1.Series.Add(series2);
-            chart1.Series.Add(series3);
-            chart1.Series.Add(series4);
-            chart1.Series.Add(series5);
-
-            // Set chart control location
-            chart1.Location = new System.Drawing.Point(16, 16);
-
-            // Set Chart control size
-            chart1.Size = new System.Drawing.Size(800, 600);
-
-            //chart1.ChartAreas["chartArea1"].AxisY.Minimum = 0;
-            //chart1.ChartAreas["chartArea1"].AxisY.Maximum = 100;
-
-            //chartArea1.AxisY.Minimum = min;
-            //chartArea1.AxisY.Maximum = AutoSize;
-            //chart1.Series["Series1"].Points[2].AxisLabel = "My Axis Label\nLabel Line #2";
-
-            chartArea1.AxisX.Interval = 1;
-
-            // Add chart control to the form
-            this.Controls.AddRange(new System.Windows.Forms.Control[] { this.chart1 });
-
-
+			}
         }
     }
 }

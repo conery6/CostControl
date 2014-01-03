@@ -34,11 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comB_Year = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
             this.dgv_Edata = new System.Windows.Forms.DataGridView();
+            this.Excelout = new System.Windows.Forms.Button();
+            this.btn_SearchPeriod = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,13 +50,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Exceladd = new System.Windows.Forms.Button();
-            this.Excelout = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btn_SearchPeriod = new System.Windows.Forms.Button();
-            this.btn_Change = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Edata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,26 +114,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "年份";
             // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(558, 84);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 19;
-            this.btn_delete.Text = "删除数据";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(640, 84);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_add.TabIndex = 35;
-            this.btn_add.Text = "建空表";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
             // dgv_Edata
             // 
             this.dgv_Edata.AllowUserToAddRows = false;
@@ -149,7 +121,6 @@
             this.dgv_Edata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Edata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Itemnum,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -166,10 +137,30 @@
             this.dgv_Edata.Name = "dgv_Edata";
             this.dgv_Edata.ReadOnly = true;
             this.dgv_Edata.RowTemplate.Height = 23;
-            this.dgv_Edata.Size = new System.Drawing.Size(851, 387);
+            this.dgv_Edata.Size = new System.Drawing.Size(851, 433);
             this.dgv_Edata.TabIndex = 38;
             this.dgv_Edata.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Edata_CellEndEdit);
             this.dgv_Edata.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgv_Edata_DataError);
+            // 
+            // Excelout
+            // 
+            this.Excelout.Location = new System.Drawing.Point(737, 81);
+            this.Excelout.Name = "Excelout";
+            this.Excelout.Size = new System.Drawing.Size(75, 23);
+            this.Excelout.TabIndex = 41;
+            this.Excelout.Text = "Excel导出";
+            this.Excelout.UseVisualStyleBackColor = true;
+            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
+            // 
+            // btn_SearchPeriod
+            // 
+            this.btn_SearchPeriod.Location = new System.Drawing.Point(737, 38);
+            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
+            this.btn_SearchPeriod.Size = new System.Drawing.Size(75, 23);
+            this.btn_SearchPeriod.TabIndex = 42;
+            this.btn_SearchPeriod.Text = "查询";
+            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
+            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
             // 
             // Column1
             // 
@@ -178,14 +169,6 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Itemnum
-            // 
-            this.Itemnum.DataPropertyName = "Type";
-            this.Itemnum.HeaderText = "Itemnum";
-            this.Itemnum.Name = "Itemnum";
-            this.Itemnum.ReadOnly = true;
-            this.Itemnum.Visible = false;
             // 
             // Column2
             // 
@@ -283,73 +266,14 @@
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Exceladd
-            // 
-            this.Exceladd.Location = new System.Drawing.Point(721, 81);
-            this.Exceladd.Name = "Exceladd";
-            this.Exceladd.Size = new System.Drawing.Size(83, 29);
-            this.Exceladd.TabIndex = 40;
-            this.Exceladd.Text = "Excel导入";
-            this.Exceladd.UseVisualStyleBackColor = true;
-            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
-            // 
-            // Excelout
-            // 
-            this.Excelout.Location = new System.Drawing.Point(803, 81);
-            this.Excelout.Name = "Excelout";
-            this.Excelout.Size = new System.Drawing.Size(83, 29);
-            this.Excelout.TabIndex = 41;
-            this.Excelout.Text = "Excel导出";
-            this.Excelout.UseVisualStyleBackColor = true;
-            this.Excelout.Click += new System.EventHandler(this.Excelout_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btn_SearchPeriod
-            // 
-            this.btn_SearchPeriod.Location = new System.Drawing.Point(315, 84);
-            this.btn_SearchPeriod.Name = "btn_SearchPeriod";
-            this.btn_SearchPeriod.Size = new System.Drawing.Size(75, 23);
-            this.btn_SearchPeriod.TabIndex = 42;
-            this.btn_SearchPeriod.Text = "查询";
-            this.btn_SearchPeriod.UseVisualStyleBackColor = true;
-            this.btn_SearchPeriod.Click += new System.EventHandler(this.btn_SearchPeriod_Click);
-            // 
-            // btn_Change
-            // 
-            this.btn_Change.Location = new System.Drawing.Point(396, 84);
-            this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(75, 23);
-            this.btn_Change.TabIndex = 45;
-            this.btn_Change.Text = "编辑";
-            this.btn_Change.UseVisualStyleBackColor = true;
-            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(477, 84);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 23);
-            this.btn_Save.TabIndex = 46;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
             // Frm_EActual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 608);
-            this.Controls.Add(this.btn_Save);
-            this.Controls.Add(this.btn_Change);
             this.Controls.Add(this.btn_SearchPeriod);
             this.Controls.Add(this.Excelout);
-            this.Controls.Add(this.Exceladd);
             this.Controls.Add(this.dgv_Edata);
-            this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.comB_Year);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comB_CC);
@@ -373,18 +297,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comB_Year;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dgv_Edata;
-        private System.Windows.Forms.Button Exceladd;
         private System.Windows.Forms.Button Excelout;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btn_SearchPeriod;
-        private System.Windows.Forms.Button btn_Change;
-        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

@@ -27,9 +27,10 @@ namespace CostControl.Management
         float[,] f3 = new float[10, 13];
         float[] sum1 = new float[12];
         float[] sum2 = new float[12];
-        List <float> sumbar = new List <float>();
-        List <string >sumbarname = new List <string >();
-
+        List<float> sumbar = new List<float>();
+        List<string> sumbarname = new List<string>();
+        string currentType = "";
+        string currentType2 = "";
         public Frm_MGTable()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace CostControl.Management
 
         private bool getPK1()//获取四个主键，做了个封装
         {
-            if (FNo == "" || CCNo == "" ||  Year1 == "" || Reporttype1 == "")
+            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_report1.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -50,7 +51,7 @@ namespace CostControl.Management
 
         private bool getPK2()//获取四个主键，做了个封装
         {
-            if (FNo == "" || CCNo == "" || Year2 == "" || Reporttype2 == "")
+            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_report2.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -64,41 +65,44 @@ namespace CostControl.Management
         {
             if (getPK1())
             {
-                dgv_mgdata1.Rows.Clear();
-                DataTable r = new DataTable();
+                DataTable dt = new DataTable();
+                for (int i = 0; i < dgv_mgdata1.Columns.Count; i++)
+                {
+                    dgv_mgdata1.Columns[i].ReadOnly = true;
+                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                if (getPK1())
+                {
+
+                    if (Reporttype1 == "Actual")
+                    {
+                        dt = GetMGData.Period(FNo, CCNo, Year1, "A12");
+                    }
+                    else
+                    {
+                        dt = GetMGData.Period(FNo, CCNo, Year1, Reporttype1);
+                    }
+                    dgv_mgdata1.DataSource = dt;
+                }
+                int acMonth = 0;
                 switch (Reporttype1)
                 {
-                    case "T1":
-                        r = GetMGData.Budget(FNo, CCNo, Year1);
-                        break;
-                    case "RF1":
-                        r = GetMGData.MiddleBudget(FNo, CCNo, Year1, 3);
-                        break;
-                    case "RF2":
-                        r = GetMGData.MiddleBudget(FNo, CCNo, Year1, 6);
-                        break;
-                    case "E3":
-                        r = GetMGData.MiddleBudget(FNo, CCNo, Year1, 9);
-                        break;
-                    case "R":
-                        r = GetMGData.Actual(FNo, CCNo, Year1);
-                        break;
+                    case "T1": acMonth = 0; break;
+                    case "RF1": acMonth = 3; break;
+                    case "RF2": acMonth = 6; break;
+                    case "E3": acMonth = 9; break;
+                    case "Actual": acMonth = 12; break;
                 }
 
-                if (r.Rows.Count > 0)
+                dgv_mgdata1.Columns[0].ReadOnly = true;
+                dgv_mgdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 1; i <= acMonth; i++)
                 {
-
-                    for (int i = 0; i < r.Rows.Count; i++)
-                    {
-                        dgv_mgdata1.Rows.Add();
-
-                    }
-                    dgv_mgdata1.DataSource = r;
+                    dgv_mgdata1.Columns[i].ReadOnly = true;
+                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
-                else
-                { MessageBox.Show("数据为空！"); }
-
-                DT1 = r;
+                DT1 = dt;
                 FDT1 = GetMGData.DTto2DFloat(DT1);
 
                 for (int i = 0; i < 12; i++)
@@ -110,6 +114,7 @@ namespace CostControl.Management
                     }
                     sum1[i] = sum;
                 }
+                currentType = Reporttype1;
             }
         }
 
@@ -131,41 +136,47 @@ namespace CostControl.Management
 
             if (getPK2())
             {
-                //do while (dgv_mgdata1 .Rows .Count >0)
-                //{
 
-                //}
+                DataTable dt = new DataTable();
+                for (int i = 0; i < dgv_mgdata2.Columns.Count; i++)
+                {
+                    dgv_mgdata2.Columns[i].ReadOnly = true;
+                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                if (getPK1())
+                {
 
-
-                DataTable r2 = new DataTable();
-
+                    if (Reporttype2 == "Actual")
+                    {
+                        dt = GetMGData.Period(FNo, CCNo, Year2, "A12");
+                    }
+                    else
+                    {
+                        dt = GetMGData.Period(FNo, CCNo, Year2, Reporttype2);
+                    }
+                    dgv_mgdata2.DataSource = dt;
+                }
+                int acMonth = 0;
                 switch (Reporttype2)
                 {
-                    case "T1":
-                        r2 = GetMGData.Budget(FNo, CCNo, Year2);
-                        break;
-                    case "RF1":
-                        r2 = GetMGData.MiddleBudget(FNo, CCNo, Year2, 3);
-                        break;
-                    case "RF2":
-                        r2 = GetMGData.MiddleBudget(FNo, CCNo, Year2, 6);
-                        break;
-                    case "E3":
-                        r2 = GetMGData.MiddleBudget(FNo, CCNo, Year2, 9);
-                        break;
-                    case "R":
-                        r2 = GetMGData.Actual(FNo, CCNo, Year2);
-                        break;
+                    case "T1": acMonth = 0; break;
+                    case "RF1": acMonth = 3; break;
+                    case "RF2": acMonth = 6; break;
+                    case "E3": acMonth = 9; break;
+                    case "Actual": acMonth = 12; break;
                 }
 
-                if (r2.Rows.Count > 0)
+                dgv_mgdata2.Columns[0].ReadOnly = true;
+                dgv_mgdata2.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 1; i <= acMonth; i++)
                 {
-                    dgv_mgdata2.DataSource = r2;
+                    dgv_mgdata2.Columns[i].ReadOnly = true;
+                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
-                else
-                { MessageBox.Show("数据为空！"); }
 
-                DT2 = r2;
+
+                DT2 = dt;
                 FDT2 = GetMGData.DTto2DFloat(DT2);
 
                 for (int i = 0; i < 12; i++)
@@ -177,6 +188,7 @@ namespace CostControl.Management
                     }
                     sum2[i] = sum;
                 }
+                currentType2 = Reporttype2;
             }
         }
 
@@ -200,7 +212,7 @@ namespace CostControl.Management
             CCNo = GetMGData.CCNo(comB_CC.Text);
             comB_Year1.Items.Clear();
             comB_Year2.Items.Clear();
-            string sql = " select distinct Year from MGBudget where CCNo='" + CCNo + "'";
+            string sql = " select distinct Year from MGPeriod where CCNo='" + CCNo + "'";
             DataTable temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
@@ -232,7 +244,7 @@ namespace CostControl.Management
 
         private void btn_createchart_Click(object sender, EventArgs e)
         {
-            string[] chartInfo = {comB_Facility.Text,Year1 + Reporttype1, Year2 + Reporttype2 };
+            string[] chartInfo = { comB_Facility.Text, comB_CC.Text, Year1 + currentType, Year2 + currentType2 };
             Frm_MGChart m_Frm_MGChart = new Frm_MGChart(sum1, sum2, chartInfo);
             m_Frm_MGChart.Show();
         }
@@ -245,20 +257,133 @@ namespace CostControl.Management
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ExcelHelper excel = new ExcelHelper();
-            ExcelHelper.ChartInfo chartInfo = new ExcelHelper.ChartInfo();
-            string[] infoHeader = { "工厂", "成本中心", "年份", "报表" };
-            object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
-            object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
-            chartInfo.infoHeader = infoHeader;
-            chartInfo.baseInfo = content1;
-            chartInfo.compareInfo = content2;
-            chartInfo.chartTitle = comB_Facility.Text + "  " + comB_CC.Text + "总计比较";
-            chartInfo.baseSeries = comB_Year1.Text + " " + comB_report1.Text;
-            chartInfo.compareSeries = comB_Year2.Text + " " + comB_report2.Text;
-            DataTable dt1 = (DataTable)dgv_mgdata1.DataSource;
-            DataTable dt2 = (DataTable)dgv_mgdata2.DataSource;
-            excel.ExportExcelWithChart(dt1, dt2, chartInfo);
+            if (getPK1() && getPK2())
+            {
+                ExcelHelper excel = new ExcelHelper();
+                ExcelHelper.ChartInfo chartInfo = new ExcelHelper.ChartInfo();
+                string[] infoHeader = { "工厂", "成本中心", "年份", "报表" };
+                object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), currentType };
+                object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), currentType2 };
+                chartInfo.infoHeader = infoHeader;
+                chartInfo.baseInfo = content1;
+                chartInfo.compareInfo = content2;
+                chartInfo.chartTitle = comB_Facility.Text + "  " + comB_CC.Text + "总计比较";
+                chartInfo.baseSeries = comB_Year1.Text + " " + currentType;
+                chartInfo.compareSeries = comB_Year2.Text + " " + currentType2;
+                DataTable dt1 = (DataTable)dgv_mgdata1.DataSource;
+                DataTable dt2 = (DataTable)dgv_mgdata2.DataSource;
+                excel.ExportExcelWithChart(dt1, dt2, chartInfo);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month1.Text == "")
+            {
+                MessageBox.Show("参数不全！");
+            }
+            else
+            {
+                for (int i = 0; i < dgv_mgdata1.Columns.Count; i++)
+                {
+                    dgv_mgdata1.Columns[i].ReadOnly = true;
+                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
+                DataTable r = new DataTable();
+                string reportMonth = comb_Month1.Text;
+                switch (reportMonth)
+                {
+                    case "3":
+                        r = GetMGData.Period(FNo, CCNo, Year1, "RF1");
+                        break;
+                    case "6":
+                        r = GetMGData.Period(FNo, CCNo, Year1, "RF2");
+                        break;
+                    case "9":
+                        r = GetMGData.Period(FNo, CCNo, Year1, "E3");
+                        break;
+                    default:
+                        r = GetMGData.Period(FNo, CCNo, Year1, "A" + reportMonth);
+                        break;
+                }
+                dgv_mgdata1.DataSource = r;
+                int acMonth = int.Parse(reportMonth);
+
+                dgv_mgdata1.Columns[0].ReadOnly = true;
+                dgv_mgdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 1; i <= acMonth; i++)
+                {
+                    dgv_mgdata1.Columns[i].ReadOnly = true;
+                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_mgdata1.Rows.Count; j++)
+                    {
+                        sum += FDT1[j, i];
+                    }
+                    sum1[i] = sum;
+                }
+                currentType = "A" + reportMonth;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month2.Text == "")
+            {
+                MessageBox.Show("参数不全！");
+            }
+            else
+            {
+                for (int i = 0; i < dgv_mgdata2.Columns.Count; i++)
+                {
+                    dgv_mgdata2.Columns[i].ReadOnly = true;
+                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
+                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
+                DataTable r = new DataTable();
+                string reportMonth = comb_Month2.Text;
+                switch (reportMonth)
+                {
+                    case "3":
+                        r = GetMGData.Period(FNo, CCNo, Year2, "RF1");
+                        break;
+                    case "6":
+                        r = GetMGData.Period(FNo, CCNo, Year2, "RF2");
+                        break;
+                    case "9":
+                        r = GetMGData.Period(FNo, CCNo, Year2, "E3");
+                        break;
+                    default:
+                        r = GetMGData.Period(FNo, CCNo, Year2, "A" + reportMonth);
+                        break;
+                }
+                dgv_mgdata2.DataSource = r;
+                int acMonth = int.Parse(reportMonth);
+
+                dgv_mgdata2.Columns[0].ReadOnly = true;
+                dgv_mgdata2.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
+
+                for (int i = 1; i <= acMonth; i++)
+                {
+                    dgv_mgdata2.Columns[i].ReadOnly = true;
+                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_mgdata2.Rows.Count; j++)
+                    {
+                        sum += FDT2[j, i];
+                    }
+                    sum2[i] = sum;
+                }
+                currentType2 = "A" + reportMonth;
+            }
         }
     }
 }

@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.comB_CC = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comB_Facility = new System.Windows.Forms.ComboBox();
@@ -49,9 +49,7 @@
             this.comB_RpType = new System.Windows.Forms.ComboBox();
             this.comB_Year = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_delete = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
             this.dgv_rmdata = new System.Windows.Forms.DataGridView();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,12 +65,9 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Exceladd = new System.Windows.Forms.Button();
             this.Excelout = new System.Windows.Forms.Button();
             this.btn_SearchPeriod = new System.Windows.Forms.Button();
             this.comB_Month = new System.Windows.Forms.ComboBox();
-            this.btn_Change = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
             this.comB_Product = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata)).BeginInit();
@@ -164,16 +159,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "年份";
             // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(775, 38);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 19;
-            this.btn_delete.Text = "删除数据";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
             // btn_Search
             // 
             this.btn_Search.Location = new System.Drawing.Point(542, 83);
@@ -183,16 +168,6 @@
             this.btn_Search.Text = "查询";
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(857, 38);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_add.TabIndex = 35;
-            this.btn_add.Text = "建空表";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // dgv_rmdata
             // 
@@ -228,8 +203,8 @@
             // Type
             // 
             this.Type.DataPropertyName = "Type";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Type.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.NullValue = null;
+            this.Type.DefaultCellStyle = dataGridViewCellStyle14;
             this.Type.HeaderText = "科目编号";
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
@@ -246,9 +221,9 @@
             // Column2
             // 
             this.Column2.DataPropertyName = "M1";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle15;
             this.Column2.HeaderText = "1";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -257,9 +232,9 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "M2";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle16;
             this.Column3.HeaderText = "2";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -268,9 +243,9 @@
             // Column4
             // 
             this.Column4.DataPropertyName = "M3";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle17;
             this.Column4.HeaderText = "3";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -279,9 +254,9 @@
             // Column5
             // 
             this.Column5.DataPropertyName = "M4";
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle18;
             this.Column5.HeaderText = "4";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -290,9 +265,9 @@
             // Column6
             // 
             this.Column6.DataPropertyName = "M5";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle19;
             this.Column6.HeaderText = "5";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -301,9 +276,9 @@
             // Column7
             // 
             this.Column7.DataPropertyName = "M6";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle20;
             this.Column7.HeaderText = "6";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -312,9 +287,9 @@
             // Column8
             // 
             this.Column8.DataPropertyName = "M7";
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle21;
             this.Column8.HeaderText = "7";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -323,9 +298,9 @@
             // Column9
             // 
             this.Column9.DataPropertyName = "M8";
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle22.Format = "N2";
+            dataGridViewCellStyle22.NullValue = null;
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle22;
             this.Column9.HeaderText = "8";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -334,9 +309,9 @@
             // Column10
             // 
             this.Column10.DataPropertyName = "M9";
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle23.Format = "N2";
+            dataGridViewCellStyle23.NullValue = null;
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle23;
             this.Column10.HeaderText = "9";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
@@ -345,9 +320,9 @@
             // Column11
             // 
             this.Column11.DataPropertyName = "M10";
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.Column11.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle24.Format = "N2";
+            dataGridViewCellStyle24.NullValue = null;
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle24;
             this.Column11.HeaderText = "10";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
@@ -356,9 +331,9 @@
             // Column12
             // 
             this.Column12.DataPropertyName = "M11";
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle25.Format = "N2";
+            dataGridViewCellStyle25.NullValue = null;
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle25;
             this.Column12.HeaderText = "11";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
@@ -367,23 +342,13 @@
             // Column13
             // 
             this.Column13.DataPropertyName = "M12";
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = null;
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle26.Format = "N2";
+            dataGridViewCellStyle26.NullValue = null;
+            this.Column13.DefaultCellStyle = dataGridViewCellStyle26;
             this.Column13.HeaderText = "12";
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Exceladd
-            // 
-            this.Exceladd.Location = new System.Drawing.Point(721, 81);
-            this.Exceladd.Name = "Exceladd";
-            this.Exceladd.Size = new System.Drawing.Size(83, 29);
-            this.Exceladd.TabIndex = 40;
-            this.Exceladd.Text = "Excel导入";
-            this.Exceladd.UseVisualStyleBackColor = true;
-            this.Exceladd.Click += new System.EventHandler(this.Exceladd_Click);
             // 
             // Excelout
             // 
@@ -428,26 +393,6 @@
             this.comB_Month.TabIndex = 43;
             this.comB_Month.SelectedIndexChanged += new System.EventHandler(this.comB_Month_SelectedIndexChanged);
             // 
-            // btn_Change
-            // 
-            this.btn_Change.Location = new System.Drawing.Point(613, 38);
-            this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(75, 23);
-            this.btn_Change.TabIndex = 45;
-            this.btn_Change.Text = "编辑";
-            this.btn_Change.UseVisualStyleBackColor = true;
-            this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(694, 38);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 23);
-            this.btn_Save.TabIndex = 46;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
             // comB_Product
             // 
             this.comB_Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -474,15 +419,10 @@
             this.ClientSize = new System.Drawing.Size(944, 608);
             this.Controls.Add(this.comB_Product);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_Save);
-            this.Controls.Add(this.btn_Change);
             this.Controls.Add(this.comB_Month);
             this.Controls.Add(this.btn_SearchPeriod);
             this.Controls.Add(this.Excelout);
-            this.Controls.Add(this.Exceladd);
             this.Controls.Add(this.dgv_rmdata);
-            this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comB_RpType);
@@ -510,17 +450,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comB_RpType;
         private System.Windows.Forms.ComboBox comB_Year;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.DataGridView dgv_rmdata;
-        private System.Windows.Forms.Button Exceladd;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button btn_Search;
+		private System.Windows.Forms.DataGridView dgv_rmdata;
         private System.Windows.Forms.Button Excelout;
         private System.Windows.Forms.Button btn_SearchPeriod;
-        private System.Windows.Forms.ComboBox comB_Month;
-        private System.Windows.Forms.Button btn_Change;
-        private System.Windows.Forms.Button btn_Save;
+		private System.Windows.Forms.ComboBox comB_Month;
         private System.Windows.Forms.ComboBox comB_Product;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;

@@ -40,10 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btn_newbudget = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.btn_exceladd = new System.Windows.Forms.Button();
             this.btn_SearchPeriod = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comB_RpType = new System.Windows.Forms.ComboBox();
@@ -56,10 +52,8 @@
             this.dgv_MGData = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
             this.comB_Month = new System.Windows.Forms.ComboBox();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.项目编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_IName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.M1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clm_M2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,46 +69,6 @@
             this.clm_M12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_MGData)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_newbudget
-            // 
-            this.btn_newbudget.Location = new System.Drawing.Point(791, 81);
-            this.btn_newbudget.Name = "btn_newbudget";
-            this.btn_newbudget.Size = new System.Drawing.Size(75, 23);
-            this.btn_newbudget.TabIndex = 32;
-            this.btn_newbudget.Text = "增加新预算";
-            this.btn_newbudget.UseVisualStyleBackColor = true;
-            this.btn_newbudget.Click += new System.EventHandler(this.btn_newbudget_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(698, 81);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 31;
-            this.btn_delete.Text = "删除数据";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(604, 81);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 30;
-            this.btn_update.Text = "修改数据";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
-            // btn_exceladd
-            // 
-            this.btn_exceladd.Location = new System.Drawing.Point(698, 27);
-            this.btn_exceladd.Name = "btn_exceladd";
-            this.btn_exceladd.Size = new System.Drawing.Size(75, 23);
-            this.btn_exceladd.TabIndex = 29;
-            this.btn_exceladd.Text = "Excel导入";
-            this.btn_exceladd.UseVisualStyleBackColor = true;
-            this.btn_exceladd.Click += new System.EventHandler(this.btn_exceladd_Click);
             // 
             // btn_SearchPeriod
             // 
@@ -214,7 +168,6 @@
             this.dgv_MGData.AllowUserToDeleteRows = false;
             this.dgv_MGData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_MGData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.项目编号,
             this.clm_IName,
             this.M1,
             this.clm_M2,
@@ -237,7 +190,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(791, 27);
+            this.button1.Location = new System.Drawing.Point(809, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 33;
@@ -254,16 +207,6 @@
             this.btn_Cancel.Text = "取消";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(604, 27);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 23);
-            this.btn_Save.TabIndex = 34;
-            this.btn_Save.Text = "保存";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // comB_Month
             // 
@@ -297,14 +240,6 @@
             this.btn_Search.Text = "查询";
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click_1);
-            // 
-            // 项目编号
-            // 
-            this.项目编号.DataPropertyName = "Type";
-            this.项目编号.HeaderText = "项目编号";
-            this.项目编号.Name = "项目编号";
-            this.项目编号.ReadOnly = true;
-            this.项目编号.Visible = false;
             // 
             // clm_IName
             // 
@@ -442,12 +377,7 @@
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.comB_Month);
             this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_newbudget);
-            this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.btn_exceladd);
             this.Controls.Add(this.btn_SearchPeriod);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comB_RpType);
@@ -469,10 +399,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_newbudget;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Button btn_exceladd;
         private System.Windows.Forms.Button btn_SearchPeriod;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comB_RpType;
@@ -485,10 +411,8 @@
         private System.Windows.Forms.DataGridView dgv_MGData;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.ComboBox comB_Month;
         private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 项目编号;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_IName;
         private System.Windows.Forms.DataGridViewTextBoxColumn M1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clm_M2;

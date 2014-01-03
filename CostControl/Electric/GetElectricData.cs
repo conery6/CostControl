@@ -41,21 +41,10 @@ namespace CostControl.Electric
 
         public static DataTable Period(String FNo, String Year, String CCNo, String Period)
         {
-            if (Period != "Actual")
-            {
-
-                string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
+                string sql = "select TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year
                 + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' order by Type asc";
                 DataTable a = ODbcmd.SelectToDataTable(sql);
                 return a;
-            }
-            else
-            {
-                string sql = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EActual  where year=" + Year
-                + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' order by Type asc";
-                DataTable a = ODbcmd.SelectToDataTable(sql);
-                return a;
-            }
         }
 
         public static DataTable MiddleBudget(String FNo, String CCNo, String Year, int month)

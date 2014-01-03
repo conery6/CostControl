@@ -1,69 +1,50 @@
-﻿using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using NPOI.HSSF.UserModel;
-using NPOI.HSSF.Util;
-using NPOI.Util;
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
-using NPOI.SS.Util;
 using OfficeOpenXml;
 using System.Drawing;
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Drawing.Chart;
+using System.Collections.Generic;
 namespace CostControl
 {
     class ExcelHelper
     {
-        private IWorkbook workBook;
         private string fileName;
-        private ISheet currentSheet;
-        private ICellStyle titleStyle;
-        private ICellStyle headerStyle;
-        private ICellStyle dateTimeStyle;
-        private ICellStyle dateYearStyle;
-        private ICellStyle doubleNumStyle;
-        private ICellStyle intNumStyle;
-
+        private ExcelPackage _excelPackage;
+        private ExcelWorkbook _workBook;
+        private ExcelWorksheet _currentSheet;
+        private List<TableStruct> _addedTables = new List<TableStruct>();
         public ExcelHelper(string fileName)
         {
+            _excelPackage = new ExcelPackage();
+            _workBook = _excelPackage.Workbook;
             this.fileName = fileName;
-            if (fileName.EndsWith(".xlsx"))
-            {
-                workBook = new XSSFWorkbook();
-            }
-            else
-            {
-                workBook = new HSSFWorkbook();
-            }
-            InitStyle();
         }
 
-        private void InitStyle()
-        {
-            titleStyle = workBook.CreateCellStyle();
-            headerStyle = workBook.CreateCellStyle();
-            dateTimeStyle = workBook.CreateCellStyle();
-            dateYearStyle = workBook.CreateCellStyle();
-            doubleNumStyle = workBook.CreateCellStyle();
-            intNumStyle = workBook.CreateCellStyle();
-        }
         public ExcelHelper() { }
 
-
-        /// <summary>
-        /// 设置标题，居中显示，默认合并前两行
-        /// </summary>
-        /// <param name="title">标题内容</param>
-        /// <param name="colNum">列数 从0开始</param>
-        public void SetTitle(string title, int lastCol)
+        private struct TableStruct
         {
-            IRow row = currentSheet.CreateRow(0);
-            ICell cell = row.CreateCell(0);
-            cell.SetCellValue(title);
-            cell.CellStyle = TitleStyle;
-            currentSheet.AddMergedRegion(new CellRangeAddress(0, 1, 0, lastCol));
+            public int rowFrom;
+            public int rowTo;
+            public int colFrom;
+            public int colTo;
+        }
+
+        public int LastRowNum
+        {
+            get
+            {
+                if (_currentSheet.Dimension == null) return 1;
+                return _currentSheet.Dimension.End.Row;
+            }
+        }
+
+        public ExcelWorksheet CurrentSheet
+        {
+            get { return _currentSheet; }
         }
 
         /// <summary>
@@ -103,48 +84,48 @@ namespace CostControl
         public static DataTable ExcelToDataTable(string fileName, int rowStart, int rowEnd, int colStart, int colEnd, int sheetNum, bool hasHeader = true)
         {
             DataTable dt = new DataTable();
-            IWorkbook workBook;
-            try
-            {
-                using (FileStream fs = File.OpenRead(fileName))
-                {
-                    workBook = WorkbookFactory.Create(fs);
-                }
-                ISheet sheet = workBook.GetSheetAt(sheetNum);
-                //为0则初始为最大行数
-                rowEnd = (rowEnd == 0 ? sheet.LastRowNum : rowEnd);
-                //为0则初始为最大列数
-                colEnd = (colEnd == 0 ? sheet.GetRow(rowStart).LastCellNum - 1 : colEnd);
+            //	IWorkbook workBook;
+            //	try
+            //	{
+            //		using (FileStream fs = File.OpenRead(fileName))
+            //		{
+            //			workBook = WorkbookFactory.Create(fs);
+            //		}
+            //		ISheet sheet = workBook.GetSheetAt(sheetNum);
+            //		//为0则初始为最大行数
+            //		rowEnd = (rowEnd == 0 ? sheet.LastRowNum : rowEnd);
+            //		//为0则初始为最大列数
+            //		colEnd = (colEnd == 0 ? sheet.GetRow(rowStart).LastCellNum - 1 : colEnd);
 
-                if (hasHeader)
-                {
-                    for (int i = colStart; i <= colEnd; i++)
-                    {
-                        dt.Columns.Add(sheet.GetRow(rowStart).GetCell(i).ToString());
-                    }
-                }
-                else
-                {
-                    for (int i = colStart; i <= colEnd; i++)
-                    {
-                        dt.Columns.Add("Column" + (i - colStart));
-                    }
-                    rowStart = rowStart - 1;
-                }
-                for (int i = rowStart + 1; i <= rowEnd; i++)
-                {
-                    DataRow dr = dt.NewRow();
-                    for (int j = colStart; j <= colEnd; j++)
-                    {
-                        dr[j - colStart] = sheet.GetRow(i).GetCell(j);
-                    }
-                    dt.Rows.Add(dr);
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Excel格式有误，返回部分结果！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //		if (hasHeader)
+            //		{
+            //			for (int i = colStart; i <= colEnd; i++)
+            //			{
+            //				dt.Columns.Add(sheet.GetRow(rowStart).GetCell(i).ToString());
+            //			}
+            //		}
+            //		else
+            //		{
+            //			for (int i = colStart; i <= colEnd; i++)
+            //			{
+            //				dt.Columns.Add("Column" + (i - colStart));
+            //			}
+            //			rowStart = rowStart - 1;
+            //		}
+            //		for (int i = rowStart + 1; i <= rowEnd; i++)
+            //		{
+            //			DataRow dr = dt.NewRow();
+            //			for (int j = colStart; j <= colEnd; j++)
+            //			{
+            //				dr[j - colStart] = sheet.GetRow(i).GetCell(j);
+            //			}
+            //			dt.Rows.Add(dr);
+            //		}
+            //	}
+            //	catch (Exception)
+            //	{
+            //		MessageBox.Show("Excel格式有误，返回部分结果！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //	}
             return dt;
         }
 
@@ -158,7 +139,7 @@ namespace CostControl
         public static DataTable ExcelToDataTable(string fileName, int sheetNum)
         {
             DataTable dt = new DataTable();
-            dt = ExcelToDataTable(fileName, 0, 0, 0, 0, sheetNum);
+            //	dt = ExcelToDataTable(fileName, 0, 0, 0, 0, sheetNum);
             return dt;
         }
 
@@ -170,13 +151,14 @@ namespace CostControl
         {
             try
             {
+
                 if (sheetName == null)
                 {
-                    currentSheet = workBook.CreateSheet();
+                    _currentSheet = _workBook.Worksheets.Add("Sheet" + (_workBook.Worksheets.Count + 1));
                 }
                 else
                 {
-                    currentSheet = workBook.CreateSheet(sheetName);
+                    _currentSheet = _workBook.Worksheets.Add(sheetName);
                 }
             }
             catch (Exception e)
@@ -186,56 +168,143 @@ namespace CostControl
             }
         }
 
+        private static void SetHeaderCellValue(ExcelRange cell, string value)
+        {
+            cell.Value = value;
+            cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            cell.Style.Fill.BackgroundColor.SetColor(Color.LightSteelBlue);
+        }
+
+        private static void SetCellValue(ExcelRange cell, object obj)
+        {
+            Type t = obj.GetType();
+            switch (t.ToString())
+            {
+                case "System.String"://字符串类型
+                    cell.Value = obj.ToString();
+                    break;
+                case "System.DateTime"://日期类型
+                    cell.Value = (DateTime)obj;
+                    break;
+                case "System.Boolean"://布尔型
+                    cell.Value = (bool)obj;
+                    break;
+                case "System.Int16"://整型
+                case "System.Int32":
+                case "System.Int64":
+                case "System.Byte":
+                    int intV = 0;
+                    int.TryParse(obj.ToString(), out intV);
+                    cell.Value = intV;
+                    cell.Style.Numberformat.Format = "0";
+                    break;
+                case "System.Decimal"://浮点型
+                case "System.Double":
+                    double doubV = 0;
+                    double.TryParse(obj.ToString(), out doubV);
+                    cell.Value = doubV;
+                    cell.Style.Numberformat.Format = "0.00";
+                    break;
+                case "System.DBNull"://空值处理
+                    cell.Value = "";
+                    break;
+                default:
+                    cell.Value = obj.ToString();
+                    break;
+            }
+        }
+
+        public enum ExportStyle
+        {
+            RMTable,
+            Normal
+        }
         /// <summary>
         /// DataTable转换为Excel
         /// </summary>
         /// <param name="dt">DataTable源</param>
-        /// <param name="rowStart">Excel开始行数(0-based)</param>
-        /// <param name="colStart">Excel开始列数(0-based)</param>
+        /// <param name="rowStart">Excel开始行数(1-based)</param>
+        /// <param name="colStart">Excel开始列数(1-based)</param>
         /// <param name="hasHead">是否将DataTable列名作为Excel中表格的表头</param>
-        public void DataTableToExcel(DataTable dt, int rowStart, int colStart, bool hasHead = true)
+        public void DataTableToExcel(DataTable dt, int rowStart, int colStart, bool hasHead = true, ExportStyle style = ExportStyle.Normal)
         {
-            currentSheet.DefaultColumnWidth = 16;
+            int rowIndex = 0;
             if (hasHead)
             {
-                IRow headRow = currentSheet.CreateRow(rowStart);
-                for (int i = 0; i < dt.Columns.Count; i++)
+                switch (style)
                 {
-                    ICell headCell = headRow.CreateCell(colStart + i);
-                    headCell.SetCellType(CellType.String);
-                    headCell.CellStyle = HeaderStyle;
-                    headCell.SetCellValue(dt.Columns[i].ColumnName);
+                    case ExportStyle.RMTable:
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            SetCellValue(_currentSheet.Cells[rowStart, i + 1], dt.Columns[i].ColumnName);
+                        }
+                        break;
+                    case ExportStyle.Normal:
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            SetHeaderCellValue(_currentSheet.Cells[rowStart, i + 1], dt.Columns[i].ColumnName);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
             else
             {
                 rowStart = rowStart - 1;
             }
-            int rowIndex = 0;
             foreach (DataRow dtRow in dt.Rows)
             {
-                IRow iRow = currentSheet.CreateRow(rowStart + rowIndex + 1);
                 foreach (DataColumn dtColumn in dt.Columns)
                 {
-                    ICell newCell = iRow.CreateCell(dtColumn.Ordinal);
-                    object obj = dtRow[dtColumn];
-                    SetCellValue(ref newCell, obj);
+                    SetCellValue(_currentSheet.Cells[rowStart + rowIndex + 1, dtColumn.Ordinal + 1], dtRow[dtColumn]);
+                    _currentSheet.Cells[rowStart + rowIndex + 1, dtColumn.Ordinal + 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 }
                 rowIndex++;
             }
+            switch (style)
+            {
+                case ExportStyle.RMTable:
+                    _currentSheet.Cells[rowStart + 1, 1, dt.Rows.Count + rowStart, dt.Columns.Count].Style.Border.BorderAround(ExcelBorderStyle.Medium);
+                    _currentSheet.Cells[rowStart + 1, 1, rowStart + 1, dt.Columns.Count].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                    _currentSheet.Cells[rowStart + 1, 1, rowStart + 1, dt.Columns.Count].Style.Fill.BackgroundColor.SetColor(Color.LightSteelBlue);
+                    break;
+                case ExportStyle.Normal:
+                    _currentSheet.DefaultColWidth = 15;
+                    _currentSheet.Column(1).Width = 16;
+                    break;
+                default:
+                    break;
+            }
+            TableStruct tb = new TableStruct();
+            tb.rowFrom = rowStart + 1;
+            tb.rowTo = LastRowNum;
+            tb.colFrom = 1;
+            tb.colTo = dt.Columns.Count;
+            _addedTables.Add(tb);
         }
 
-
+        public void GenerateCompare()
+        {
+            int rowIndex = LastRowNum + 1;
+            for (int i = 0; i < _addedTables[0].rowTo - _addedTables[0].rowFrom; i++)
+            {
+                for (int j = 2; j <= _addedTables[0].colTo; j++)
+                {
+                    _currentSheet.Cells[rowIndex + i, j].Formula = string.Format("({0}-{1})/{1}", ExcelCellBase.GetAddress(_addedTables[1].rowFrom + i, j), ExcelCellBase.GetAddress(_addedTables[0].rowFrom + i, j));
+                }
+            }
+        }
         /// <summary>
         /// 数组作为表头追加，前面空一行
         /// </summary>
         /// <param name="array"></param>
-        public void AppendHeader(Array array)
+        public void AppendHeader(object[] array)
         {
-            int rowStart = currentSheet.LastRowNum + 2;
-            if (currentSheet.LastRowNum == 0)
+            int rowStart = LastRowNum + 2;
+            if (LastRowNum == 1)
             {
-                rowStart = 0;
+                rowStart = 1;
             }
             AppendToExcel(array, rowStart, true);
         }
@@ -244,9 +313,10 @@ namespace CostControl
         /// 数组作为表格内容追加，前面不空行
         /// </summary>
         /// <param name="array"></param>
-        public void AppendContent(Array array)
+        public void AppendContent(object[] array)
         {
-            int rowStart = currentSheet.LastRowNum + 1;
+
+            int rowStart = LastRowNum + 1;
             AppendToExcel(array, rowStart, false);
         }
 
@@ -256,33 +326,26 @@ namespace CostControl
         /// <param name="array">数组</param>
         /// <param name="rowStart">起始行</param>
         /// <param name="isHeader">是否追加为表头样式</param>
-        public void AppendToExcel(Array array, int rowStart, bool isHeader)
+        public void AppendToExcel(object[] array, int rowStart, bool isHeader)
         {
-            currentSheet.DefaultColumnWidth = 16;
-            ICellStyle headCellStyle = workBook.CreateCellStyle();
-            headCellStyle.FillForegroundColor = HSSFColor.Grey40Percent.Index;
-            headCellStyle.FillPattern = FillPattern.SolidForeground;
+
             if (isHeader)
             {
-                IRow headRow = currentSheet.CreateRow(rowStart);
                 for (int i = 0; i < array.Length; i++)
                 {
-                    ICell headerCell = headRow.CreateCell(i);
-                    headerCell.SetCellType(CellType.String);
-                    headerCell.CellStyle = headCellStyle;
-                    headerCell.SetCellValue(array.GetValue(i).ToString());
+                    ExcelRange er = _currentSheet.Cells[rowStart, 1, rowStart, array.Length + 1];
+                    SetHeaderCellValue(_currentSheet.Cells[rowStart, i + 1], array.GetValue(i).ToString());
                 }
+
             }
             else
             {
-                IRow row = currentSheet.CreateRow(rowStart);
                 for (int i = 0; i < array.Length; i++)
                 {
-                    ICell newCell = row.CreateCell(i);
-                    object obj = array.GetValue(i);
-                    SetCellValue(ref newCell, obj);
+                    SetCellValue(_currentSheet.Cells[rowStart, i + 1], array.GetValue(i));
                 }
             }
+
         }
 
         /// <summary>
@@ -290,128 +353,17 @@ namespace CostControl
         /// </summary>
         /// <param name="dt">DataTable源</param>
         /// <param name="isNewTable">是否追加为新表格</param>
-        public void AppendToExcel(DataTable dt, bool isNewTable)
+        public void AppendToExcel(DataTable dt, bool isNewTable, ExportStyle style = ExportStyle.Normal)
         {
             if (isNewTable)
             {
-                int rowStart = currentSheet.LastRowNum + 2;
-                DataTableToExcel(dt, rowStart, 0, true);
+                int rowStart = LastRowNum + 2;
+                DataTableToExcel(dt, rowStart, 1, true, style);
             }
             else
             {
-                int rowStart = currentSheet.LastRowNum + 1;
-                DataTableToExcel(dt, rowStart, 0, false);
-            }
-        }
-
-        /// <summary>
-        /// 设置单元
-        /// </summary>
-        /// <param name="newCell"></param>
-        /// <param name="obj"></param>
-        private void SetCellValue(ref ICell newCell, object obj)
-        {
-            Type t = obj.GetType();
-            switch (t.ToString())
-            {
-                case "System.String"://字符串类型
-                    newCell.SetCellValue(obj.ToString());
-                    newCell.SetCellType(CellType.String);
-                    break;
-                case "System.DateTime"://日期类型
-                    newCell.SetCellValue((DateTime)obj);
-                    newCell.CellStyle = DateTimeStyle;//格式化显示
-                    break;
-                case "System.Boolean"://布尔型
-                    newCell.SetCellValue((bool)obj);
-                    newCell.SetCellType(CellType.Boolean);
-                    break;
-                case "System.Int16"://整型
-                case "System.Int32":
-                case "System.Int64":
-                case "System.Byte":
-                    int intV = 0;
-                    int.TryParse(obj.ToString(), out intV);
-                    newCell.SetCellValue(intV);
-                    newCell.SetCellType(CellType.Numeric);
-                    break;
-                case "System.Decimal"://浮点型
-                case "System.Double":
-                    double doubV = 0;
-                    double.TryParse(obj.ToString(), out doubV);
-                    newCell.SetCellValue(doubV);
-                    newCell.CellStyle = DoubleNumStyle;
-                    newCell.SetCellType(CellType.Numeric);
-                    break;
-                case "System.DBNull"://空值处理
-                    newCell.SetCellValue("");
-                    newCell.SetCellType(CellType.Blank);
-                    break;
-                default:
-                    newCell.SetCellValue(obj.ToString());
-                    break;
-            }
-        }
-
-        public ICellStyle TitleStyle
-        {
-            get
-            {
-                titleStyle.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
-                IFont font = workBook.CreateFont();
-                font.Boldweight = 6;
-                font.FontHeight = 18 * 18;
-                titleStyle.SetFont(font);
-                return titleStyle;
-            }
-        }
-
-        public ICellStyle HeaderStyle
-        {
-            get
-            {
-                headerStyle.FillForegroundColor = HSSFColor.Grey40Percent.Index;
-                headerStyle.FillPattern = FillPattern.SolidForeground;
-                return headerStyle;
-            }
-        }
-
-        public ICellStyle DateTimeStyle
-        {
-            get
-            {
-                IDataFormat formatMD = workBook.CreateDataFormat();
-                dateTimeStyle.DataFormat = formatMD.GetFormat("yyyy-mm-dd");
-                return dateTimeStyle;
-            }
-        }
-
-        public ICellStyle DateYearStyle
-        {
-            get
-            {
-                IDataFormat format = workBook.CreateDataFormat();
-                dateYearStyle.DataFormat = format.GetFormat("yyyy");
-                return dateYearStyle;
-            }
-        }
-
-        public ICellStyle DoubleNumStyle
-        {
-            get
-            {
-                doubleNumStyle.DataFormat = HSSFDataFormat.GetBuiltinFormat("0.00");
-                return doubleNumStyle;
-
-            }
-        }
-
-        public ICellStyle IntNumStyle
-        {
-            get
-            {
-                intNumStyle.DataFormat = HSSFDataFormat.GetBuiltinFormat("0");
-                return intNumStyle;
+                int rowStart = LastRowNum + 1;
+                DataTableToExcel(dt, rowStart, 1, false, style);
             }
         }
 
@@ -421,26 +373,22 @@ namespace CostControl
         public bool ShowSaveFileDialog()
         {
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.DefaultExt = "xls";
-            dlg.Filter = "Excel 97-2003 工作簿(*.xls)|*.xls|Excel 工作簿(*.xlsx)|*.xlsx";
+            dlg.DefaultExt = "xlsx";
+            dlg.Filter = "Excel 工作簿(*.xlsx)|*.xlsx";
             dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dlg.FileName = "Sheet1.xls";
+            dlg.FileName = "Sheet1.xlsx";
             if (dlg.ShowDialog() == DialogResult.Cancel) return false;
             //返回文件路径   
             string fileNameString = dlg.FileName;
             //验证strFileName是否为空或值无效   
             if (fileNameString.Trim() == "") return false;
             this.fileName = fileNameString;
-            if (fileName.EndsWith(".xlsx"))
+            _excelPackage = new ExcelPackage();
+            _workBook = _excelPackage.Workbook;
+            if (_currentSheet == null)
             {
-                workBook = new XSSFWorkbook();
+                _currentSheet = _workBook.Worksheets.Add("Sheet1");
             }
-            else
-            {
-                workBook = new HSSFWorkbook();
-            }
-            currentSheet = workBook.CreateSheet();
-            InitStyle();
             return true;
         }
 
@@ -452,7 +400,32 @@ namespace CostControl
             public string[] infoHeader;
             public object[] baseInfo;
             public object[] compareInfo;
+        }
 
+        public ExcelChart AddChart(int row, int column, ChartInfo chartInfo)
+        {
+            string charTitle = chartInfo.chartTitle;
+            string baseSeries = chartInfo.baseSeries;
+            string compareSeries = chartInfo.compareSeries;
+            string[] infoHeader = chartInfo.infoHeader;
+            object[] baseInfo = chartInfo.baseInfo;
+            object[] compareInfo = chartInfo.compareInfo;
+            var chart = _currentSheet.Drawings.AddChart("Table", eChartType.ColumnStacked);
+            chart.XAxis.MinorUnit = 1;
+            chart.SetPosition(row, 0, column, 0);
+            chart.SetSize(640, 400);
+            chart.Legend.Position = eLegendPosition.Bottom;
+            chart.Legend.Add();
+            chart.Title.Text = charTitle;
+            chart.Title.Font.Size = 12;
+            chart.Title.Font.Bold = true;
+            return chart;
+        }
+
+        public void AddSerieToChart(ExcelChart chart, ExcelChartSerie chartSerie, string serieHeader, ExcelRange serie, ExcelRange XSerie)
+        {
+            chartSerie = chart.Series.Add(serie, XSerie);
+            chartSerie.Header = serieHeader;
         }
 
         public void ExportExcelWithChart(DataTable baseTable, DataTable compareTable, ChartInfo chartInfo)
@@ -590,7 +563,9 @@ namespace CostControl
             {
                 using (FileStream fs = File.Open(fileName, FileMode.Create))
                 {
-                    workBook.Write(fs);
+
+                    _excelPackage.SaveAs(fs);
+                    _excelPackage.Dispose();
                     MessageBox.Show(fileName + "\n导出成功", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

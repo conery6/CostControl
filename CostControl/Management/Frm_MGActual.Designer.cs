@@ -31,10 +31,6 @@
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_newactual = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.Button();
-            this.btn_exceladd = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.comB_Year = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -83,53 +79,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(506, 75);
+            this.button1.Location = new System.Drawing.Point(741, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 50;
             this.button1.Text = "Excel导出";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_newactual
-            // 
-            this.btn_newactual.Location = new System.Drawing.Point(786, 75);
-            this.btn_newactual.Name = "btn_newactual";
-            this.btn_newactual.Size = new System.Drawing.Size(75, 23);
-            this.btn_newactual.TabIndex = 49;
-            this.btn_newactual.Text = "增加新表";
-            this.btn_newactual.UseVisualStyleBackColor = true;
-            this.btn_newactual.Click += new System.EventHandler(this.btn_newactual_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(693, 75);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(75, 23);
-            this.btn_delete.TabIndex = 48;
-            this.btn_delete.Text = "删除数据";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(599, 75);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 47;
-            this.btn_update.Text = "修改数据";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
-            // 
-            // btn_exceladd
-            // 
-            this.btn_exceladd.Location = new System.Drawing.Point(413, 75);
-            this.btn_exceladd.Name = "btn_exceladd";
-            this.btn_exceladd.Size = new System.Drawing.Size(75, 23);
-            this.btn_exceladd.TabIndex = 46;
-            this.btn_exceladd.Text = "Excel导入";
-            this.btn_exceladd.UseVisualStyleBackColor = true;
-            this.btn_exceladd.Click += new System.EventHandler(this.btn_exceladd_Click);
             // 
             // btn_search
             // 
@@ -221,7 +177,7 @@
             this.dgv_MGData.Name = "dgv_MGData";
             this.dgv_MGData.ReadOnly = true;
             this.dgv_MGData.RowTemplate.Height = 23;
-            this.dgv_MGData.Size = new System.Drawing.Size(858, 382);
+            this.dgv_MGData.Size = new System.Drawing.Size(845, 382);
             this.dgv_MGData.TabIndex = 36;
             this.dgv_MGData.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_MGData_CellEndEdit);
             // 
@@ -325,10 +281,6 @@
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_newactual);
-            this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.btn_exceladd);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.comB_Year);
             this.Controls.Add(this.label4);
@@ -351,10 +303,6 @@
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_newactual;
-        private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Button btn_exceladd;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.ComboBox comB_Year;
         private System.Windows.Forms.Label label4;

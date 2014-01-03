@@ -47,7 +47,7 @@ namespace CostControl.Electric
         {
             CCNo = GetElectricData.CCNo(comB_CC.Text);
             clb_CCItem.Items.Clear();
-            string sql = "select distinct TypeName,year from EBudget where CCNo ='" + CCNo + "'";
+            string sql = "select distinct TypeName from EPeriod where CCNo ='" + CCNo + "'";
             DataTable temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
@@ -57,12 +57,12 @@ namespace CostControl.Electric
             comB_Year1.Items.Clear();
             comB_Year2.Items.Clear();
 
-            string sql1 = "select distinct Year from EBudget where CCNo ='" + CCNo + "'";
+            string sql1 = "select distinct Year from EPeriod where CCNo ='" + CCNo + "'";
             DataTable tmp2 = ODbcmd.SelectToDataTable(sql1);
             for (int i = 0; i < tmp2.Rows.Count; i++)
             {
-                comB_Year1.Items.Add(temp.Rows[i]["Year"].ToString());
-                comB_Year2.Items.Add(temp.Rows[i]["Year"].ToString());
+                comB_Year1.Items.Add(tmp2.Rows[i]["Year"].ToString());
+                comB_Year2.Items.Add(tmp2.Rows[i]["Year"].ToString());
 
             }
         }
@@ -130,13 +130,16 @@ namespace CostControl.Electric
 
                 Title.Clear();
 
+                f1 = new float[dgv_edata1.Rows.Count, 12];
                 for (int i = 0; i < dgv_edata1.Rows.Count; i++)
                 {
                     Title.Add(dgv_edata1[1, i].Value.ToString());
-                    f1 = new float[dgv_edata1.Rows.Count, 12];
+                   
                     for (int j = 2; j < dgv_edata1.Columns.Count; j++)
                     {
-                        f1[i, j - 2] = Convert.ToSingle(dgv_edata1[j, i].Value);
+                        float val = 0;
+                        Single.TryParse(dgv_edata1[j, i].Value.ToString(), out val);
+                        f1[i, j - 2] =val;
                     }
                 }
             }
@@ -168,13 +171,16 @@ namespace CostControl.Electric
                 }
 
                 Title.Clear();
+                f2 = new float[dgv_edata2.Rows.Count, 12];
                 for (int i = 0; i < dgv_edata2.Rows.Count; i++)
                 {
                     Title.Add(dgv_edata2[1, i].Value.ToString());
-                    f2 = new float[dgv_edata2.Rows.Count, 12];
+                   
                     for (int j = 2; j < dgv_edata2.Columns.Count; j++)
                     {
-                        f2[i, j - 2] = Convert.ToSingle(dgv_edata2[j, i].Value);
+                        float val = 0;
+                        Single.TryParse(dgv_edata1[j, i].Value.ToString(), out val);
+                        f2[i, j - 2] = val;
                     }
                 }
             }

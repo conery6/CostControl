@@ -26,7 +26,9 @@ namespace CostControl.Management
 
         private void Frm_MChart_Load(object sender, EventArgs e)
         {
-            MGChart.Titles.Add(chartInfo[0] + "  " + chartInfo[1] + "成本对比");
+			string title = chartInfo[0] + "  " + chartInfo[1] + "成本对比";
+			this.Text = title;
+            MGChart.Titles.Add(title);
             Series series1 = MGChart.Series[0];
             Series series2 = MGChart.Series[1];
             series1.Name = chartInfo[2];
@@ -35,7 +37,6 @@ namespace CostControl.Management
             // Add data points to the first series
             for (int i = 0; i < 12; i++)
             {
-                
                 series1.Points.Add(F1[i]);
                 series2.Points.Add(F2[i]);
                 series1.Points[i].AxisLabel = "M" + (i + 1);

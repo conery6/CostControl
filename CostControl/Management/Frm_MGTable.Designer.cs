@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comB_Facility = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_barchart = new System.Windows.Forms.Button();
             this.btn_dataok2 = new System.Windows.Forms.Button();
             this.btn_dataok1 = new System.Windows.Forms.Button();
             this.comB_report2 = new System.Windows.Forms.ComboBox();
@@ -75,6 +74,10 @@
             this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.comb_Month1 = new System.Windows.Forms.ComboBox();
+            this.comb_Month2 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mgdata1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mgdata2)).BeginInit();
             this.SuspendLayout();
@@ -117,19 +120,9 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "工厂";
             // 
-            // btn_barchart
-            // 
-            this.btn_barchart.Location = new System.Drawing.Point(499, 26);
-            this.btn_barchart.Name = "btn_barchart";
-            this.btn_barchart.Size = new System.Drawing.Size(75, 23);
-            this.btn_barchart.TabIndex = 30;
-            this.btn_barchart.Text = "分布图";
-            this.btn_barchart.UseVisualStyleBackColor = true;
-            this.btn_barchart.Click += new System.EventHandler(this.btn_barchart_Click);
-            // 
             // btn_dataok2
             // 
-            this.btn_dataok2.Location = new System.Drawing.Point(394, 115);
+            this.btn_dataok2.Location = new System.Drawing.Point(370, 114);
             this.btn_dataok2.Name = "btn_dataok2";
             this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
             this.btn_dataok2.TabIndex = 69;
@@ -139,7 +132,7 @@
             // 
             // btn_dataok1
             // 
-            this.btn_dataok1.Location = new System.Drawing.Point(394, 75);
+            this.btn_dataok1.Location = new System.Drawing.Point(370, 74);
             this.btn_dataok1.Name = "btn_dataok1";
             this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
             this.btn_dataok1.TabIndex = 68;
@@ -156,7 +149,7 @@
             "RF1",
             "RF2",
             "E3",
-            "R"});
+            "Actual"});
             this.comB_report2.Location = new System.Drawing.Point(287, 116);
             this.comB_report2.Name = "comB_report2";
             this.comB_report2.Size = new System.Drawing.Size(77, 20);
@@ -200,7 +193,7 @@
             "RF1",
             "RF2",
             "E3",
-            "R"});
+            "Actual"});
             this.comB_report1.Location = new System.Drawing.Point(287, 75);
             this.comB_report1.Name = "comB_report1";
             this.comB_report1.Size = new System.Drawing.Size(77, 20);
@@ -358,7 +351,7 @@
             // 
             // btn_createchart
             // 
-            this.btn_createchart.Location = new System.Drawing.Point(499, 86);
+            this.btn_createchart.Location = new System.Drawing.Point(624, 86);
             this.btn_createchart.Name = "btn_createchart";
             this.btn_createchart.Size = new System.Drawing.Size(70, 38);
             this.btn_createchart.TabIndex = 71;
@@ -485,19 +478,87 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(606, 94);
+            this.button1.Location = new System.Drawing.Point(700, 86);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(70, 38);
             this.button1.TabIndex = 75;
             this.button1.Text = "Excel导出";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comb_Month1
+            // 
+            this.comb_Month1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comb_Month1.FormattingEnabled = true;
+            this.comb_Month1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comb_Month1.Location = new System.Drawing.Point(447, 75);
+            this.comb_Month1.Name = "comb_Month1";
+            this.comb_Month1.Size = new System.Drawing.Size(73, 20);
+            this.comb_Month1.TabIndex = 76;
+            // 
+            // comb_Month2
+            // 
+            this.comb_Month2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comb_Month2.FormattingEnabled = true;
+            this.comb_Month2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comb_Month2.Location = new System.Drawing.Point(447, 116);
+            this.comb_Month2.Name = "comb_Month2";
+            this.comb_Month2.Size = new System.Drawing.Size(73, 20);
+            this.comb_Month2.TabIndex = 77;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(526, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 78;
+            this.button2.Text = "确定";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(526, 114);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 79;
+            this.button3.Text = "确定";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Frm_MGTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 615);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comb_Month2);
+            this.Controls.Add(this.comb_Month1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_mgdata2);
             this.Controls.Add(this.btn_createchart);
@@ -514,7 +575,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.btn_barchart);
             this.Controls.Add(this.comB_CC);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comB_Facility);
@@ -535,7 +595,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comB_Facility;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_barchart;
         private System.Windows.Forms.Button btn_dataok2;
         private System.Windows.Forms.Button btn_dataok1;
         private System.Windows.Forms.ComboBox comB_report2;
@@ -578,5 +637,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comb_Month1;
+        private System.Windows.Forms.ComboBox comb_Month2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

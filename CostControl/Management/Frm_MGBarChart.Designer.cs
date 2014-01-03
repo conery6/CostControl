@@ -28,22 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Frm_MBarChart
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 411);
-            this.Name = "Frm_MBarChart";
-            this.Text = "MChart";
-            this.Load += new System.EventHandler(this.Frm_MBarChart_Load);
-            this.ResumeLayout(false);
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			this.MGBarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+			((System.ComponentModel.ISupportInitialize)(this.MGBarChart)).BeginInit();
+			this.SuspendLayout();
+			// 
+			// MGBarChart
+			// 
+			chartArea1.Area3DStyle.Enable3D = true;
+			chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic;
+			chartArea1.Name = "ChartArea1";
+			this.MGBarChart.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.MGBarChart.Legends.Add(legend1);
+			this.MGBarChart.Location = new System.Drawing.Point(0, 0);
+			this.MGBarChart.Name = "MGBarChart";
+			series1.ChartArea = "ChartArea1";
+			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+			series1.Legend = "Legend1";
+			series1.Name = "Series1";
+			this.MGBarChart.Series.Add(series1);
+			this.MGBarChart.Size = new System.Drawing.Size(700, 400);
+			this.MGBarChart.TabIndex = 0;
+			this.MGBarChart.Text = "chart1";
+			// 
+			// Frm_MGBarChart
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(704, 402);
+			this.Controls.Add(this.MGBarChart);
+			this.Name = "Frm_MGBarChart";
+			this.Text = "MChart";
+			this.Load += new System.EventHandler(this.Frm_MBarChart_Load);
+			((System.ComponentModel.ISupportInitialize)(this.MGBarChart)).EndInit();
+			this.ResumeLayout(false);
 
         }
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
 
 
         #endregion
+
+		private System.Windows.Forms.DataVisualization.Charting.Chart MGBarChart;
     }
 }

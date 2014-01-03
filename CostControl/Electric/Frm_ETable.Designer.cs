@@ -580,11 +580,11 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn28});
-            this.dgv_edata2.Location = new System.Drawing.Point(12, 340);
+            this.dgv_edata2.Location = new System.Drawing.Point(23, 340);
             this.dgv_edata2.Name = "dgv_edata2";
             this.dgv_edata2.ReadOnly = true;
             this.dgv_edata2.RowTemplate.Height = 23;
-            this.dgv_edata2.Size = new System.Drawing.Size(991, 182);
+            this.dgv_edata2.Size = new System.Drawing.Size(980, 182);
             this.dgv_edata2.TabIndex = 117;
             // 
             // dataGridViewTextBoxColumn1

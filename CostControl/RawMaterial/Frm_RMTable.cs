@@ -23,12 +23,13 @@ namespace CostControl.RawMaterial
         public string CCNo;
         DataTable DT1;
         DataTable DT2;
-        float[,] FDT1 = new float[5,13];
-        float[,] FDT2 = new float[5,13];
+        float[,] FDT1 = new float[5, 13];
+        float[,] FDT2 = new float[5, 13];
         float[,] f1 = new float[5, 13];
         float[,] f2 = new float[5, 13];
         float[,] f3 = new float[5, 13];
-
+        string currentType1 = "";
+        string currentType2 = "";
         public Frm_RMTable(string ENo1)
         {
             InitializeComponent();
@@ -73,7 +74,7 @@ namespace CostControl.RawMaterial
             {
                 dgv_rmdata2.Rows[j].Height = 20;
                 dgv_rmdata2.Rows[j].ReadOnly = true;
-                dgv_rmdata2.Rows[j].Visible = false; 
+                dgv_rmdata2.Rows[j].Visible = false;
             }
 
             dgv_rmdata2.Rows[0].DefaultCellStyle.BackColor = Color.Gray;
@@ -98,7 +99,8 @@ namespace CostControl.RawMaterial
 
         private bool getPK1()//获取四个主键，做了个封装
         {
-            if (FNo == "" || CCNo == "" || PNo == "" || Year1 == "" || Reporttype1 == "")
+
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || comB_Product.Text == "" || comB_Year1.Text == "" || comB_RpType1.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -111,7 +113,7 @@ namespace CostControl.RawMaterial
 
         private bool getPK2()//获取四个主键，做了个封装
         {
-            if (FNo == "" || CCNo == "" || PNo == "" || Year2 == "" || Reporttype2 == "")
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || comB_Product.Text == "" || comB_Year2.Text == "" || comB_RpType2.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -119,104 +121,6 @@ namespace CostControl.RawMaterial
             else
             {
                 return true;
-            }
-        }
-
-        private void btn_dataok1_Click(object sender, EventArgs e)
-        {
-            if (getPK1())
-            {
-                DataTable r = new DataTable();
-                switch (Reporttype1)
-                {
-                    case "T1":
-                        r = GetRMData.Budget(CCNo, PNo, Year1);
-                        break;
-                    case "RF1":
-                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, 3);
-                        break;
-                    case "RF2":
-                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1,6);
-                        break;
-                    case "E3":
-                        r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, 9);
-                        break;
-                    case "R":
-                        r = GetRMData.Actual(FNo, CCNo, PNo, Year1);
-                        break;
-                }
-
-                if (r.Rows.Count > 0)
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        for (int j = 0; j < 5; j++)
-                        {
-                            if (r.Rows[j][0].ToString() == (i + 1).ToString())
-                            {
-                                for (int k = 0; k < 12; k++)
-                                {
-                                    dgv_rmdata1[k + 1, i + 1].Value = r.Rows[j]["M" + (k + 1).ToString()];
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                { MessageBox.Show("数据为空！"); }
-
-                DT1 = r;
-                FDT1 = GetRMData.DTto2DFloat(DT1);
-            }
-        }
-
-        private void btn_dataok2_Click(object sender, EventArgs e)
-        {
-            if (getPK2())
-            {
-                DataTable r = new DataTable();
-
-                switch (Reporttype2)
-                {
-                    //case "T1":
-                    //    r = GetRMData.Budget(CCNo, PNo, Year2);
-                    //    break;
-                    //case "RF1":
-                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 3);
-                    //    break;
-                    //case "RF2":
-                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 6);
-                    //    break;
-                    //case "E3":
-                    //    r = GetRMData.MiddleBudget(CCNo, PNo, Year2, 9);
-                    //    break;
-                    //case "R":
-                    //    r = GetRMData.Actual(FNo, CCNo, PNo, Year2);
-                    //    break;
-                }
-
-                if (r.Rows.Count > 0)
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        for (int j = 0; j < 5; j++)
-                        {
-                            if (r.Rows[j][0].ToString() == (i + 1).ToString())
-                            {
-                                for (int k = 0; k < 12; k++)
-                                {
-                                    dgv_rmdata1[k + 1, i + 7].Value = r.Rows[j]["M" + (k + 1).ToString()];
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                { 
-                    MessageBox.Show("数据为空！");
-                }
-                DT2 = r;
-                FDT2 = GetRMData.DTto2DFloat(DT2);
             }
         }
 
@@ -232,7 +136,7 @@ namespace CostControl.RawMaterial
                     dgv_rmdata2.Rows[j].Visible = true;
                     for (int i = 1; i < 13; i++)
                     {
-                        dgv_rmdata2[i, j].Value = f[j-1, i];
+                        dgv_rmdata2[i, j].Value = f[j - 1, i];
                     }
 
                 }
@@ -241,7 +145,7 @@ namespace CostControl.RawMaterial
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    dgv_rmdata2.Rows[j].Visible = false ;
+                    dgv_rmdata2.Rows[j].Visible = false;
                 }
             }
         }
@@ -250,19 +154,10 @@ namespace CostControl.RawMaterial
         {
             if (chkB_T2.Checked == true)
             {
-                //DataTable r = GetRMData.ReportTable2(DT1,DT2);
+
                 float[,] f = GetRMData.FReportTable2(FDT1, FDT2);
                 f2 = f;
                 dgv_rmdata2.Rows[6].Visible = true;
-
-                //for (int j = 7; j < 12; j++)
-                //{
-                //    dgv_rmdata2.Rows[j].Visible = true;
-                //    for (int i = 1; i < 13; i++)
-                //    {
-                //        dgv_rmdata2[i, j].Value = r.Rows[j-7][i];
-                //    }
-                //}
 
                 for (int j = 7; j < 12; j++)
                 {
@@ -275,7 +170,7 @@ namespace CostControl.RawMaterial
             }
             else
             {
-                for (int j =6; j < 12; j++)
+                for (int j = 6; j < 12; j++)
                 {
                     dgv_rmdata2.Rows[j].Visible = false;
                 }
@@ -294,7 +189,7 @@ namespace CostControl.RawMaterial
                     dgv_rmdata2.Rows[j].Visible = true;
                     for (int i = 1; i < 13; i++)
                     {
-                        dgv_rmdata2[i, j].Value =f[j - 13,i];
+                        dgv_rmdata2[i, j].Value = f[j - 13, i];
                     }
                 }
             }
@@ -309,7 +204,9 @@ namespace CostControl.RawMaterial
 
         private void btn_TP1_Click(object sender, EventArgs e)
         {
-            Frm_RMChart M_Chart = new Frm_RMChart(f1,1,-1);
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType1 + "与" + currentType2 + "差值比较表";
+            string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
+            Frm_RMChart M_Chart = new Frm_RMChart(f1, chartInfo);
             M_Chart.Show();
         }
 
@@ -328,18 +225,18 @@ namespace CostControl.RawMaterial
 
         private void comB_Product_SelectedIndexChanged(object sender, EventArgs e)
         {
-                PNo = GetRMData.PNo(comB_Product.Text);
-                comB_Year1.Items.Clear();
-                comB_Year2.Items.Clear();
-                Year1 = "";
-                Year2 = "";
-                string sql = " select distinct Year from RMBudget where CCNo='" + CCNo + "' and PNo ='" + PNo + "'";
-                DataTable temp = ODbcmd.SelectToDataTable(sql);
-                for (int i = 0; i < temp.Rows.Count; i++)
-                {
-                    comB_Year1.Items.Add(temp.Rows[i]["Year"].ToString());
-                    comB_Year2.Items.Add(temp.Rows[i]["Year"].ToString());
-                }
+            PNo = GetRMData.PNo(comB_Product.Text);
+            comB_Year1.Items.Clear();
+            comB_Year2.Items.Clear();
+            Year1 = "";
+            Year2 = "";
+            string sql = " select distinct Year from RMPeriod where CCNo='" + CCNo + "' and PNo ='" + PNo + "' and FNO='" + FNo + "'";
+            DataTable temp = ODbcmd.SelectToDataTable(sql);
+            for (int i = 0; i < temp.Rows.Count; i++)
+            {
+                comB_Year1.Items.Add(temp.Rows[i]["Year"].ToString());
+                comB_Year2.Items.Add(temp.Rows[i]["Year"].ToString());
+            }
         }
 
         private void comB_Year1_SelectedIndexChanged(object sender, EventArgs e)
@@ -357,7 +254,7 @@ namespace CostControl.RawMaterial
             CCNo = GetRMData.CCNo(comB_CC.Text);
             comB_Product.Items.Clear();
             PNo = "";
-            string sql = " select distinct PName from RMBudget, Product,CostCenter where CostCenter.CCNo =RMBudget.CCNo and Product.PNo =RMBudget.PNo and CCName='" + comB_CC.Text + "' ";
+            string sql = " select distinct PName from RMPeriod, Product,CostCenter where CostCenter.CCNo =RMPeriod.CCNo and Product.PNo =RMPeriod.PNo and CCName='" + comB_CC.Text + "' ";
             DataTable temp = ODbcmd.SelectToDataTable(sql);
             for (int i = 0; i < temp.Rows.Count; i++)
             {
@@ -367,25 +264,34 @@ namespace CostControl.RawMaterial
 
         private void btn_data1_Click(object sender, EventArgs e)
         {
-            Frm_RMChart M_Chart = new Frm_RMChart(FDT1,100,0);
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType1 + "基本数据";
+            string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
+            Frm_RMChart M_Chart = new Frm_RMChart(FDT1, chartInfo);
             M_Chart.Show();
         }
 
         private void btn_data2_Click(object sender, EventArgs e)
         {
-            Frm_RMChart M_Chart = new Frm_RMChart(FDT2,100,0);
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType2 + "基本数据";
+            string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
+            Frm_RMChart M_Chart = new Frm_RMChart(FDT2, chartInfo);
             M_Chart.Show();
         }
 
         private void btn_tp2_Click(object sender, EventArgs e)
         {
-            Frm_RMChart M_Chart = new Frm_RMChart(f2,1,-1);
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType1 + "与" + currentType2 + "平均差值比较表";
+            string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
+            Frm_RMChart M_Chart = new Frm_RMChart(f2, chartInfo);
             M_Chart.Show();
         }
 
         private void btn_tp3_Click(object sender, EventArgs e)
         {
-            Frm_RMChart M_Chart = new Frm_RMChart(f3,1,-1);
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType1 + "与" + currentType2 + "累计值差值比较表";
+
+            string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
+            Frm_RMChart M_Chart = new Frm_RMChart(f3, chartInfo);
             M_Chart.Show();
         }
 
@@ -401,7 +307,7 @@ namespace CostControl.RawMaterial
 
         private void btn_Search1_Click(object sender, EventArgs e)
         {
-            if (Year1 == "" || FNo == "" || CCNo == "" || ReportMonth1 == 0)
+            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_Month1.Text == "")
             {
                 MessageBox.Show("参数不全！");
             }
@@ -414,33 +320,42 @@ namespace CostControl.RawMaterial
                 }
                 comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
-                r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year1, ReportMonth1);
-
-                if (r.Rows.Count != 0)
+                switch (comB_Month1.Text)
                 {
-                    dgv_rmdata1.DataSource = r;
+                    case "3":
+                        r = GetRMData.Period(FNo, CCNo, Year1, PNo, "RF1");
+                        break;
+                    case "6":
+                        r = GetRMData.Period(FNo, CCNo, Year1, PNo, "RF2");
+                        break;
+                    case "9":
+                        r = GetRMData.Period(FNo, CCNo, Year1, PNo, "E3");
+                        break;
+                    default:
+                        r = GetRMData.Period(FNo, CCNo, Year1, PNo, "A" + ReportMonth1);
+                        break;
                 }
-                 int acMonth = ReportMonth1;
+                dgv_rmdata1.DataSource = r;
+                int acMonth = ReportMonth1;
 
                 dgv_rmdata1.Columns[0].ReadOnly = true;
                 dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata1.Columns[1].ReadOnly = true;
-                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
-                for (int i = 2; i <= acMonth + 1; i++)
+                for (int i = 1; i <= acMonth; i++)
                 {
                     dgv_rmdata1.Columns[i].ReadOnly = true;
                     dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
                 DT1 = r;
                 FDT1 = GetRMData.DTto2DFloat(DT1);
+                currentType1 = "A" + ReportMonth1;
             }
 
         }
 
         private void btn_Search2_Click(object sender, EventArgs e)
         {
-            if (Year2 == "" || FNo == "" || CCNo == "" || ReportMonth2 == 0)
+            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_Month2.Text == "")
             {
                 MessageBox.Show("参数不全！");
             }
@@ -453,20 +368,32 @@ namespace CostControl.RawMaterial
                 }
                 comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
-                r = GetRMData.MiddleBudget(FNo, CCNo, PNo, Year2, ReportMonth2);
-
-                if (r.Rows.Count != 0)
+                switch (comB_Month2.Text)
                 {
-                    dgv_rmdata3.DataSource = r;
+                    case "3":
+                        r = GetRMData.Period(FNo, CCNo, Year2, PNo, "RF1");
+                        break;
+                    case "6":
+                        r = GetRMData.Period(FNo, CCNo, Year2, PNo, "RF2");
+                        break;
+                    case "9":
+                        r = GetRMData.Period(FNo, CCNo, Year2, PNo, "E3");
+                        break;
+                    default:
+                        r = GetRMData.Period(FNo, CCNo, Year2, PNo, "A" + ReportMonth2);
+                        break;
                 }
-                int acMonth = ReportMonth1;
+
+
+
+                dgv_rmdata3.DataSource = r;
+
+                int acMonth = ReportMonth2;
 
                 dgv_rmdata3.Columns[0].ReadOnly = true;
                 dgv_rmdata3.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata3.Columns[1].ReadOnly = true;
-                dgv_rmdata3.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
-                for (int i = 2; i <= acMonth + 1; i++)
+                for (int i = 1; i <= acMonth; i++)
                 {
                     dgv_rmdata3.Columns[i].ReadOnly = true;
                     dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
@@ -474,6 +401,7 @@ namespace CostControl.RawMaterial
 
                 DT2 = r;
                 FDT2 = GetRMData.DTto2DFloat(DT2);
+                currentType2 = "A" +ReportMonth2;
             }
 
         }
@@ -482,10 +410,21 @@ namespace CostControl.RawMaterial
         {
             if (getPK1())
             {
+                for (int i = 0; i < dgv_rmdata1.Columns.Count; i++)
+                {
+                    dgv_rmdata1.Columns[i].ReadOnly = true;
+                    dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
                 DataTable dt = new DataTable();
-                dt = GetRMData.Period(FNo, CCNo, Year1, PNo, Reporttype1);
+                if (Reporttype1 == "Actual")
+                {
+                    dt = GetRMData.Period(FNo, CCNo, Year1, PNo, "A12");
+                }
+                else
+                {
+                    dt = GetRMData.Period(FNo, CCNo, Year1, PNo, Reporttype1);
+                }
                 dgv_rmdata1.DataSource = dt;
-
                 int acMonth = 0;
 
                 switch (Reporttype1)
@@ -499,16 +438,15 @@ namespace CostControl.RawMaterial
 
                 dgv_rmdata1.Columns[0].ReadOnly = true;
                 dgv_rmdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata1.Columns[1].ReadOnly = true;
-                dgv_rmdata1.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
 
-                for (int i = 2; i <= acMonth + 1; i++)
+                for (int i = 1; i <= acMonth; i++)
                 {
                     dgv_rmdata1.Columns[i].ReadOnly = true;
                     dgv_rmdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
                 DT1 = dt;
                 FDT1 = GetRMData.DTto2DFloat(DT1);
+                currentType1 = Reporttype1;
             }
         }
 
@@ -516,8 +454,20 @@ namespace CostControl.RawMaterial
         {
             if (getPK2())
             {
+                for (int i = 0; i < dgv_rmdata3.Columns.Count; i++)
+                {
+                    dgv_rmdata3.Columns[i].ReadOnly = true;
+                    dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                }
                 DataTable dt = new DataTable();
-                dt = GetRMData.Period(FNo, CCNo, Year2, PNo, Reporttype2);
+                if (Reporttype2 == "Actual")
+                {
+                    dt = GetRMData.Period(FNo, CCNo, Year2, PNo, "A12");
+                }
+                else
+                {
+                    dt = GetRMData.Period(FNo, CCNo, Year2, PNo, Reporttype2);
+                }
                 dgv_rmdata3.DataSource = dt;
 
                 int acMonth = 0;
@@ -533,16 +483,14 @@ namespace CostControl.RawMaterial
 
                 dgv_rmdata3.Columns[0].ReadOnly = true;
                 dgv_rmdata3.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-                dgv_rmdata3.Columns[1].ReadOnly = true;
-                dgv_rmdata3.Columns[1].DefaultCellStyle.BackColor = Color.LightYellow;
-
-                for (int i = 2; i <= acMonth + 1; i++)
+                for (int i = 1; i <= acMonth ; i++)
                 {
                     dgv_rmdata3.Columns[i].ReadOnly = true;
                     dgv_rmdata3.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
                 }
                 DT2 = dt;
                 FDT2 = GetRMData.DTto2DFloat(DT2);
+                currentType2 = Reporttype2;
             }
         }
 
@@ -554,6 +502,30 @@ namespace CostControl.RawMaterial
         private void comB_Month2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ReportMonth2 = Convert.ToInt32(comB_Month2.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (getPK1() && getPK2())
+            {
+                string[] header = { "工厂", "成本中心", "产品", "年份", "报表类型" };
+                object[] cells1 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year1.Text),currentType1 };
+                object[] cells2 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year2.Text),currentType2 };
+                ExcelHelper excelHelp = new ExcelHelper();
+                if (excelHelp.ShowSaveFileDialog())
+                {
+                    excelHelp.AppendHeader(header);
+                    excelHelp.AppendContent(cells1);
+                    excelHelp.AppendContent(cells2);
+                    DataTable dt1 = (DataTable)dgv_rmdata1.DataSource;
+                    DataTable dt2 = (DataTable)dgv_rmdata3.DataSource;
+                    excelHelp.AppendToExcel(dt1, true, ExcelHelper.ExportStyle.RMTable);
+                    excelHelp.AppendToExcel(dt2, false, ExcelHelper.ExportStyle.RMTable);
+                    excelHelp.GenerateCompare();
+                    excelHelp.SaveToExcel();
+                }
+            }
+
         }
 
     }

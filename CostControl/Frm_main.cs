@@ -88,18 +88,21 @@ namespace CostControl
         private void MenuItem_EBudget_Click(object sender, EventArgs e)
         {
             Electric.Frm_EData m_Frm_EData = new Electric.Frm_EData();
+            m_Frm_EData.MdiParent = this;
             m_Frm_EData.Show();
         }
 
         private void MenuItem_EActual_Click(object sender, EventArgs e)
         {
             Electric.Frm_EActual m_Frm_EActual = new Electric.Frm_EActual();
+            m_Frm_EActual.MdiParent = this;
             m_Frm_EActual.Show();
         }
 
         private void 电费分析ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Electric.Frm_ETable m_Frm_ETable = new Electric.Frm_ETable();
+            m_Frm_ETable.MdiParent = this;
             m_Frm_ETable.Show();
         }
 

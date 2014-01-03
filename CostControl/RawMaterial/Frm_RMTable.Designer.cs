@@ -73,12 +73,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comB_RpType2 = new System.Windows.Forms.ComboBox();
             this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgv_rmdata3 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Itemnum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,8 +86,11 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgv_rmdata3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +103,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -135,7 +134,7 @@
             // 
             this.comB_Product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Product.FormattingEnabled = true;
-            this.comB_Product.Location = new System.Drawing.Point(376, 32);
+            this.comB_Product.Location = new System.Drawing.Point(538, 32);
             this.comB_Product.Name = "comB_Product";
             this.comB_Product.Size = new System.Drawing.Size(77, 20);
             this.comB_Product.TabIndex = 19;
@@ -155,7 +154,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 35);
+            this.label3.Location = new System.Drawing.Point(503, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 17;
@@ -381,7 +380,7 @@
             this.comB_CC.FormattingEnabled = true;
             this.comB_CC.Location = new System.Drawing.Point(247, 32);
             this.comB_CC.Name = "comB_CC";
-            this.comB_CC.Size = new System.Drawing.Size(77, 20);
+            this.comB_CC.Size = new System.Drawing.Size(221, 20);
             this.comB_CC.TabIndex = 39;
             this.comB_CC.SelectedIndexChanged += new System.EventHandler(this.comB_CC_SelectedIndexChanged);
             // 
@@ -557,7 +556,6 @@
             this.dgv_rmdata1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_rmdata1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Itemnum,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -577,65 +575,6 @@
             this.dgv_rmdata1.Size = new System.Drawing.Size(856, 257);
             this.dgv_rmdata1.TabIndex = 54;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 150);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(860, 279);
-            this.tabControl1.TabIndex = 55;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dgv_rmdata1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(852, 253);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "基准数据";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgv_rmdata3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(852, 253);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "比较数据";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dgv_rmdata3
-            // 
-            this.dgv_rmdata3.AllowUserToAddRows = false;
-            this.dgv_rmdata3.AllowUserToDeleteRows = false;
-            this.dgv_rmdata3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_rmdata3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14});
-            this.dgv_rmdata3.Location = new System.Drawing.Point(0, 0);
-            this.dgv_rmdata3.Name = "dgv_rmdata3";
-            this.dgv_rmdata3.ReadOnly = true;
-            this.dgv_rmdata3.RowTemplate.Height = 23;
-            this.dgv_rmdata3.Size = new System.Drawing.Size(852, 253);
-            this.dgv_rmdata3.TabIndex = 55;
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "TypeName";
@@ -643,14 +582,6 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Itemnum
-            // 
-            this.Itemnum.DataPropertyName = "Type";
-            this.Itemnum.HeaderText = "Itemnum";
-            this.Itemnum.Name = "Itemnum";
-            this.Itemnum.ReadOnly = true;
-            this.Itemnum.Visible = false;
             // 
             // Column2
             // 
@@ -748,6 +679,64 @@
             this.Column13.ReadOnly = true;
             this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 150);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(860, 279);
+            this.tabControl1.TabIndex = 55;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgv_rmdata1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(852, 253);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "基准数据";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgv_rmdata3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(852, 253);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "比较数据";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgv_rmdata3
+            // 
+            this.dgv_rmdata3.AllowUserToAddRows = false;
+            this.dgv_rmdata3.AllowUserToDeleteRows = false;
+            this.dgv_rmdata3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_rmdata3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14});
+            this.dgv_rmdata3.Location = new System.Drawing.Point(0, 0);
+            this.dgv_rmdata3.Name = "dgv_rmdata3";
+            this.dgv_rmdata3.ReadOnly = true;
+            this.dgv_rmdata3.RowTemplate.Height = 23;
+            this.dgv_rmdata3.Size = new System.Drawing.Size(852, 253);
+            this.dgv_rmdata3.TabIndex = 55;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "TypeName";
@@ -755,14 +744,6 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Type";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Itemnum";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -860,11 +841,22 @@
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(748, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 56;
+            this.button1.Text = "导出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Frm_RMTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 650);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.comB_Month2);
             this.Controls.Add(this.btn_SearchPeriod2);
@@ -961,34 +953,33 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dgv_rmdata3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Itemnum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+		private System.Windows.Forms.DataGridView dgv_rmdata3;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
     }
 }
