@@ -228,7 +228,8 @@ namespace CostControl.RawMaterial
                 excelHelp.ShowSaveFileDialog();
                 excelHelp.AppendHeader(header);
                 excelHelp.AppendContent(cells);
-                DataTable dt = (DataTable)dgv_rmdata.DataSource;
+                //DataTable dt = (DataTable)dgv_rmdata.DataSource;
+                DataTable dt =  ExcelHelper.GridViewToDataTable(dgv_rmdata);
                 excelHelp.AppendToExcel(dt, true);
                 excelHelp.SaveToExcel();
             }

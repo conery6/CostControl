@@ -873,5 +873,95 @@ namespace CostControl.Analysis
                 excelHelp.SaveToExcel();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (getPK1())
+            {
+                //1
+                string[] header = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata1);
+                excelHelp.AppendToExcel(dt, true);
+
+                //2
+                excelHelp.NewSheet();
+                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata1);
+                excelHelp.AppendToExcel(dt2, true);
+
+                //3
+                excelHelp.NewSheet();
+                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata1);
+                excelHelp.AppendToExcel(dt3, true);
+
+                //4
+                excelHelp.NewSheet();
+                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata1);
+                excelHelp.AppendToExcel(dt4, true);
+
+                excelHelp.SaveToExcel();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (getPK2())
+            {
+                //1
+                string[] header = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                ExcelHelper excelHelp = new ExcelHelper();
+                excelHelp.ShowSaveFileDialog();
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt = ExcelHelper.GridViewToDataTable(dgv_rmdata2);
+                excelHelp.AppendToExcel(dt, true);
+
+                //2
+                excelHelp.NewSheet();
+                string[] header2 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt2 = ExcelHelper.GridViewToDataTable(dgv_mgdata2);
+                excelHelp.AppendToExcel(dt2, true);
+
+                //3
+                excelHelp.NewSheet();
+                string[] header3 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt3 = ExcelHelper.GridViewToDataTable(dgv_edata2);
+                excelHelp.AppendToExcel(dt3, true);
+
+                //4
+                excelHelp.NewSheet();
+                string[] header4 = { "工厂", "成本中心", "年份", "报表类型" };
+                object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
+                excelHelp.AppendHeader(header);
+                excelHelp.AppendContent(cells);
+                DataTable dt4 = ExcelHelper.GridViewToDataTable(dgv_mtdata2);
+                excelHelp.AppendToExcel(dt4, true);
+
+                excelHelp.SaveToExcel();
+            }
+        }
     }
 }

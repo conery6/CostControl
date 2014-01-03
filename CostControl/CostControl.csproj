@@ -414,6 +414,7 @@
     <Content Include="App_Data\RMCostControl.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="lib\EPPlus.dll" />
     <Content Include="lib\ICSharpCode.SharpZipLib.dll" />
     <Content Include="lib\NPOI.dll" />
     <Content Include="lib\NPOI.OOXML.dll" />
