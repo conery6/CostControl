@@ -99,7 +99,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                     case "R":
-                        r = GetANAData.Actual(CCNo, Reporttype1, Year1);
+                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
                         break;
                 }
 
@@ -254,7 +254,7 @@ namespace CostControl.Analysis
                         r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                     case "R":
-                        r = GetANAData.Actual(CCNo, Reporttype2, Year2);
+                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
                         break;
                 }
 

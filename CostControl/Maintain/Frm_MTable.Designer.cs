@@ -29,20 +29,6 @@
         private void InitializeComponent()
         {
             this.dgv_rmdata1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_dataok2 = new System.Windows.Forms.Button();
             this.btn_dataok1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,6 +50,21 @@
             this.comB_RpType2 = new System.Windows.Forms.ComboBox();
             this.clb_CC = new System.Windows.Forms.CheckedListBox();
             this.dgv_rmdata2 = new System.Windows.Forms.DataGridView();
+            this.btn_Chart = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,9 +79,6 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Chart = new System.Windows.Forms.Button();
-            this.btn_spaChart = new System.Windows.Forms.Button();
-            this.btn_subChart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rmdata2)).BeginInit();
             this.SuspendLayout();
@@ -111,76 +109,6 @@
             this.dgv_rmdata1.Size = new System.Drawing.Size(1158, 271);
             this.dgv_rmdata1.TabIndex = 61;
             this.dgv_rmdata1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_rmdata1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "科目";
-            this.Column1.Name = "Column1";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "类型";
-            this.Column14.Name = "Column14";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "1";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "2";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "3";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "4";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "5";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "6";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "7";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "8";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "9";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "10";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "11";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "12";
-            this.Column13.Name = "Column13";
             // 
             // btn_dataok2
             // 
@@ -348,13 +276,11 @@
             this.comB_RpType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_RpType1.FormattingEnabled = true;
             this.comB_RpType1.Items.AddRange(new object[] {
-            "预算表 T1",
-            "预算表 RF1",
-            "预算表 RF2",
-            "预算表 E1",
-            "预提表",
-            "Actual表",
-            "实际值表"});
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
             this.comB_RpType1.Location = new System.Drawing.Point(766, 32);
             this.comB_RpType1.Name = "comB_RpType1";
             this.comB_RpType1.Size = new System.Drawing.Size(86, 20);
@@ -366,13 +292,11 @@
             this.comB_RpType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_RpType2.FormattingEnabled = true;
             this.comB_RpType2.Items.AddRange(new object[] {
-            "预算表 T1",
-            "预算表 RF1",
-            "预算表 RF2",
-            "预算表 E1",
-            "预提表",
-            "Actual(FIN)表",
-            "Actual(ACE)表"});
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
             this.comB_RpType2.Location = new System.Drawing.Point(766, 73);
             this.comB_RpType2.Name = "comB_RpType2";
             this.comB_RpType2.Size = new System.Drawing.Size(86, 20);
@@ -417,79 +341,9 @@
             this.dgv_rmdata2.Size = new System.Drawing.Size(1158, 253);
             this.dgv_rmdata2.TabIndex = 83;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "科目";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "类型";
-            this.Column15.Name = "Column15";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "1";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "2";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "3";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "4";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "5";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "6";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "7";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "8";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "9";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "10";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "11";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "12";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
             // btn_Chart
             // 
-            this.btn_Chart.Location = new System.Drawing.Point(967, 29);
+            this.btn_Chart.Location = new System.Drawing.Point(974, 70);
             this.btn_Chart.Name = "btn_Chart";
             this.btn_Chart.Size = new System.Drawing.Size(80, 23);
             this.btn_Chart.TabIndex = 86;
@@ -497,33 +351,179 @@
             this.btn_Chart.UseVisualStyleBackColor = true;
             this.btn_Chart.Click += new System.EventHandler(this.btn_Chart_Click);
             // 
-            // btn_spaChart
+            // Column1
             // 
-            this.btn_spaChart.Location = new System.Drawing.Point(967, 70);
-            this.btn_spaChart.Name = "btn_spaChart";
-            this.btn_spaChart.Size = new System.Drawing.Size(80, 23);
-            this.btn_spaChart.TabIndex = 87;
-            this.btn_spaChart.Text = "spa对比图";
-            this.btn_spaChart.UseVisualStyleBackColor = true;
-            this.btn_spaChart.Click += new System.EventHandler(this.btn_spaChart_Click);
+            this.Column1.DataPropertyName = "EqName";
+            this.Column1.HeaderText = "科目";
+            this.Column1.Name = "Column1";
             // 
-            // btn_subChart
+            // Column14
             // 
-            this.btn_subChart.Location = new System.Drawing.Point(1062, 70);
-            this.btn_subChart.Name = "btn_subChart";
-            this.btn_subChart.Size = new System.Drawing.Size(80, 23);
-            this.btn_subChart.TabIndex = 88;
-            this.btn_subChart.Text = "sub对比图";
-            this.btn_subChart.UseVisualStyleBackColor = true;
-            this.btn_subChart.Click += new System.EventHandler(this.btn_subChart_Click);
+            this.Column14.DataPropertyName = "Type";
+            this.Column14.HeaderText = "类型";
+            this.Column14.Name = "Column14";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "M1";
+            this.Column2.HeaderText = "1";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "M2";
+            this.Column3.HeaderText = "2";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "M3";
+            this.Column4.HeaderText = "3";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "M4";
+            this.Column5.HeaderText = "4";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "M5";
+            this.Column6.HeaderText = "5";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "M6";
+            this.Column7.HeaderText = "6";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "M7";
+            this.Column8.HeaderText = "7";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "M8";
+            this.Column9.HeaderText = "8";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "M9";
+            this.Column10.HeaderText = "9";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "M10";
+            this.Column11.HeaderText = "10";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "M11";
+            this.Column12.HeaderText = "11";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "M12";
+            this.Column13.HeaderText = "12";
+            this.Column13.Name = "Column13";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "EqName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "科目";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "Type";
+            this.Column15.HeaderText = "类型";
+            this.Column15.Name = "Column15";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "M1";
+            this.dataGridViewTextBoxColumn2.HeaderText = "1";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "M2";
+            this.dataGridViewTextBoxColumn3.HeaderText = "2";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "M3";
+            this.dataGridViewTextBoxColumn4.HeaderText = "3";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "M4";
+            this.dataGridViewTextBoxColumn5.HeaderText = "4";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "M5";
+            this.dataGridViewTextBoxColumn6.HeaderText = "5";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "M6";
+            this.dataGridViewTextBoxColumn7.HeaderText = "6";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "M7";
+            this.dataGridViewTextBoxColumn8.HeaderText = "7";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "M8";
+            this.dataGridViewTextBoxColumn9.HeaderText = "8";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "M9";
+            this.dataGridViewTextBoxColumn10.HeaderText = "9";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "M10";
+            this.dataGridViewTextBoxColumn11.HeaderText = "10";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "M11";
+            this.dataGridViewTextBoxColumn12.HeaderText = "11";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "M12";
+            this.dataGridViewTextBoxColumn13.HeaderText = "12";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             // 
             // Frm_MTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 647);
-            this.Controls.Add(this.btn_subChart);
-            this.Controls.Add(this.btn_spaChart);
             this.Controls.Add(this.btn_Chart);
             this.Controls.Add(this.dgv_rmdata2);
             this.Controls.Add(this.clb_CC);
@@ -610,7 +610,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.Button btn_spaChart;
-        private System.Windows.Forms.Button btn_subChart;
     }
 }

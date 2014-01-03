@@ -57,6 +57,8 @@
             this.Excelout = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comB_Month = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Mdata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,13 +244,11 @@
             this.comB_RpType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_RpType.FormattingEnabled = true;
             this.comB_RpType.Items.AddRange(new object[] {
-            "预算表 T1",
-            "预算表 RF1",
-            "预算表 RF2",
-            "预算表 E1",
-            "预提表",
-            "Actual表",
-            "实际值表"});
+            "T1",
+            "RF1",
+            "RF2",
+            "E3",
+            "Actual"});
             this.comB_RpType.Location = new System.Drawing.Point(374, 91);
             this.comB_RpType.Name = "comB_RpType";
             this.comB_RpType.Size = new System.Drawing.Size(86, 20);
@@ -266,7 +266,7 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(477, 91);
+            this.btn_Search.Location = new System.Drawing.Point(477, 89);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 23);
             this.btn_Search.TabIndex = 12;
@@ -276,7 +276,7 @@
             // 
             // Excelout
             // 
-            this.Excelout.Location = new System.Drawing.Point(592, 91);
+            this.Excelout.Location = new System.Drawing.Point(801, 91);
             this.Excelout.Name = "Excelout";
             this.Excelout.Size = new System.Drawing.Size(75, 23);
             this.Excelout.TabIndex = 36;
@@ -288,11 +288,45 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(641, 89);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 23);
+            this.button1.TabIndex = 39;
+            this.button1.Text = "查询";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comB_Month
+            // 
+            this.comB_Month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comB_Month.FormattingEnabled = true;
+            this.comB_Month.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comB_Month.Location = new System.Drawing.Point(578, 91);
+            this.comB_Month.Name = "comB_Month";
+            this.comB_Month.Size = new System.Drawing.Size(57, 20);
+            this.comB_Month.TabIndex = 38;
+            // 
             // Frm_MData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 571);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comB_Month);
             this.Controls.Add(this.Excelout);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.label5);
@@ -346,5 +380,7 @@
         private System.Windows.Forms.Button Excelout;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comB_Month;
     }
 }

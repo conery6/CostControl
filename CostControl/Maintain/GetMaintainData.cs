@@ -9,10 +9,18 @@ namespace CostControl.Maintain
 {
     class GetMaintainData
     {
-        public static DataTable Budget(String FNo, String FSNo, String Year , String CCNo)
+        public static DataTable GetData(String FNo, String FSNo, String Year, String CCNo, String Period)
         {
             string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
-            + " and FNo='" + FNo  + "' and FSNo='" + FSNo  + "' and CCNo='"+ CCNo +"'";
+            + " and FNo='" + FNo + "' and FSNo='" + FSNo + "' and Period='" + Period + "' and CCNo='" + CCNo + "'";
+            DataTable a = ODbcmd.SelectToDataTable(sql);
+            return a;
+        }
+
+        public static DataTable GetData2(String FNo, String FSNo, String Year, String CCNo, String Period)
+        {
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
+            + " and FNo='" + FNo + "' and FSNo in (" + FSNo + ") and Period='" + Period + "' and CCNo='" + CCNo + "'";
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }

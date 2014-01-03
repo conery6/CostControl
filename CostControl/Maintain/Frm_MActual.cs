@@ -232,7 +232,7 @@ namespace CostControl.Maintain
                 }
 
                 DataTable dt = new DataTable();
-                dt = GetMaintainData.Budget(FNo, FSNo, Year, CCNo);
+                dt = GetMaintainData.GetData(FNo, FSNo, Year, CCNo,"");
                 if (dgv_Mdata.Rows.Count == 0 || dt.Rows.Count > 1)
                 {
                     MessageBox.Show("未找到任何行或数据已存在！");

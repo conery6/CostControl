@@ -103,88 +103,30 @@ namespace CostControl.Maintain
 
                 for (int i = 0; i < clb_FSystem.CheckedItems.Count; i++)
                 {
-                    FSNo = GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString());
-                    switch (comB_RpType1.Text)
-                    {
-                        case "预算表 T1":
-                            sumdt = GetMaintainData.Budget(FNo, FSNo, Year1, CCNo);
-                            break;
-                        case "预算表 RF1":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year1, 3);
-                            break;
-                        case "预算表 RF2":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year1, 6);
-                            break;
-                        case "预算表 E1":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year1, 9);
-                            break;
-                        case "预提表":
-                            sumdt = GetMaintainData.Withhold(FNo, FSNo, Year1, CCNo);
-                            break;
-                        case "Actual表":
-                            sumdt = GetMaintainData.Actual_FIN(FNo, FSNo, Year1, CCNo);
-                            break;
-                        case "实际值表":
-                            sumdt = GetMaintainData.Actual_ACE(FNo, FSNo, Year1, CCNo);
-                            break;
-                    }
-
-                    if (sumdt.Rows.Count == 0)
-                    {
-                        MessageBox.Show(clb_FSystem.CheckedItems[i].ToString()+"没有数据！", "提示");
-                    }
-                    else
-                    {
-
-                        sumall = GetMaintainData.sumall(sumdt, clb_FSystem.CheckedItems[i].ToString());
-                        int r = dgv_rmdata1.Rows.Count;
-
-                        for (int j = r ; j < sumall.Rows.Count+r ; j++)
-                        {
-                            dgv_rmdata1.Rows.Add();
-                            dgv_rmdata1[0, j].Value = sumall.Rows[j%3]["EqName"].ToString();
-                            dgv_rmdata1[1, j].Value = sumall.Rows[j%3]["Type"].ToString();
-                            for (int k = 2; k < 14; k++)
-                            {
-
-                                dgv_rmdata1[k, j].Value = sumall.Rows[j%3]["M" + (k - 1).ToString()].ToString();
-                                if (sumall.Rows[j % 3]["Type"].ToString() == "spa")
-                                {
-                                    spa[k - 2] += Convert.ToSingle (sumall.Rows[j % 3]["M" + (k - 1).ToString()]);
-                                }
-                                if (sumall.Rows[j % 3]["Type"].ToString() == "sub")
-                                {
-                                    sub[k - 2] += Convert.ToSingle(sumall.Rows[j % 3]["M" + (k - 1).ToString()]);
-                                }
-                                all[k - 2] = spa[k - 2] + sub[k - 2];
-                                
-                            }
-                            
-                        }
-                        barsum.Add(Convert.ToSingle(sumall.Rows[2][14].ToString()));
-                        
-                    }
-                    
+                    FSNo += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
                 }
-                dgv_rmdata1.Rows.Add("sum", "spa", spa[0], spa[1], spa[2], spa[3], spa[4], spa[5], spa[6], spa[7], spa[8], spa[9], spa[10], spa[11]);
-                dgv_rmdata1.Rows.Add("sum", "sub", sub[0], sub[1], sub[2], sub[3], sub[4], sub[5], sub[6], sub[7], sub[8], sub[9], sub[10], sub[11]);
-                dgv_rmdata1.Rows.Add("sum", "all", all[0], all[1], all[2], all[3], all[4], all[5], all[6], all[7], all[8], all[9], all[10], all[11]);
-                for (int i = 1; i < 12; i++)
+                FSNo = FSNo.Remove(FSNo.Length - 1);
+                if (comB_RpType1.Text == "Actual")
                 {
-                    spa[i] = spa[i] + spa[i - 1];
-                    sub[i] = spa[i] + spa[i - 1];
-                    all[i] = all[i] + all[i - 1];
+                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, "A12");
                 }
-                dgv_rmdata1.Rows.Add("sum累加", "spa", spa[0], spa[1], spa[2], spa[3], spa[4], spa[5], spa[6], spa[7], spa[8], spa[9], spa[10], spa[11]);
-                dgv_rmdata1.Rows.Add("sum累加", "sub", sub[0], sub[1], sub[2], sub[3], sub[4], sub[5], sub[6], sub[7], sub[8], sub[9], sub[10], sub[11]);
-                dgv_rmdata1.Rows.Add("sum累加", "all", all[0], all[1], all[2], all[3], all[4], all[5], all[6], all[7], all[8], all[9], all[10], all[11]);
+                else
+                {
+                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, comB_RpType1.Text);
+                }
 
-
-
-                F1spa=spa ;
-                F1sub =sub ;
-                F1all =all ;
-
+                if (sumdt.Rows.Count == 0)
+                {
+                    MessageBox.Show("数据为空");
+                }
+                else
+                {
+                    for (int j = 0; j < sumdt.Rows.Count; j++)
+                    {
+                        dgv_rmdata1.Rows.Add();
+                    }
+                    dgv_rmdata1.DataSource = sumdt;
+                }
             }
         }
 
@@ -271,91 +213,30 @@ namespace CostControl.Maintain
 
                 for (int i = 0; i < clb_FSystem.CheckedItems.Count; i++)
                 {
-                    FSNo = GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString());
-                    switch (comB_RpType2.Text)
-                    {
-                        case "预算表 T1":
-                            sumdt = GetMaintainData.Budget(FNo, FSNo, Year2, CCNo);
-                            break;
-                        case "预算表 RF1":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year2, 3);
-                            break;
-                        case "预算表 RF2":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year2, 6);
-                            break;
-                        case "预算表 E1":
-                            sumdt = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year2, 9);
-                            break;
-                        case "预提表":
-                            sumdt = GetMaintainData.Withhold(FNo, FSNo, Year2, CCNo);
-                            break;
-                        case "Actual表":
-                            sumdt = GetMaintainData.Actual_FIN(FNo, FSNo, Year2, CCNo);
-                            break;
-                        case "实际值表":
-                            sumdt = GetMaintainData.Actual_ACE(FNo, FSNo, Year2, CCNo);
-                            break;
-                    }
-
-                    if (sumdt.Rows.Count == 0)
-                    {
-                        MessageBox.Show(clb_FSystem.CheckedItems[i].ToString() + "没有数据！", "提示");
-                    }
-                    else
-                    {
-
-                        sumall = GetMaintainData.sumall(sumdt, clb_FSystem.CheckedItems[i].ToString());
-                        int r = dgv_rmdata2.Rows.Count;
-
-                        for (int j = r; j < sumall.Rows.Count + r; j++)
-                        {
-                            dgv_rmdata2.Rows.Add();
-                            dgv_rmdata2[0, j].Value = sumall.Rows[j % 3]["EqName"].ToString();
-                            dgv_rmdata2[1, j].Value = sumall.Rows[j % 3]["Type"].ToString();
-                            for (int k = 2; k < 14; k++)
-                            {
-
-                                dgv_rmdata2[k, j].Value = sumall.Rows[j % 3]["M" + (k - 1).ToString()].ToString();
-                                if (sumall.Rows[j % 3]["Type"].ToString() == "spa")
-                                {
-                                    spa[k - 2] += Convert.ToSingle (sumall.Rows[j % 3]["M" + (k - 1).ToString()]);
-                                }
-                                if (sumall.Rows[j % 3]["Type"].ToString() == "sub")
-                                {
-                                    sub[k - 2] += Convert.ToSingle(sumall.Rows[j % 3]["M" + (k - 1).ToString()]);
-                                }
-                                all[k - 2] = spa[k - 2] + sub[k - 2];
-                            }
-                        }
-                    }
+                    FSNo += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
                 }
-                dgv_rmdata2.Rows.Add("sum", "spa", spa[0], spa[1], spa[2], spa[3], spa[4], spa[5], spa[6], spa[7], spa[8], spa[9], spa[10], spa[11]);
-                dgv_rmdata2.Rows.Add("sum", "sub", sub[0], sub[1], sub[2], sub[3], sub[4], sub[5], sub[6], sub[7], sub[8], sub[9], sub[10], sub[11]);
-                dgv_rmdata2.Rows.Add("sum", "all", all[0], all[1], all[2], all[3], all[4], all[5], all[6], all[7], all[8], all[9], all[10], all[11]);
-                for (int i = 1; i < 12; i++)
+                FSNo = FSNo.Remove(FSNo.Length - 1);
+                if (comB_RpType2.Text == "Actual")
                 {
-                    spa[i] = spa[i] + spa[i - 1];
-                    sub[i] = spa[i] + spa[i - 1];
-                    all[i] = all[i] + all[i - 1];
+                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, "A12");
                 }
-                dgv_rmdata2.Rows.Add("sum累加", "spa", spa[0], spa[1], spa[2], spa[3], spa[4], spa[5], spa[6], spa[7], spa[8], spa[9], spa[10], spa[11]);
-                dgv_rmdata2.Rows.Add("sum累加", "sub", sub[0], sub[1], sub[2], sub[3], sub[4], sub[5], sub[6], sub[7], sub[8], sub[9], sub[10], sub[11]);
-                dgv_rmdata2.Rows.Add("sum累加", "all", all[0], all[1], all[2], all[3], all[4], all[5], all[6], all[7], all[8], all[9], all[10], all[11]);
+                else
+                {
+                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, comB_RpType2.Text);
+                }
 
-
-                F2spa =spa ;
-                F2sub =sub ;
-                F2all =all ;
-
-                //for (int i = 0; i < 12; i++)
-                //{
-                //    float sum = 0;
-                //    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
-                //    {
-                //        sum += FDT2[j, i];
-                //    }
-                //    sum2[i] = sum;
-                //}
+                if (sumdt.Rows.Count == 0)
+                {
+                    MessageBox.Show("数据为空");
+                }
+                else
+                {
+                    for (int j = 0; j < sumdt.Rows.Count; j++)
+                    {
+                        dgv_rmdata2.Rows.Add();
+                    }
+                    dgv_rmdata2.DataSource = sumdt;
+                }
             }
         }
 

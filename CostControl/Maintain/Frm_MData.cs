@@ -64,30 +64,15 @@ namespace CostControl.Maintain
 
                 dgv_Mdata.Rows.Clear();
                 DataTable a = new DataTable();
-                switch (comB_RpType.Text)
+                if (comB_RpType.Text == "Actual")
                 {
-                    case "预算表 T1":
-                        a = GetMaintainData.Budget(FNo, FSNo, Year, CCNo);
-                        break;
-                    case "预算表 RF1":
-                        a = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year, 3);
-                        break;
-                    case "预算表 RF2":
-                        a = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year, 6);
-                        break;
-                    case "预算表 E1":
-                        a = GetMaintainData.MiddleBudget(FNo, FSNo, CCNo, Year, 9);
-                        break;
-                    case "预提表":
-                        a = GetMaintainData.Withhold(FNo, FSNo, Year, CCNo);
-                        break;
-                    case "Actual表":
-                        a = GetMaintainData.Actual_FIN(FNo, FSNo, Year, CCNo);
-                        break;
-                    case "实际值表":
-                        a = GetMaintainData.Actual_ACE(FNo, FSNo, Year, CCNo);
-                        break;
+                    a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, "A12");
                 }
+                else
+                {
+                    a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, comB_RpType.Text);
+                }
+                       
                 for (int j = 0; j < a.Rows.Count; j++)
                 {
                     dgv_Mdata.Rows.Add();
@@ -358,7 +343,7 @@ namespace CostControl.Maintain
             try
             {
                 DataTable dt = new DataTable ();
-                dt =GetMaintainData .Budget (FNo ,FSNo ,Year ,CCNo );
+                dt =GetMaintainData .GetData (FNo ,FSNo ,Year ,CCNo,"" );
                 if (dgv_Mdata.Rows.Count == 0 || dt.Rows.Count >1 )
                 {
                     MessageBox.Show("未找到任何行或数据已存在！");
@@ -543,8 +528,49 @@ namespace CostControl.Maintain
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (getPK())
+            {
 
-        
+                dgv_Mdata.Rows.Clear();
+                DataTable a = new DataTable();
+
+                switch (comB_Month.Text)
+                {
+                    case "3":
+                        a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, "RF1");
+                        break;
+                    case "6":
+                        a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, "RF2");
+                        break;
+                    case "9":
+                        a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, "E3");
+                        break;
+                    default :
+                        string temp = "A" + comB_Month.Text;
+                        a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, temp);
+                        break;
+                }
+
+                a = GetMaintainData.GetData(FNo, FSNo, Year, CCNo, comB_Month.Text);
+               
+                for (int j = 0; j < a.Rows.Count; j++)
+                {
+                    dgv_Mdata.Rows.Add();
+                    dgv_Mdata[0, j].Value = a.Rows[j]["EqName"].ToString();
+                    dgv_Mdata[1, j].Value = a.Rows[j]["Type"].ToString();
+                    for (int i = 2; i < 14; i++)
+                    {
+                        dgv_Mdata[i, j].Value = a.Rows[j]["M" + (i - 1).ToString()].ToString();
+                    }
+                }
+                if (dgv_Mdata.Rows.Count < 1)
+                {
+                    MessageBox.Show("没有数据！", "提示");
+                }
+            }
+        }
 
     }
 }
