@@ -39,7 +39,6 @@
             this.comB_Year2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.chkB_T1 = new System.Windows.Forms.CheckBox();
-            this.chkB_T2 = new System.Windows.Forms.CheckBox();
             this.chkB_T3 = new System.Windows.Forms.CheckBox();
             this.dgv_rmdata2 = new System.Windows.Forms.DataGridView();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -210,24 +209,13 @@
             // chkB_T1
             // 
             this.chkB_T1.AutoSize = true;
-            this.chkB_T1.Location = new System.Drawing.Point(621, 64);
+            this.chkB_T1.Location = new System.Drawing.Point(621, 83);
             this.chkB_T1.Name = "chkB_T1";
             this.chkB_T1.Size = new System.Drawing.Size(84, 16);
             this.chkB_T1.TabIndex = 30;
             this.chkB_T1.Text = "差值比较表";
             this.chkB_T1.UseVisualStyleBackColor = true;
             this.chkB_T1.CheckedChanged += new System.EventHandler(this.chkB_T1_CheckedChanged);
-            // 
-            // chkB_T2
-            // 
-            this.chkB_T2.AutoSize = true;
-            this.chkB_T2.Location = new System.Drawing.Point(621, 96);
-            this.chkB_T2.Name = "chkB_T2";
-            this.chkB_T2.Size = new System.Drawing.Size(108, 16);
-            this.chkB_T2.TabIndex = 31;
-            this.chkB_T2.Text = "平均差值比较表";
-            this.chkB_T2.UseVisualStyleBackColor = true;
-            this.chkB_T2.CheckedChanged += new System.EventHandler(this.chkB_T2_CheckedChanged);
             // 
             // chkB_T3
             // 
@@ -877,7 +865,6 @@
             this.Controls.Add(this.btn_showT1);
             this.Controls.Add(this.dgv_rmdata2);
             this.Controls.Add(this.chkB_T3);
-            this.Controls.Add(this.chkB_T2);
             this.Controls.Add(this.chkB_T1);
             this.Controls.Add(this.comB_Year2);
             this.Controls.Add(this.label8);
@@ -916,7 +903,6 @@
         private System.Windows.Forms.ComboBox comB_Year2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkB_T1;
-        private System.Windows.Forms.CheckBox chkB_T2;
         private System.Windows.Forms.CheckBox chkB_T3;
         private System.Windows.Forms.DataGridView dgv_rmdata2;
         private System.Windows.Forms.Button btn_showT1;

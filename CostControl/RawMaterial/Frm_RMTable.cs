@@ -150,32 +150,32 @@ namespace CostControl.RawMaterial
             }
         }
 
-        private void chkB_T2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkB_T2.Checked == true)
-            {
+        //private void chkB_T2_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (chkB_T2.Checked == true)
+        //    {
 
-                float[,] f = GetRMData.FReportTable2(FDT1, FDT2);
-                f2 = f;
-                dgv_rmdata2.Rows[6].Visible = true;
+        //        float[,] f = GetRMData.FReportTable2(FDT1, FDT2);
+        //        f2 = f;
+        //        dgv_rmdata2.Rows[6].Visible = true;
 
-                for (int j = 7; j < 12; j++)
-                {
-                    dgv_rmdata2.Rows[j].Visible = true;
-                    for (int i = 1; i < 13; i++)
-                    {
-                        dgv_rmdata2[i, j].Value = f[j - 7, i];
-                    }
-                }
-            }
-            else
-            {
-                for (int j = 6; j < 12; j++)
-                {
-                    dgv_rmdata2.Rows[j].Visible = false;
-                }
-            }
-        }
+        //        for (int j = 7; j < 12; j++)
+        //        {
+        //            dgv_rmdata2.Rows[j].Visible = true;
+        //            for (int i = 1; i < 13; i++)
+        //            {
+        //                dgv_rmdata2[i, j].Value = f[j - 7, i];
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        for (int j = 6; j < 12; j++)
+        //        {
+        //            dgv_rmdata2.Rows[j].Visible = false;
+        //        }
+        //    }
+        //}
 
         private void chkB_T3_CheckedChanged(object sender, EventArgs e)
         {

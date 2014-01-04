@@ -155,10 +155,15 @@ namespace CostControl.Electric
             {
 
                 dgv_edata2.Rows.Clear();
+                string period = Reporttype2;
                 for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
                 {
+                    if (period == "Actual")
+                    {
+                        period = "A12";
+                    }
                     string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year2
-                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Reporttype2 + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
                     DataTable dt = ODbcmd.SelectToDataTable(str);
                     if (dt.Rows.Count != 0)
                     {

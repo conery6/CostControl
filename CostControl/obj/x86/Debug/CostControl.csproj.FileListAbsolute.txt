@@ -36,6 +36,5 @@ D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.exe
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.pdb
 D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.Electric.Frm_EChart.resources
 D:\GitHub\CostControl\CostControl\bin\Debug\EPPlus.dll
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\GitHub\CostControl\CostControl\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csprojResolveAssemblyReference.cache
+D:\GitHub\CostControl\CostControl\obj\x86\Debug\CostControl.csproj.GenerateResource.Cache
