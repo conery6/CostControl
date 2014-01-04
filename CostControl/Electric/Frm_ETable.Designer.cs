@@ -35,8 +35,8 @@
             this.btn_addalll = new System.Windows.Forms.Button();
             this.clb_CCItem = new System.Windows.Forms.CheckedListBox();
             this.dgv_edata1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +76,8 @@
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_edata2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +95,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comB_Year1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata2)).BeginInit();
@@ -191,8 +192,8 @@
             this.dgv_edata1.AllowUserToDeleteRows = false;
             this.dgv_edata1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_edata1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Column14,
+            this.Type,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -212,87 +213,100 @@
             this.dgv_edata1.Size = new System.Drawing.Size(980, 182);
             this.dgv_edata1.TabIndex = 101;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "科目";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
             // Column14
             // 
-            this.Column14.HeaderText = "类型";
+            this.Column14.DataPropertyName = "TypeName";
+            this.Column14.HeaderText = "类型名称";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "类型";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "M1";
             this.Column2.HeaderText = "1";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "M2";
             this.Column3.HeaderText = "2";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "M3";
             this.Column4.HeaderText = "3";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
+            this.Column5.DataPropertyName = "M4";
             this.Column5.HeaderText = "4";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "M5";
             this.Column6.HeaderText = "5";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
+            this.Column7.DataPropertyName = "M6";
             this.Column7.HeaderText = "6";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
             // Column8
             // 
+            this.Column8.DataPropertyName = "M7";
             this.Column8.HeaderText = "7";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
             // Column9
             // 
+            this.Column9.DataPropertyName = "M8";
             this.Column9.HeaderText = "8";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             // 
             // Column10
             // 
+            this.Column10.DataPropertyName = "M9";
             this.Column10.HeaderText = "9";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             // 
             // Column11
             // 
+            this.Column11.DataPropertyName = "M10";
             this.Column11.HeaderText = "10";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             // 
             // Column12
             // 
+            this.Column12.DataPropertyName = "M11";
             this.Column12.HeaderText = "11";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             // 
             // Column13
             // 
+            this.Column13.DataPropertyName = "M12";
             this.Column13.HeaderText = "12";
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
@@ -523,8 +537,8 @@
             this.dgv_edata2.AllowUserToDeleteRows = false;
             this.dgv_edata2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_edata2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
+            this.Column1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
@@ -544,87 +558,100 @@
             this.dgv_edata2.Size = new System.Drawing.Size(980, 182);
             this.dgv_edata2.TabIndex = 117;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "科目";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "类型";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TypeName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "类型名称";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Type";
+            this.Column1.HeaderText = "类型";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "M1";
             this.dataGridViewTextBoxColumn3.HeaderText = "1";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "M2";
             this.dataGridViewTextBoxColumn4.HeaderText = "2";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "M3";
             this.dataGridViewTextBoxColumn5.HeaderText = "3";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "M4";
             this.dataGridViewTextBoxColumn6.HeaderText = "4";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "M5";
             this.dataGridViewTextBoxColumn7.HeaderText = "5";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "M6";
             this.dataGridViewTextBoxColumn8.HeaderText = "6";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "M7";
             this.dataGridViewTextBoxColumn9.HeaderText = "7";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "M8";
             this.dataGridViewTextBoxColumn10.HeaderText = "8";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn11
             // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "M9";
             this.dataGridViewTextBoxColumn11.HeaderText = "9";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn12
             // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "M10";
             this.dataGridViewTextBoxColumn12.HeaderText = "10";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn13
             // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "M11";
             this.dataGridViewTextBoxColumn13.HeaderText = "11";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn28
             // 
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "M12";
             this.dataGridViewTextBoxColumn28.HeaderText = "12";
             this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
             this.dataGridViewTextBoxColumn28.ReadOnly = true;
@@ -669,18 +696,29 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(887, 21);
+            this.button1.Location = new System.Drawing.Point(782, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 38);
             this.button1.TabIndex = 118;
             this.button1.Text = "Excel导出";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(887, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 38);
+            this.button2.TabIndex = 119;
+            this.button2.Text = "海力士Excel导出";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Frm_ETable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 707);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_edata2);
             this.Controls.Add(this.dgv_edata3);
@@ -738,35 +776,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_compare;
         private System.Windows.Forms.DataGridView dgv_edata3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridView dgv_edata2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
@@ -786,5 +796,34 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comB_Year1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
     }
 }

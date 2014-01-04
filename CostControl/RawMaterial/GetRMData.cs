@@ -47,6 +47,7 @@ namespace CostControl.RawMaterial
 			return dt.Rows[0][0].ToString();
 		}
 
+        //RawMaterial差值比较
 		public static float[,] FReportTable1(float[,] FDT1, float[,] FDT2)
 		{
 			float[,] a = new float[5, 13];
@@ -106,18 +107,17 @@ namespace CostControl.RawMaterial
 			return a;
 		}
 
-
+        //Datatable转浮点数
 		public static float[,] DTto2DFloat(DataTable DT)
 		{
 			float[,] a = new float[6, 13];
-
-			for (int i = 1; i <= DT.Columns.Count; i++)
+			for (int i = 1; i < DT.Columns.Count; i++)
 			{
-				for (int j = 0; j <= DT.Rows.Count; j++)
+				for (int j = 0; j < DT.Rows.Count; j++)
 				{
 					try
 					{
-						a[j, i - 1] = Convert.ToSingle(DT.Rows[j][i]);
+						a[j, i] = Convert.ToSingle(DT.Rows[j][i]);
 					}
 					catch { };
 				}

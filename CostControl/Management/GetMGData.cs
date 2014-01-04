@@ -112,6 +112,7 @@ namespace CostControl.Management
             return dt.Rows[0][0].ToString();
         }
 
+        //Datatable数据转为浮点型
         public static float[,] DTto2DFloat(DataTable DT)
         {
             float[,] a = new float[DT.Rows.Count, 12];

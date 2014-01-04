@@ -28,61 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			this.MGChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			((System.ComponentModel.ISupportInitialize)(this.MGChart)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// MGChart
-			// 
-			this.MGChart.BackColor = System.Drawing.Color.Transparent;
-			chartArea2.Area3DStyle.Enable3D = true;
-			chartArea2.Area3DStyle.IsClustered = true;
-			chartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic;
-			chartArea2.Area3DStyle.PointGapDepth = 150;
-			chartArea2.Area3DStyle.WallWidth = 10;
-			chartArea2.AxisX.Interval = 1D;
-			chartArea2.AxisX.Title = "月份";
-			chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-			chartArea2.AxisY.Title = "总计";
-			chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-			chartArea2.BackColor = System.Drawing.Color.Silver;
-			chartArea2.BorderColor = System.Drawing.Color.Transparent;
-			chartArea2.Name = "ChartArea1";
-			this.MGChart.ChartAreas.Add(chartArea2);
-			legend2.Name = "Legend1";
-			this.MGChart.Legends.Add(legend2);
-			this.MGChart.Location = new System.Drawing.Point(0, 0);
-			this.MGChart.Name = "MGChart";
-			this.MGChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-			series3.ChartArea = "ChartArea1";
-			series3.Legend = "Legend1";
-			series3.Name = "Series1";
-			series4.BorderWidth = 2;
-			series4.ChartArea = "ChartArea1";
-			series4.Legend = "Legend1";
-			series4.Name = "Series2";
-			series4.YValuesPerPoint = 4;
-			this.MGChart.Series.Add(series3);
-			this.MGChart.Series.Add(series4);
-			this.MGChart.Size = new System.Drawing.Size(700, 400);
-			this.MGChart.TabIndex = 0;
-			this.MGChart.Text = "chart2";
-			// 
-			// Frm_MGChart
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(704, 402);
-			this.Controls.Add(this.MGChart);
-			this.Name = "Frm_MGChart";
-			this.Text = "MGChart";
-			this.Load += new System.EventHandler(this.Frm_MChart_Load);
-			((System.ComponentModel.ISupportInitialize)(this.MGChart)).EndInit();
-			this.ResumeLayout(false);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.MGChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.MGChart)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // MGChart
+            // 
+            this.MGChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MGChart.BorderSkin.BackColor = System.Drawing.Color.White;
+            chartArea1.Area3DStyle.IsClustered = true;
+            chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic;
+            chartArea1.Area3DStyle.PointGapDepth = 150;
+            chartArea1.Area3DStyle.WallWidth = 10;
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.Title = "月份";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            chartArea1.AxisY.Title = "总计";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            chartArea1.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.White;
+            this.MGChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.MGChart.Legends.Add(legend1);
+            this.MGChart.Location = new System.Drawing.Point(0, 0);
+            this.MGChart.Name = "MGChart";
+            this.MGChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.Legend = "Legend1";
+            series1.MarkerSize = 7;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series1.Name = "Series1";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.MarkerSize = 8;
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series2.Name = "Series2";
+            series2.YValuesPerPoint = 4;
+            this.MGChart.Series.Add(series1);
+            this.MGChart.Series.Add(series2);
+            this.MGChart.Size = new System.Drawing.Size(700, 400);
+            this.MGChart.TabIndex = 0;
+            this.MGChart.Text = "chart2";
+            // 
+            // Frm_MGChart
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(704, 402);
+            this.Controls.Add(this.MGChart);
+            this.Name = "Frm_MGChart";
+            this.Text = "MGChart";
+            this.Load += new System.EventHandler(this.Frm_MChart_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.MGChart)).EndInit();
+            this.ResumeLayout(false);
 
         }
 

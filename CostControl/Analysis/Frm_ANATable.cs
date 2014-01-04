@@ -84,24 +84,8 @@ namespace CostControl.Analysis
             if (getPK1())
             {
                 DataSet r = new DataSet();
-                switch (Reporttype1)
-                {
-                    case "T1":
-                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
-                        break;
-                    case "RF1":
-                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
-                        break;
-                    case "RF2":
-                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
-                        break;
-                    case "E3":
-                        r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
-                        break;
-                    case "R":
-                        r = GetANAData.PeriodData(CCNo, "A12", Year1);
-                        break;
-                }
+                
+                r = GetANAData.PeriodData(CCNo, Reporttype1, Year1);
 
                 if (r.Tables.Count > 0)
                 {
@@ -239,25 +223,8 @@ namespace CostControl.Analysis
             {
                 DataSet r = new DataSet();
 
-                switch (Reporttype2)
-                {
-                    case "T1":
-                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
-                        break;
-                    case "RF1":
-                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
-                        break;
-                    case "RF2":
-                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
-                        break;
-                    case "E3":
-                        r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
-                        break;
-                    case "R":
-                        r = GetANAData.PeriodData(CCNo, "A12", Year2);
-                        break;
-                }
-
+                r = GetANAData.PeriodData(CCNo, Reporttype2, Year2);
+                  
                 if (r.Tables.Count > 0)
                 {
                     for (int y = 0; y < r.Tables.Count; y++)
@@ -577,6 +544,9 @@ namespace CostControl.Analysis
                 }
                 //bind datasource
                 dgv_rmdata3.DataSource = dt4;
+                dgv_mgdata3.DataSource = dt22;
+                dgv_edata3.DataSource = dt33;
+                dgv_mtdata3.DataSource = dt44;
             }
             else
             {
@@ -793,7 +763,7 @@ namespace CostControl.Analysis
                 {
                     excelHelp.AppendHeader(header);
                     excelHelp.AppendContent(cells);
-                    excelHelp.DataTableToExcel(dt1, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt1, 3, 0, true);
 
                     //2
                     excelHelp.NewSheet();
@@ -801,7 +771,7 @@ namespace CostControl.Analysis
                     object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
                     excelHelp.AppendHeader(header2);
                     excelHelp.AppendContent(cells2);
-                    excelHelp.DataTableToExcel(dt2, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt2, 3, 0, true);
 
                     //3
                     excelHelp.NewSheet();
@@ -809,7 +779,7 @@ namespace CostControl.Analysis
                     object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
                     excelHelp.AppendHeader(header3);
                     excelHelp.AppendContent(cells3);
-                    excelHelp.DataTableToExcel(dt3, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt3, 3, 0, true);
 
                     //4
                     excelHelp.NewSheet();
@@ -817,7 +787,7 @@ namespace CostControl.Analysis
                     object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_report1.Text };
                     excelHelp.AppendHeader(header4);
                     excelHelp.AppendContent(cells4);
-                    excelHelp.DataTableToExcel(dt4, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt4, 3, 0, true);
 
                     excelHelp.SaveToExcel();
                 }
@@ -858,7 +828,7 @@ namespace CostControl.Analysis
                 {
                     excelHelp.AppendHeader(header);
                     excelHelp.AppendContent(cells);
-                    excelHelp.DataTableToExcel(dt1, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt1, 3, 0, true);
 
                     //2
                     excelHelp.NewSheet();
@@ -866,7 +836,7 @@ namespace CostControl.Analysis
                     object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                     excelHelp.AppendHeader(header2);
                     excelHelp.AppendContent(cells2);
-                    excelHelp.DataTableToExcel(dt2, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt2, 3, 0, true);
 
                     //3
                     excelHelp.NewSheet();
@@ -874,7 +844,7 @@ namespace CostControl.Analysis
                     object[] cells3 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                     excelHelp.AppendHeader(header3);
                     excelHelp.AppendContent(cells3);
-                    excelHelp.DataTableToExcel(dt3, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt3, 3, 0, true);
 
                     //4
                     excelHelp.NewSheet();
@@ -882,7 +852,7 @@ namespace CostControl.Analysis
                     object[] cells4 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_report2.Text };
                     excelHelp.AppendHeader(header4);
                     excelHelp.AppendContent(cells4);
-                    excelHelp.DataTableToExcel(dt4, 3, 0, true);
+                    excelHelp.DataTableToExcelForTotal(dt4, 3, 0, true);
 
                     excelHelp.SaveToExcel();
                 }

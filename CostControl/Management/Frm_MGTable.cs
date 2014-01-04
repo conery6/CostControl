@@ -27,6 +27,9 @@ namespace CostControl.Management
         float[,] f3 = new float[10, 13];
         float[] sum1 = new float[12];
         float[] sum2 = new float[12];
+        float[] total1 = new float[12];
+        float[] total2 = new float[12];
+
         List<float> sumbar = new List<float>();
         List<string> sumbarname = new List<string>();
         string currentType = "";
@@ -243,7 +246,7 @@ namespace CostControl.Management
         private void btn_createchart_Click(object sender, EventArgs e)
         {
             string[] chartInfo = { comB_Facility.Text, comB_CC.Text, Year1 + currentType, Year2 + currentType2 };
-            Frm_MGChart m_Frm_MGChart = new Frm_MGChart(sum1, sum2, chartInfo);
+            Frm_MGChart m_Frm_MGChart = new Frm_MGChart(total1, total2, chartInfo);
             m_Frm_MGChart.Show();
         }
 
@@ -257,20 +260,40 @@ namespace CostControl.Management
         {
             if (getPK1() && getPK2())
             {
-                ExcelHelper excel = new ExcelHelper();
-                ExcelHelper.ChartInfo chartInfo = new ExcelHelper.ChartInfo();
-                string[] infoHeader = { "工厂", "成本中心", "年份", "报表" };
-                object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), currentType };
-                object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), currentType2 };
-                chartInfo.infoHeader = infoHeader;
-                chartInfo.baseInfo = content1;
-                chartInfo.compareInfo = content2;
-                chartInfo.chartTitle = comB_Facility.Text + "  " + comB_CC.Text + "总计比较";
-                chartInfo.baseSeries = comB_Year1.Text + " " + currentType;
-                chartInfo.compareSeries = comB_Year2.Text + " " + currentType2;
-                DataTable dt1 = (DataTable)dgv_mgdata1.DataSource;
-                DataTable dt2 = (DataTable)dgv_mgdata2.DataSource;
-                excel.ExportExcelWithChart(dt1, dt2, chartInfo);
+                //ExcelHelper excel = new ExcelHelper();
+                //ExcelHelper.ChartInfo chartInfo = new ExcelHelper.ChartInfo();
+                //string[] infoHeader = { "工厂", "成本中心", "年份", "报表" };
+                //object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), currentType };
+                //object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), currentType2 };
+                //chartInfo.infoHeader = infoHeader;
+                //chartInfo.baseInfo = content1;
+                //chartInfo.compareInfo = content2;
+                //chartInfo.chartTitle = comB_Facility.Text + "  " + comB_CC.Text + "总计比较";
+                //chartInfo.baseSeries = comB_Year1.Text + " " + currentType;
+                //chartInfo.compareSeries = comB_Year2.Text + " " + currentType2;
+                //DataTable dt1 = (DataTable)dgv_mgdata1.DataSource;
+                //DataTable dt2 = (DataTable)dgv_mgdata2.DataSource;
+                //excel.ExportExcelWithChart(dt1, dt2, chartInfo);
+                if (comB_Facility.Text != "" && comB_CC.Text != "" && comB_Year1.Text != "" && comB_Year2.Text != "" && currentType != "" && currentType2 != "")
+                {
+                    object[] content1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), currentType };
+                    object[] content2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), currentType2 };
+                    object[] obj1 = new object[sum1.Length];
+                    object[] obj2 = new object[sum2.Length];
+                    sum1.CopyTo(obj1, 0);
+                    sum2.CopyTo(obj2, 0);
+                    ExcelHelper excelHelp = new ExcelHelper();
+                    if (excelHelp.ShowSaveFileDialog())
+                    {
+                        excelHelp.LoadFromTemplate("ExcelTemplate\\MGTemplate.xlsx");
+                        excelHelp.AppendToExcel(content1, 2, 2, false);
+                        excelHelp.AppendToExcel(content2, 3, 2, false);
+                        excelHelp.AppendToExcel(obj1, 5, 2, false);
+                        excelHelp.AppendToExcel(obj2, 6, 2, false);
+                        excelHelp.SaveToExcel();
+                    }
+                }
+
             }
         }
 
@@ -286,6 +309,9 @@ namespace CostControl.Management
                     
                 dgv_mgdata1.DataSource = r;
 
+                //Datatable数据转为浮点型
+                FDT1 = GetMGData.DTto2DFloat(r);
+
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
@@ -295,7 +321,12 @@ namespace CostControl.Management
                     }
                     sum1[i] = sum;
                 }
-                currentType = "A" + Period;
+                total1[0] = sum1[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total1[j] = sum1[j] + total1[j-1];
+                }
+                currentType = " " + Period;
             }
         }
 
@@ -310,6 +341,10 @@ namespace CostControl.Management
                 r = GetMGData.Period(FNo, CCNo, Year2, Period);
                       
                 dgv_mgdata2.DataSource = r;
+
+                //Datatable数据转为浮点型
+                FDT2 = GetMGData.DTto2DFloat(r);
+
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
@@ -319,7 +354,12 @@ namespace CostControl.Management
                     }
                     sum2[i] = sum;
                 }
-                currentType2 = "A" + Period;
+                total2[0] = sum2[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total2[j] = sum2[j] + total2[j - 1];
+                }
+                currentType2 = " " + Period;
             }
         }
     }

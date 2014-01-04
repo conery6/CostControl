@@ -24,6 +24,22 @@ namespace CostControl.Maintain
             DataTable a = ODbcmd.SelectToDataTable(sql);
             return a;
         }
+        //spa
+        public static DataTable GetDataa(String FNo, String FSNo, String Year, String CCNo, String Period)
+        {
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
+            + " and FNo='" + FNo + "' and Type='spa' and FSNo in (" + FSNo + ") and Period='" + Period + "' and CCNo in (" + CCNo + ")";
+            DataTable a = ODbcmd.SelectToDataTable(sql);
+            return a;
+        }
+        //sub
+        public static DataTable GetDatab(String FNo, String FSNo, String Year, String CCNo, String Period)
+        {
+            string sql = "select EqName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MaintianPeriod,Equipment where MaintianPeriod.EqNo=Equipment.EqNo and year=" + Year
+            + " and FNo='" + FNo + "' and Type='sub' and FSNo in (" + FSNo + ") and Period='" + Period + "' and CCNo in (" + CCNo + ")";
+            DataTable a = ODbcmd.SelectToDataTable(sql);
+            return a;
+        }
 
         public static DataTable Actual_FIN(String FNo, String FSNo, String Year, String CCNo)
         {
@@ -93,7 +109,7 @@ namespace CostControl.Maintain
 
         public static string FSNo(string FSName)
         {
-            string sql = "select FSNo from FacilitySystem where FSName='" + FSName  + "'";
+            string sql = "select distinct FSNo from FacilitySystem where FSName='" + FSName  + "'";
             DataTable dt = ODbcmd.SelectToDataTable(sql);
             return dt.Rows[0][0].ToString();
         }
@@ -116,15 +132,21 @@ namespace CostControl.Maintain
         {
             float[,] a = new float[DT.Rows.Count, DT.Columns.Count-2];
 
-            for (int i = 2; i <= DT.Columns.Count; i++)
+            for (int i = 2; i < DT.Columns.Count; i++)
             {
-                for (int j = 0; j <= DT.Rows.Count; j++)
+                for (int j = 0; j < DT.Rows.Count; j++)
                 {
-                    try
+                    string tmpData = "0";
+                    if (DT.Rows[j][i] != DBNull.Value)
                     {
-                        a[j, i-2] = Convert.ToSingle(DT.Rows[j][i]);
+                        tmpData = DT.Rows[j][i].ToString();
                     }
-                    catch { };
+                    else
+                    {
+                        tmpData = "0";
+                    }
+                    a[j, i - 2] = Convert.ToSingle(tmpData); 
+                  
                 }
             }
 

@@ -36,11 +36,29 @@ namespace CostControl.Maintain
 
         float[,] FDT1 = new float[10, 13];
         float[,] FDT2 = new float[10, 13];
+        float[,] FDT1a = new float[10, 13];
+        float[,] FDT2a = new float[10, 13];
+        float[,] FDT1b = new float[10, 13];
+        float[,] FDT2b = new float[10, 13];
         float[] sum1 = new float[12];
         float[] sum2 = new float[12];
+        float[] sum1a = new float[12];
+        float[] sum2a = new float[12];
+        float[] sum1b = new float[12];
+        float[] sum2b = new float[12];
+        float[] total1 = new float[12];
+        float[] total2 = new float[12];
+        float[] total1a = new float[12];
+        float[] total2a = new float[12];
+        float[] total1b = new float[12];
+        float[] total2b = new float[12];
 
         DataTable DT1;
         DataTable DT2;
+        DataTable DT1a;
+        DataTable DT2a;
+        DataTable DT1b;
+        DataTable DT2b;
 
         private void MTable_Load(object sender, EventArgs e)
         {
@@ -95,8 +113,10 @@ namespace CostControl.Maintain
             if (getPK1())
             {
                 barsum.Clear();
-                FSNo = "";
+                string FSNo1 = "";
                 DataTable sumdt = new DataTable();
+                DataTable sumdta = new DataTable();
+                DataTable sumdtb = new DataTable();
                 DataTable sumall = new DataTable();
 
                 float[] spa = new float[12];
@@ -105,29 +125,35 @@ namespace CostControl.Maintain
 
                 for (int i = 0; i < clb_FSystem.CheckedItems.Count; i++)
                 {
-                    FSNo += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
+                    FSNo1 += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
                 }
-                FSNo = FSNo.Remove(FSNo.Length - 1);
+            
+                FSNo1 = FSNo1.Remove(FSNo1.Length - 1);
                 
                 String Period = comB_RpType1.Text;
                
                 //Get data
-                sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, Period);
+                sumdt = GetMaintainData.GetData2(FNo, FSNo1, Year1, CCNo, Period);
+                //spa
+                sumdta = GetMaintainData.GetDataa(FNo, FSNo1, Year1, CCNo, Period);
+                //sub
+                sumdtb = GetMaintainData.GetDatab(FNo, FSNo1, Year1, CCNo, Period);
              
 
                 if (sumdt.Rows.Count == 0)
                 {
                     MessageBox.Show("数据为空");
+                    return;
                 }
                 else
                 {
                     dgv_rmdata1.DataSource = sumdt;
                 }
-
+                //1.sumall
                 DT1 = sumdt;
                 FDT1 = GetMaintainData.DTto2DFloat(DT1);
 
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < dgv_rmdata1.Columns.Count-2; i++)
                 {
                     float sum = 0;
                     for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
@@ -135,6 +161,50 @@ namespace CostControl.Maintain
                         sum += FDT1[j, i];
                     }
                     sum1[i] = sum;
+                }
+                //累计值
+                total1[0] = sum1[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total1[j] = sum1[j] + total1[j - 1];
+                }
+
+                //2.spa
+                DT1a = sumdta;
+                FDT1a = GetMaintainData.DTto2DFloat(DT1a);
+
+                for (int i = 0; i < dgv_rmdata1.Columns.Count - 2; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
+                    {
+                        sum += FDT1[j, i];
+                    }
+                    sum1a[i] = sum;
+                }
+                total1a[0] = sum1a[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total1a[j] = sum1a[j] + total1a[j - 1];
+                }
+
+                //3.sub
+                DT1b = sumdtb;
+                FDT1b = GetMaintainData.DTto2DFloat(DT1b);
+
+                for (int i = 0; i < dgv_rmdata1.Columns.Count - 2; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
+                    {
+                        sum += FDT1[j, i];
+                    }
+                    sum1b[i] = sum;
+                }
+                total1b[0] = sum1b[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total1b[j] = sum1b[j] + total1b[j - 1];
                 }
             }
         }
@@ -214,6 +284,8 @@ namespace CostControl.Maintain
                 FSNo = "";
 
                 DataTable sumdt = new DataTable();
+                DataTable sumdta = new DataTable();
+                DataTable sumdtb = new DataTable();
                 DataTable sumall = new DataTable();
 
                 float [] spa = new float [12];
@@ -230,6 +302,8 @@ namespace CostControl.Maintain
 
                 //Get data
                 sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, Period);
+                sumdta = GetMaintainData.GetDataa(FNo, FSNo, Year2, CCNo, Period);
+                sumdtb = GetMaintainData.GetDatab(FNo, FSNo, Year2, CCNo, Period);
 
                 if (sumdt.Rows.Count == 0)
                 {
@@ -239,7 +313,7 @@ namespace CostControl.Maintain
                 {
                     dgv_rmdata2.DataSource = sumdt;
                 }
-
+                //1
                 DT2 = sumdt;
                 FDT2 = GetMaintainData.DTto2DFloat(DT2);
 
@@ -251,6 +325,47 @@ namespace CostControl.Maintain
                         sum += FDT2[j, i];
                     }
                     sum2[i] = sum;
+                }
+                total2[0] = sum2[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total2[j] = sum2[j] + total2[j - 1];
+                }
+                //2
+                DT2a = sumdta;
+                FDT2a = GetMaintainData.DTto2DFloat(DT2a);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                    {
+                        sum += FDT2[j, i];
+                    }
+                    sum2a[i] = sum;
+                }
+                total2a[0] = sum2a[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total2a[j] = sum2a[j] + total2a[j - 1];
+                }
+                //3
+                DT2b = sumdtb;
+                FDT2b = GetMaintainData.DTto2DFloat(DT2b);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    float sum = 0;
+                    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                    {
+                        sum += FDT2[j, i];
+                    }
+                    sum2b[i] = sum;
+                }
+                total2b[0] = sum2b[0];
+                for (int j = 1; j < 12; j++)
+                {
+                    total2b[j] = sum2b[j] + total2b[j - 1];
                 }
             }
         }
@@ -326,6 +441,55 @@ namespace CostControl.Maintain
                     clb_FSystem.Items.Add(temp.Rows[j]["FSName"].ToString());
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //通过object[]参数导出excel
+            object[] cells1 = { comB_Facility.Text, clb_CC.Text, int.Parse(comB_Year1.Text), comB_RpType1.Text }; //基准数据 Facility，CC,Year,Period
+            object[] cells2 = { comB_Facility.Text, clb_CC.Text, int.Parse(comB_Year2.Text), comB_RpType2.Text }; //比较数据 Facility，CC,Year,Period
+            object[] obj1 = new object[total1a.Length];
+            object[] obj2 = new object[total1b.Length];
+            object[] obj3 = new object[total1.Length];
+
+            object[] obj11 = new object[total2a.Length];
+            object[] obj22 = new object[total2b.Length];
+            object[] obj33 = new object[total2.Length];
+
+            total1a.CopyTo(obj1, 0);
+            total1b.CopyTo(obj2, 0);
+            total1.CopyTo(obj3, 0);
+
+            total2a.CopyTo(obj11, 0);
+            total2b.CopyTo(obj22, 0);
+            total2.CopyTo(obj33, 0);
+
+            ExcelHelper excelHelp = new ExcelHelper();
+            if (excelHelp.ShowSaveFileDialog())
+            {
+                excelHelp.LoadFromTemplate("ExcelTemplate\\MaintainTemplate.xlsx");
+                excelHelp.AppendToExcel(cells1, 2, 2, false);
+                excelHelp.AppendToExcel(cells2, 3, 2, false);
+                excelHelp.AppendToExcel(obj1, 5, 2, false);
+                excelHelp.AppendToExcel(obj2, 6, 2, false);
+                excelHelp.AppendToExcel(obj3, 7, 2, false);
+                excelHelp.AppendToExcel(obj11, 8, 2, false);
+                excelHelp.AppendToExcel(obj22, 9, 2, false);
+                excelHelp.AppendToExcel(obj33, 10, 2, false);
+                excelHelp.SaveToExcel();
+            }
+
+            //if (excelHelp.ShowSaveFileDialog())
+            //{
+            //    excelHelp.LoadFromTemplate("ExcelTemplate\\MaintainTemplate.xlsx");
+            //    excelHelp.AppendToExcel(cells1, 2, 2, false);
+            //    excelHelp.AppendToExcel(cells2, 3, 2, false);
+            //    DataTable dt1 = (DataTable)dgv_rmdata1.DataSource; //数据源1，M1，M2，M3...
+            //    DataTable dt2 = (DataTable)dgv_rmdata2.DataSource; ////数据源2，M1，M2，M3...
+            //    excelHelp.DataTableToExcel(dt1, 5, 2, false, ExcelHelper.ExportStyle.None);
+            //    excelHelp.DataTableToExcel(dt2, 8, 2, false, ExcelHelper.ExportStyle.None);
+            //    excelHelp.SaveToExcel();
+            //}
         }
     }
 }

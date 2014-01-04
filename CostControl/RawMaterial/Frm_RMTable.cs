@@ -128,12 +128,15 @@ namespace CostControl.RawMaterial
         {
             if (chkB_T1.Checked == true)
             {
+                //获取差值数据
                 float[,] f = GetRMData.FReportTable1(FDT1, FDT2);
                 f1 = f;
                 dgv_rmdata2.Rows[0].Visible = true;
+                //为gridview赋值
                 for (int j = 1; j < 6; j++)
                 {
                     dgv_rmdata2.Rows[j].Visible = true;
+                    //1到12列赋值，第0列已有数据
                     for (int i = 1; i < 13; i++)
                     {
                         dgv_rmdata2[i, j].Value = f[j - 1, i];
@@ -393,27 +396,43 @@ namespace CostControl.RawMaterial
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //if (getPK1() && getPK2())
+            //{
+            //    string[] header = { "工厂", "成本中心", "产品", "年份", "报表类型" };
+            //    object[] cells1 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year1.Text),currentType1 };
+            //    object[] cells2 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year2.Text),currentType2 };
+            //    ExcelHelper excelHelp = new ExcelHelper();
+            //    if (excelHelp.ShowSaveFileDialog())
+            //    {
+            //        excelHelp.AppendHeader(header);
+            //        excelHelp.AppendContent(cells1);
+            //        excelHelp.AppendContent(cells2);
+            //        DataTable dt1 = (DataTable)dgv_rmdata1.DataSource;
+            //        DataTable dt2 = (DataTable)dgv_rmdata3.DataSource;
+            //        excelHelp.AppendToExcel(dt1, true, ExcelHelper.ExportStyle.RMTable);
+            //        excelHelp.AppendToExcel(dt2, false, ExcelHelper.ExportStyle.RMTable);
+            //        excelHelp.GenerateCompare();
+            //        excelHelp.SaveToExcel();
+            //    }
+            //}
             if (getPK1() && getPK2())
             {
-                string[] header = { "工厂", "成本中心", "产品", "年份", "报表类型" };
-                object[] cells1 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year1.Text),currentType1 };
-                object[] cells2 = { comB_Facility.Text, comB_CC.Text, comB_Product.Text, int.Parse(comB_Year2.Text),currentType2 };
+                //string[] header = { "工厂", "成本中心", "产品", "年份", "报表类型" };
+                object[] cells1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), currentType1, comB_Product.Text };
+                object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), currentType2, comB_Product.Text };
                 ExcelHelper excelHelp = new ExcelHelper();
                 if (excelHelp.ShowSaveFileDialog())
                 {
-                    excelHelp.AppendHeader(header);
-                    excelHelp.AppendContent(cells1);
-                    excelHelp.AppendContent(cells2);
+                    excelHelp.LoadFromTemplate("ExcelTemplate\\RMTemplate.xlsx");
+                    excelHelp.AppendToExcel(cells1, 2, false);
+                    excelHelp.AppendToExcel(cells2, 3, false);
                     DataTable dt1 = (DataTable)dgv_rmdata1.DataSource;
                     DataTable dt2 = (DataTable)dgv_rmdata3.DataSource;
-                    excelHelp.AppendToExcel(dt1, true, ExcelHelper.ExportStyle.RMTable);
-                    excelHelp.AppendToExcel(dt2, false, ExcelHelper.ExportStyle.RMTable);
-                    excelHelp.GenerateCompare();
+                    excelHelp.DataTableToExcel(dt1, 5, 1, false, ExcelHelper.ExportStyle.None);
+                    excelHelp.DataTableToExcel(dt2, 10, 1, false, ExcelHelper.ExportStyle.None);
                     excelHelp.SaveToExcel();
                 }
             }
-
         }
-
     }
 }

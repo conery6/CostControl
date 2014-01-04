@@ -106,7 +106,7 @@ namespace CostControl.Electric
         private bool getPK1()
         {
 
-            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.Text == "" || comB_Year1.Text == "" || comB_Month1.Text == "")
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.CheckedItems == null || comB_Year1.Text == "" || comB_Month1.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -119,7 +119,7 @@ namespace CostControl.Electric
 
         private bool getPK2()
         {
-            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.Text == "" || comB_Year2.Text == "" || comB_Month2.Text == "")
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.CheckedItems == null || comB_Year2.Text == "" || comB_Month2.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -134,22 +134,25 @@ namespace CostControl.Electric
         {
             if (getPK1())
             {
-                dgv_edata1.Rows.Clear();
                 string Period = comB_Month1.Text;
+                string typeName = "";
                 for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
                 {
-                    string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year1
-                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
-                    DataTable dt = ODbcmd.SelectToDataTable(str);
-                    if (dt.Rows.Count != 0)
-                    {
-                        dgv_edata1.Rows.Add();
-                        for (int j = 0; j < dt.Columns.Count; j++)
-                        {
-                            dgv_edata1[j, dgv_edata1.Rows.Count - 1].Value = dt.Rows[0][j].ToString();
-                        }
-                    }
+                    typeName += "'" + clb_CCItem.CheckedItems[i].ToString() + "',";
                 }
+                typeName = typeName.Remove(typeName.Length - 1);
+                string str = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year1
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName in (" + typeName + ") order by Type";
+                DataTable dt = ODbcmd.SelectToDataTable(str);
+                dgv_edata1.DataSource = dt;
+                //for (int k = 0; k < dt.Rows.Count; k++ )
+                //{
+                //    dgv_edata1.Rows.Add();
+                //    for (int j = 0; j < dt.Columns.Count; j++)
+                //    {
+                //        dgv_edata1[j, dgv_edata1.Rows.Count - 1].Value = dt.Rows[k][j].ToString();
+                //    }
+                //}
 
                 Title.Clear();
 
@@ -172,23 +175,26 @@ namespace CostControl.Electric
         {
             if (getPK2())
             {
-
-                dgv_edata2.Rows.Clear();
                 string Period = comB_Month2.Text;
+                string typeName = "";
                 for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
                 {
-                    string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year2
-                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
-                    DataTable dt = ODbcmd.SelectToDataTable(str);
-                    if (dt.Rows.Count != 0)
-                    {
-                        dgv_edata2.Rows.Add();
-                        for (int j = 0; j < dt.Columns.Count; j++)
-                        {
-                            dgv_edata2[j, dgv_edata2.Rows.Count - 1].Value = dt.Rows[0][j].ToString();
-                        }
-                    }
+                    typeName += "'" + clb_CCItem.CheckedItems[i].ToString() + "',";
+                    
                 }
+                typeName = typeName.Remove(typeName.Length - 1);
+                string str = "select TypeName,Type,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year2
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName in (" + typeName + ") order by Type";
+                DataTable dt = ODbcmd.SelectToDataTable(str);
+                dgv_edata2.DataSource = dt;
+                //if (dt.Rows.Count != 0)
+                //{
+                //    dgv_edata2.Rows.Add();
+                //    for (int j = 0; j < dt.Columns.Count; j++)
+                //    {
+                //        dgv_edata2[j, dgv_edata2.Rows.Count - 1].Value = dt.Rows[0][j].ToString();
+                //    }
+                //}
 
                 Title.Clear();
                 f2 = new float[dgv_edata2.Rows.Count, 12];
@@ -257,6 +263,23 @@ namespace CostControl.Electric
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            object[] cells1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_Month1.Text }; //基准数据 Facility，CC,Year,Period
+            object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_Month1.Text }; //比较数据 Facility，CC,Year,Period
+            ExcelHelper excelHelp = new ExcelHelper();
+            if (excelHelp.ShowSaveFileDialog())
+            {
+                excelHelp.LoadFromTemplate("ExcelTemplate\\CHJElectricTemplate.xlsx");
+                excelHelp.AppendToExcel(cells1, 2, 2, false);
+                excelHelp.AppendToExcel(cells2, 3, 2, false);
+                DataTable dt1 = (DataTable)dgv_edata1.DataSource; //数据源1，M1，M2，M3...
+                DataTable dt2 = (DataTable)dgv_edata2.DataSource; ////数据源2，M1，M2，M3...
+                excelHelp.DataTableToExcel(dt1, 5, 2, false, ExcelHelper.ExportStyle.None);
+                excelHelp.DataTableToExcel(dt2, 105, 2, false, ExcelHelper.ExportStyle.None);
+                excelHelp.SaveToExcel();
+            }
 
+        }
     }
 }
