@@ -38,7 +38,7 @@ namespace CostControl.Management
 
         private bool getPK1()//获取四个主键，做了个封装
         {
-            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_report1.Text == "")
+            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month1.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -51,7 +51,7 @@ namespace CostControl.Management
 
         private bool getPK2()//获取四个主键，做了个封装
         {
-            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comB_report2.Text == "")
+            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month2.Text == "")
             {
                 MessageBox.Show("出错！可能原因是选择不完整！");
                 return false;
@@ -224,12 +224,10 @@ namespace CostControl.Management
 
         private void comB_report1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reporttype1 = comB_report1.Text;
         }
 
         private void comB_report2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reporttype2 = comB_report2.Text;
         }
 
         private void comB_Year1_SelectedIndexChanged(object sender, EventArgs e)
@@ -278,46 +276,16 @@ namespace CostControl.Management
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (comB_Year1.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month1.Text == "")
+            if (getPK1())
             {
-                MessageBox.Show("参数不全！");
-            }
-            else
-            {
-                for (int i = 0; i < dgv_mgdata1.Columns.Count; i++)
-                {
-                    dgv_mgdata1.Columns[i].ReadOnly = true;
-                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.White;
-                }
-                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
-                string reportMonth = comb_Month1.Text;
-                switch (reportMonth)
-                {
-                    case "3":
-                        r = GetMGData.Period(FNo, CCNo, Year1, "RF1");
-                        break;
-                    case "6":
-                        r = GetMGData.Period(FNo, CCNo, Year1, "RF2");
-                        break;
-                    case "9":
-                        r = GetMGData.Period(FNo, CCNo, Year1, "E3");
-                        break;
-                    default:
-                        r = GetMGData.Period(FNo, CCNo, Year1, "A" + reportMonth);
-                        break;
-                }
+                string Period = comb_Month1.Text;
+
+                //Get data
+                r = GetMGData.Period(FNo, CCNo, Year1, Period);
+                    
                 dgv_mgdata1.DataSource = r;
-                int acMonth = int.Parse(reportMonth);
 
-                dgv_mgdata1.Columns[0].ReadOnly = true;
-                dgv_mgdata1.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-
-                for (int i = 1; i <= acMonth; i++)
-                {
-                    dgv_mgdata1.Columns[i].ReadOnly = true;
-                    dgv_mgdata1.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
-                }
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
@@ -327,52 +295,21 @@ namespace CostControl.Management
                     }
                     sum1[i] = sum;
                 }
-                currentType = "A" + reportMonth;
+                currentType = "A" + Period;
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (comB_Year2.Text == "" || comB_Facility.Text == "" || comB_CC.Text == "" || comb_Month2.Text == "")
+            if (getPK2())
             {
-                MessageBox.Show("参数不全！");
-            }
-            else
-            {
-                for (int i = 0; i < dgv_mgdata2.Columns.Count; i++)
-                {
-                    dgv_mgdata2.Columns[i].ReadOnly = true;
-                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.White;
-                }
-                comB_Year1.DropDownStyle = ComboBoxStyle.DropDownList;
                 DataTable r = new DataTable();
-                string reportMonth = comb_Month2.Text;
-                switch (reportMonth)
-                {
-                    case "3":
-                        r = GetMGData.Period(FNo, CCNo, Year2, "RF1");
-                        break;
-                    case "6":
-                        r = GetMGData.Period(FNo, CCNo, Year2, "RF2");
-                        break;
-                    case "9":
-                        r = GetMGData.Period(FNo, CCNo, Year2, "E3");
-                        break;
-                    default:
-                        r = GetMGData.Period(FNo, CCNo, Year2, "A" + reportMonth);
-                        break;
-                }
+                string Period = comb_Month2.Text;
+
+                //Get data
+                r = GetMGData.Period(FNo, CCNo, Year2, Period);
+                      
                 dgv_mgdata2.DataSource = r;
-                int acMonth = int.Parse(reportMonth);
-
-                dgv_mgdata2.Columns[0].ReadOnly = true;
-                dgv_mgdata2.Columns[0].DefaultCellStyle.BackColor = Color.LightYellow;
-
-                for (int i = 1; i <= acMonth; i++)
-                {
-                    dgv_mgdata2.Columns[i].ReadOnly = true;
-                    dgv_mgdata2.Columns[i].DefaultCellStyle.BackColor = Color.LightSkyBlue;
-                }
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
@@ -382,7 +319,7 @@ namespace CostControl.Management
                     }
                     sum2[i] = sum;
                 }
-                currentType2 = "A" + reportMonth;
+                currentType2 = "A" + Period;
             }
         }
     }

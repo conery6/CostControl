@@ -94,7 +94,6 @@ namespace CostControl.Maintain
 
             if (getPK1())
             {
-
                 barsum.Clear();
                 FSNo = "";
                 DataTable sumdt = new DataTable();
@@ -109,14 +108,12 @@ namespace CostControl.Maintain
                     FSNo += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
                 }
                 FSNo = FSNo.Remove(FSNo.Length - 1);
-                if (comB_RpType1.Text == "Actual")
-                {
-                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, "A12");
-                }
-                else
-                {
-                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, comB_RpType1.Text);
-                }
+                
+                String Period = comB_RpType1.Text;
+               
+                //Get data
+                sumdt = GetMaintainData.GetData2(FNo, FSNo, Year1, CCNo, Period);
+             
 
                 if (sumdt.Rows.Count == 0)
                 {
@@ -228,14 +225,11 @@ namespace CostControl.Maintain
                     FSNo += "'" + GetMaintainData.FSNo(clb_FSystem.CheckedItems[i].ToString()) + "',";
                 }
                 FSNo = FSNo.Remove(FSNo.Length - 1);
-                if (comB_RpType2.Text == "Actual")
-                {
-                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, "A12");
-                }
-                else
-                {
-                    sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, comB_RpType2.Text);
-                }
+
+                String Period = comB_RpType2.Text;
+
+                //Get data
+                sumdt = GetMaintainData.GetData2(FNo, FSNo, Year2, CCNo, Period);
 
                 if (sumdt.Rows.Count == 0)
                 {

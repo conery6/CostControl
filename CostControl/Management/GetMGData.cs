@@ -91,7 +91,6 @@ namespace CostControl.Management
 
         public static DataTable Period(String FNo, String CCNo, String Year, String Period)
         {
-
             string sql = "select IName, M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from MGPeriod  where year=" + Year
             + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and   Period = '" + Period + "' order by Type asc";
             DataTable a = ODbcmd.SelectToDataTable(sql);
@@ -128,7 +127,6 @@ namespace CostControl.Management
                     catch { };
                 }
             }
-
             return a;
         }
     }

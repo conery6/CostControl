@@ -95,28 +95,51 @@ namespace CostControl.Electric
 
         private void comB_RpType1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reporttype1 = comB_RpType1.Text;
+            Reporttype1 = comB_Month1.Text;
         }
 
         private void comB_RpType2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reporttype2 = comB_RpType2.Text;
+            Reporttype2 = comB_Month2.Text;
+        }
+
+        private bool getPK1()
+        {
+
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.Text == "" || comB_Year1.Text == "" || comB_Month1.Text == "")
+            {
+                MessageBox.Show("出错！可能原因是选择不完整！");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool getPK2()
+        {
+            if (comB_Facility.Text == "" || comB_CC.Text == "" || clb_CCItem.Text == "" || comB_Year2.Text == "" || comB_Month2.Text == "")
+            {
+                MessageBox.Show("出错！可能原因是选择不完整！");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void btn_dataok1_Click(object sender, EventArgs e)
         {
-            if (FNo == "" || CCNo == "" || Year1 == "" || Reporttype1 == "")
+            if (getPK1())
             {
-                MessageBox.Show("数据选择不完整！");
-            }
-            else
-            {
-
                 dgv_edata1.Rows.Clear();
+                string Period = comB_Month1.Text;
                 for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
                 {
                     string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year1
-                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Reporttype1 + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
                     DataTable dt = ODbcmd.SelectToDataTable(str);
                     if (dt.Rows.Count != 0)
                     {
@@ -147,23 +170,15 @@ namespace CostControl.Electric
 
         private void btn_dataok2_Click(object sender, EventArgs e)
         {
-            if (FNo == "" || CCNo == "" || Year2 == "" || Reporttype2 == "")
-            {
-                MessageBox.Show("数据选择不完整！");
-            }
-            else
+            if (getPK2())
             {
 
                 dgv_edata2.Rows.Clear();
-                string period = Reporttype2;
+                string Period = comB_Month2.Text;
                 for (int i = 0; i < clb_CCItem.CheckedItems.Count; i++)
                 {
-                    if (period == "Actual")
-                    {
-                        period = "A12";
-                    }
                     string str = "select Type,TypeName,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12 from EPeriod  where year=" + Year2
-                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
+                    + " and FNo='" + FNo + "' and CCNo='" + CCNo + "' and Period = '" + Period + "' and TypeName ='" + clb_CCItem.CheckedItems[i].ToString() + "'";
                     DataTable dt = ODbcmd.SelectToDataTable(str);
                     if (dt.Rows.Count != 0)
                     {

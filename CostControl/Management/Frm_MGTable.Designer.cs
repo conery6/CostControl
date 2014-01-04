@@ -32,13 +32,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comB_Facility = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_dataok2 = new System.Windows.Forms.Button();
-            this.btn_dataok1 = new System.Windows.Forms.Button();
-            this.comB_report2 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comB_Year2 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comB_report1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comB_Year1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -120,42 +116,6 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "工厂";
             // 
-            // btn_dataok2
-            // 
-            this.btn_dataok2.Location = new System.Drawing.Point(370, 114);
-            this.btn_dataok2.Name = "btn_dataok2";
-            this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok2.TabIndex = 69;
-            this.btn_dataok2.Text = "确定";
-            this.btn_dataok2.UseVisualStyleBackColor = true;
-            this.btn_dataok2.Click += new System.EventHandler(this.btn_dataok2_Click);
-            // 
-            // btn_dataok1
-            // 
-            this.btn_dataok1.Location = new System.Drawing.Point(370, 74);
-            this.btn_dataok1.Name = "btn_dataok1";
-            this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
-            this.btn_dataok1.TabIndex = 68;
-            this.btn_dataok1.Text = "确定";
-            this.btn_dataok1.UseVisualStyleBackColor = true;
-            this.btn_dataok1.Click += new System.EventHandler(this.btn_dataok1_Click);
-            // 
-            // comB_report2
-            // 
-            this.comB_report2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_report2.FormattingEnabled = true;
-            this.comB_report2.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_report2.Location = new System.Drawing.Point(287, 116);
-            this.comB_report2.Name = "comB_report2";
-            this.comB_report2.Size = new System.Drawing.Size(77, 20);
-            this.comB_report2.TabIndex = 67;
-            this.comB_report2.SelectedIndexChanged += new System.EventHandler(this.comB_report2_SelectedIndexChanged);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -183,22 +143,6 @@
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 64;
             this.label8.Text = "年度";
-            // 
-            // comB_report1
-            // 
-            this.comB_report1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comB_report1.FormattingEnabled = true;
-            this.comB_report1.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_report1.Location = new System.Drawing.Point(287, 75);
-            this.comB_report1.Name = "comB_report1";
-            this.comB_report1.Size = new System.Drawing.Size(77, 20);
-            this.comB_report1.TabIndex = 63;
-            this.comB_report1.SelectedIndexChanged += new System.EventHandler(this.comB_report1_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -351,7 +295,7 @@
             // 
             // btn_createchart
             // 
-            this.btn_createchart.Location = new System.Drawing.Point(624, 86);
+            this.btn_createchart.Location = new System.Drawing.Point(519, 97);
             this.btn_createchart.Name = "btn_createchart";
             this.btn_createchart.Size = new System.Drawing.Size(70, 38);
             this.btn_createchart.TabIndex = 71;
@@ -478,7 +422,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(700, 86);
+            this.button1.Location = new System.Drawing.Point(519, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 38);
             this.button1.TabIndex = 75;
@@ -491,19 +435,20 @@
             this.comb_Month1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comb_Month1.FormattingEnabled = true;
             this.comb_Month1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.comb_Month1.Location = new System.Drawing.Point(447, 75);
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6",
+            "A7",
+            "A8",
+            "A9",
+            "A10",
+            "A11",
+            "A12"});
+            this.comb_Month1.Location = new System.Drawing.Point(303, 74);
             this.comb_Month1.Name = "comb_Month1";
             this.comb_Month1.Size = new System.Drawing.Size(73, 20);
             this.comb_Month1.TabIndex = 76;
@@ -513,26 +458,27 @@
             this.comb_Month2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comb_Month2.FormattingEnabled = true;
             this.comb_Month2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.comb_Month2.Location = new System.Drawing.Point(447, 116);
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6",
+            "A7",
+            "A8",
+            "A9",
+            "A10",
+            "A11",
+            "A12"});
+            this.comb_Month2.Location = new System.Drawing.Point(303, 115);
             this.comb_Month2.Name = "comb_Month2";
             this.comb_Month2.Size = new System.Drawing.Size(73, 20);
             this.comb_Month2.TabIndex = 77;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(526, 74);
+            this.button2.Location = new System.Drawing.Point(394, 73);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 78;
@@ -542,7 +488,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(526, 114);
+            this.button3.Location = new System.Drawing.Point(394, 113);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 79;
@@ -563,13 +509,9 @@
             this.Controls.Add(this.dgv_mgdata2);
             this.Controls.Add(this.btn_createchart);
             this.Controls.Add(this.dgv_mgdata1);
-            this.Controls.Add(this.btn_dataok2);
-            this.Controls.Add(this.btn_dataok1);
-            this.Controls.Add(this.comB_report2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comB_Year2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comB_report1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comB_Year1);
             this.Controls.Add(this.label5);
@@ -580,6 +522,7 @@
             this.Controls.Add(this.comB_Facility);
             this.Controls.Add(this.label2);
             this.Name = "Frm_MGTable";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MGTable";
             this.Load += new System.EventHandler(this.Frm_MGTable_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mgdata1)).EndInit();
@@ -595,13 +538,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comB_Facility;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_dataok2;
-        private System.Windows.Forms.Button btn_dataok1;
-        private System.Windows.Forms.ComboBox comB_report2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comB_Year2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comB_report1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comB_Year1;
         private System.Windows.Forms.Label label5;

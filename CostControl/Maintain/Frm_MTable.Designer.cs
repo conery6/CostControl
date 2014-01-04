@@ -197,7 +197,7 @@
             // 
             // btn_dataok2
             // 
-            this.btn_dataok2.Location = new System.Drawing.Point(958, 70);
+            this.btn_dataok2.Location = new System.Drawing.Point(930, 70);
             this.btn_dataok2.Name = "btn_dataok2";
             this.btn_dataok2.Size = new System.Drawing.Size(75, 23);
             this.btn_dataok2.TabIndex = 57;
@@ -207,7 +207,7 @@
             // 
             // btn_dataok1
             // 
-            this.btn_dataok1.Location = new System.Drawing.Point(958, 30);
+            this.btn_dataok1.Location = new System.Drawing.Point(930, 30);
             this.btn_dataok1.Name = "btn_dataok1";
             this.btn_dataok1.Size = new System.Drawing.Size(75, 23);
             this.btn_dataok1.TabIndex = 56;
@@ -218,7 +218,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(820, 76);
+            this.label7.Location = new System.Drawing.Point(792, 76);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 54;
@@ -228,7 +228,7 @@
             // 
             this.comB_Year2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Year2.FormattingEnabled = true;
-            this.comB_Year2.Location = new System.Drawing.Point(736, 73);
+            this.comB_Year2.Location = new System.Drawing.Point(708, 73);
             this.comB_Year2.Name = "comB_Year2";
             this.comB_Year2.Size = new System.Drawing.Size(77, 20);
             this.comB_Year2.TabIndex = 53;
@@ -237,7 +237,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(700, 77);
+            this.label8.Location = new System.Drawing.Point(672, 77);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 52;
@@ -246,7 +246,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(820, 35);
+            this.label6.Location = new System.Drawing.Point(792, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 50;
@@ -256,7 +256,7 @@
             // 
             this.comB_Year1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_Year1.FormattingEnabled = true;
-            this.comB_Year1.Location = new System.Drawing.Point(736, 32);
+            this.comB_Year1.Location = new System.Drawing.Point(708, 32);
             this.comB_Year1.Name = "comB_Year1";
             this.comB_Year1.Size = new System.Drawing.Size(77, 20);
             this.comB_Year1.TabIndex = 49;
@@ -265,7 +265,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(700, 35);
+            this.label5.Location = new System.Drawing.Point(672, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 48;
@@ -285,7 +285,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(405, 28);
+            this.label3.Location = new System.Drawing.Point(387, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 45;
@@ -303,7 +303,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(637, 76);
+            this.label2.Location = new System.Drawing.Point(609, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 43;
@@ -312,7 +312,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(637, 35);
+            this.label1.Location = new System.Drawing.Point(609, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 42;
@@ -321,7 +321,7 @@
             // clb_FSystem
             // 
             this.clb_FSystem.FormattingEnabled = true;
-            this.clb_FSystem.Location = new System.Drawing.Point(461, 23);
+            this.clb_FSystem.Location = new System.Drawing.Point(443, 25);
             this.clb_FSystem.Name = "clb_FSystem";
             this.clb_FSystem.Size = new System.Drawing.Size(120, 84);
             this.clb_FSystem.TabIndex = 66;
@@ -329,7 +329,7 @@
             // 
             // btn_addalll
             // 
-            this.btn_addalll.Location = new System.Drawing.Point(397, 53);
+            this.btn_addalll.Location = new System.Drawing.Point(379, 55);
             this.btn_addalll.Name = "btn_addalll";
             this.btn_addalll.Size = new System.Drawing.Size(49, 23);
             this.btn_addalll.TabIndex = 70;
@@ -339,7 +339,7 @@
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(397, 82);
+            this.btn_clear.Location = new System.Drawing.Point(379, 84);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(49, 23);
             this.btn_clear.TabIndex = 71;
@@ -361,12 +361,32 @@
             this.comB_RpType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_RpType1.FormattingEnabled = true;
             this.comB_RpType1.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_RpType1.Location = new System.Drawing.Point(855, 32);
+            "A0",
+            "A1FIN",
+            "A1ACE",
+            "A2FIN",
+            "A2ACE",
+            "A3FIN",
+            "A3ACE",
+            "A4FIN",
+            "A4ACE",
+            "A5FIN",
+            "A5ACE",
+            "A6FIN",
+            "A6ACE",
+            "A7FIN",
+            "A7ACE",
+            "A8FIN",
+            "A8ACE",
+            "A9FIN",
+            "A9ACE",
+            "A10FIN",
+            "A10ACE",
+            "A11FIN",
+            "A11ACE",
+            "A12FIN",
+            "A12ACE"});
+            this.comB_RpType1.Location = new System.Drawing.Point(827, 32);
             this.comB_RpType1.Name = "comB_RpType1";
             this.comB_RpType1.Size = new System.Drawing.Size(86, 20);
             this.comB_RpType1.TabIndex = 80;
@@ -377,12 +397,32 @@
             this.comB_RpType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comB_RpType2.FormattingEnabled = true;
             this.comB_RpType2.Items.AddRange(new object[] {
-            "T1",
-            "RF1",
-            "RF2",
-            "E3",
-            "Actual"});
-            this.comB_RpType2.Location = new System.Drawing.Point(855, 73);
+            "A0",
+            "A1FIN",
+            "A1ACE",
+            "A2FIN",
+            "A2ACE",
+            "A3FIN",
+            "A3ACE",
+            "A4FIN",
+            "A4ACE",
+            "A5FIN",
+            "A5ACE",
+            "A6FIN",
+            "A6ACE",
+            "A7FIN",
+            "A7ACE",
+            "A8FIN",
+            "A8ACE",
+            "A9FIN",
+            "A9ACE",
+            "A10FIN",
+            "A10ACE",
+            "A11FIN",
+            "A11ACE",
+            "A12FIN",
+            "A12ACE"});
+            this.comB_RpType2.Location = new System.Drawing.Point(827, 73);
             this.comB_RpType2.Name = "comB_RpType2";
             this.comB_RpType2.Size = new System.Drawing.Size(86, 20);
             this.comB_RpType2.TabIndex = 81;
@@ -512,7 +552,7 @@
             // 
             // btn_Chart
             // 
-            this.btn_Chart.Location = new System.Drawing.Point(1063, 70);
+            this.btn_Chart.Location = new System.Drawing.Point(1035, 70);
             this.btn_Chart.Name = "btn_Chart";
             this.btn_Chart.Size = new System.Drawing.Size(80, 23);
             this.btn_Chart.TabIndex = 86;
