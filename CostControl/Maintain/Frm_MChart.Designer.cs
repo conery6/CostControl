@@ -39,7 +39,6 @@
             // MGChart
             // 
             this.MGChart.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Area3DStyle.Enable3D = true;
             chartArea1.Area3DStyle.IsClustered = true;
             chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.Realistic;
             chartArea1.Area3DStyle.PointGapDepth = 150;
@@ -49,7 +48,7 @@
             chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             chartArea1.AxisY.Title = "总计";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            chartArea1.BackColor = System.Drawing.Color.Silver;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             chartArea1.BorderColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.MGChart.ChartAreas.Add(chartArea1);
@@ -58,12 +57,21 @@
             this.MGChart.Location = new System.Drawing.Point(66, 11);
             this.MGChart.Name = "MGChart";
             this.MGChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Red;
             series1.Legend = "Legend1";
+            series1.MarkerSize = 8;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Blue;
             series2.Legend = "Legend1";
+            series2.MarkerSize = 8;
+            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series2.Name = "Series2";
             series2.YValuesPerPoint = 4;
             this.MGChart.Series.Add(series1);
@@ -76,6 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(799, 411);
             this.Controls.Add(this.MGChart);
             this.Name = "Frm_MChart";

@@ -29,8 +29,8 @@ namespace CostControl.Maintain
             MGChart.Titles.Add(chartInfo[0] + "  " +  "成本对比");
             Series series1 = MGChart.Series[0];
             Series series2 = MGChart.Series[1];
-            series1.Name = chartInfo[1];
-            if (chartInfo[2] != chartInfo[1]) { series2.Name = chartInfo[2]; }
+            series1.Name = chartInfo[2];
+            if (chartInfo[3] != chartInfo[2]) { series2.Name = chartInfo[3]; }
 
             // Add data points to the first series
             for (int i = 0; i < 12; i++)

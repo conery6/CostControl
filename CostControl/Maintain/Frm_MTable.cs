@@ -176,9 +176,9 @@ namespace CostControl.Maintain
                 for (int i = 0; i < dgv_rmdata1.Columns.Count - 2; i++)
                 {
                     float sum = 0;
-                    for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
+                    for (int j = 0; j < dgv_rmdata1.Rows.Count/2; j++)
                     {
-                        sum += FDT1[j, i];
+                        sum += FDT1a[j, i];
                     }
                     sum1a[i] = sum;
                 }
@@ -195,9 +195,9 @@ namespace CostControl.Maintain
                 for (int i = 0; i < dgv_rmdata1.Columns.Count - 2; i++)
                 {
                     float sum = 0;
-                    for (int j = 0; j < dgv_rmdata1.Rows.Count; j++)
+                    for (int j = 0; j < dgv_rmdata1.Rows.Count/2; j++)
                     {
-                        sum += FDT1[j, i];
+                        sum += FDT1b[j, i];
                     }
                     sum1b[i] = sum;
                 }
@@ -338,9 +338,9 @@ namespace CostControl.Maintain
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
-                    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                    for (int j = 0; j < dgv_rmdata2.Rows.Count/2; j++)
                     {
-                        sum += FDT2[j, i];
+                        sum += FDT2a[j, i];
                     }
                     sum2a[i] = sum;
                 }
@@ -356,9 +356,9 @@ namespace CostControl.Maintain
                 for (int i = 0; i < 12; i++)
                 {
                     float sum = 0;
-                    for (int j = 0; j < dgv_rmdata2.Rows.Count; j++)
+                    for (int j = 0; j < dgv_rmdata2.Rows.Count/2; j++)
                     {
-                        sum += FDT2[j, i];
+                        sum += FDT2b[j, i];
                     }
                     sum2b[i] = sum;
                 }
@@ -372,8 +372,8 @@ namespace CostControl.Maintain
 
         private void btn_Chart_Click(object sender, EventArgs e)
         {
-            string[] chartInfo = { comB_Facility.Text,"", Year1 + Reporttype1, Year2 + Reporttype2 };
-            Frm_MChart m_Frm_MGChart = new Frm_MChart(sum1, sum2, chartInfo);
+            string[] chartInfo = { comB_Facility.Text,"", Year1 + " " + Reporttype1, Year2 + " " +  Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(total1, total2, chartInfo);
             m_Frm_MGChart.Show();
 
         }
@@ -443,6 +443,7 @@ namespace CostControl.Maintain
             }
         }
 
+        //export excel
         private void button2_Click(object sender, EventArgs e)
         {
             //通过object[]参数导出excel
@@ -478,18 +479,22 @@ namespace CostControl.Maintain
                 excelHelp.AppendToExcel(obj33, 10, 2, false);
                 excelHelp.SaveToExcel();
             }
+        }
 
-            //if (excelHelp.ShowSaveFileDialog())
-            //{
-            //    excelHelp.LoadFromTemplate("ExcelTemplate\\MaintainTemplate.xlsx");
-            //    excelHelp.AppendToExcel(cells1, 2, 2, false);
-            //    excelHelp.AppendToExcel(cells2, 3, 2, false);
-            //    DataTable dt1 = (DataTable)dgv_rmdata1.DataSource; //数据源1，M1，M2，M3...
-            //    DataTable dt2 = (DataTable)dgv_rmdata2.DataSource; ////数据源2，M1，M2，M3...
-            //    excelHelp.DataTableToExcel(dt1, 5, 2, false, ExcelHelper.ExportStyle.None);
-            //    excelHelp.DataTableToExcel(dt2, 8, 2, false, ExcelHelper.ExportStyle.None);
-            //    excelHelp.SaveToExcel();
-            //}
+        //spa chart
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string[] chartInfo = { comB_Facility.Text, "", Year1 + " " + Reporttype1, Year2 + " " + Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(total1a, total2a, chartInfo);
+            m_Frm_MGChart.Show();
+        }
+
+        //sub chart
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string[] chartInfo = { comB_Facility.Text, "", Year1 + " " + Reporttype1, Year2 + " " + Reporttype2 };
+            Frm_MChart m_Frm_MGChart = new Frm_MChart(total1b, total2b, chartInfo);
+            m_Frm_MGChart.Show();
         }
     }
 }

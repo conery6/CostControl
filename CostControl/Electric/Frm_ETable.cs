@@ -19,6 +19,9 @@ namespace CostControl.Electric
         string Reporttype2;
         float[,] f1;
         float[,] f2;
+        float[,] FDT1 = new float[5, 13];
+        float[,] FDT2 = new float[5, 13];
+
         List<string> Title = new List<string>();
 
         public Frm_ETable()
@@ -212,55 +215,13 @@ namespace CostControl.Electric
             }
         }
 
-        private void btn_Chart1_Click(object sender, EventArgs e)
-        {
-            if (f1 != null)
-            {
-
-                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f1);
-                m_Frm_EChart.Show();
-            }
-        }
-
-        private void btn_Chart2_Click(object sender, EventArgs e)
-        {
-            if (f2 != null)
-            {
-
-                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f2);
-                m_Frm_EChart.Show();
-            }
-        }
 
         private void btn_compare_Click(object sender, EventArgs e)
         {
-            if (f1 != null && f2 != null && Title.Count != 0)
-            {
-                float[,] f3 = new float[dgv_edata2.Rows.Count, 12];
-                for (int i = 0; i < Title.Count; i++)
-                {
-                    for (int j = 0; j < 12; j++)
-                    {
-                        f3[i, j] = (f2[i, j] - f1[i, j]) / f2[i, j];
-                    }
-                }
-
-
-                for (int i = 0; i < Title.Count; i++)
-                {
-                    dgv_edata3.Rows.Add();
-                    dgv_edata3[1, i].Value = Title[i];
-                    for (int j = 2; j < dgv_edata2.Columns.Count; j++)
-                    {
-                        dgv_edata3[j, i].Value = f3[i, j - 2];
-                    }
-                }
-
-                Frm_EChart m_Frm_EChart = new Frm_EChart(Title, f3);
-                m_Frm_EChart.Show();
-            }
-
-
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Year1.Text + "年 " + comB_Month1.Text + "与" + comB_Year2.Text + "年 " + comB_Month2.Text + "差值比较表";
+            string[] chartInfo = { title, comB_Year1.Text + "  " + comB_Month1.Text, comB_Year2.Text + "  " + comB_Month2.Text };
+            Frm_EChart M_Chart = new Frm_EChart(f1, chartInfo);
+            M_Chart.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -281,5 +242,52 @@ namespace CostControl.Electric
             }
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            object[] cells1 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year1.Text), comB_Month1.Text }; //基准数据 Facility，CC,Year,Period
+            object[] cells2 = { comB_Facility.Text, comB_CC.Text, int.Parse(comB_Year2.Text), comB_Month1.Text }; //比较数据 Facility，CC,Year,Period
+            ExcelHelper excelHelp = new ExcelHelper();
+            if (excelHelp.ShowSaveFileDialog())
+            {
+                excelHelp.LoadFromTemplate("ExcelTemplate\\HLSElectricTemplate.xlsx");
+                excelHelp.AppendToExcel(cells1, 2, false);
+                excelHelp.AppendToExcel(cells2, 3, false);
+                DataTable dt1 = (DataTable)dgv_edata1.DataSource; //数据源1，M1，M2，M3...
+                DataTable dt2 = (DataTable)dgv_edata2.DataSource; ////数据源2，M1，M2，M3...
+                excelHelp.DataTableToExcel(dt1, 5, 1, false, ExcelHelper.ExportStyle.None);
+                excelHelp.DataTableToExcel(dt2, 38, 1, false, ExcelHelper.ExportStyle.None);
+                excelHelp.SaveToExcel();
+            }
+
+        }
+
+        //private void chkB_T1_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (chkB_T1.Checked == true)
+        //    {
+        //        //获取差值数据
+        //        float[,] f = GetElectricData.FReportTable1(FDT1, FDT2);
+        //        f1 = f;
+        //        //dgv_edata3.Rows[0].Visible = true;
+        //        ////为gridview赋值
+        //        //for (int j = 1; j < 6; j++)
+        //        //{
+        //        //    dgv_edata3.Rows[j].Visible = true;
+        //        //    //1到12列赋值，第0列已有数据
+        //        //    for (int i = 1; i < 13; i++)
+        //        //    {
+        //        //        dgv_edata3[i, j].Value = f[j - 1, i];
+        //        //    }
+        //        //}
+        //    }
+        //    else
+        //    {
+        //        //for (int j = 0; j < dgv_edata3.Rows.Count; j++)
+        //        //{
+        //        //    dgv_edata3.Rows[j].Visible = false;
+        //        //}
+        //    }
+        //}
     }
 }

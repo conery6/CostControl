@@ -59,22 +59,6 @@
             this.comB_CC = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_compare = new System.Windows.Forms.Button();
-            this.dgv_edata3 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_edata2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +81,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_edata3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -313,7 +296,7 @@
             // 
             // btn_dataok2
             // 
-            this.btn_dataok2.Location = new System.Drawing.Point(792, 113);
+            this.btn_dataok2.Location = new System.Drawing.Point(833, 113);
             this.btn_dataok2.Name = "btn_dataok2";
             this.btn_dataok2.Size = new System.Drawing.Size(60, 23);
             this.btn_dataok2.TabIndex = 100;
@@ -323,7 +306,7 @@
             // 
             // btn_dataok1
             // 
-            this.btn_dataok1.Location = new System.Drawing.Point(792, 73);
+            this.btn_dataok1.Location = new System.Drawing.Point(833, 73);
             this.btn_dataok1.Name = "btn_dataok1";
             this.btn_dataok1.Size = new System.Drawing.Size(60, 23);
             this.btn_dataok1.TabIndex = 99;
@@ -408,128 +391,6 @@
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 89;
             this.label2.Text = "比较数据";
-            // 
-            // btn_compare
-            // 
-            this.btn_compare.Location = new System.Drawing.Point(897, 75);
-            this.btn_compare.Name = "btn_compare";
-            this.btn_compare.Size = new System.Drawing.Size(60, 61);
-            this.btn_compare.TabIndex = 115;
-            this.btn_compare.Text = "比较图";
-            this.btn_compare.UseVisualStyleBackColor = true;
-            this.btn_compare.Click += new System.EventHandler(this.btn_compare_Click);
-            // 
-            // dgv_edata3
-            // 
-            this.dgv_edata3.AllowUserToAddRows = false;
-            this.dgv_edata3.AllowUserToDeleteRows = false;
-            this.dgv_edata3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_edata3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27});
-            this.dgv_edata3.Location = new System.Drawing.Point(23, 537);
-            this.dgv_edata3.Name = "dgv_edata3";
-            this.dgv_edata3.ReadOnly = true;
-            this.dgv_edata3.RowTemplate.Height = 23;
-            this.dgv_edata3.Size = new System.Drawing.Size(980, 159);
-            this.dgv_edata3.TabIndex = 116;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "科目";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "类型";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "1";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "2";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "3";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.HeaderText = "4";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.HeaderText = "5";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.HeaderText = "6";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.HeaderText = "7";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.HeaderText = "8";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.HeaderText = "9";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.HeaderText = "10";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.HeaderText = "11";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.HeaderText = "12";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
             // 
             // dgv_edata2
             // 
@@ -696,33 +557,32 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(782, 21);
+            this.button1.Location = new System.Drawing.Point(700, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 38);
             this.button1.TabIndex = 118;
-            this.button1.Text = "Excel导出";
+            this.button1.Text = "CHJ导出";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(887, 21);
+            this.button2.Location = new System.Drawing.Point(833, 21);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 38);
+            this.button2.Size = new System.Drawing.Size(78, 38);
             this.button2.TabIndex = 119;
-            this.button2.Text = "海力士Excel导出";
+            this.button2.Text = "海力士导出";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Frm_ETable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 707);
+            this.ClientSize = new System.Drawing.Size(1025, 522);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_edata2);
-            this.Controls.Add(this.dgv_edata3);
-            this.Controls.Add(this.btn_compare);
             this.Controls.Add(this.comB_CC);
             this.Controls.Add(this.comB_Month2);
             this.Controls.Add(this.comB_Month1);
@@ -748,7 +608,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Frm_ETable_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_edata3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_edata2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -774,23 +633,7 @@
         private System.Windows.Forms.ComboBox comB_CC;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_compare;
-        private System.Windows.Forms.DataGridView dgv_edata3;
         private System.Windows.Forms.DataGridView dgv_edata2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.ComboBox comB_Year2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;

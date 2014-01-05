@@ -180,7 +180,7 @@ namespace CostControl.RawMaterial
         //差值比较图
         private void btn_TP1_Click(object sender, EventArgs e)
         {
-            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + currentType1 + "与" + currentType2 + "差值比较表";
+            string title = comB_Facility.Text + " " + comB_CC.Text + " " + comB_Product.Text + " " + comB_Year1.Text + "年 " + comB_Month1.Text + "与" + comB_Year2.Text + "年 " + comB_Month2.Text + "差值比较表";
             string[] chartInfo = { title, "PurchaseCost", "PurchasePrice", "PurchaseQuantity", "SalesQuantity", "Availability" };
             Frm_RMChart M_Chart = new Frm_RMChart(f1, chartInfo);
             M_Chart.Show();

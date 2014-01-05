@@ -102,6 +102,25 @@ namespace CostControl.Electric
             return r;
         }
 
+        //Electric差值比较
+        public static float[,] FReportTable1(float[,] FDT1, float[,] FDT2)
+        {
+            float[,] a = new float[5, 13];
+            for (int j = 2; j < 14; j++)
+            {
+                a[0, j] = j + 1;
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        a[i, j] = (FDT2[i, j] - FDT1[i, j]) / FDT1[i, j];
+                    }
+                    catch
+                    { }
+                }
+            }
+            return a;
+        }
 
     }
 }
